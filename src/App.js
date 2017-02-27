@@ -11,11 +11,10 @@ import {
   Text,
   View
 } from 'react-native'
-const FBSDK = require('react-native-fbsdk')
-const {
+import {
   LoginButton,
   AccessToken
-} = FBSDK
+} from 'react-native-fbsdk'
 
 export default class App extends Component {
   render () {
