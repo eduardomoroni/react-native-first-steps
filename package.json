@@ -1,13 +1,12 @@
 {
-	"name": "mtgx",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-	},
-	"dependencies": {
-		"react": "~15.4.0",
-		"react-native": "0.41.2"
-	},
-	"devDependencies": {
-	}
+  "name": "mtgx",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "react": "~15.4.0",
+    "react-native": "0.41.2",
+    "react-native-fbsdk": "^0.5.0"
+  },
+  "devDependencies": {}
 }
