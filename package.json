@@ -2,11 +2,68 @@
   "name": "mtgx",
   "version": "0.0.1",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "ava --verbose",
+    "test-watch": "ava --watch",
+    "lint-check": "standard --verbose | snazzy",
+    "lint-fixcode": "standard --fix --verbose | snazzy",
+    "flow-check": "flow --show-all-errors",
+    "nyc-lcov": "nyc --reporter=lcov npm test",
+    "codeclimate-coverage": "CODECLIMATE_REPO_TOKEN=a2e1de6b086b7499a462b1aaec6b39d6369c74ea33232dc9885db3fb1f23527d codeclimate-test-reporter < ./coverage/lcov.info",
+    "update-coverage": "npm run nyc-lcov && npm run codeclimate-coverage",
+    "precommit": "npm run flow-check && npm run lint-fixcode",
+    "prepush": "ava --fail-fast"
+  },
   "dependencies": {
+    "firebase": "^3.6.10",
+    "ramda": "^0.23.0",
     "react": "~15.4.0",
     "react-native": "0.41.2",
-    "react-native-fbsdk": "^0.5.0"
+    "react-native-fbsdk": "^0.5.0",
+    "react-native-i18n": "^1.0.0",
+    "react-native-router-flux": "^3.37.0",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.14.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-react-native": "^1.9.1",
+    "babel-register": "^6.23.0",
+    "codeclimate-test-reporter": "^0.4.1",
+    "flow-bin": "^0.40.0",
+    "husky": "^0.13.1",
+    "mockery": "^2.0.0",
+    "nyc": "^10.1.2",
+    "react-native-mock": "^0.3.1",
+    "react-test-renderer": "^15.4.2",
+    "snazzy": "^6.0.0",
+    "standard": "^9.0.0"
+  },
+  "ava": {
+    "files": [
+      "__tests__/**/*.js",
+      "!__tests__/Setup.js"
+    ],
+    "require": [
+      "babel-register",
+      "babel-polyfill",
+      "react-native-mock/mock",
+      "./__tests__/Setup"
+    ],
+    "babel": "inherit"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "it",
+      "__DEV__"
+    ],
+    "ignore": [
+      "flow/"
+    ]
+  }
 }

@@ -7,5 +7,5 @@ declare module 'redux-thunk' { declare var exports: any; }
 declare module 'redux-saga' { declare var exports: any; }
 declare module 'redux' { declare var exports: any; }
 declare module 'firebase' { declare var exports: any; }
-declare module 'react-native-vector-icons/FontAwesome' { declare var exports: any; }
+declare module 'react-native-fbsdk' { declare var exports: any; }
 declare module 'react-native-drawer' { declare var exports: any; }

@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react'
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View
@@ -35,19 +34,19 @@ export default class App extends Component {
           onLoginFinished={
             (error, result) => {
               if (error) {
-                alert('login has error: ' + result.error)
+                window.alert('login has error: ' + result.error)
               } else if (result.isCancelled) {
-                alert('login is cancelled.')
+                window.alert('login is cancelled.')
               } else {
                 AccessToken.getCurrentAccessToken().then(
                   (data) => {
-                    alert(data.accessToken.toString())
+                    window.alert(data.accessToken.toString())
                   }
                 )
               }
             }
           }
-          onLogoutFinished={() => alert('logout.')} />
+          onLogoutFinished={() => window.alert('logout.')} />
       </View>
     )
   }
