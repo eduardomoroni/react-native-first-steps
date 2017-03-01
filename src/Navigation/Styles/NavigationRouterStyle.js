@@ -12,7 +12,7 @@ export default {
     paddingTop: Metrics.navBarHeight
   },
   navBar: {
-    backgroundColor: Colors.background
+    backgroundColor: Colors.bloodOrange
   },
   title: {
     color: Colors.snow

@@ -74,13 +74,13 @@ class LoginScreen extends React.Component {
   renderButtons () {
     const { loading } = this.props
 
-    if (loading) {
-      return (
-        <View style={[Styles.loginRow]}>
-          <Spinner size='large' />
-        </View>
-      )
-    }
+    // if (loading) {
+    //   return (
+    //     <View style={[Styles.loginRow]}>
+    //       <Spinner size='large' />
+    //     </View>
+    //   )
+    // }
 
     return (
       <View style={[Styles.loginRow]}>

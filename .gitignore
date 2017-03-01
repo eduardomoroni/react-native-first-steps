@@ -52,6 +52,7 @@ fastlane/screenshots
 
 #ENV SECRETS
 .env
+Secrets.js
 
 # NYC
 .nyc_output/

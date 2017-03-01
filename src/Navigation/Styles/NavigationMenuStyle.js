@@ -4,9 +4,9 @@ import {Colors} from '../../Themes/'
 
 export default {
   drawer: {
-    backgroundColor: Colors.background
+    backgroundColor: Colors.bloodOrange
   },
   main: {
-    backgroundColor: Colors.clear
+    backgroundColor: Colors.bloodOrange
   }
 }
