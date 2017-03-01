@@ -1,8 +1,6 @@
 // @flow
 
-import { Colors,
-  Metrics
-} from '../../Themes/'
+import { Colors, Metrics } from './Themes/'
 
 export default {
   container: {

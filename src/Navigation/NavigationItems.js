@@ -2,10 +2,10 @@
 
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import styles from './Styles/NavigationItemsStyle'
+import styles from '../Styles/NavigationItemsStyle'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Colors, Metrics } from '../Themes'
+import { Colors, Metrics } from '../Styles/Themes'
 
 const openDrawer = () => {
   NavigationActions.refresh({

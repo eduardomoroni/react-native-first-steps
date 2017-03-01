@@ -11,8 +11,8 @@ import {
 } from 'react-native'
 import { Spinner } from './Components'
 import { connect } from 'react-redux'
-import Styles from './Styles/LoginScreenStyle'
-import {Images, Metrics} from '../Themes'
+import Styles from '../Styles/LoginScreenStyle'
+import { Images, Metrics } from '../Styles/Themes'
 import { loginUser } from '../Redux/Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
@@ -74,13 +74,13 @@ class LoginScreen extends React.Component {
   renderButtons () {
     const { loading } = this.props
 
-    // if (loading) {
-    //   return (
-    //     <View style={[Styles.loginRow]}>
-    //       <Spinner size='large' />
-    //     </View>
-    //   )
-    // }
+    if (loading) {
+      return (
+        <View style={[Styles.loginRow]}>
+          <Spinner/>
+        </View>
+      )
+    }
 
     return (
       <View style={[Styles.loginRow]}>

@@ -5,7 +5,7 @@ import Drawer from 'react-native-drawer'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import MenuContent from './MenuContent'
 import { connect } from 'react-redux'
-import Styles from './Styles/NavigationMenuStyle'
+import Styles from '../Styles/NavigationMenuStyle'
 
 class NavigationDrawer extends Component {
   render () {

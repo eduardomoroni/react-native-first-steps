@@ -1,6 +1,6 @@
 import mockery from 'mockery'
 import m from 'module'
-import english from '../src/I18n/english.json'
+import english from '../src/Config/I18n/english.json'
 import {keys, replace, forEach} from 'ramda'
 
 // inject __DEV__ as it is not available when running through the tests

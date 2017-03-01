@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { Metrics, Colors, Fonts } from '../../Themes'
+import { Metrics, Colors, Fonts } from '../../Styles/Themes'
 
 type DrawerButtonProps = {
   text: string,

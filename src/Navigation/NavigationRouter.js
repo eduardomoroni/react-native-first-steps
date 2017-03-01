@@ -4,7 +4,7 @@ import React from 'react'
 import { Scene, Router } from 'react-native-router-flux'
 import Settings from '../Containers/Settings'
 import LoginScreen from '../Containers/LoginScreen'
-import Styles from './Styles/NavigationRouterStyle'
+import Styles from '../Styles/NavigationRouterStyle'
 import Drawer from './NavigationMenu'
 import I18n from 'react-native-i18n'
 
