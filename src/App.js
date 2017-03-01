@@ -1,50 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+// @flow
 
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { Provider } from 'react-redux'
+import './I18n/I18n'
+import Firebase from 'firebase'
+import NavigationRouter from './Navigation/NavigationRouter'
+import reducers from './Redux/Reducers'
+import sagas from './Sagas'
 
-export default class App extends Component {
+class App extends Component {
+  componentWillMount () {
+    var config = {
+      apiKey: 'AIzaSyBfkEhUvDMHM6Hc_6r7ZExsFzdM74MoU4o',
+      authDomain: 'react-native-playground-1bf22.firebaseapp.com',
+      databaseURL: 'https://react-native-playground-1bf22.firebaseio.com',
+      storageBucket: 'react-native-playground-1bf22.appspot.com',
+      messagingSenderId: '1074542852729'
+    }
+
+    Firebase.initializeApp(config)
+  }
+
   render () {
+    const middleware = []
+    const sagaMiddleware = createSagaMiddleware()
+    middleware.push(sagaMiddleware)
+    const store = createStore(reducers, {}, applyMiddleware(...middleware))
+
+    sagaMiddleware.run(sagas)
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Provider store={store}>
+        <NavigationRouter />
+      </Provider>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-})
+export default App
