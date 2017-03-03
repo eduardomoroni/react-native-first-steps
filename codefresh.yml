@@ -23,7 +23,7 @@ steps:
       - CODECLIMATE_REPO_TOKEN=a2e1de6b086b7499a462b1aaec6b39d6369c74ea33232dc9885db3fb1f23527d
     commands:
       - npm run lint-check
-      - npm run flow-check
+      # - npm run flow-check
       - npm run update-coverage
     # entry_point:
     #   - /bin/sh

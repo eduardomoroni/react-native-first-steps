@@ -12,7 +12,7 @@
     "nyc-lcov": "nyc --reporter=lcov npm test",
     "codeclimate-coverage": "codeclimate-test-reporter < ./coverage/lcov.info",
     "update-coverage": "npm run nyc-lcov && npm run codeclimate-coverage",
-    "precommit": "npm run flow-check && npm run lint-fixcode",
+    "precommit": "npm run flow-check && npm run lint-check",
     "prepush": "ava --fail-fast"
   },
   "dependencies": {
