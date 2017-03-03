@@ -77,7 +77,7 @@ class LoginScreen extends React.Component {
     if (loading) {
       return (
         <View style={[Styles.loginRow]}>
-          <Spinner/>
+          <Spinner />
         </View>
       )
     }

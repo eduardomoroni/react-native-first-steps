@@ -1,5 +1,6 @@
 environment:
   NOVE_ENV: production #Changes behavior of npm install / yarn install
+  CODECLIMATE_REPO_TOKEN: a2e1de6b086b7499a462b1aaec6b39d6369c74ea33232dc9885db3fb1f23527d
   matrix:
     - nodejs_version: '6'
 matrix:
@@ -17,7 +18,7 @@ cache:
   - '%APPDATA%\npm-cache'
 install:
   - ps: Install-Product node $env:nodejs_version x64
-  - npm install --global npm
+  - npm install --global npm standard snazzy flow-bin
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
 before_test:
@@ -26,3 +27,4 @@ before_test:
   - cmd: appveyor-retry powershell npm run flow-check
 test_script:
   - npm test
+after_test:
