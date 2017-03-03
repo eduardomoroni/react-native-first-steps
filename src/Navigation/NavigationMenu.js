@@ -1,51 +1,92 @@
 // @flow
 
-import React, { PropTypes, Component } from 'react'
-import Drawer from 'react-native-drawer'
-import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
-import MenuContent from './MenuContent'
+import React, { Component } from 'react'
+import { ScrollView, Image, BackAndroid } from 'react-native'
 import { connect } from 'react-redux'
-import Styles from '../Styles/NavigationMenuStyle'
+import { Images } from '../Styles/Themes'
+import { userLoggout } from '../Redux/Actions'
+import DrawerButton from '../Containers/Components/MenuButton'
+import { Actions as NavigationActions } from 'react-native-router-flux'
+import I18n from 'react-native-i18n'
 
-class NavigationDrawer extends Component {
+class DrawerContent extends Component {
+  componentDidMount () {
+    BackAndroid.addEventListener('hardwareBackPress', () => {
+      if (this.context.drawer.props.open) {
+        this.toggleDrawer()
+        return true
+      }
+      return false
+    })
+  }
+
+  toggleDrawer () {
+    this.context.drawer.toggle()
+  }
+
+  handlePress = (route: string) => {
+    this.toggleDrawer()
+    switch (route) {
+      case 'settings':
+        NavigationActions.settings()
+        break
+      case 'cardSearch':
+        NavigationActions.cardSearch()
+        break
+      case 'loginScreen':
+        NavigationActions.loginScreen()
+        break
+    }
+  }
+
+  renderLoginOrLogout = () => {
+    if (this.props.user === null) {
+      return (
+        <DrawerButton text={I18n.t('login')} onPress={() => this.handlePress('loginScreen')} />
+      )
+    } else {
+      return (
+        <DrawerButton text={I18n.t('logout')} onPress={() => this.props.onLogout()} />
+      )
+    }
+  }
+
   render () {
-    const state = this.props.navigationState
-    const children = state.children
     return (
-      <Drawer
-        ref='navigation'
-        type='displace'
-        open={state.open}
-        onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
-        onClose={() => NavigationActions.refresh({key: state.key, open: false})}
-        content={<MenuContent />}
-        styles={Styles}
-        tapToClose
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        negotiatePan
-        tweenHandler={(ratio) => ({
-          main: { opacity: Math.max(0.54, 1 - ratio) }
-        })}
-      >
-        <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
-      </Drawer>
+      <ScrollView style={styles.container}>
+        <Image source={Images.logo} style={styles.logo} />
+        <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
+        {this.renderLoginOrLogout()}
+      </ScrollView>
     )
   }
 }
 
-NavigationDrawer.propTypes = {
-  navigationState: PropTypes.object
+DrawerContent.contextTypes = {
+  drawer: React.PropTypes.object
 }
 
 const mapStateToProps = (state) => {
+  const { user } = state.user
   return {
+    user: user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onLogout: () => dispatch(userLoggout())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationDrawer)
+const styles = {
+  container: {
+    flex: 1,
+    padding: 20
+  },
+  logo: {
+    alignSelf: 'center'
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent)

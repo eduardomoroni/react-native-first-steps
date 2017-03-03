@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native'
-import { Spinner } from './Components'
 import { connect } from 'react-redux'
 import Styles from '../Styles/LoginScreenStyle'
 import { Images, Metrics } from '../Styles/Themes'
@@ -76,9 +75,7 @@ class LoginScreen extends React.Component {
 
     if (loading) {
       return (
-        <View style={[Styles.loginRow]}>
-          <Spinner />
-        </View>
+        <View style={[Styles.loginRow]} />
       )
     }
 

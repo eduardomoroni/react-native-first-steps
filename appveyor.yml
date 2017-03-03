@@ -23,8 +23,8 @@ install:
   - npm install
 before_test:
   - npm version
-  - npm run lint-check
-  - cmd: appveyor-retry powershell npm run flow-check
 test_script:
   - npm test
 after_test:
+  - npm run lint-check
+  - cmd: appveyor-retry powershell npm run flow-check

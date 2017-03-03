@@ -1,6 +1,7 @@
 // @flow
 
 import { Colors, Metrics } from './Themes/'
+const buttonsColor = Colors.snow
 
 export default {
   container: {
@@ -13,12 +14,12 @@ export default {
     backgroundColor: Colors.bloodOrange
   },
   title: {
-    color: Colors.snow
+    color: buttonsColor
   },
   leftButton: {
-    tintColor: Colors.snow
+    tintColor: buttonsColor
   },
   rightButton: {
-    color: Colors.snow
+    color: buttonsColor
   }
 }
