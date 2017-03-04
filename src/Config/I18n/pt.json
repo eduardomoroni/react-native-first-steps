@@ -1,4 +1,6 @@
 {
+  "cardName": "Nome da Carta",
+  "cardType": "Tipo da Carta",
   "settings": "Definições",
   "card_search": "Procurar Carta",
   "search": "Procurar",
