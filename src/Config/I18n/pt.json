@@ -1,6 +1,9 @@
 {
   "cardName": "Nome da Carta",
   "cardType": "Tipo da Carta",
+  "cardText": "Text da Carta",
+  "search": "Procurar",
+  "cardSubType": "Sub Tipo",
   "settings": "Definições",
   "card_search": "Procurar Carta",
   "search": "Procurar",
