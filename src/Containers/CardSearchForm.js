@@ -38,7 +38,7 @@ const renderPickerItem = (value, key) => {
   )
 }
 
-const renderDropdown = ({ input: { onChange, name, value }, dropdownItems, selectedValue}) => {
+const renderDropdown = ({ input: { onChange, name, value }, dropdownItems, selectedValue }) => {
   return (
     <Item inlineLabel>
       <Label>{I18n.t(name)}</Label>
@@ -53,7 +53,7 @@ const renderDropdown = ({ input: { onChange, name, value }, dropdownItems, selec
   )
 }
 
-const CardSearchForm = props => {
+let CardSearchForm = props => {
   const { handleSubmit, cardType, cardSubType } = props
   return (
     <Container>
