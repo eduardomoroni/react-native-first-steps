@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { realm } from '../Config/Realm'
 import { inheritanceToArray } from '../Realm/Conversion/Realm-utils'
 import { Metrics, Colors } from '../Styles/Themes'
+import { searchForCards } from '../Redux/Actions'
 import {
   StyleSheet,
   View,
@@ -20,14 +21,11 @@ type CardSearchFormProps = {
   cardName: string,
   cardType: string,
   cardSubType: string,
-  cardText: string
+  cardText: string,
+  searchCards: () => void
 }
 
 const selector = formValueSelector('CardSearchForm')
-
-const submit = values => {
-  console.log('Button was pressed')
-}
 
 const renderInput = ({ input: { onChange, name } }) => {
   return (
@@ -57,7 +55,8 @@ let CardSearchForm = (props: CardSearchFormProps) => {
   const {
     handleSubmit,
     cardTypes,
-    cardSubTypes
+    cardSubTypes,
+    searchCards
   } = props
 
   // A object like this is sent to RealmService
@@ -67,6 +66,11 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     cardType,
     cardSubType
   } = props
+
+  const submit = values => {
+    console.log('Button was pressed')
+    searchCards(values)
+  }
 
   return (
     <View style={Styles.container}>
@@ -109,10 +113,16 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm))
+  }
+}
+
 CardSearchForm = reduxForm({
   form: 'CardSearchForm'
 })(CardSearchForm)
 
-CardSearchForm = connect(mapStateToProps)(CardSearchForm)
+CardSearchForm = connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)
 
 export default CardSearchForm
