@@ -1,5 +1,5 @@
 import Realm from 'realm'
-import AER from '../../assets/cards/AER.json'
+import AER from '../../Assets/Cards/AER.json'
 import _ from 'lodash'
 import { jsonToRealmCard } from '../../Realm/Conversion/Realm-utils'
 import {
