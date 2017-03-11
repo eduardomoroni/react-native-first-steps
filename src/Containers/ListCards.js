@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
-import { ListView, Text, View } from 'react-native'
+import { ListView, View } from 'react-native'
 import { connect } from 'react-redux'
+import Card from './Components/Card'
+
+type ListCardsProps = {
+  cards: any
+}
+
+const renderRow = (card) => {
+  return <Card card={{...card}} />
+}
+
+let dataSource = {}
 
 class ListCards extends Component {
+  props: ListCardsProps
+
   constructor (props) {
     super(props)
-    const { cards } = props
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    this.state = {
-      dataSource: ds.cloneWithRows(cards.map((value) => { return value.name }))
-    }
+    dataSource = ds.cloneWithRows(props.cards)
   }
 
   render () {
     return (
       <View style={{flex: 1, paddingTop: 62}}>
         <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
+          dataSource={dataSource}
+          renderRow={renderRow}
         />
       </View>
     )
