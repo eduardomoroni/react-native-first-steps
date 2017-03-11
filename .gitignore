@@ -57,3 +57,7 @@ Secrets.js
 # NYC
 .nyc_output/
 coverage/
+
+# Realm
+*.realm
+*.realm.*

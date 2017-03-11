@@ -2,10 +2,9 @@
 
 ## Boas Práticas
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a720a2fce9740d680b02784d5863ddd)](https://www.codacy.com/app/eduardomoroni/mtgx?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eduardomoroni/mtgx&amp;utm_campaign=Badge_Grade)
-[![Code Climate](https://codeclimate.com/github/eduardomoroni/mtgx/badges/gpa.svg)](https://codeclimate.com/github/eduardomoroni/mtgx)
-[![Issue Count](https://codeclimate.com/github/eduardomoroni/mtgx/badges/issue_count.svg)](https://codeclimate.com/github/eduardomoroni/mtgx)
-[![Test Coverage](https://codeclimate.com/github/eduardomoroni/mtgx/badges/coverage.svg)](https://codeclimate.com/github/eduardomoroni/mtgx/coverage)
+[![Code Climate](https://lima.codeclimate.com/github/eduardomoroni/mtgx/badges/gpa.svg)](https://lima.codeclimate.com/github/eduardomoroni/mtgx)
+[![Issue Count](https://lima.codeclimate.com/github/eduardomoroni/mtgx/badges/issue_count.svg)](https://lima.codeclimate.com/github/eduardomoroni/mtgx)
+[![Test Coverage](https://lima.codeclimate.com/github/eduardomoroni/mtgx/badges/coverage.svg)](https://lima.codeclimate.com/github/eduardomoroni/mtgx/coverage)
 
 ## CI / CD
 [![iOS Build](https://dashboard.buddybuild.com/api/statusImage?appID=58b368b4b2b449010064a7f2&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58b368b4b2b449010064a7f2/build/latest?branch=master)

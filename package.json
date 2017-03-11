@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "firebase": "^3.6.10",
-    "native-base": "^2.0.12",
+    "lodash": "^4.17.4",
     "ramda": "^0.23.0",
     "react": "~15.4.0",
     "react-dom": "^15.4.2",
@@ -28,6 +28,7 @@
     "react-native-router-flux": "^3.37.0",
     "react-native-vector-icons": "^4.0.0",
     "react-redux": "^5.0.2",
+    "realm": "^1.0.2",
     "redux": "^3.6.0",
     "redux-form": "^6.5.0",
     "redux-saga": "^0.14.3"
@@ -51,7 +52,8 @@
   "ava": {
     "files": [
       "__tests__/**/*.js",
-      "!__tests__/Setup.js"
+      "!__tests__/Setup.js",
+      "!__tests__/Assets/Stubs/SampleCardStub.js"
     ],
     "require": [
       "babel-register",

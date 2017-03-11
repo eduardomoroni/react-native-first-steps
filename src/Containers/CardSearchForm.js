@@ -2,79 +2,106 @@ import React from 'react'
 import I18n from 'react-native-i18n'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { Container, Content, Form, Item, Input, Label, Header, Button, Text, Picker } from 'native-base'
-import R from 'ramda'
+import { realm } from '../Config/Realm'
+import { inheritanceToArray } from '../Realm/Conversion/Realm-utils'
+import { Metrics, Colors } from '../Styles/Themes'
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  Picker,
+  TextInput
+} from 'react-native'
+
+type CardSearchFormProps = {
+  cardTypes: any,
+  cardSubTypes: any,
+  cardName: string,
+  cardType: string,
+  cardSubType: string,
+  cardText: string
+}
 
 const selector = formValueSelector('CardSearchForm')
 
-const cardTypes = {
-  land: 'land',
-  creature: 'creature',
-  enchantment: 'enchantment'
-}
-
-const cardSubTypes = {
-  goblin: 'goblin',
-  human: 'human'
-}
-
 const submit = values => {
-  console.log('submitting form' + JSON.stringify(values))
+  console.log('Button was pressed')
 }
 
-const renderInput = (payload) => {
-  const { onChange, name } = payload.input
+const renderInput = ({ input: { onChange, name } }) => {
   return (
-    <Item inlineLabel>
-      <Label>{I18n.t(name)}</Label>
-      <Input onChangeText={onChange} />
-    </Item>
-  )
-}
-
-const renderPickerItem = (value, key) => {
-  return (
-    <Picker.Item label={key} value={value} />
+    <TextInput
+      style={Styles.input}
+      placeholder={I18n.t(name)}
+      onChangeText={onChange}
+    />
   )
 }
 
 const renderDropdown = ({ input: { onChange, name, value }, dropdownItems, selectedValue }) => {
+  const renderPickerItem = (value, key) => {
+    return <Picker.Item label={value} value={value} key={key} />
+  }
+
   return (
-    <Item inlineLabel>
-      <Label>{I18n.t(name)}</Label>
-      <Picker
-        iosHeader={I18n.t(name)}
-        mode='dropdown'
-        selectedValue={selectedValue}
-        onValueChange={onChange}>
-        { R.mapObjIndexed(renderPickerItem, dropdownItems) }
-      </Picker>
-    </Item>
+    <Picker
+      selectedValue={selectedValue}
+      onValueChange={onChange}>
+      { dropdownItems.map(renderPickerItem) }
+    </Picker>
   )
 }
 
-let CardSearchForm = props => {
-  const { handleSubmit, cardType, cardSubType } = props
+let CardSearchForm = (props: CardSearchFormProps) => {
+  const {
+    handleSubmit,
+    cardTypes,
+    cardSubTypes
+  } = props
+
+  // A object like this is sent to RealmService
+  const {
+    // cardName,
+    // cardText,
+    cardType,
+    cardSubType
+  } = props
+
   return (
-    <Container>
-      <Header />
-      <Content>
-        <Form>
-          <Field name='cardName' component={renderInput} />
-          <Field name='cardType' component={renderDropdown} dropdownItems={cardTypes} selectedValue={cardType} />
-          <Field name='cardSubType' component={renderDropdown} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
-          <Field name='cardText' component={renderInput} />
-        </Form>
-        <Button full onPress={handleSubmit(submit)}>
-          <Text>{I18n.t('search')}</Text>
-        </Button>
-      </Content>
-    </Container>
+    <View style={Styles.container}>
+      <Field name='cardName' component={renderInput} />
+      <Field name='cardType' component={renderDropdown} dropdownItems={cardTypes} selectedValue={cardType} />
+      <Field name='cardSubType' component={renderDropdown} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
+      <Field name='cardText' component={renderInput} />
+      <TouchableOpacity onPress={handleSubmit(submit)}>
+        <Text style={Styles.button}>{I18n.t('search')}</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
+
+const Styles = StyleSheet.create({
+  container: {
+    paddingTop: Metrics.navBarHeight
+  },
+  input: {
+    height: 40
+  },
+  button: {
+    backgroundColor: Colors.facebook,
+    color: 'white',
+    height: 40,
+    lineHeight: 30,
+    marginTop: 10,
+    textAlign: 'center'
+  }
+})
 
 const mapStateToProps = (state) => {
   return {
+    cardTypes: inheritanceToArray(realm.objects('Type').snapshot()),
+    cardSubTypes: inheritanceToArray(realm.objects('SubType').snapshot()),
     cardName: selector(state, 'cardName'),
     cardType: selector(state, 'cardType'),
     cardSubType: selector(state, 'cardSubType'),

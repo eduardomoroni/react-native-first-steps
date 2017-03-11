@@ -1,4 +1,3 @@
-
 import Firebase from 'firebase'
 
 const firebaseConfig = {

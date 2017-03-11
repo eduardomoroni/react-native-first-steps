@@ -14,7 +14,12 @@ const NavigationRouter = () => {
   return (
     <Router>
       <Scene key='drawer' component={Drawer} open={false} >
-        <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton} >
+        <Scene key='drawerChildrenWrapper'
+          navigationBarStyle={Styles.navBar}
+          titleStyle={Styles.title}
+          leftButtonIconStyle={Styles.leftButton}
+          rightButtonTextStyle={Styles.rightButton}
+        >
           <Scene key='MainScreen' component={MainScreen} title={I18n.t('welcome')} />
           <Scene initial key='CardSearchForm' component={CardSearchForm} title={I18n.t('card_search_form_title')} />
           <Scene key='settings' component={Settings} title={I18n.t('settings')} />
