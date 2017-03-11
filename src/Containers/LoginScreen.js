@@ -15,6 +15,7 @@ import { Images, Metrics } from '../Styles/Themes'
 import { loginUser } from '../Redux/Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
+import Spinner from './Components/Spinner'
 
 type LoginScreenProps = {
   user: any,
@@ -75,7 +76,9 @@ class LoginScreen extends React.Component {
 
     if (loading) {
       return (
-        <View style={[Styles.loginRow]} />
+        <View style={[Styles.loginRow]}>
+          <Spinner />
+        </View>
       )
     }
 
