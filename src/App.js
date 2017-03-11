@@ -5,14 +5,14 @@ import { Provider } from 'react-redux'
 import NavigationRouter from './Navigation/NavigationRouter'
 import setupMtgxConfigs, { createMtgxStore } from './Config'
 
+const store = createMtgxStore()
+
 class App extends Component {
   componentWillMount () {
     setupMtgxConfigs()
   }
 
   render () {
-    const store = createMtgxStore()
-
     return (
       <Provider store={store}>
         <NavigationRouter />

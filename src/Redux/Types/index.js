@@ -7,3 +7,6 @@ export const SIGN_UP_USER = 'sign_up_user'
 // USER TYPES
 export const USER_LOGGED_IN = 'user_logged_in'
 export const USER_LOGGED_OUT = 'user_logged_out'
+
+// CARD SEARCH FORM
+export const SEARCH_FOR_CARDS = 'search_for_cards'

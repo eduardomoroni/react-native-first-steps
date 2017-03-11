@@ -11,7 +11,7 @@ engines:
       global-require:
         enabled: false
       complexity:
-        enabled: false
+        enabled: true
   fixme:
     enabled: true
 ratings:

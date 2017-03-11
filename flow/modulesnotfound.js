@@ -11,3 +11,4 @@ declare module 'react-native-vector-icons/FontAwesome' { declare var exports: an
 declare module 'react-native-drawer' { declare var exports: any; }
 declare module 'native-base' { declare var exports: any; }
 declare module 'redux-form' { declare var exports: any; }
+declare module 'lodash' { declare var exports: any; }

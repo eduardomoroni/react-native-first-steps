@@ -20,7 +20,7 @@ steps:
           - gh-pages
     environment:
       - NODE_ENV=production #Changes behavior of npm install / yarn install
-      - CODECLIMATE_REPO_TOKEN=a2e1de6b086b7499a462b1aaec6b39d6369c74ea33232dc9885db3fb1f23527d
+      - CODECLIMATE_REPO_TOKEN=9a8d999dfebca03e28a1c2263cf3b2572f59f894a35a96cb379f01616e47b3e1
     commands:
       - npm run lint-check
       # - npm run flow-check
