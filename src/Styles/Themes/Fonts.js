@@ -1,10 +1,11 @@
 // @flow
 
 const type = {
-  base: 'MPlantin',
+  base: 'HelveticaNeue',
   bold: 'HelveticaNeue-Bold',
   emphasis: 'HelveticaNeue-Italic',
-  beleren: 'Beleren',
+  mtg: 'mplantin',
+  beleren: 'beleren',
   mana: 'mana'
 }
 

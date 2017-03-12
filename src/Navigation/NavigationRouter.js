@@ -9,11 +9,12 @@ import Styles from '../Styles/NavigationRouterStyle'
 import Drawer from './NavigationDrawer'
 import CardSearchForm from '../Containers/CardSearchForm'
 import ListCards from '../Containers/ListCards'
+import CardDetails from '../Containers/CardDetails'
 import I18n from 'react-native-i18n'
 import { findCards } from '../Realm/RealmService'
 
 const testScreen = () => {
-  return <ListCards cardsTest={findCards('name CONTAINS[c] $0', 'aer')} />
+  return <ListCards cardsTest={findCards('name CONTAINS[c] $0', 'aer').slice(0, 15)} />
 }
 
 const NavigationRouter = () => {
@@ -26,6 +27,7 @@ const NavigationRouter = () => {
           leftButtonIconStyle={Styles.leftButton}
           rightButtonTextStyle={Styles.rightButton}
         >
+          <Scene key='cardDetails' component={CardDetails} />
           <Scene initial key='testScreen' component={testScreen} title='test' />
           <Scene key='MainScreen' component={MainScreen} title={I18n.t('welcome')} />
           <Scene key='CardSearchForm' component={CardSearchForm} title={I18n.t('card_search_form_title')} />

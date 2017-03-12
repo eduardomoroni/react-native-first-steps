@@ -20,6 +20,7 @@ const colors = {
   ember: 'rgba(164, 0, 48, 0.5)',
   fire: '#e73536',
   drawer: 'rgba(30, 30, 29, 0.95)',
+  black: '#000000',
   mtgWhite: '#F0F2C0',
   mtgBlue: '#B5CDE3',
   mtgBlack: '#ACA29A',

@@ -4,13 +4,16 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
+  TouchableOpacity,
   StyleSheet
 } from 'react-native'
 import {
   Metrics,
-  Fonts
+  Fonts,
+  Colors
 } from '../../Styles/Themes'
 import { manaCostToSymbol } from '../../Transform/ManaCostToSymbol'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 
 type CardProps = {
   card: any
@@ -19,6 +22,7 @@ type CardProps = {
 export default class Card extends Component {
   props: CardProps
   render () {
+    const { card } = this.props
     const {
       name,
       text,
@@ -26,16 +30,23 @@ export default class Card extends Component {
       type,
       power,
       toughness
-    } = this.props.card
+    } = card
 
     return (
-      <View style={styles.container}>
-        {renderCardNameAndMana(name, manaCostToSymbol(manaCost))}
-        {renderCardTypeAndEdition(type, 'AER')}
-        {renderTextAndPower(text, power, toughness)}
-      </View>
+      <TouchableOpacity onPress={() => showDetails(card)} >
+        <View style={styles.container}>
+          {renderCardNameAndMana(name, manaCostToSymbol(manaCost))}
+          {renderCardTypeAndEdition(type, 'AER')}
+          {renderTextAndPower(text, power, toughness)}
+        </View>
+      </TouchableOpacity>
     )
   }
+}
+
+const showDetails = (card) => {
+  console.log(card)
+  NavigationActions.cardDetails({card: card, title: card.name})
 }
 
 const renderCardNameAndMana = (leftText, rightText) => {
@@ -83,23 +94,28 @@ const styles = StyleSheet.create({
     flex: 1
   },
   text: {
-    fontFamily: Fonts.type.base,
-    fontSize: Fonts.size.small
+    fontFamily: Fonts.type.mtg,
+    fontSize: Fonts.size.small,
+    color: Colors.black
   },
   cardPowerToughness: {
-    fontFamily: Fonts.type.base,
-    fontSize: Fonts.size.regular
+    fontFamily: Fonts.type.mtg,
+    fontSize: Fonts.size.regular,
+    color: Colors.black
   },
   cardNameText: {
     fontFamily: Fonts.type.beleren,
-    fontSize: Fonts.size.regular
+    fontSize: Fonts.size.regular,
+    color: Colors.black
   },
   cardTypeText: {
-    fontFamily: Fonts.type.base,
-    fontSize: Fonts.size.medium
+    fontFamily: Fonts.type.mtg,
+    fontSize: Fonts.size.medium,
+    color: Colors.black
   },
   mana: {
-    fontFamily: Fonts.type.mana
+    fontFamily: Fonts.type.mana,
+    color: Colors.black
   },
   lineContainer: {
     flexDirection: 'row',
