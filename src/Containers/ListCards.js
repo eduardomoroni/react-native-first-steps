@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ListView, View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import { Colors } from '../Styles/Themes'
 import Card from './Components/Card'
 
 type ListCardsProps = {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8E8E8E'
+    backgroundColor: Colors.silver
   }
 })
 

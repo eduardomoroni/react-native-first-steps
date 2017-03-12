@@ -72,5 +72,8 @@
     "ignore": [
       "flow/"
     ]
+  },
+  "rnpm": {
+    "assets": ["./src/Assets/Fonts"]
   }
 }

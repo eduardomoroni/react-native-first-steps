@@ -11,7 +11,7 @@ import {
 } from './Schemas'
 
 const schemas = [CardSchema, TypeSchema, SubTypeSchema, ColorSchema, ColorIdentitySchema]
-const realmConfig = {path: 'dummyTestDB.realm', schema: schemas}
+const realmConfig = {path: 'dummyTestDBAgain.realm', schema: schemas}
 
 export const realm = new Realm(realmConfig)
 

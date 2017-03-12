@@ -52,6 +52,10 @@
       </dict>
     </dict>
     <key>UIAppFonts</key>
-    <array/>
+    <array>
+      <string>mplantin.ttf</string>
+      <string>mana.ttf</string>
+      <string>beleren.ttf</string>
+    </array>
   </dict>
 </plist>

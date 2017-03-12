@@ -17,6 +17,9 @@ export const CardSchema = {
     'subtypes': {type: 'list', objectType: 'SubType'},
     'text': {type: 'string', optional: true},
     'type': 'string',
-    'types': {type: 'list', objectType: 'Type'}
+    'types': {type: 'list', objectType: 'Type'},
+    'power': {type: 'string', optional: true},
+    'toughness': {type: 'string', optional: true},
+    'flavor': {type: 'string', optional: true}
   }
 }
