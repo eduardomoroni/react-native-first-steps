@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, View } from 'react-native'
+import { ListView, View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import Card from './Components/Card'
 
@@ -8,7 +8,7 @@ type ListCardsProps = {
 }
 
 const renderRow = (card) => {
-  return <Card card={{...card}} />
+  return <Card card={{...card}} /> // IS THAT BREAKS REALM LAZY LOADING?
 }
 
 let dataSource = {}
@@ -19,20 +19,33 @@ class ListCards extends Component {
   constructor (props) {
     super(props)
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    dataSource = ds.cloneWithRows(props.cards)
+    dataSource = ds.cloneWithRows(props.cardsTest) // FOR TEST PORPOUSE ONLY
   }
 
   render () {
     return (
-      <View style={{flex: 1, paddingTop: 62}}>
+      <View style={styles.container}>
         <ListView
           dataSource={dataSource}
           renderRow={renderRow}
+          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         />
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 62
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#8E8E8E'
+  }
+})
 
 const mapStateToProps = (state) => {
   const { cards } = state.cardSearch
