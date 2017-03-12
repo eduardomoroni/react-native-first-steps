@@ -7,16 +7,20 @@ const mapFormToRealm = {
   cardText: 'text CONTAINS[c]'
 }
 
-function getCards (query, args) {
-  return realm.objects('Card').filtered(query, ...args)
+function findCardsFromForm (form) {
+  return findCards(createQuery(form), createQueryArgs(form))
 }
 
-function getQueryArgs (CardSearchForm) {
-  return Object.values(CardSearchForm)
+function findCards (query, args) {
+  return realm.objects('Card').filtered(query, ...args).snapshot()
 }
 
-function createQuery (CardSearchForm) {
-  return Object.keys(CardSearchForm)
+function createQueryArgs (cardSearchForm) {
+  return Object.values(cardSearchForm)
+}
+
+function createQuery (cardSearchForm) {
+  return Object.keys(cardSearchForm)
                .map((key) => mapFormToRealm[key])
                .reduce(addParamToQuery, '')
 }
@@ -27,7 +31,8 @@ function addParamToQuery (query, field, currentIndex) {
 }
 
 export {
-  getCards,
-  getQueryArgs,
-  createQuery
+  findCards,
+  createQueryArgs,
+  createQuery,
+  findCardsFromForm
 }

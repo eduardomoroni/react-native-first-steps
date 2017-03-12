@@ -19,7 +19,7 @@ mockery.warnOnUnregistered(false)
 mockery.registerMock('react-native-vector-icons/Ionicons', {})
 mockery.registerMock('firebase', {})
 mockery.registerMock('react-native-router-flux', {
-  Actions: { 'myScreen': () => {} },
+  Actions: { 'listCards': () => {} },
   ActionConst: { RESET: 'reset' }
 })
 
