@@ -45,7 +45,7 @@ export default class Card extends Component {
 }
 
 const showDetails = (card) => {
-  console.log(card)
+  console.log(JSON.stringify(card))
   NavigationActions.cardDetails({card: card, title: card.name})
 }
 
@@ -114,8 +114,9 @@ const styles = StyleSheet.create({
     color: Colors.black
   },
   mana: {
-    fontFamily: Fonts.type.mana,
-    color: Colors.black
+    fontFamily: Fonts.type.mtg,
+    color: Colors.black,
+    fontSize: Fonts.size.small
   },
   lineContainer: {
     flexDirection: 'row',

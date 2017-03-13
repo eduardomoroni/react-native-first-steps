@@ -4,9 +4,8 @@ const type = {
   base: 'HelveticaNeue',
   bold: 'HelveticaNeue-Bold',
   emphasis: 'HelveticaNeue-Italic',
-  mtg: 'mplantin',
-  beleren: 'beleren',
-  mana: 'mana'
+  mtg: 'MTGX',
+  beleren: 'beleren'
 }
 
 const size = {

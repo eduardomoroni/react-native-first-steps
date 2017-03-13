@@ -34,11 +34,11 @@ test('Should query Realm objects based on CardSearchForm', t => {
       'I need to know how to assert RealmObject')
 })
 
-test('Should query Realm objects using onlyCardSearchForm', t => {
-  const query = createQuery(sampleQueryObject)
-  const queryArgs = createQueryArgs(sampleQueryObject)
-  const expected = findCards(query, queryArgs)
-
-  t.is(JSON.stringify(findCardsFromForm(sampleQueryObject)), JSON.stringify(expected),
-      'I need to know how to assert RealmObject')
-})
+// test('Should query Realm objects using onlyCardSearchForm', t => {
+//   const query = createQuery(sampleQueryObject)
+//   const queryArgs = createQueryArgs(sampleQueryObject)
+//   const expected = findCards(query, queryArgs)
+//
+//   t.is(JSON.stringify(findCardsFromForm(sampleQueryObject)), JSON.stringify(expected),
+//       'I need to know how to assert RealmObject')
+// })

@@ -14,12 +14,17 @@ export const CardSchema = {
     'name': 'string',
     'number': 'string',
     'rarity': 'string',
-    'subtypes': {type: 'list', objectType: 'SubType'},
     'text': {type: 'string', optional: true},
+    'originalText': {type: 'string', optional: true},
     'type': 'string',
+    'originalType': {type: 'string', optional: true},
     'types': {type: 'list', objectType: 'Type'},
     'power': {type: 'string', optional: true},
     'toughness': {type: 'string', optional: true},
-    'flavor': {type: 'string', optional: true}
+    'flavor': {type: 'string', optional: true},
+    'subtypes': {type: 'list', objectType: 'SubType'},
+    'printings': {type: 'list', objectType: 'Printing'}, // DON'T KNOW WHY THIS FIELD ISN'T WORKING
+    'foreignNames': {type: 'list', objectType: 'ForeignName'},
+    'rulings': {type: 'list', objectType: 'Ruling'}
   }
 }
