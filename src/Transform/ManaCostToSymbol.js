@@ -1,16 +1,12 @@
-export const manaCostToSymbol = (manaCost) => {
+export const placeholdersToSymbols = (cardText) => {
   const curlyBracesRegex = /[{}]+/
-  return manaCost.split(curlyBracesRegex)
-                          .filter((a) => a.length > 0)
-                          .map((a) => convertionMap[a] || '')
-                          .reduce(unicodeToWord, '')
+  const newCardText = (cardText || '').split(curlyBracesRegex)
+                                      .map(a => convertionMap[a] || a)
+                                      .join('')
+  return newCardText
 }
 
-const unicodeToWord = (acc, val, index) => {
-  return `${acc}${unicodeChar(val)}`
-}
-
-const unicodeChar = (value) => {
+function unicodeChar (value) {
   return String.fromCharCode(parseInt(value, 16))
 }
 
@@ -50,3 +46,8 @@ const convertionMap = {
   'S': 'e619',
   'E': 'e907'
 }
+
+// Converting convertionMap to encoded char
+Object.keys(convertionMap).forEach(key => {
+  convertionMap[key] = unicodeChar(convertionMap[key])
+})

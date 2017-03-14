@@ -1,6 +1,8 @@
 import Realm from 'realm'
 import AER from '../../Assets/Cards/AER-X.json'
 import { jsonToRealmCard } from '../../Realm/Conversion/Realm-utils'
+import { placeholdersToSymbols } from '../../Transform/ManaCostToSymbol'
+
 import {
   CardSchema,
   TypeSchema,
@@ -32,6 +34,7 @@ export const initRealmDb = () => {
 
     AER.cards.forEach((card) => {
       delete card.printings // This field is not working, non patience to figure out
+      card.text = placeholdersToSymbols(card.text)
       realm.create('Card', jsonToRealmCard(card), true)
     })
   })

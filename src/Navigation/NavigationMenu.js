@@ -36,6 +36,9 @@ class DrawerContent extends Component {
       case 'loginScreen':
         NavigationActions.loginScreen()
         break
+      case 'cardSearchForm':
+        NavigationActions.cardSearchForm()
+        break
     }
   }
 
@@ -56,6 +59,8 @@ class DrawerContent extends Component {
       <ScrollView style={styles.container}>
         <Image source={Images.logo} style={styles.logo} />
         <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
+        <DrawerButton text={I18n.t('cardSearch')} onPress={() => this.handlePress('cardSearchForm')} />
+
         {this.renderLoginOrLogout()}
       </ScrollView>
     )

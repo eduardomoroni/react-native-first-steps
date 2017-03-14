@@ -5,8 +5,7 @@ import Drawer from 'react-native-drawer'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import Menu from './NavigationMenu'
 import { connect } from 'react-redux'
-import RouterStyles from '../Styles/NavigationRouterStyle'
-const { navBar } = RouterStyles
+import { Colors } from '../Styles/Themes/'
 
 class NavigationDrawer extends Component {
   render () {
@@ -41,10 +40,10 @@ NavigationDrawer.propTypes = {
 
 const Styles = {
   drawer: {
-    backgroundColor: navBar.backgroundColor
+    backgroundColor: Colors.facebook
   },
   main: {
-    backgroundColor: navBar.backgroundColor
+    backgroundColor: Colors.facebook
   }
 }
 

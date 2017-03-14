@@ -12,7 +12,7 @@ import {
   Fonts,
   Colors
 } from '../../Styles/Themes'
-import { manaCostToSymbol } from '../../Transform/ManaCostToSymbol'
+import { placeholdersToSymbols } from '../../Transform/ManaCostToSymbol'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 type CardProps = {
@@ -35,7 +35,7 @@ export default class Card extends Component {
     return (
       <TouchableOpacity onPress={() => showDetails(card)} >
         <View style={styles.container}>
-          {renderCardNameAndMana(name, manaCostToSymbol(manaCost))}
+          {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}
           {renderCardTypeAndEdition(type, 'AER')}
           {renderTextAndPower(text, power, toughness)}
         </View>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: Fonts.type.mtg,
-    fontSize: Fonts.size.small,
+    fontSize: Fonts.size.regular,
     color: Colors.black
   },
   cardPowerToughness: {
