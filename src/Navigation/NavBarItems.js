@@ -6,7 +6,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 import { Colors, Metrics } from '../Styles/Themes/'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const navButton = {
   backgroundColor: Colors.transparent,

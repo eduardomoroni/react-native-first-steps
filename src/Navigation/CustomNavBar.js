@@ -3,7 +3,18 @@ import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Colors, Metrics, Fonts } from '../Styles/Themes/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import Drawer from './NavigationDrawerFoo'
 import NavBarItems from './NavBarItems'
+import Menu from './NavigationMenu'
+
+const openSettingsDrawer = () => {
+  NavigationActions.refresh({
+    key: 'drawer',
+    content: <Menu />,
+    open: true,
+    side: 'left'
+  })
+}
 
 class CustomNavBar extends React.Component {
   render () {
@@ -22,7 +33,7 @@ class CustomNavBar extends React.Component {
 
   renderLeftButton () {
     return (
-      NavBarItems.navButton({name: 'arrow-back'}, NavigationActions.pop)
+      NavBarItems.navButton({name: 'angle-left'}, NavigationActions.pop)
     )
   }
 
@@ -36,7 +47,7 @@ class CustomNavBar extends React.Component {
 
   renderRightButton () {
     return (
-      NavBarItems.navButton({name: 'filter-list'})
+      NavBarItems.navButton({name: 'sliders'}, openSettingsDrawer)
     )
   }
 }
