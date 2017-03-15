@@ -226,6 +226,3 @@ rules:
   prefer-spread: 0
   prefer-template: 0
   require-yield: 0
-
-  #Standard
-  computed-property-even-spacing: 0
