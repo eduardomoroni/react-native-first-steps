@@ -28,7 +28,8 @@ type CardSearchFormProps = {
 
 const selector = formValueSelector('CardSearchForm')
 
-const renderInput = ({ input: { onChange, name } }) => {
+const renderInput = (fieldProps) => {
+  const { onChange, name } = fieldProps.input
   return (
     <TextInput
       style={Styles.input}
@@ -38,7 +39,10 @@ const renderInput = ({ input: { onChange, name } }) => {
   )
 }
 
-const renderDropdown = ({ input: { onChange, name, value }, dropdownItems, selectedValue }) => {
+const renderDropdown = (fieldProps) => {
+  const { input, dropdownItems, selectedValue } = fieldProps
+  const { onChange } = input
+
   const renderPickerItem = (value, key) => {
     return <Picker.Item label={value} value={value} key={key} />
   }
@@ -87,8 +91,8 @@ let CardSearchForm = (props: CardSearchFormProps) => {
 }
 
 Field.propTypes = {
-  dropdownItems: React.propTypes.node,
-  selectedValue: React.propTypes.string
+  dropdownItems: React.PropTypes.arrayOf(React.PropTypes.object),
+  selectedValue: React.PropTypes.string
 }
 
 const Styles = StyleSheet.create({
@@ -107,16 +111,6 @@ const Styles = StyleSheet.create({
     textAlign: 'center'
   }
 })
-
-CardSearchForm.propTypes = {
-  searchCards: React.PropTypes.func,
-  cardTypes: React.PropTypes.node,
-  cardSubTypes: React.PropTypes.node,
-  cardName: React.PropTypes.string,
-  cardType: React.PropTypes.string,
-  cardSubType: React.PropTypes.string,
-  cardText: React.PropTypes.string
-}
 
 const mapStateToProps = (state) => {
   return {
