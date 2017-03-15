@@ -5,47 +5,52 @@ import Drawer from 'react-native-drawer'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import Menu from './NavigationMenu'
 import { connect } from 'react-redux'
-import RouterStyles from '../Styles/NavigationRouterStyle'
-const { navBar } = RouterStyles
+import { drawerStyle } from '../Styles/NavBarStyle'
+
+export const menuDrawerProps = {
+  key: 'drawer',
+  open: false,
+  side: 'left',
+  type: 'displace',
+  content: <Menu />
+}
 
 class NavigationDrawer extends Component {
   render () {
     const state = this.props.navigationState
-    const children = state.children
+    const defaultProps = {
+      ref: 'navigation',
+      open: state.open,
+      onOpen: () => NavigationActions.refresh({key: state.key, open: true, side: state.side}),
+      onClose: () => NavigationActions.refresh(menuDrawerProps),
+      content: state.content,
+      styles: drawerStyle,
+      tapToClose: true,
+      openDrawerOffset: 0.25,
+      panCloseMask: 0.25,
+      negotiatePan: true,
+      type: 'overlay',
+      side: state.side, // If we set dynamically to right we're getting error
+      tweenHandler: tweenHandler
+    } // I need to find a better way to override this props in execution time
+
     return (
-      <Drawer
-        ref='navigation'
-        type='displace'
-        open={state.open}
-        onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
-        onClose={() => NavigationActions.refresh({key: state.key, open: false})}
-        content={<Menu />}
-        styles={Styles}
-        tapToClose
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        negotiatePan
-        tweenHandler={(ratio) => ({
-          main: { opacity: Math.max(0.54, 1 - ratio) }
-        })}
-      >
-        <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
+      <Drawer {...defaultProps}>
+        <DefaultRenderer navigationState={state.children[0]} onNavigate={this.props.onNavigate} />
       </Drawer>
     )
   }
 }
 
-NavigationDrawer.propTypes = {
-  navigationState: PropTypes.object
+const tweenHandler = (ratio) => {
+  return {
+    main: {
+      opacity: Math.max(0.54, 1 - ratio) }
+  }
 }
 
-const Styles = {
-  drawer: {
-    backgroundColor: navBar.backgroundColor
-  },
-  main: {
-    backgroundColor: navBar.backgroundColor
-  }
+NavigationDrawer.propTypes = {
+  navigationState: PropTypes.object
 }
 
 export default connect()(NavigationDrawer)

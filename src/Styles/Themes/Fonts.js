@@ -3,7 +3,9 @@
 const type = {
   base: 'HelveticaNeue',
   bold: 'HelveticaNeue-Bold',
-  emphasis: 'HelveticaNeue-Italic'
+  emphasis: 'HelveticaNeue-Italic',
+  mtg: 'MTGX',
+  beleren: 'beleren'
 }
 
 const size = {

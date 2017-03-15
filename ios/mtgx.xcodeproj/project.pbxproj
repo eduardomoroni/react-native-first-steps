@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -54,6 +53,12 @@
 		CBC7A6A7F3AA4B92BB20CA17 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5445C2ACB7E14A588DD1982F /* SimpleLineIcons.ttf */; };
 		E5B353E4C40E4ACD9E7B4D81 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C148CC171AB44B5CB2E3307E /* Entypo.ttf */; };
 		F84F085C982A482F9ABF22C5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EF6E29F5A347E380A32AD7 /* libz.tbd */; };
+		9BE03371E5DC416C96A82EC0 /* mplantin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B9BCD091BE943C190BC93E8 /* mplantin.ttf */; };
+		5D61CB6BEF334A03A2590E56 /* mana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBCEDBF6DF404286BCCE0EE8 /* mana.ttf */; };
+		79E7ECD72C644CF5A9C6C86A /* beleren.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9955B21A74DD418893D44C29 /* beleren.ttf */; };
+		67F9369ADC00457FADCFD622 /* Beleren.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF0FA5185B4F3A9114F868 /* Beleren.ttf */; };
+		7A62E224B74F44FFAC8F52F0 /* MPlantin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F957D10724F5688DBE8FB /* MPlantin.ttf */; };
+		6B791B0260874B4DBA178C3A /* MTGX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2961EC47F51E47A983A43CA3 /* MTGX.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,6 +327,12 @@
 		D73811776B214987A7A9A620 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		E2ABE76DA22345E0BB9D5768 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		E669408618014387AE09794D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		2B9BCD091BE943C190BC93E8 /* mplantin.ttf */ = {isa = PBXFileReference; name = "mplantin.ttf"; path = "../src/Assets/Fonts/mplantin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FBCEDBF6DF404286BCCE0EE8 /* mana.ttf */ = {isa = PBXFileReference; name = "mana.ttf"; path = "../src/Assets/Fonts/mana.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9955B21A74DD418893D44C29 /* beleren.ttf */ = {isa = PBXFileReference; name = "beleren.ttf"; path = "../src/Assets/Fonts/beleren.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9BFF0FA5185B4F3A9114F868 /* Beleren.ttf */ = {isa = PBXFileReference; name = "Beleren.ttf"; path = "../src/Assets/Fonts/Beleren.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5D0F957D10724F5688DBE8FB /* MPlantin.ttf */ = {isa = PBXFileReference; name = "MPlantin.ttf"; path = "../src/Assets/Fonts/MPlantin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2961EC47F51E47A983A43CA3 /* MTGX.ttf */ = {isa = PBXFileReference; name = "MTGX.ttf"; path = "../src/Assets/Fonts/MTGX.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +514,12 @@
 				90609CF8D76B48EC95EE3F60 /* Octicons.ttf */,
 				5445C2ACB7E14A588DD1982F /* SimpleLineIcons.ttf */,
 				70899781258749B59F3A3D87 /* Zocial.ttf */,
+				2B9BCD091BE943C190BC93E8 /* mplantin.ttf */,
+				FBCEDBF6DF404286BCCE0EE8 /* mana.ttf */,
+				9955B21A74DD418893D44C29 /* beleren.ttf */,
+				9BFF0FA5185B4F3A9114F868 /* Beleren.ttf */,
+				5D0F957D10724F5688DBE8FB /* MPlantin.ttf */,
+				2961EC47F51E47A983A43CA3 /* MTGX.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1022,6 +1039,12 @@
 				B1AB6FCC5CAB4D2887B7958D /* Octicons.ttf in Resources */,
 				CBC7A6A7F3AA4B92BB20CA17 /* SimpleLineIcons.ttf in Resources */,
 				96354D6877654D9B872CB47B /* Zocial.ttf in Resources */,
+				9BE03371E5DC416C96A82EC0 /* mplantin.ttf in Resources */,
+				5D61CB6BEF334A03A2590E56 /* mana.ttf in Resources */,
+				79E7ECD72C644CF5A9C6C86A /* beleren.ttf in Resources */,
+				67F9369ADC00457FADCFD622 /* Beleren.ttf in Resources */,
+				7A62E224B74F44FFAC8F52F0 /* MPlantin.ttf in Resources */,
+				6B791B0260874B4DBA178C3A /* MTGX.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

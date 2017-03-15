@@ -47,7 +47,7 @@
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "^15.4.2",
     "snazzy": "^6.0.0",
-    "standard": "^9.0.0"
+    "standard": "^9.0.1"
   },
   "ava": {
     "files": [
@@ -71,6 +71,11 @@
     ],
     "ignore": [
       "flow/"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./src/Assets/Fonts"
     ]
   }
 }

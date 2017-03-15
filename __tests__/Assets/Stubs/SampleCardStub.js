@@ -14,5 +14,8 @@ export const RealmObjectCardAsJson = {
   subtypes: { '0': { subType: 'Aura' } },
   text: 'Enchant creature or Vehicle\nAs long as enchanted permanent is a Vehicle, it\'s a creature in addition to its other types.\nEnchanted creature gets +2/+2 and has flying.',
   type: 'Enchantment — Aura',
-  types: { '0': { type: 'Enchantment' } }
+  types: { '0': { type: 'Enchantment' } },
+  power: null,
+  toughness: null,
+  flavor: null
 }

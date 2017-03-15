@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ListView, View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import { Colors } from '../Styles/Themes'
 import Card from './Components/Card'
 
 type ListCardsProps = {
@@ -8,7 +9,7 @@ type ListCardsProps = {
 }
 
 const renderRow = (card) => {
-  return <Card card={{...card}} /> // IS THAT BREAKS REALM LAZY LOADING?
+  return <Card card={{...card}} /> // IS THAT BREAKING REALM LAZY LOADING?
 }
 
 let dataSource = {}
@@ -18,8 +19,8 @@ class ListCards extends Component {
 
   constructor (props) {
     super(props)
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    dataSource = ds.cloneWithRows(props.cardsTest) // FOR TEST PORPOUSE ONLY
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
+    dataSource = ds.cloneWithRows(props.cards) // FOR TEST PORPOUSE ONLY
   }
 
   render () {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8E8E8E'
+    backgroundColor: Colors.silver
   }
 })
 
