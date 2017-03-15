@@ -3,7 +3,6 @@ import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Colors, Metrics, Fonts } from '../Styles/Themes/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import Drawer from './NavigationDrawerFoo'
 import NavBarItems from './NavBarItems'
 import Menu from './NavigationMenu'
 

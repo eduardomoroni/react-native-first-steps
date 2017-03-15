@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { Colors } from '../Styles/Themes/'
 
 // Everytime I close drawer I certify that the drawer call will be to drawer Menu
-setDrawerToDefault = {
+const setDrawerToDefault = {
   key: 'drawer',
   open: false,
   side: 'left',
@@ -16,7 +16,6 @@ setDrawerToDefault = {
 }
 
 class NavigationDrawer extends Component {
-
   render () {
     const state = this.props.navigationState
     const defaultProps = {
