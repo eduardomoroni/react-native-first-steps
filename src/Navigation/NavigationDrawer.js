@@ -5,13 +5,13 @@ import Drawer from 'react-native-drawer'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import Menu from './NavigationMenu'
 import { connect } from 'react-redux'
-import { Colors } from '../Styles/Themes/'
+import { drawerStyle } from '../Styles/NavBarStyle'
 
-// Everytime I close drawer I certify that the drawer call will be to drawer Menu
-const setDrawerToDefault = {
+export const menuDrawerProps = {
   key: 'drawer',
   open: false,
   side: 'left',
+  type: 'displace',
   content: <Menu />
 }
 
@@ -20,16 +20,16 @@ class NavigationDrawer extends Component {
     const state = this.props.navigationState
     const defaultProps = {
       ref: 'navigation',
-      type: 'displace',
       open: state.open,
       onOpen: () => NavigationActions.refresh({key: state.key, open: true, side: state.side}),
-      onClose: () => NavigationActions.refresh(setDrawerToDefault),
+      onClose: () => NavigationActions.refresh(menuDrawerProps),
       content: state.content,
-      styles: Styles,
+      styles: drawerStyle,
       tapToClose: true,
-      openDrawerOffset: 0.2,
-      panCloseMask: 0.2,
+      openDrawerOffset: 0.25,
+      panCloseMask: 0.25,
       negotiatePan: true,
+      type: 'overlay',
       side: state.side, // If we set dynamically to right we're getting error
       tweenHandler: tweenHandler
     } // I need to find a better way to override this props in execution time
@@ -51,15 +51,6 @@ const tweenHandler = (ratio) => {
 
 NavigationDrawer.propTypes = {
   navigationState: PropTypes.object
-}
-
-const Styles = {
-  drawer: {
-    backgroundColor: Colors.facebook
-  },
-  main: {
-    backgroundColor: Colors.facebook
-  }
 }
 
 export default connect()(NavigationDrawer)

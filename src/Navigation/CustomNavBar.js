@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { Colors, Metrics, Fonts } from '../Styles/Themes/'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import NavBarItems from './NavBarItems'
 import Menu from './NavigationMenu'
+import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
+import { Metrics } from '../Styles/Themes'
 
 const openSettingsDrawer = () => {
   NavigationActions.refresh({
@@ -18,12 +19,12 @@ const openSettingsDrawer = () => {
 class CustomNavBar extends React.Component {
   render () {
     return (
-      <View style={styles.container}>
-        <View style={[styles.leftButton, styles.buttons]}>
+      <View style={[customBarStyle.container, builtInBarStyle.navigationBarStyle]}>
+        <View style={[customBarStyle.leftButton, customBarStyle.buttons]}>
           {this.renderLeftButton()}
         </View>
         {this.renderMiddle()}
-        <View style={[styles.rightButton, styles.buttons]}>
+        <View style={[customBarStyle.rightButton, customBarStyle.buttons]}>
           {this.renderRightButton()}
         </View>
       </View>
@@ -38,51 +39,16 @@ class CustomNavBar extends React.Component {
 
   renderMiddle () {
     return (
-      <Text style={styles.title}>
-        Title
+      <Text style={builtInBarStyle.titleStyle}>
+        Busca Simples
       </Text>
     )
   }
 
   renderRightButton () {
     return (
-      NavBarItems.navButton({name: 'sliders'}, openSettingsDrawer)
+      NavBarItems.navButton({name: 'sliders', size: Metrics.icons.small + 5}, openSettingsDrawer)
     )
-  }
-}
-
-const styles = {
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: Metrics.navBarHeight,
-    paddingTop: Metrics.smallMargin,
-    paddingHorizontal: 5,
-    backgroundColor: Colors.facebook,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  title: {
-    flex: 1,
-    textAlign: 'center',
-    color: Colors.snow,
-    marginTop: Metrics.doubleBaseMargin,
-    backgroundColor: Colors.transparent,
-    fontFamily: Fonts.type.beleren,
-    fontSize: Fonts.size.input
-  },
-  rightButton: {
-    justifyContent: 'flex-end'
-  },
-  leftButton: {
-    justifyContent: 'flex-start'
-  },
-  buttons: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1
   }
 }
 

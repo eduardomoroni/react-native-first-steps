@@ -5,7 +5,7 @@ const type = {
   bold: 'HelveticaNeue-Bold',
   emphasis: 'HelveticaNeue-Italic',
   mtg: 'MTGX',
-  beleren: 'Beleren'
+  beleren: 'beleren'
 }
 
 const size = {

@@ -7,31 +7,13 @@ import {
 } from 'react-native'
 import { Colors, Metrics } from '../Styles/Themes/'
 import Icon from 'react-native-vector-icons/FontAwesome'
-
-const navButton = {
-  backgroundColor: Colors.transparent,
-  justifyContent: 'center'
-}
-
-// We should export this
-const styles = StyleSheet.create({
-  backButton: {
-    ...navButton
-  }
-})
+import { navButtonColor } from '../Styles/NavBarStyle'
 
 type ButtonPropsType = {
   name: string,
   size: number,
   color: string,
   style: any
-}
-
-const defaultButtonProps: ButtonPropsType = {
-  name: 'question',
-  size: Metrics.icons.medium,
-  color: Colors.snow,
-  style: styles.backButton
 }
 
 export default {
@@ -42,4 +24,19 @@ export default {
       </TouchableOpacity>
     )
   }
+}
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: Colors.transparent,
+    color: navButtonColor,
+    justifyContent: 'center'
+  }
+})
+
+const defaultButtonProps: ButtonPropsType = {
+  name: 'heart',
+  size: Metrics.icons.medium,
+  color: Colors.snow,
+  style: styles.button
 }
