@@ -22,7 +22,8 @@ type CardSearchFormProps = {
   cardType: string,
   cardSubType: string,
   cardText: string,
-  searchCards: () => void
+  searchCards: () => void,
+  handleSubmit: any
 }
 
 const selector = formValueSelector('CardSearchForm')
@@ -85,6 +86,11 @@ let CardSearchForm = (props: CardSearchFormProps) => {
   )
 }
 
+Field.propTypes = {
+  dropdownItems: React.propTypes.node,
+  selectedValue: React.propTypes.string
+}
+
 const Styles = StyleSheet.create({
   container: {
     paddingTop: Metrics.navBarHeight
@@ -101,6 +107,16 @@ const Styles = StyleSheet.create({
     textAlign: 'center'
   }
 })
+
+CardSearchForm.propTypes = {
+  searchCards: React.PropTypes.func,
+  cardTypes: React.PropTypes.node,
+  cardSubTypes: React.PropTypes.node,
+  cardName: React.PropTypes.string,
+  cardType: React.PropTypes.string,
+  cardSubType: React.PropTypes.string,
+  cardText: React.PropTypes.string
+}
 
 const mapStateToProps = (state) => {
   return {

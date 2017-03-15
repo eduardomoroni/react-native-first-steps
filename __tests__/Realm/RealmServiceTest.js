@@ -1,7 +1,6 @@
 import test from 'ava'
 import { createQuery, createQueryArgs, findCards, findCardsFromForm } from '../../src/Realm/RealmService'
 import { initRealmDb } from '../../src/Config/Realm'
-// import { RealmObjectCardAsJson } from '../Assets/Stubs/SampleCardStub'
 
 const sampleQueryObject = {
   cardName: 'Aerial M',
@@ -24,15 +23,6 @@ test('Should map CardSearchForm to a array of query objects', t => {
   const expectedArray = ['Aerial M', 'Enchantment', 'Aura', 'Vehicle']
   t.deepEqual(createQueryArgs(sampleQueryObject), expectedArray)
 })
-
-// test('Should query Realm objects based on CardSearchForm', t => {
-//   const query = createQuery(sampleQueryObject)
-//   const queryArgs = createQueryArgs(sampleQueryObject)
-//   const AerialModification = findCards(query, queryArgs)[0]
-//
-//   t.is(JSON.stringify(AerialModification), JSON.stringify(RealmObjectCardAsJson),
-//       'I need to know how to assert RealmObject')
-// })
 
 test('Should query Realm objects using onlyCardSearchForm', t => {
   const query = createQuery(sampleQueryObject)

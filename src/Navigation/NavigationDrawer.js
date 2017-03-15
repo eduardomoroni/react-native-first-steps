@@ -50,7 +50,8 @@ const tweenHandler = (ratio) => {
 }
 
 NavigationDrawer.propTypes = {
-  navigationState: PropTypes.object
+  navigationState: PropTypes.object,
+  onNavigate: PropTypes.func
 }
 
 export default connect()(NavigationDrawer)
