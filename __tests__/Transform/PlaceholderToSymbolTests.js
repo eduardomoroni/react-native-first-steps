@@ -1,5 +1,5 @@
 import test from 'ava'
-import { placeholdersToSymbols } from '../../src/Transform/manaCostToSymbol'
+import { placeholdersToSymbols } from '../../src/Transform/PlaceholderToSymbol'
 
 test('Should convert manaCost to Mana Symbol', t => {
   const testString = '{10}{W}{G}'

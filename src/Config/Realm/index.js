@@ -1,7 +1,7 @@
 import Realm from 'realm'
 import AER from '../../Assets/Cards/AER-X.json'
 import { jsonToRealmCard } from '../../Realm/Conversion/Realm-utils'
-import { placeholdersToSymbols } from '../../Transform/ManaCostToSymbol'
+import { placeholdersToSymbols } from '../../Transform/PlaceholderToSymbol'
 
 import {
   CardSchema,

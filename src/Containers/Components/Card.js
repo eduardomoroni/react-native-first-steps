@@ -12,7 +12,7 @@ import {
   Fonts,
   Colors
 } from '../../Styles/Themes'
-import { placeholdersToSymbols } from '../../Transform/ManaCostToSymbol'
+import { placeholdersToSymbols } from '../../Transform/PlaceholderToSymbol'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 type CardProps = {
