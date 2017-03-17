@@ -48,7 +48,11 @@
   "jest": {
     "preset": "react-native",
     "testRegex": "./__tests__/[^Setup].*.js$",
-    "setupFiles": ["./__tests__/Setup.js"]
+    "setupFiles": ["./__tests__/Setup.js"],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/"
+    ]
   },
   "standard": {
     "parser": "babel-eslint",
