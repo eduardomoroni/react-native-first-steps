@@ -1,4 +1,3 @@
-import test from 'ava'
 import { call, put } from 'redux-saga/effects'
 import {
   loginUserSaga,
@@ -21,52 +20,52 @@ const loginAction = loginUser(credential)
 const signUpAction = signupUser(credential)
 const expectedUser = { user: 'Fake' }
 
-test('Sign in perfect flow', t => {
+it('Sign in perfect flow', () => {
   const generator = loginUserSaga(loginAction)
   const step = (lastYield) => generator.next(lastYield)
 
-  t.deepEqual(step().value, call(callFirebaseSignIn, loginAction.payload))
-  t.deepEqual(step(expectedUser).value, call(success, expectedUser))
-  t.deepEqual(step(), sagaDone)
+  expect(step().value).toEqual(call(callFirebaseSignIn, loginAction.payload))
+  expect(step(expectedUser).value).toEqual(call(success, expectedUser))
+  expect(step()).toEqual(sagaDone)
 })
 
-test('Sign in flow should call signup flow on error', t => {
+it('Sign in flow should call signup flow on error', () => {
   const generator = loginUserSaga(loginAction)
 
   try {
-    t.deepEqual(generator.next().value, call(callFirebaseSignIn, loginAction.payload))
-    t.deepEqual(generator.throw('Failed to login').value, put(signupUser(loginAction.payload)), 'If the last yield throws an exception, call signUp saga')
+    expect(generator.next().value).toEqual(call(callFirebaseSignIn, loginAction.payload))
+    expect(generator.throw('Failed to login').value).toEqual(put(signupUser(loginAction.payload)))
   } finally {
-    t.deepEqual(generator.next(), sagaDone)
+    expect(generator.next()).toEqual(sagaDone)
   }
 })
 
-test('Sign Up perfect flow', t => {
+it('Sign Up perfect flow', () => {
   const generator = signupUserSaga(signUpAction)
   const step = (lastYield) => generator.next(lastYield)
 
-  t.deepEqual(step().value, call(createFirebaseUser, signUpAction.payload))
-  t.deepEqual(step(expectedUser).value, call(success, expectedUser))
-  t.deepEqual(step(), sagaDone)
+  expect(step().value).toEqual(call(createFirebaseUser, signUpAction.payload))
+  expect(step(expectedUser).value).toEqual(call(success, expectedUser))
+  expect(step()).toEqual(sagaDone)
 })
 
-test('Sign Up error flow', t => {
+it('Sign Up error flow', () => {
   const generator = signupUserSaga(signUpAction)
   const error = { message: 'Error Message' }
 
   try {
-    t.deepEqual(generator.next().value, call(createFirebaseUser, signUpAction.payload))
-    t.deepEqual(generator.throw(error).value, put(loginUserFailed(error.message)))
+    expect(generator.next().value).toEqual(call(createFirebaseUser, signUpAction.payload))
+    expect(generator.throw(error).value).toEqual(put(loginUserFailed(error.message)))
   } finally {
-    t.deepEqual(generator.next(), sagaDone)
+    expect(generator.next()).toEqual(sagaDone)
   }
 })
 
-test('On Success should Update State', t => {
+it('On Success should Update State', () => {
   const generator = success(expectedUser)
   const step = (lastYield) => generator.next(lastYield)
 
-  t.deepEqual(step().value, put(loginUserSuccess()), 'Update state of Login Screen')
-  t.deepEqual(step().value, put(userLoggedIn(expectedUser)), 'Put user object under state.user')
-  t.deepEqual(step(), sagaDone)
+  expect(step().value).toEqual(put(loginUserSuccess()))
+  expect(step().value).toEqual(put(userLoggedIn(expectedUser)))
+  expect(step()).toEqual(sagaDone)
 })
