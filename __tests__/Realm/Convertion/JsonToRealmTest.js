@@ -1,4 +1,3 @@
-import test from 'ava'
 import card from '../../Assets/Stubs/card.json'
 import { jsonToRealmCard, inheritanceToArray } from '../../../src/Realm/Conversion/Realm-utils'
 
@@ -36,12 +35,12 @@ const inheritanceRepresentation = {
   }
 }
 
-test('Should convert a Json Object to a Realm Valid Object', t => {
-  t.deepEqual(jsonToRealmCard(card), realmObject)
+it('Should convert a Json Object to a Realm Valid Object', () => {
+  expect(jsonToRealmCard(card)).toEqual(realmObject)
 })
 
 // due https://github.com/realm/realm-js/issues/860 - Realm doesnt have list of primitives
-test('Should convert inheritance Realm representation to string array', t => {
+it('Should convert inheritance Realm representation to string array', () => {
   const arrayRepresentation = ['TypeTest', 'SubTypeTest', 'ColorTest', 'ColorIdTest']
-  t.deepEqual(inheritanceToArray(inheritanceRepresentation), arrayRepresentation)
+  expect(inheritanceToArray(inheritanceRepresentation)).toEqual(arrayRepresentation)
 })

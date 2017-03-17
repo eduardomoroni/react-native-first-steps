@@ -1,23 +1,22 @@
-import test from 'ava'
 import { placeholdersToSymbols } from '../../src/Transform/PlaceholderToSymbol'
 
-test('Should convert manaCost to Mana Symbol', t => {
+it('Should convert manaCost to Mana Symbol', () => {
   const testString = '{10}{W}{G}'
   const expectedString = `${unicodeChar('e60f')}${unicodeChar('e600')}${unicodeChar('e604')}`
 
-  t.is(placeholdersToSymbols(testString), expectedString)
+  expect(placeholdersToSymbols(testString)).toBe(expectedString)
 })
 
-test('Should replace symbol placeholder for Unicode Symbol on card text', t => {
+it('Should replace symbol placeholder for Unicode Symbol on card text', () => {
   const unicodeRep = String.fromCharCode(parseInt('e907', 16)) + String.fromCharCode(parseInt('e907', 16))
   const text = 'Text {E}{E} Text.'
   const expectedText = `Text ${unicodeRep} Text.`
 
-  t.is(placeholdersToSymbols(text), expectedText)
+  expect(placeholdersToSymbols(text)).toBe(expectedText)
 })
 
-test('Should return empty string if receives undefined arg', t => {
-  t.is(placeholdersToSymbols(undefined), '')
+it('Should return empty string if receives undefined arg', () => {
+  expect(placeholdersToSymbols(undefined)).toBe('')
 })
 
 const unicodeChar = (value) => {

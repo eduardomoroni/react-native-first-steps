@@ -1,4 +1,3 @@
-import test from 'ava'
 import { call, put } from 'redux-saga/effects'
 import { findCardsFromForm } from '../../src/Realm/RealmService'
 import { searchForCardSaga } from '../../src/Sagas/CardSearchSaga'
@@ -14,25 +13,25 @@ const cardSearchFormExample = {
 }
 const searchForCardsAction = searchForCards(cardSearchFormExample)
 
-test('CardSearch Happy Path', t => {
+it('CardSearch Happy Path', () => {
   const cardsMock = ['a', 'b'] // Actually the cards is a RealmObject, but it has length prop
   const generator = searchForCardSaga(searchForCardsAction)
   const step = (lastYield) => generator.next(lastYield)
 
-  t.deepEqual(step().value, call(findCardsFromForm, searchForCardsAction.payload))
-  t.deepEqual(step(cardsMock).value, put(showCards(cardsMock)))
-  t.deepEqual(step().value, call(NavigationActions['listCards']))
-  t.deepEqual(step(), sagaDone)
+  expect(step().value).toEqual(call(findCardsFromForm, searchForCardsAction.payload))
+  expect(step(cardsMock).value).toEqual(put(showCards(cardsMock)))
+  expect(step().value).toEqual(call(NavigationActions['listCards']))
+  expect(step()).toEqual(sagaDone)
 })
 
-test('CardSearch Return empty result', t => {
+it('CardSearch Return empty result', t => {
   const cardsMock = []
   const generator = searchForCardSaga(searchForCardsAction)
   const step = (lastYield) => generator.next(lastYield)
 
   try {
-    t.deepEqual(step().value, call(findCardsFromForm, searchForCardsAction.payload))
+    expect(step().value).toEqual(call(findCardsFromForm, searchForCardsAction.payload))
   } finally {
-    t.deepEqual(step(cardsMock), sagaDone)
+    expect(step(cardsMock)).toEqual(sagaDone)
   }
 }, 'I should do a proper treatment on this case')

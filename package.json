@@ -4,16 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "ava --verbose",
-    "test-watch": "ava --watch",
+    "ios": "react-native run-ios && react-native log-ios",
+    "android": "react-native run-android && react-native log-android",
+    "test": "jest --verbose --no-cache --expand",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
     "lint-fixcode": "standard --fix --verbose | snazzy",
     "flow-check": "flow --show-all-errors",
-    "nyc-lcov": "nyc --reporter=lcov npm test",
     "codeclimate-coverage": "codeclimate-test-reporter < ./coverage/lcov.info",
-    "update-coverage": "npm run nyc-lcov && npm run codeclimate-coverage",
+    "update-coverage": "npm run test-coverage && npm run codeclimate-coverage",
     "precommit": "npm run flow-check && npm run lint-check",
-    "prepush": "ava --fail-fast"
+    "prepush": "jest --bail --forceExit --silent"
   },
   "dependencies": {
     "firebase": "^3.6.10",
@@ -34,40 +36,26 @@
     "redux-saga": "^0.14.3"
   },
   "devDependencies": {
-    "ava": "^0.18.2",
     "babel-eslint": "^7.1.1",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-react-native": "^1.9.1",
-    "babel-register": "^6.23.0",
     "codeclimate-test-reporter": "^0.4.1",
     "flow-bin": "^0.40.0",
     "husky": "^0.13.1",
+    "jest": "^19.0.2",
     "mockery": "^2.0.0",
-    "nyc": "^10.1.2",
-    "react-native-mock": "^0.3.1",
-    "react-test-renderer": "^15.4.2",
     "snazzy": "^6.0.0",
     "standard": "^9.0.1"
   },
-  "ava": {
-    "files": [
-      "__tests__/**/*.js",
-      "!__tests__/Setup.js",
-      "!__tests__/Assets/Stubs/SampleCardStub.js"
-    ],
-    "require": [
-      "babel-register",
-      "babel-polyfill",
-      "react-native-mock/mock",
-      "./__tests__/Setup"
-    ],
-    "babel": "inherit"
+  "jest": {
+    "preset": "react-native",
+    "testRegex": "./__tests__/[^Setup].*.js$",
+    "setupFiles": ["./__tests__/Setup.js"]
   },
   "standard": {
     "parser": "babel-eslint",
     "globals": [
       "it",
-      "__DEV__"
+      "__DEV__",
+      "expect"
     ],
     "ignore": [
       "flow/"

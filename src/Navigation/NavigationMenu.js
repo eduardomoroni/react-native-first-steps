@@ -60,7 +60,6 @@ class DrawerContent extends Component {
         <Image source={Images.logo} style={styles.logo} />
         <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
         <DrawerButton text={I18n.t('cardSearch')} onPress={() => this.handlePress('cardSearchForm')} />
-
         {this.renderLoginOrLogout()}
       </ScrollView>
     )
@@ -71,8 +70,14 @@ DrawerContent.contextTypes = {
   drawer: React.PropTypes.object
 }
 
+DrawerContent.propTypes = {
+  user: React.PropTypes.object,
+  onLogout: React.PropTypes.func
+}
+
 const mapStateToProps = (state) => {
   const { user } = state.user
+
   return {
     user: user
   }

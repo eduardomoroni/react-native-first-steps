@@ -1,15 +1,14 @@
-import test from 'ava'
 import { searchForCards, showCards } from '../../../src/Redux/Actions/CardSearchActions'
 import { SEARCH_FOR_CARDS, SHOW_CARDS } from '../../../src/Redux/Types'
 
 const cardForm = {cardName: 'Yu-gi-oh'}
 
-test('Action for search cards', t => {
+it('Action for search cards', () => {
   const expectedAction = {type: SEARCH_FOR_CARDS, payload: cardForm}
-  t.deepEqual(searchForCards(cardForm), expectedAction)
+  expect(searchForCards(cardForm)).toEqual(expectedAction)
 })
 
-test('Action for show fetched cards', t => {
+it('Action for show fetched cards', () => {
   const expectedAction = {type: SHOW_CARDS, payload: cardForm}
-  t.deepEqual(showCards(cardForm), expectedAction)
+  expect(showCards(cardForm)).toEqual(expectedAction)
 })

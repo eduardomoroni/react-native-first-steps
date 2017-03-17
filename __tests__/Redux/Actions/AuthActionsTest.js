@@ -1,4 +1,3 @@
-import test from 'ava'
 import {
   signupUser,
   loginUser,
@@ -11,29 +10,29 @@ import {
   LOGIN_USER_SUCCESS,
   SIGN_UP_USER } from '../../../src/Redux/Types'
 
-test('loginUser Action Creator', t => {
+it('loginUser Action Creator', () => {
   const credential = { email: 'email', password: 'passwor' }
   const action = loginUser(credential)
 
-  t.deepEqual(action, { type: LOGIN_USER, payload: credential })
+  expect(action).toEqual({ type: LOGIN_USER, payload: credential })
 })
 
-test('loginUserFailed Action Creator', t => {
+it('loginUserFailed Action Creator', () => {
   const errorMessage = 'message'
   const action = loginUserFailed(errorMessage)
 
-  t.deepEqual(action, { type: LOGIN_USER_FAIL, payload: errorMessage })
+  expect(action).toEqual({ type: LOGIN_USER_FAIL, payload: errorMessage })
 })
 
-test('loginUserSuccess Action Creator', t => {
+it('loginUserSuccess Action Creator', () => {
   const action = loginUserSuccess()
 
-  t.deepEqual(action, { type: LOGIN_USER_SUCCESS })
+  expect(action).toEqual({ type: LOGIN_USER_SUCCESS })
 })
 
-test('signupUser Action Creator', t => {
+it('signupUser Action Creator', () => {
   const credential = { email: 'email', password: 'passwor' }
   const action = signupUser(credential)
 
-  t.deepEqual(action, { type: SIGN_UP_USER, payload: credential })
+  expect(action).toEqual({ type: SIGN_UP_USER, payload: credential })
 })

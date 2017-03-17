@@ -22,12 +22,14 @@ type CardSearchFormProps = {
   cardType: string,
   cardSubType: string,
   cardText: string,
-  searchCards: () => void
+  searchCards: () => void,
+  handleSubmit: any
 }
 
 const selector = formValueSelector('CardSearchForm')
 
-const renderInput = ({ input: { onChange, name } }) => {
+const renderInput = (fieldProps) => {
+  const { onChange, name } = fieldProps.input
   return (
     <TextInput
       style={Styles.input}
@@ -37,7 +39,10 @@ const renderInput = ({ input: { onChange, name } }) => {
   )
 }
 
-const renderDropdown = ({ input: { onChange, name, value }, dropdownItems, selectedValue }) => {
+const renderDropdown = (fieldProps) => {
+  const { input, dropdownItems, selectedValue } = fieldProps
+  const { onChange } = input
+
   const renderPickerItem = (value, key) => {
     return <Picker.Item label={value} value={value} key={key} />
   }
@@ -83,6 +88,11 @@ let CardSearchForm = (props: CardSearchFormProps) => {
       </TouchableOpacity>
     </View>
   )
+}
+
+Field.propTypes = {
+  dropdownItems: React.PropTypes.arrayOf(React.PropTypes.object),
+  selectedValue: React.PropTypes.string
 }
 
 const Styles = StyleSheet.create({
