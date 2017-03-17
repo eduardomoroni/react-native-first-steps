@@ -23,5 +23,5 @@ steps:
       - CODECLIMATE_REPO_TOKEN=9a8d999dfebca03e28a1c2263cf3b2572f59f894a35a96cb379f01616e47b3e1
     commands:
       - npm run lint-check
-      - npm run flow-check
+      # - npm run flow-check
       - npm run update-coverage
