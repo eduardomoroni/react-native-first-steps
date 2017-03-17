@@ -73,7 +73,6 @@ let CardSearchForm = (props: CardSearchFormProps) => {
   } = props
 
   const submit = values => {
-    console.log('Button was pressed')
     searchCards(values)
   }
 
@@ -129,10 +128,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-CardSearchForm = reduxForm({
-  form: 'CardSearchForm'
-})(CardSearchForm)
-
-CardSearchForm = connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)
-
-export default CardSearchForm
+CardSearchForm = reduxForm({form: 'CardSearchForm'})(CardSearchForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)

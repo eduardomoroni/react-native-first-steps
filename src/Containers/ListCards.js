@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { ListView, View, StyleSheet } from 'react-native'
+import { ListView, View } from 'react-native'
 import { connect } from 'react-redux'
-import { Colors } from '../Styles/Themes'
+import styles from '../Styles/ListCardStyles'
 import Card from './Components/Card'
 
 type ListCardsProps = {
@@ -35,18 +35,6 @@ class ListCards extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 62
-  },
-  separator: {
-    flex: 1,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: Colors.silver
-  }
-})
 
 const mapStateToProps = (state) => {
   const { cards } = state.cardSearch

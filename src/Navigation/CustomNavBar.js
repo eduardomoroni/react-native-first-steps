@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import NavBarItems from './NavBarItems'
-import Menu from './NavigationMenu'
+import Menu from '../Containers/ListCardFilterMenu'
 import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
 import { Metrics } from '../Styles/Themes'
 

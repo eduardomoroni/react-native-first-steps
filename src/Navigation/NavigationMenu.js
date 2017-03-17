@@ -9,7 +9,7 @@ import DrawerButton from '../Containers/Components/MenuButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
 
-class DrawerContent extends Component {
+class NavigationMenu extends Component {
   componentDidMount () {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       if (this.context.drawer.props.open) {
@@ -66,11 +66,11 @@ class DrawerContent extends Component {
   }
 }
 
-DrawerContent.contextTypes = {
+NavigationMenu.contextTypes = {
   drawer: React.PropTypes.object
 }
 
-DrawerContent.propTypes = {
+NavigationMenu.propTypes = {
   user: React.PropTypes.object,
   onLogout: React.PropTypes.func
 }
@@ -99,4 +99,4 @@ const styles = {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent)
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationMenu)

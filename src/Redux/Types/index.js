@@ -11,3 +11,4 @@ export const USER_LOGGED_OUT = 'user_logged_out'
 // CARD SEARCH FORM
 export const SEARCH_FOR_CARDS = 'search_for_cards'
 export const SHOW_CARDS = 'show_cards'
+export const FILTER_CARDS = 'filter_cards'
