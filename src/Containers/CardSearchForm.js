@@ -12,7 +12,8 @@ import {
   TouchableOpacity,
   Text,
   Picker,
-  TextInput
+  TextInput,
+  Keyboard
 } from 'react-native'
 
 type CardSearchFormProps = {
@@ -64,15 +65,13 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     searchCards
   } = props
 
-  // A object like this is sent to RealmService
   const {
-    // cardName,
-    // cardText,
     cardType,
     cardSubType
   } = props
 
   const submit = values => {
+    Keyboard.dismiss()
     searchCards(values)
   }
 

@@ -1,4 +1,6 @@
 {
+  "sortReverseOrder": "ASC ou DESC",
+  "sortBy": "Ordenar por",
   "showCardText": "Mostrar Texto",
   "cardSearch": "Procurar Carta",
   "card_search_form_title": "Busca Simples",

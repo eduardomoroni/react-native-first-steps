@@ -17,14 +17,13 @@ export function * searchForCardSaga (action) {
     }
   } catch (e) {
     console.log('Exception occurred: ', e)
-    // Here we should show a modal as error
+    // TODO: Here we should show a modal as error
   }
 }
 
-// TODO: NEED TO CREATE A TEST
 export function * sortCardSaga (action) {
   const cards = yield select(cardsSelector)
-  const sortedCards = sortCards(cards, action.payload)
+  const sortedCards = yield call(sortCards, cards, action.payload)
   yield put(showCards(sortedCards))
 }
 

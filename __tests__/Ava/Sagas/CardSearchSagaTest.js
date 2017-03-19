@@ -1,8 +1,8 @@
 import test from 'ava'
-import { call, put } from 'redux-saga/effects'
-import { findCardsFromForm } from '../../../src/Realm/RealmService'
-import { searchForCardSaga } from '../../../src/Sagas/CardSearchSaga'
-import { showCards, searchForCards } from '../../../src/Redux/Actions'
+import { call, put, select } from 'redux-saga/effects'
+import { findCardsFromForm, sortCards } from '../../../src/Realm/RealmService'
+import { searchForCardSaga, sortCardSaga, cardsSelector } from '../../../src/Sagas/CardSearchSaga'
+import { showCards, searchForCards, sortCards as sortAction } from '../../../src/Redux/Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 const sagaDone = { done: true, value: undefined }
@@ -36,3 +36,16 @@ test('CardSearch Return empty result', t => {
     t.deepEqual(step(cardsMock), sagaDone)
   }
 }, 'I should do a proper treatment on this case')
+
+test('Should sort card search results', t => {
+  const sortBy = {field: 'name', reverse: true}
+  const action = sortAction(sortBy)
+  const generator = sortCardSaga(action)
+  const step = (lastYield) => generator.next(lastYield)
+
+  t.deepEqual(step().value, select(cardsSelector))
+  const mockedCards = ['a', 'b']
+  t.deepEqual(step(mockedCards).value, call(sortCards, mockedCards, action.payload))
+  t.deepEqual(step(mockedCards).value, put(showCards(mockedCards)))
+  t.deepEqual(step(), sagaDone)
+})

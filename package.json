@@ -7,8 +7,8 @@
     "ios": "react-native run-ios && react-native log-ios",
     "android": "react-native run-android && react-native log-android",
     "test": "ava --verbose --no-cache && jest --verbose --no-cache",
-    "jest-watch": "jest --watch",
-    "ava-watch": "ava --watch",
+    "jest-watch": "jest --watch --verbose",
+    "ava-watch": "ava --watch --verbose",
     "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
     "lint-fixcode": "standard --fix --verbose | snazzy",
@@ -16,7 +16,7 @@
     "codeclimate-coverage": "codeclimate-test-reporter < ./coverage/lcov.info",
     "update-coverage": "npm run test-coverage && npm run codeclimate-coverage",
     "precommit": "npm run flow-check && npm run lint-check",
-    "prepush": "jest --bail --forceExit --silent"
+    "prepush": "jest --bail --forceExit --silent && ava --fail-fast"
   },
   "dependencies": {
     "firebase": "^3.6.10",

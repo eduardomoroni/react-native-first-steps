@@ -9,7 +9,8 @@ const mapFormToRealm = {
 
 // TODO: NEED TO CREATE A TEST
 function sortCards (cards, sorting) {
-  return cards.sort('name', false)
+  const { field, reversed } = sorting.sortBy
+  return cards.sorted(field, reversed)
 }
 
 function findCardsFromForm (form) {

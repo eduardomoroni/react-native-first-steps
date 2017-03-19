@@ -1,10 +1,10 @@
 // @flow
 
 import React, { Component } from 'react'
-import { View, BackAndroid, Switch, Text } from 'react-native'
+import { View, BackAndroid, Switch, Text, Picker } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { toggleShowCardText } from '../Redux/Actions'
+import { toggleShowCardText, sortCards as sortCardsActionCreator } from '../Redux/Actions'
 import I18n from 'react-native-i18n'
 
 const renderSwitch = (fieldProps) => {
@@ -15,6 +15,28 @@ const renderSwitch = (fieldProps) => {
     <View style={styles.rowStyle}>
       <Text>{I18n.t(name)}</Text>
       <Switch style={styles.switchStyle} value={isEnabled} onValueChange={onChange} />
+    </View>
+  )
+}
+
+const renderSortInput = (fieldProps) => {
+  console.log('Field props', fieldProps)
+  const { onChange, name, value } = fieldProps.input
+
+  const sortValues = ['cmc', 'multiverseid', 'name', 'number', 'rarity', 'type', 'power', 'toughness']
+
+  const renderPickerItem = (value, key) => {
+    return <Picker.Item label={value} value={value} key={key} />
+  }
+
+  return (
+    <View style={styles.rowStyle}>
+      <Text>{I18n.t(name)}</Text>
+      <Picker
+        selectedValue={value.field}
+        onValueChange={onChange}>
+        { sortValues.map(renderPickerItem) }
+      </Picker>
     </View>
   )
 }
@@ -31,18 +53,29 @@ class ListCardFilterMenu extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // create type
-    const { showCardText, updateFilter } = nextProps
+    const {
+      showCardText,
+      toggleCardText,
+      sortBy,
+      sortCards,
+      sortReverseOrder
+    } = nextProps
+
     if (this.props.showCardText !== showCardText) {
-      updateFilter({showCardText: showCardText})
+      toggleCardText({showCardText: showCardText})
+    }
+    if (this.props.sortBy !== sortBy || this.props.sortReverseOrder !== sortReverseOrder) {
+      sortCards({field: sortBy, reversed: sortReverseOrder})
     }
   }
 
   render () {
-    const { showCardText } = this.props
+    const { showCardText, sortReverseOrder } = this.props
     return (
       <View style={styles.container}>
         <Field name='showCardText' component={renderSwitch} isEnabled={showCardText} />
+        <Field name='sortReverseOrder' component={renderSwitch} isEnabled={sortReverseOrder} />
+        <Field name='sortBy' component={renderSortInput} />
       </View>
     )
   }
@@ -55,7 +88,9 @@ ListCardFilterMenu.contextTypes = {
 ListCardFilterMenu.propTypes = {
   showCardText: React.PropTypes.bool,
   sortBy: React.PropTypes.string,
-  updateFilter: React.PropTypes.func
+  sortReverseOrder: React.PropTypes.bool,
+  toggleCardText: React.PropTypes.func,
+  sortCards: React.PropTypes.func
 }
 
 Field.propTypes = {
@@ -67,16 +102,20 @@ const mapStateToProps = (state) => {
 
   return {
     initialValues: {
-      showCardText: state.cardSearch.showCardText
+      showCardText: state.cardSearch.showCardText,
+      sortBy: state.cardSearch.sortBy.field,
+      sortReverseOrder: state.cardSearch.sortBy.reversed
     },
     showCardText: selector(state, 'showCardText'),
-    sortBy: selector(state, 'sortBy')
+    sortBy: selector(state, 'sortBy'),
+    sortReverseOrder: selector(state, 'sortReverseOrder')
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateFilter: (filter) => dispatch(toggleShowCardText(filter))
+    toggleCardText: (filter) => dispatch(toggleShowCardText(filter)),
+    sortCards: (sortParams) => dispatch(sortCardsActionCreator(sortParams))
   }
 }
 
