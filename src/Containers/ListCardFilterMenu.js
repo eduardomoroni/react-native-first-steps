@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { View, BackAndroid, Switch, Text } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { updateCardFilter } from '../Redux/Actions'
+import { toggleShowCardText } from '../Redux/Actions'
 import I18n from 'react-native-i18n'
 
 const renderSwitch = (fieldProps) => {
@@ -76,7 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateFilter: (filter) => dispatch(updateCardFilter(filter))
+    updateFilter: (filter) => dispatch(toggleShowCardText(filter))
   }
 }
 

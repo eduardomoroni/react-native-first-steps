@@ -1,7 +1,7 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, select } from 'redux-saga/effects'
 import { findCardsFromForm } from '../../src/Realm/RealmService'
-import { searchForCardSaga } from '../../src/Sagas/CardSearchSaga'
-import { showCards, searchForCards } from '../../src/Redux/Actions'
+import { searchForCardSaga, sortCardSaga, cardsSelector } from '../../src/Sagas/CardSearchSaga'
+import { showCards, searchForCards, sortCards } from '../../src/Redux/Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 const sagaDone = { done: true, value: undefined }
@@ -35,3 +35,11 @@ it('CardSearch Return empty result', t => {
     expect(step(cardsMock)).toEqual(sagaDone)
   }
 }, 'I should do a proper treatment on this case')
+
+it('Should sort card result', () => {
+  const sortBy = {field: 'name', reversed: true}
+  const generator = sortCardSaga(sortCards(sortBy))
+  const step = (lastYieldReturn) => generator.next(lastYieldReturn)
+
+  expect(step()).toEqual(select(cardsSelector))
+})

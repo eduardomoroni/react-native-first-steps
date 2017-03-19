@@ -47,8 +47,7 @@
   },
   "jest": {
     "preset": "react-native",
-    "testRegex": "./__tests__/[^Setup].*.js$",
-    "setupFiles": ["./__tests__/Setup.js"],
+    "setupFiles": ["./jest/Setup.js"],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/__tests__/"
@@ -59,7 +58,8 @@
     "globals": [
       "it",
       "__DEV__",
-      "expect"
+      "expect",
+      "jest"
     ],
     "ignore": [
       "flow/"
