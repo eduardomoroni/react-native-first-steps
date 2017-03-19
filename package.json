@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios && react-native log-ios",
     "android": "react-native run-android && react-native log-android",
-    "test": "jest --verbose --no-cache --expand",
+    "test": "jest --verbose --no-cache --expand && ava",
     "test-watch": "jest --watch",
     "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
@@ -21,7 +21,7 @@
     "firebase": "^3.6.10",
     "lodash": "^4.17.4",
     "ramda": "^0.23.0",
-    "react": "~15.4.0",
+    "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-native": "0.41.2",
     "react-native-animatable": "^1.1.0",
@@ -36,6 +36,7 @@
     "redux-saga": "^0.14.3"
   },
   "devDependencies": {
+    "ava": "^0.18.2",
     "babel-eslint": "^7.1.1",
     "codeclimate-test-reporter": "^0.4.1",
     "flow-bin": "^0.40.0",
@@ -47,7 +48,9 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": ["./jest/Setup.js"],
+    "setupFiles": [
+      "./jest/Setup.js"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/__tests__/"
