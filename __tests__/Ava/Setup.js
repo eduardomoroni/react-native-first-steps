@@ -15,7 +15,6 @@ mockery.enable()
 mockery.warnOnUnregistered(false)
 
 // Mock any libs that get called in here
-// I'm looking at you react-native-router-flux, etc!
 mockery.registerMock('react-native-vector-icons/Ionicons', {})
 mockery.registerMock('firebase', {})
 mockery.registerMock('react-native-router-flux', {
@@ -24,10 +23,6 @@ mockery.registerMock('react-native-router-flux', {
 })
 
 // Mock i18n as it uses react native stuff
-// This mock returns the interpolated text from the english.json file in App/I18n
-// If you are not using '../App/I18n/english.json' for your I18n values, simply replace import english
-// with the import at the top of this file from '../App/I18n/english.json' with the I18n json file you
-// want to use, such as "import french from '../App/I18n/fr.json'" and set 'let value = french[key]`
 mockery.registerMock('react-native-i18n', {
   t: (key, replacements) => {
     let value = english[key]

@@ -3,12 +3,12 @@ import {
   loginUser,
   loginUserSuccess,
   loginUserFailed
-} from '../../../src/Redux/Actions/AuthActions'
+} from '../../../../src/Redux/Actions/AuthActions'
 import {
   LOGIN_USER,
   LOGIN_USER_FAIL,
   LOGIN_USER_SUCCESS,
-  SIGN_UP_USER } from '../../../src/Redux/Types'
+  SIGN_UP_USER } from '../../../../src/Redux/Types'
 
 it('loginUser Action Creator', () => {
   const credential = { email: 'email', password: 'passwor' }

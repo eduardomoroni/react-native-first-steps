@@ -1,5 +1,5 @@
-import { createQuery, createQueryArgs, findCards, findCardsFromForm } from '../../src/Realm/RealmService'
-import { initRealmDb } from '../../src/Config/Realm'
+import { createQuery, createQueryArgs, findCards, findCardsFromForm } from '../../../src/Realm/RealmService'
+import { initRealmDb } from '../../../src/Config/Realm'
 
 const sampleQueryObject = {
   cardName: 'Aerial M',

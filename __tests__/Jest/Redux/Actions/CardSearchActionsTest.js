@@ -1,5 +1,5 @@
-import { searchForCards, showCards, toggleShowCardText, sortCards } from '../../../src/Redux/Actions/CardSearchActions'
-import { SEARCH_FOR_CARDS, SHOW_CARDS, SORT_CARDS, TOGGLE_SHOW_CARD_TEXT } from '../../../src/Redux/Types'
+import { searchForCards, showCards, toggleShowCardText, sortCards } from '../../../../src/Redux/Actions/CardSearchActions'
+import { SEARCH_FOR_CARDS, SHOW_CARDS, SORT_CARDS, TOGGLE_SHOW_CARD_TEXT } from '../../../../src/Redux/Types'
 
 const cardForm = {cardName: 'Yu-gi-oh'}
 

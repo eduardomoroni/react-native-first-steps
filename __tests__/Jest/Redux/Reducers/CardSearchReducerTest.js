@@ -1,5 +1,5 @@
-import CardSearchReducer, { INITIAL_STATE } from '../../../src/Redux/Reducers/CardSearchReducer'
-import { SHOW_CARDS, TOGGLE_SHOW_CARD_TEXT, SORT_CARDS } from '../../../src/Redux/Types'
+import CardSearchReducer, { INITIAL_STATE } from '../../../../src/Redux/Reducers/CardSearchReducer'
+import { SHOW_CARDS, TOGGLE_SHOW_CARD_TEXT, SORT_CARDS } from '../../../../src/Redux/Types'
 
 it('Should show cards fetched', () => {
   const cards = ['a', 'b']
