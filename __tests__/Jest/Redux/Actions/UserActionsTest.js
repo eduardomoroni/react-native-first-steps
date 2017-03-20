@@ -1,5 +1,5 @@
-import { userLoggout, userLoggedIn } from '../../../src/Redux/Actions/UserActions'
-import { USER_LOGGED_OUT, USER_LOGGED_IN } from '../../../src/Redux/Types'
+import { userLoggout, userLoggedIn } from '../../../../src/Redux/Actions/UserActions'
+import { USER_LOGGED_OUT, USER_LOGGED_IN } from '../../../../src/Redux/Types'
 
 it('USER_LOGOUT_ACTION', () => {
   const action = userLoggout()

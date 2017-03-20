@@ -7,12 +7,18 @@ const mapFormToRealm = {
   cardText: 'text CONTAINS[c]'
 }
 
+// TODO: NEED TO CREATE A TEST
+function sortCards (cards, sorting) {
+  const { field, reversed } = sorting.sortBy
+  return cards.sorted(field, reversed)
+}
+
 function findCardsFromForm (form) {
   return findCards(createQuery(form), createQueryArgs(form))
 }
 
 function findCards (query, args) {
-  return realm.objects('Card').filtered(query, ...args).snapshot()
+  return realm.objects('Card').filtered(query, ...args)
 }
 
 function createQueryArgs (cardSearchForm) {
@@ -34,5 +40,6 @@ export {
   findCards,
   createQueryArgs,
   createQuery,
-  findCardsFromForm
+  findCardsFromForm,
+  sortCards
 }

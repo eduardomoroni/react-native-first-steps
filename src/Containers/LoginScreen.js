@@ -18,10 +18,8 @@ import I18n from 'react-native-i18n'
 import Spinner from './Components/Spinner'
 
 type LoginScreenProps = {
-  user: any,
   error: string,
   loading: boolean,
-  dispatch: () => any,
   attemptLogin: () => void
 }
 

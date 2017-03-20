@@ -12,16 +12,15 @@ import {
   TouchableOpacity,
   Text,
   Picker,
-  TextInput
+  TextInput,
+  Keyboard
 } from 'react-native'
 
 type CardSearchFormProps = {
   cardTypes: any,
   cardSubTypes: any,
-  cardName: string,
   cardType: string,
   cardSubType: string,
-  cardText: string,
   searchCards: () => void,
   handleSubmit: any
 }
@@ -64,16 +63,13 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     searchCards
   } = props
 
-  // A object like this is sent to RealmService
   const {
-    // cardName,
-    // cardText,
     cardType,
     cardSubType
   } = props
 
   const submit = values => {
-    console.log('Button was pressed')
+    Keyboard.dismiss()
     searchCards(values)
   }
 
@@ -129,10 +125,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-CardSearchForm = reduxForm({
-  form: 'CardSearchForm'
-})(CardSearchForm)
-
-CardSearchForm = connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)
-
-export default CardSearchForm
+CardSearchForm = reduxForm({form: 'CardSearchForm'})(CardSearchForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)

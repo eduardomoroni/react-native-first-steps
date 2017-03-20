@@ -1,28 +1,25 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   View,
   Text,
-  TouchableOpacity,
-  StyleSheet
+  TouchableOpacity
 } from 'react-native'
-import {
-  Metrics,
-  Fonts,
-  Colors
-} from '../../Styles/Themes'
+import styles from '../../Styles/CardStyle'
 import { placeholdersToSymbols } from '../../Transform/PlaceholderToSymbol'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 type CardProps = {
-  card: any
+  card: any,
+  showCardText: boolean
 }
 
-export default class Card extends Component {
+class Card extends Component {
   props: CardProps
   render () {
-    const { card } = this.props
+    const { card, showCardText } = this.props
     const {
       name,
       text,
@@ -37,7 +34,7 @@ export default class Card extends Component {
         <View style={styles.container}>
           {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}
           {renderCardTypeAndEdition(type, 'AER')}
-          {renderTextAndPower(text, power, toughness)}
+          {renderTextAndPower(text, power, toughness, showCardText)}
         </View>
       </TouchableOpacity>
     )
@@ -45,7 +42,6 @@ export default class Card extends Component {
 }
 
 const showDetails = (card) => {
-  console.log(JSON.stringify(card))
   NavigationActions.cardDetails({card: card, title: card.name})
 }
 
@@ -75,11 +71,11 @@ const renderCardTypeAndEdition = (leftText, rightText) => {
   )
 }
 
-const renderTextAndPower = (text, power, toughness) => {
+const renderTextAndPower = (text, power, toughness, showCardText) => {
   return (
     <View style={styles.cardTextContainer}>
       <View style={styles.cardText}>
-        <Text style={styles.text}>{text}</Text>
+        <Text style={styles.text}>{showCardText ? text : ''}</Text>
       </View>
       <View style={styles.cardPower}>
         <Text style={styles.cardPowerToughness}>{power || toughness ? `${power}/${toughness}` : ''}</Text>
@@ -88,62 +84,10 @@ const renderTextAndPower = (text, power, toughness) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: Metrics.baseMargin,
-    flex: 1
-  },
-  text: {
-    fontFamily: Fonts.type.mtg,
-    fontSize: Fonts.size.regular,
-    color: Colors.black
-  },
-  cardPowerToughness: {
-    fontFamily: Fonts.type.mtg,
-    fontSize: Fonts.size.regular,
-    color: Colors.black
-  },
-  cardNameText: {
-    fontFamily: Fonts.type.beleren,
-    fontSize: Fonts.size.regular,
-    color: Colors.black
-  },
-  cardTypeText: {
-    fontFamily: Fonts.type.mtg,
-    fontSize: Fonts.size.medium,
-    color: Colors.black
-  },
-  mana: {
-    fontFamily: Fonts.type.mtg,
-    color: Colors.black,
-    fontSize: Fonts.size.small
-  },
-  lineContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  leftWord: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start'
-  },
-  rightWord: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  cardTextContainer: {
-    flexDirection: 'row'
-  },
-  cardText: {
-    flex: 1,
-    paddingTop: 6,
-    flexDirection: 'row'
-  },
-  cardPower: {
-    flexDirection: 'column-reverse',
-    alignItems: 'flex-end'
+const mapStateToProps = (state) => {
+  return {
+    showCardText: state.cardSearch.showCardText
   }
-})
+}
+
+export default connect(mapStateToProps)(Card)

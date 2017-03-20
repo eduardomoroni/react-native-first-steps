@@ -1,4 +1,5 @@
-import { createQuery, createQueryArgs } from '../../src/Realm/RealmService'
+import { createQuery, createQueryArgs, findCards, findCardsFromForm } from '../../../src/Realm/RealmService'
+import { initRealmDb } from '../../../src/Config/Realm'
 
 const sampleQueryObject = {
   cardName: 'Aerial M',
@@ -15,4 +16,15 @@ it('Should map CardSearchForm to a valid Realm Query', () => {
 it('Should map CardSearchForm to a array of query objects', () => {
   const expectedArray = ['Aerial M', 'Enchantment', 'Aura', 'Vehicle']
   expect(createQueryArgs(sampleQueryObject)).toEqual(expectedArray)
+})
+
+// This test is pretty wrong, need to find a way to test better
+it('Should query Realm objects based on CardSearchForm', () => {
+  initRealmDb()
+
+  const query = createQuery(sampleQueryObject)
+  const queryArgs = createQueryArgs(sampleQueryObject)
+  const AerialModification = findCards(query, queryArgs)[0]
+
+  expect(findCardsFromForm(sampleQueryObject)[0]).toEqual(AerialModification)
 })
