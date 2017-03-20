@@ -1,18 +1,17 @@
 import React from 'react'
-import I18n from 'react-native-i18n'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { realm } from '../Config/Realm'
 import { inheritanceToArray } from '../Realm/Conversion/Realm-utils'
-import { Metrics, Colors } from '../Styles/Themes'
+import { Metrics } from '../Styles/Themes'
 import { searchForCards } from '../Redux/Actions'
 import TextInputForm from './Components/TextInputForm'
+import DropdownInputForm from './Components/DropdownInputForm'
+import SubmitButtonForm from './Components/SubmitButtonForm'
+
 import {
   StyleSheet,
   View,
-  TouchableOpacity,
-  Text,
-  Picker,
   Keyboard
 } from 'react-native'
 
@@ -26,23 +25,6 @@ type CardSearchFormProps = {
 }
 
 const selector = formValueSelector('CardSearchForm')
-
-const renderDropdown = (fieldProps) => {
-  const { input, dropdownItems, selectedValue } = fieldProps
-  const { onChange } = input
-
-  const renderPickerItem = (value, key) => {
-    return <Picker.Item label={value} value={value} key={key} />
-  }
-
-  return (
-    <Picker
-      selectedValue={selectedValue}
-      onValueChange={onChange}>
-      { dropdownItems.map(renderPickerItem) }
-    </Picker>
-  )
-}
 
 let CardSearchForm = (props: CardSearchFormProps) => {
   const {
@@ -66,11 +48,9 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     <View style={Styles.container}>
       <Field name='cardName' component={TextInputForm} />
       <Field name='cardText' component={TextInputForm} />
-      <Field name='cardType' component={renderDropdown} dropdownItems={cardTypes} selectedValue={cardType} />
-      <Field name='cardSubType' component={renderDropdown} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
-      <TouchableOpacity onPress={handleSubmit(submit)}>
-        <Text style={Styles.button}>{I18n.t('search')}</Text>
-      </TouchableOpacity>
+      <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />
+      <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
+      <SubmitButtonForm onPress={handleSubmit(submit)} />
     </View>
   )
 }
@@ -83,21 +63,19 @@ Field.propTypes = {
 const Styles = StyleSheet.create({
   container: {
     paddingTop: Metrics.navBarHeight + 15
-  },
-  button: {
-    backgroundColor: Colors.facebook,
-    color: 'white',
-    height: 40,
-    lineHeight: 30,
-    marginTop: 10,
-    textAlign: 'center'
   }
 })
 
 const mapStateToProps = (state) => {
+  const cardTypes = inheritanceToArray(realm.objects('Type').snapshot())
+  const cardSubtypes = inheritanceToArray(realm.objects('SubType').snapshot())
+
+  cardTypes.unshift('')
+  cardSubtypes.unshift('')
+
   return {
-    cardTypes: inheritanceToArray(realm.objects('Type').snapshot()),
-    cardSubTypes: inheritanceToArray(realm.objects('SubType').snapshot()),
+    cardTypes: cardTypes,
+    cardSubTypes: cardSubtypes,
     cardName: selector(state, 'cardName'),
     cardType: selector(state, 'cardType'),
     cardSubType: selector(state, 'cardSubType'),

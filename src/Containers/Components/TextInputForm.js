@@ -2,13 +2,12 @@
 
 import React from 'react'
 import {
-  StyleSheet,
   TextInput,
   Text,
   View
 } from 'react-native'
 import I18n from 'react-native-i18n'
-import { Metrics, Colors } from '../../Styles/Themes'
+import styles from '../../Styles/FormStyle'
 
 export default class TextInputForm extends React.Component {
   render () {
@@ -32,26 +31,3 @@ export default class TextInputForm extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: Metrics.marginHorizontal,
-    marginBottom: Metrics.smallMargin,
-    height: Metrics.inputHeight,
-    borderColor: Colors.windowTint,
-    borderRadius: 3,
-    borderWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  input: {
-    flex: 1,
-    justifyContent: 'flex-end'
-  },
-  text: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    marginLeft: Metrics.smallMargin
-  }
-})
