@@ -6,13 +6,13 @@ import { realm } from '../Config/Realm'
 import { inheritanceToArray } from '../Realm/Conversion/Realm-utils'
 import { Metrics, Colors } from '../Styles/Themes'
 import { searchForCards } from '../Redux/Actions'
+import TextInputForm from './Components/TextInputForm'
 import {
   StyleSheet,
   View,
   TouchableOpacity,
   Text,
   Picker,
-  TextInput,
   Keyboard
 } from 'react-native'
 
@@ -26,17 +26,6 @@ type CardSearchFormProps = {
 }
 
 const selector = formValueSelector('CardSearchForm')
-
-const renderInput = (fieldProps) => {
-  const { onChange, name } = fieldProps.input
-  return (
-    <TextInput
-      style={Styles.input}
-      placeholder={I18n.t(name)}
-      onChangeText={onChange}
-    />
-  )
-}
 
 const renderDropdown = (fieldProps) => {
   const { input, dropdownItems, selectedValue } = fieldProps
@@ -75,10 +64,10 @@ let CardSearchForm = (props: CardSearchFormProps) => {
 
   return (
     <View style={Styles.container}>
-      <Field name='cardName' component={renderInput} />
+      <Field name='cardName' component={TextInputForm} />
+      <Field name='cardText' component={TextInputForm} />
       <Field name='cardType' component={renderDropdown} dropdownItems={cardTypes} selectedValue={cardType} />
       <Field name='cardSubType' component={renderDropdown} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
-      <Field name='cardText' component={renderInput} />
       <TouchableOpacity onPress={handleSubmit(submit)}>
         <Text style={Styles.button}>{I18n.t('search')}</Text>
       </TouchableOpacity>
@@ -93,10 +82,7 @@ Field.propTypes = {
 
 const Styles = StyleSheet.create({
   container: {
-    paddingTop: Metrics.navBarHeight
-  },
-  input: {
-    height: 40
+    paddingTop: Metrics.navBarHeight + 15
   },
   button: {
     backgroundColor: Colors.facebook,
