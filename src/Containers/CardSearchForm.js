@@ -19,10 +19,8 @@ import {
 type CardSearchFormProps = {
   cardTypes: any,
   cardSubTypes: any,
-  cardName: string,
   cardType: string,
   cardSubType: string,
-  cardText: string,
   searchCards: () => void,
   handleSubmit: any
 }
