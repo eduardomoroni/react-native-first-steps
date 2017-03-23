@@ -21,7 +21,6 @@ export default class TextInputForm extends React.Component {
         <TextInput
           ref='TextInput'
           style={styles.input}
-          placeholder={I18n.t(name)}
           onChangeText={onChange}
           autoCorrect={false}
           autoCapitalize='characters'

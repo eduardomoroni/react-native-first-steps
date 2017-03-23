@@ -15,12 +15,7 @@ export default class DropdownInputForm extends Component {
     const { onChange, name } = input
 
     const renderPickerItem = (value, key) => {
-      console.log(value, key)
       return <Picker.Item label={value} value={value} key={key} />
-    }
-
-    if (selectedValue === undefined) {
-      console.log('UNDEFINED!')
     }
 
     return (

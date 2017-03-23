@@ -1,9 +1,14 @@
 import { Metrics, Colors, Fonts } from '../Styles/Themes'
 import { StyleSheet } from 'react-native'
 
+const fontPattern = {
+  fontFamily: Fonts.type.mtg,
+  fontSize: Fonts.size.medium,
+  color: 'black'
+}
+
 export default StyleSheet.create({
   container: {
-    marginHorizontal: Metrics.marginHorizontal,
     marginBottom: Metrics.smallMargin,
     height: Metrics.inputHeight,
     borderColor: Colors.windowTint,
@@ -15,16 +20,20 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    ...fontPattern,
+    color: 'grey'
   },
   dropdown: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    color: 'grey'
   },
   text: {
-    flex: 1,
+    flex: -1,
     justifyContent: 'flex-start',
-    marginLeft: Metrics.smallMargin
+    marginLeft: Metrics.smallMargin,
+    ...fontPattern
   },
   buttonContainer: {
     backgroundColor: Colors.facebook,

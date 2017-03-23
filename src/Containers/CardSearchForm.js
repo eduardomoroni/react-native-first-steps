@@ -46,11 +46,30 @@ let CardSearchForm = (props: CardSearchFormProps) => {
 
   return (
     <View style={Styles.container}>
-      <Field name='cardName' component={TextInputForm} />
-      <Field name='cardText' component={TextInputForm} />
-      <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />
-      <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
-      <SubmitButtonForm onPress={handleSubmit(submit)} />
+      <View style={Styles.formContainer}>
+        <Field name='cardName' component={TextInputForm} />
+        { renderTwoFieldInRow(
+          <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />,
+          <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
+        )}
+        <Field name='cardText' component={TextInputForm} />
+      </View>
+      <View style={Styles.containerFooter} >
+        <SubmitButtonForm onPress={handleSubmit(submit)} />
+      </View>
+    </View>
+  )
+}
+
+const renderTwoFieldInRow = (leftField, rightField) => {
+  return (
+    <View style={Styles.twoFieldsPerLine}>
+      <View style={Styles.leftField}>
+        {leftField}
+      </View>
+      <View style={Styles.rightField}>
+        {rightField}
+      </View>
     </View>
   )
 }
@@ -62,7 +81,31 @@ Field.propTypes = {
 
 const Styles = StyleSheet.create({
   container: {
-    paddingTop: Metrics.navBarHeight + 15
+    flex: 1
+  },
+  formContainer: {
+    marginHorizontal: Metrics.marginHorizontal,
+    paddingTop: Metrics.navBarHeight + Metrics.smallMargin
+  },
+  containerFooter: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0
+  },
+  twoFieldsPerLine: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  leftField: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    marginRight: Metrics.smallMargin / 2
+  },
+  rightField: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginLeft: Metrics.smallMargin / 2
   }
 })
 
