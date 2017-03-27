@@ -8,10 +8,12 @@ import { searchForCards } from '../Redux/Actions'
 import TextInputForm from './Components/TextInputForm'
 import DropdownInputForm from './Components/DropdownInputForm'
 import SubmitButtonForm from './Components/SubmitButtonForm'
+import ManaIconsBar from './Components/ManaIconsBar'
 
 import {
   StyleSheet,
   View,
+  TouchableOpacity,
   Keyboard
 } from 'react-native'
 
@@ -53,10 +55,11 @@ let CardSearchForm = (props: CardSearchFormProps) => {
           <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
         )}
         <Field name='cardText' component={TextInputForm} />
+        <ManaIconsBar />
       </View>
-      <View style={Styles.containerFooter} >
+      <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(submit)} >
         <SubmitButtonForm onPress={handleSubmit(submit)} />
-      </View>
+      </TouchableOpacity>
     </View>
   )
 }

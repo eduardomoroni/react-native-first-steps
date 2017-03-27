@@ -45,5 +45,11 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.beleren,
     fontSize: Fonts.size.input,
     color: Colors.white
+  },
+  manaIcon: {
+    width: 30,
+    height: 30,
+    marginHorizontal: Metrics.smallMargin,
+    opacity: 0.25
   }
 })
