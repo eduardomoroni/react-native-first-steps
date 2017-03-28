@@ -49,7 +49,6 @@ export default StyleSheet.create({
   manaIcon: {
     width: 30,
     height: 30,
-    marginHorizontal: Metrics.smallMargin,
-    opacity: 0.25
+    marginHorizontal: Metrics.smallMargin
   }
 })
