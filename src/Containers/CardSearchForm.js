@@ -33,7 +33,8 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     cardSubTypes,
     searchCards,
     cardType,
-    cardSubType
+    cardSubType,
+    cardColor
   } = props
 
   const submit = values => {
