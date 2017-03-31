@@ -1,5 +1,5 @@
-import card from '../../../../Assets/Stubs/card.json'
-import { jsonToRealmCard, inheritanceToArray } from '../../../../../src/Realm/Conversion/Realm-utils'
+import card from '../../../Assets/Stubs/card.json'
+import { jsonToRealmCard, inheritanceToArray } from '../../../../src/Realm/Conversion/Realm-utils'
 
 const realmObject = {
   'artist': 'Jung Park',

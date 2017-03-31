@@ -1,4 +1,4 @@
-import { placeholdersToSymbols } from '../../../../src/Transform/PlaceholderToSymbol'
+import { placeholdersToSymbols } from '../../../src/Transform/PlaceholderToSymbol'
 
 it('Should convert manaCost to Mana Symbol', () => {
   const testString = '{10}{W}{G}'

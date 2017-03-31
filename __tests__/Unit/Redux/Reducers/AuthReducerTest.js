@@ -1,5 +1,5 @@
-import AuthReducer, { INITIAL_STATE } from '../../../../../src/Redux/Reducers/AuthReducer'
-import { LOGIN_USER_FAIL, LOGIN_USER_SUCCESS, LOGIN_USER, SIGN_UP_USER } from '../../../../../src/Redux/Types'
+import AuthReducer, { INITIAL_STATE } from '../../../../src/Redux/Reducers/AuthReducer'
+import { LOGIN_USER_FAIL, LOGIN_USER_SUCCESS, LOGIN_USER, SIGN_UP_USER } from '../../../../src/Redux/Types'
 
 it('Handle Login Fail', () => {
   const action = { type: LOGIN_USER_FAIL, payload: 'Error message' }

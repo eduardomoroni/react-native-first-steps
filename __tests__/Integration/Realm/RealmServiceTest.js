@@ -1,8 +1,8 @@
-import { createQuery, createQueryArgs, findCards, findCardsFromForm } from '../../../../src/Realm/RealmService'
-import { schemas } from '../../../../src/Config/Realm'
-import { jsonToRealmCard } from '../../../../src/Realm/Conversion/Realm-utils'
-import { placeholdersToSymbols } from '../../../../src/Transform/PlaceholderToSymbol'
-import AER from '../../../../src/Assets/Cards/AER-X.json'
+import { createQuery, createQueryArgs, findCards, findCardsFromForm } from '../../../src/Realm/RealmService'
+import { schemas } from '../../../src/Config/Realm'
+import { jsonToRealmCard } from '../../../src/Realm/Conversion/Realm-utils'
+import { placeholdersToSymbols } from '../../../src/Transform/PlaceholderToSymbol'
+import AER from '../../../src/Assets/Cards/AER-X.json'
 import Realm from 'realm'
 
 const sampleQueryObject = {
@@ -15,7 +15,7 @@ const sampleQueryObject = {
 
 describe('Realm Service', () => {
   beforeAll(() => {
-    const realmConfig = {path: 'INTEGRATION_TEST_DB.realm', schema: schemas}
+    const realmConfig = {path: './realm/INTEGRATION_TEST_DB.realm', schema: schemas}
     const realm = new Realm(realmConfig)
 
     realm.write(() => {
@@ -49,7 +49,7 @@ describe('Realm Service', () => {
     expect(findCardsFromForm(sampleQueryObject)[0]).toEqual(AerialModification)
   })
 
-  it.only('Testing Query', () => {
+  it('Testing Query', () => {
     // const query = ' name CONTAINS[c] $0 AND types.type = $1 AND subtypes.subType = $2 AND text CONTAINS[c] $3 AND colors.color CONTAINS[c] $4'
     // const queryArgs = ['Aerial M', 'Enchantment', 'Aura', 'Vehicle', 'White']
 
@@ -57,7 +57,5 @@ describe('Realm Service', () => {
     const queryArgs = ['White', 'Red']
 
     const AerialModification = findCards(query, queryArgs)[0]
-    // console.log(AerialModification)
   })
-
 })
