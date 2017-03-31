@@ -7,7 +7,7 @@
     "ios": "react-native run-ios && react-native log-ios",
     "android": "react-native run-android && react-native log-android",
     "test": "jest --verbose --no-cache",
-    "jest-watch": "jest --watch --verbose --onlyChanged --noStackTrace",
+    "test-watch": "jest --watch --verbose --onlyChanged --noStackTrace",
     "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
     "lint-fixcode": "standard --fix --verbose | snazzy",

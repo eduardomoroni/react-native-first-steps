@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash'
-
+// JsonFiel: 'Realm_schema_name'
 const convertionMap = {
   types: 'type',
   subtypes: 'subType',

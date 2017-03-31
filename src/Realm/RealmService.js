@@ -1,12 +1,12 @@
 import { realm } from '../Config/Realm'
+import {
+  simpleParamQuery,
+  simpleParamQueryArgs,
+  composedParamQueryArgs,
+  composedParamQuery
+} from './Conversion/CardForm'
 
-const mapFormToRealm = {
-  cardName: 'name CONTAINS[c]',
-  cardSubType: 'subtypes.subType =',
-  cardType: 'types.type =',
-  cardText: 'text CONTAINS[c]',
-  cardColors: 'colors.color =' // We may revisit this search non sensitive
-}
+export { findCardsFromForm, sortCards }
 
 // TODO: NEED TO CREATE A TEST
 function sortCards (cards, sorting) {
@@ -15,32 +15,20 @@ function sortCards (cards, sorting) {
 }
 
 function findCardsFromForm (form) {
-  return findCards(createQuery(form), createQueryArgs(form))
+  const query = simpleParamQuery(form)
+  const queryArgs = simpleParamQueryArgs(form)
+  const simpleParamsResult = findCards(query, queryArgs)
+
+  const composedQuery = composedParamQuery(form)
+  const composedQueryArgs = composedParamQueryArgs(form)
+  return filterResults(simpleParamsResult, composedQuery, composedQueryArgs)
 }
 
-function findCards (query, args) {
-  return realm.objects('Card').filtered(query, ...args)
+function filterResults (results, query, queryArgs) {
+  // console.log(results[0])
+  return results.filtered(query, ...queryArgs)
 }
 
-function createQueryArgs (cardSearchForm) {
-  return Object.values(cardSearchForm)
-}
-
-function createQuery (cardSearchForm) {
-  return Object.keys(cardSearchForm)
-               .map((key) => mapFormToRealm[key])
-               .reduce(addParamToQuery, '')
-}
-
-function addParamToQuery (query, field, currentIndex) {
-  const prefix = query ? `${query} AND` : ''
-  return `${prefix} ${field} $${currentIndex}`
-}
-
-export {
-  findCards,
-  createQueryArgs,
-  createQuery,
-  findCardsFromForm,
-  sortCards
+function findCards (query, queryArgs) {
+  return realm.objects('Card').filtered(query, ...queryArgs)
 }

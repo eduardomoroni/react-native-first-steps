@@ -1,6 +1,6 @@
 import Realm from 'realm'
 import AER from '../../Assets/Cards/AER-X.json'
-import { jsonToRealmCard } from '../../Realm/Conversion/Realm-utils'
+import { jsonToRealmCard } from '../../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from '../../Transform/PlaceholderToSymbol'
 
 import {
@@ -22,9 +22,10 @@ export const schemas = [
   ColorIdentitySchema,
   ForeignNameSchema,
   PrintingSchema,
-  RulingSchema]
+  RulingSchema
+]
 
-const realmConfig = {path: 'MTG-BD-TEST.realm', schema: schemas}
+const realmConfig = { schema: schemas, path: 'MTG-BD-TEST.realm' }
 
 export const realm = new Realm(realmConfig)
 
@@ -35,7 +36,12 @@ export const initRealmDb = () => {
     AER.cards.forEach((card) => {
       delete card.printings // This field is not working, non patience to figure out
       card.text = placeholdersToSymbols(card.text)
-      realm.create('Card', jsonToRealmCard(card), true)
+      const cardAsRealmObject = jsonToRealmCard(card)
+      try {
+        realm.create('Card', cardAsRealmObject, true)
+      } catch (e) {
+        console.log('Failed to insert ', card.name)
+      }
     })
   })
 }

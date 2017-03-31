@@ -59,6 +59,8 @@ Secrets.js
 coverage/
 
 # Realm
+realm-object-database/
+realm-object-server/
 *.realm
 *.realm.*
 

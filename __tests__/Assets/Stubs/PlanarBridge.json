@@ -1,0 +1,84 @@
+{
+    "artist": "Chase Stone",
+    "cmc": 6,
+    "foreignNames": [
+        {
+            "language": "Chinese Simplified",
+            "name": "时空渡桥",
+            "multiverseid": 424022
+        },
+        {
+            "language": "Chinese Traditional",
+            "name": "時空渡橋",
+            "multiverseid": 424206
+        },
+        {
+            "language": "French",
+            "name": "Pont planaire",
+            "multiverseid": 424574
+        },
+        {
+            "language": "German",
+            "name": "Weltenbrücke",
+            "multiverseid": 424390
+        },
+        {
+            "language": "Italian",
+            "name": "Ponte Planare",
+            "multiverseid": 424758
+        },
+        {
+            "language": "Japanese",
+            "name": "次元橋",
+            "multiverseid": 424942
+        },
+        {
+            "language": "Korean",
+            "name": "차원의 다리",
+            "multiverseid": 425126
+        },
+        {
+            "language": "Portuguese (Brazil)",
+            "name": "Ponte Planar",
+            "multiverseid": 425310
+        },
+        {
+            "language": "Russian",
+            "name": "Межмировой Мост",
+            "multiverseid": 425494
+        },
+        {
+            "language": "Spanish",
+            "name": "Puente entre planos",
+            "multiverseid": 425678
+        }
+    ],
+    "id": "6f21ad99adc5910e6227d480d81ce62822b304bd",
+    "imageName": "planar bridge",
+    "layout": "normal",
+    "manaCost": "{6}",
+    "multiverseid": 423838,
+    "name": "Planar Bridge",
+    "number": "171",
+    "originalText": "{8}, {T}: Search your library for a permanent card, put it onto the battlefield, then shuffle your library.",
+    "originalType": "Legendary Artifact",
+    "printings": [
+        "MPS",
+        "AER"
+    ],
+    "rarity": "Mythic Rare",
+    "rulings": [
+        {
+            "date": "2017-02-09",
+            "text": "A permanent card is an artifact, creature, enchantment, land, or planeswalker card."
+        }
+    ],
+    "supertypes": [
+        "Legendary"
+    ],
+    "text": "{8}, {T}: Search your library for a permanent card, put it onto the battlefield, then shuffle your library.",
+    "type": "Legendary Artifact",
+    "types": [
+        "Artifact"
+    ]
+}
