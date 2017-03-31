@@ -1,4 +1,4 @@
-import reducers from '../../../../src/Redux/Reducers'
+import reducers from '../../../../../src/Redux/Reducers'
 
 it('Should keep root state immutable in case of invalid actions', () => {
   const INITIAL_STATE = reducers({}, {})

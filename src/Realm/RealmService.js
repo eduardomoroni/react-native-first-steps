@@ -4,7 +4,8 @@ const mapFormToRealm = {
   cardName: 'name CONTAINS[c]',
   cardSubType: 'subtypes.subType =',
   cardType: 'types.type =',
-  cardText: 'text CONTAINS[c]'
+  cardText: 'text CONTAINS[c]',
+  cardColors: 'colors.color =' // We may revisit this search non sensitive
 }
 
 // TODO: NEED TO CREATE A TEST

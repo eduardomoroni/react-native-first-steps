@@ -31,16 +31,14 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     handleSubmit,
     cardTypes,
     cardSubTypes,
-    searchCards
-  } = props
-
-  const {
+    searchCards,
     cardType,
     cardSubType
   } = props
 
   const submit = values => {
     Keyboard.dismiss()
+    console.log('FORM', values)
     searchCards(values)
   }
 

@@ -7,7 +7,7 @@
     "ios": "react-native run-ios && react-native log-ios",
     "android": "react-native run-android && react-native log-android",
     "test": "ava --verbose --no-cache && jest --verbose --no-cache",
-    "jest-watch": "jest --watch --verbose",
+    "jest-watch": "jest --watch --verbose --onlyChanged --noStackTrace",
     "ava-watch": "ava --watch --verbose",
     "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
@@ -79,7 +79,9 @@
       "it",
       "__DEV__",
       "expect",
-      "jest"
+      "jest",
+      "describe",
+      "beforeAll"
     ],
     "ignore": [
       "flow/"

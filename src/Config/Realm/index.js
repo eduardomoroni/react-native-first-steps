@@ -14,7 +14,7 @@ import {
   RulingSchema
 } from './Schemas'
 
-const schemas = [
+export const schemas = [
   CardSchema,
   TypeSchema,
   SubTypeSchema,
