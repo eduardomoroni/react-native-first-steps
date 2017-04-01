@@ -47,7 +47,7 @@
   "jest": {
     "preset": "react-native",
     "testMatch": [
-      "**/__tests__/**/*.js?(x)"
+      "**/__tests__/**/*Test.js?(x)"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",

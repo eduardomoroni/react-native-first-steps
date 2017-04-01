@@ -26,6 +26,7 @@ export const CardSchema = {
     'colorIdentity': {type: 'list', objectType: 'ColorIdentity'},
     'printings': {type: 'list', objectType: 'Printing'},
     'foreignNames': {type: 'list', objectType: 'ForeignName'},
-    'rulings': {type: 'list', objectType: 'Ruling'}
+    'rulings': {type: 'list', objectType: 'Ruling'},
+    'superTypes': {type: 'list', objectType: 'SuperType'}
   }
 }

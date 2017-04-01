@@ -28,7 +28,7 @@ it('CardSearch Happy Path', () => {
   expect(step()).toMatchObject(sagaDone)
 })
 
-xit('CardSearch Return empty result', t => {
+it('CardSearch Return empty result', t => {
   const cardsMock = []
   const generator = searchForCardSaga(searchForCardsAction)
   const step = (lastYield) => generator.next(lastYield)
