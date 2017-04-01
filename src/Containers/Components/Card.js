@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 import styles from '../../Styles/CardStyle'
-import { placeholdersToSymbols } from '../../Transform/PlaceholderToSymbol'
+import { placeholdersToSymbols } from '../../Realm/Conversion/Placeholder'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 type CardProps = {

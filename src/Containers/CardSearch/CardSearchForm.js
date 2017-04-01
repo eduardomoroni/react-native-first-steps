@@ -1,14 +1,14 @@
 import React from 'react'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { realm } from '../Config/Realm'
-import { inheritanceToArray } from '../Realm/Conversion/JsonCard'
-import { searchForCards } from '../Redux/Actions'
-import Styles from '../Styles/CardSearchFormStyle'
-import TextInputForm from './Components/TextInputForm'
-import DropdownInputForm from './Components/DropdownInputForm'
-import SubmitButtonForm from './Components/SubmitButtonForm'
-import ManaIconsBar from './Components/ManaIconsBar'
+import { realm } from '../../Config/Realm'
+import { inheritanceToArray } from '../../Realm/Conversion/JsonCard'
+import { searchForCards } from '../../Redux/Actions'
+import Styles from '../../Styles/CardSearchFormStyle'
+import TextInputForm from '../Components/TextInputForm'
+import DropdownInputForm from '../Components/DropdownInputForm'
+import SubmitButtonForm from '../Components/SubmitButtonForm'
+import ManaIconsBar from '../Components/ManaIconsBar'
 import {
   View,
   TouchableOpacity,

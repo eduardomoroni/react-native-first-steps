@@ -10,12 +10,12 @@ import {
   Image
 } from 'react-native'
 import { connect } from 'react-redux'
-import Styles from '../Styles/LoginScreenStyle'
-import { Images, Metrics } from '../Styles/Themes'
-import { loginUser } from '../Redux/Actions'
+import Styles from '../../Styles/LoginScreenStyle'
+import { Images, Metrics } from '../../Styles/Themes'
+import { loginUser } from '../../Redux/Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
-import Spinner from './Components/Spinner'
+import Spinner from '../Components/Spinner'
 
 type LoginScreenProps = {
   error: string,

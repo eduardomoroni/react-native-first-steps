@@ -1,7 +1,7 @@
 import Realm from 'realm'
 import { realm as defaultRealm } from '../Config/Realm'
 import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
-import { placeholdersToSymbols } from '../Transform/PlaceholderToSymbol'
+import { placeholdersToSymbols } from './Conversion/Placeholder'
 import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery } from './Conversion/CardForm'
 
 export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll }
