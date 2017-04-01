@@ -1,6 +1,6 @@
 /* @flow */
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import {
   View,
@@ -16,8 +16,9 @@ type CardProps = {
   showCardText: boolean
 }
 
-class Card extends Component {
+class Card extends PureComponent {
   props: CardProps
+
   render () {
     const { card, showCardText } = this.props
     const {

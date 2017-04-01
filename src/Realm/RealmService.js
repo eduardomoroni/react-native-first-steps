@@ -1,45 +1,64 @@
-import { realm } from '../Config/Realm'
+import Realm from 'realm'
+import { realm as defaultRealm } from '../Config/Realm'
+import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
+import { placeholdersToSymbols } from '../Transform/PlaceholderToSymbol'
+import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery } from './Conversion/CardForm'
 
-const mapFormToRealm = {
-  cardName: 'name CONTAINS[c]',
-  cardSubType: 'subtypes.subType =',
-  cardType: 'types.type =',
-  cardText: 'text CONTAINS[c]'
+export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll }
+
+let realm = defaultRealm
+
+function changeRealm (realmConfig) {
+  realm = new Realm(realmConfig)
 }
 
-// TODO: NEED TO CREATE A TEST
 function sortCards (cards, sorting) {
   const { field, reversed } = sorting.sortBy
   return cards.sorted(field, reversed)
 }
 
 function findCardsFromForm (form) {
-  return findCards(createQuery(form), createQueryArgs(form))
+  const query = simpleParamQuery(form)
+  const queryArgs = simpleParamQueryArgs(form)
+  const simpleParamsResults = findCards(query, queryArgs)
+
+  const composedQuery = composedParamQuery(form)
+  const composedQueryArgs = composedParamQueryArgs(form)
+  if (composedQuery) {
+    return filterResults(simpleParamsResults, composedQuery, composedQueryArgs)
+  } else {
+    return simpleParamsResults
+  }
 }
 
-function findCards (query, args) {
-  return realm.objects('Card').filtered(query, ...args)
+function filterResults (results, query, queryArgs) {
+  return results.filtered(query, ...queryArgs)
 }
 
-function createQueryArgs (cardSearchForm) {
-  return Object.values(cardSearchForm)
+function findCards (query, queryArgs) {
+  return realm.objects('Card').filtered(query, ...queryArgs)
 }
 
-function createQuery (cardSearchForm) {
-  return Object.keys(cardSearchForm)
-               .map((key) => mapFormToRealm[key])
-               .reduce(addParamToQuery, '')
+function deleteAll () {
+  realm.write(() => {
+    realm.deleteAll()
+  })
 }
 
-function addParamToQuery (query, field, currentIndex) {
-  const prefix = query ? `${query} AND` : ''
-  return `${prefix} ${field} $${currentIndex}`
+function importMTGJSON (mtgJson) {
+  mtgJson.cards.forEach((card) => {
+    card.text = placeholdersToSymbols(card.text)
+    const cardAsRealmObject = jsonToRealmCard(card)
+    try {
+      upsertCard(cardAsRealmObject)
+    } catch (e) {
+      console.log('Failed to insert ', card.name)
+    }
+  })
 }
 
-export {
-  findCards,
-  createQueryArgs,
-  createQuery,
-  findCardsFromForm,
-  sortCards
+function upsertCard (card) {
+  realm.write(() => {
+    realm.create('Card', card, true)
+  })
 }

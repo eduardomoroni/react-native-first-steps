@@ -6,14 +6,16 @@ const convertionMap = {
   types: 'type',
   subtypes: 'subType',
   colors: 'color',
-  colorIdentity: 'colorIdentity'
+  colorIdentity: 'colorIdentity',
+  printings: 'printing',
+  supertypes: 'superType'
 }
 
 export const jsonToRealmCard = (jsonCard: Object) => {
   let realmObject = _.cloneDeep(jsonCard)
 
   _.forEach(realmObject, (value, key) => {
-    if (convertionMap[key]) {
+    if (isArrayOfString(key)) {
       realmObject[key] = _.map(jsonCard[key], fieldValue => {
         return {[convertionMap[key]]: fieldValue}
       })
@@ -21,6 +23,10 @@ export const jsonToRealmCard = (jsonCard: Object) => {
   })
 
   return realmObject
+}
+
+const isArrayOfString = (key) => {
+  return convertionMap[key]
 }
 
 export const inheritanceToArray = (realmRepresentation: Object) => {

@@ -14,7 +14,7 @@
 .*/Libraries/react-native/React.js
 .*/Libraries/react-native/ReactNative.js
 
-;Word around to avoid flows error Required module not found
+;Work around to avoid flows error Required module not found
 .*/node_modules/.*
 ./flow/modulesnotfound.js
 

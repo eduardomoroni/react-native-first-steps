@@ -20,7 +20,6 @@ const renderSwitch = (fieldProps) => {
 }
 
 const renderSortInput = (fieldProps) => {
-  console.log('Field props', fieldProps)
   const { onChange, name, value } = fieldProps.input
 
   const sortValues = ['cmc', 'multiverseid', 'name', 'number', 'rarity', 'type', 'power', 'toughness']

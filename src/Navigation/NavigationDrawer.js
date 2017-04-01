@@ -2,6 +2,7 @@
 
 import React, { PropTypes, Component } from 'react'
 import Drawer from 'react-native-drawer'
+import { Keyboard } from 'react-native'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import Menu from './NavigationMenu'
 import { connect } from 'react-redux'
@@ -17,6 +18,7 @@ export const menuDrawerProps = {
 
 class NavigationDrawer extends Component {
   render () {
+    Keyboard.dismiss()
     const state = this.props.navigationState
     const defaultProps = {
       ref: 'navigation',
