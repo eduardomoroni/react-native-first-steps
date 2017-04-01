@@ -5,7 +5,7 @@ import { showCards, searchForCards, sortCards as sortAction } from '../../../src
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 jest.mock('react-native-router-flux', () => {
-  return { Actions: {listCards: () => 'Foos'} }
+  return { Actions: {listCards: () => 'Foo'} }
 })
 
 const sagaDone = { done: true, value: undefined }
@@ -28,16 +28,13 @@ it('CardSearch Happy Path', () => {
   expect(step()).toMatchObject(sagaDone)
 })
 
-it('CardSearch Return empty result', t => {
+it('CardSearch Return empty result', () => {
   const cardsMock = []
   const generator = searchForCardSaga(searchForCardsAction)
   const step = (lastYield) => generator.next(lastYield)
 
-  try {
-    expect(step().value).toEqual(call(findCardsFromForm, searchForCardsAction.payload))
-  } finally {
-    expect(step(cardsMock)).toEqual(sagaDone)
-  }
+  expect(step(cardsMock).value).toEqual(call(findCardsFromForm, searchForCardsAction.payload))
+  expect(step(cardsMock)).toEqual(sagaDone)
 })
 
 it('Should sort card search results', () => {

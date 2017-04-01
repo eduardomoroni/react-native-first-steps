@@ -63,6 +63,7 @@ realm-object-database/
 realm-object-server/
 *.realm
 *.realm.*
+database/
 
 # VS CODE
 .vscode

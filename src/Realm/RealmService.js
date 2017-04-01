@@ -1,25 +1,23 @@
-import { realm } from '../Config/Realm'
-import AER from '../Assets/Cards/AER-X.json'
+import Realm from 'realm'
+import { realm as defaultRealm } from '../Config/Realm'
 import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from '../Transform/PlaceholderToSymbol'
-import {
-  simpleParamQuery,
-  simpleParamQueryArgs,
-  composedParamQueryArgs,
-  composedParamQuery
-} from './Conversion/CardForm'
+import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery } from './Conversion/CardForm'
 
-export { findCardsFromForm, sortCards, initRealmDb }
+export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll }
 
-// TODO: NEED TO CREATE A TEST
+let realm = defaultRealm
+
+function changeRealm (realmConfig) {
+  realm = new Realm(realmConfig)
+}
+
 function sortCards (cards, sorting) {
   const { field, reversed } = sorting.sortBy
   return cards.sorted(field, reversed)
 }
 
-// TODO: TEST
 function findCardsFromForm (form) {
-  console.log('form', form)
   const query = simpleParamQuery(form)
   const queryArgs = simpleParamQueryArgs(form)
   const simpleParamsResults = findCards(query, queryArgs)
@@ -34,27 +32,33 @@ function findCardsFromForm (form) {
 }
 
 function filterResults (results, query, queryArgs) {
-  // console.log('filterResults', results, query, queryArgs)
   return results.filtered(query, ...queryArgs)
 }
 
 function findCards (query, queryArgs) {
-  // console.log('find cards', query, queryArgs)
   return realm.objects('Card').filtered(query, ...queryArgs)
 }
 
-function initRealmDb () {
+function deleteAll () {
   realm.write(() => {
     realm.deleteAll()
+  })
+}
 
-    AER.cards.forEach((card) => {
-      card.text = placeholdersToSymbols(card.text)
-      const cardAsRealmObject = jsonToRealmCard(card)
-      try {
-        realm.create('Card', cardAsRealmObject, true)
-      } catch (e) {
-        console.log('Failed to insert ', card.name)
-      }
-    })
+function importMTGJSON (mtgJson) {
+  mtgJson.cards.forEach((card) => {
+    card.text = placeholdersToSymbols(card.text)
+    const cardAsRealmObject = jsonToRealmCard(card)
+    try {
+      upsertCard(cardAsRealmObject)
+    } catch (e) {
+      console.log('Failed to insert ', card.name)
+    }
+  })
+}
+
+function upsertCard (card) {
+  realm.write(() => {
+    realm.create('Card', card, true)
   })
 }

@@ -1,4 +1,6 @@
-import { findCardsFromForm, initRealmDb } from '../../../src/Realm/RealmService'
+import { findCardsFromForm, importMTGJSON, deleteAll, changeRealm } from '../../../src/Realm/RealmService'
+import { schemas } from '../../../src/Config/Realm'
+import AER from '../../../src/Assets/Cards/AER-X.json'
 
 const sampleQueryObject = {
   cardType: 'Instant',
@@ -9,7 +11,9 @@ const sampleQueryObject = {
 
 describe.only('Realm Service', () => {
   beforeAll(() => {
-    initRealmDb()
+    changeRealm({ path: 'database/INTEGRATION_TEST.realm', schemas })
+    deleteAll()
+    importMTGJSON(AER)
   })
 
   it('Should search with multiple colors', () => {
