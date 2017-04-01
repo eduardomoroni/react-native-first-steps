@@ -23,5 +23,5 @@ export const schemas = [
   RulingSchema
 ]
 
-const defaultConfig = { schema: schemas, path: 'MTG-BD-TEST-sup.realm' }
+const defaultConfig = { schema: schemas, path: 'MTG-BD.realm' }
 export const realm = new Realm(defaultConfig)

@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { View, BackAndroid, Switch, Text, Picker } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { toggleShowCardText, sortCards as sortCardsActionCreator } from '../Redux/Actions'
+import { toggleShowCardText, sortCards as sortCardsActionCreator } from '../../Redux/Actions'
 import I18n from 'react-native-i18n'
 
 const renderSwitch = (fieldProps) => {

@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import {
   Metrics
-} from '../Styles/Themes'
+} from '../../Styles/Themes'
 
 type CardDetailsProps = {
   card: any
