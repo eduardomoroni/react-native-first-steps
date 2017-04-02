@@ -3,14 +3,16 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { realm } from '../../Config/Realm'
 import { inheritanceToArray } from '../../Realm/Conversion/JsonCard'
-import { searchForCards } from '../../Redux/Actions'
+import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
 import TextInputForm from '../Components/TextInputForm'
+import ModalToggle from '../Components/ModalToggle'
 import NumericInputForm from '../Components/NumericInputForm'
 import DropdownInputForm from '../Components/DropdownInputForm'
 import SubmitButtonForm from '../Components/SubmitButtonForm'
 import ManaIconsBar from '../Components/ManaIconsBar'
-import MultipleSelect from '../Components/MultipleSelect'
+import MultipleSelect from '../Components/MultiSelect'
+import Modal from '../Components/Modal'
 
 import {
   View,
@@ -36,12 +38,13 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     cardSubTypes,
     searchCards,
     cardType,
-    cardSubType
+    cardSubType,
+    visibleModal,
+    showModal
   } = props
 
   const submit = values => {
     Keyboard.dismiss()
-    console.log('FORM', values)
     searchCards(values)
   }
 
@@ -60,7 +63,20 @@ let CardSearchForm = (props: CardSearchFormProps) => {
           <Field name='cardToughness' component={NumericInputForm} />,
           <Field name='cardCMC' component={NumericInputForm} />
         )}
-        <Field name='cardRarity' component={MultipleSelect} items={['a', 'b', 'c']} />
+        { renderThreeFieldInRow(
+          <ModalToggle label='cardRarity' onPress={showModal} />,
+          <ModalToggle label='cardSet' onPress={showModal} />,
+          <ModalToggle label='cardFormat' onPress={showModal} />,
+        )}
+        <Modal isVisible={visibleModal === 'cardRarity'}>
+          <Field name='cardRarity' component={MultipleSelect} items={['a', 'b', 'c']} />
+        </Modal>
+        <Modal isVisible={visibleModal === 'cardSet'}>
+          <Field name='cardSet' component={MultipleSelect} items={['a', 'b', 'c']} />
+        </Modal>
+        <Modal isVisible={visibleModal === 'cardFormat'}>
+          <Field name='cardFormat' component={MultipleSelect} items={['a', 'b', 'c']} />
+        </Modal>
       </View>
       <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(submit)} >
         <SubmitButtonForm onPress={handleSubmit(submit)} />
@@ -114,13 +130,15 @@ const mapStateToProps = (state) => {
     cardType: selector(state, 'cardType'),
     cardSubType: selector(state, 'cardSubType'),
     cardSubTypes: cardSubtypes,
-    cardTypes: cardTypes
+    cardTypes: cardTypes,
+    visibleModal: state.cardSearch.visibleModal
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm))
+    searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm)),
+    showModal: (modal) => dispatch(showFormModal(modal))
   }
 }
 

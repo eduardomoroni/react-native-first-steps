@@ -50,5 +50,9 @@ export default StyleSheet.create({
     width: 30,
     height: 30,
     marginHorizontal: Metrics.smallMargin
+  },
+  _centered: {
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })

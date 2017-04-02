@@ -9,7 +9,7 @@ const sampleQueryObject = {
   cardPrintings: ['M10', 'AER']
 }
 
-describe.only('Realm Service', () => {
+describe.skip('Realm Service', () => {
   beforeAll(() => {
     changeRealm({ path: 'database/INTEGRATION_TEST.realm', schemas: schemas })
     deleteAll()

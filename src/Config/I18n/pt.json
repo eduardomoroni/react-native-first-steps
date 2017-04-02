@@ -22,5 +22,8 @@
   "login_for_title": "Entrar",
   "cardToughness": "Res: ",
   "cardPower": "Poder: ",
-  "cardCMC": "CMC: "
+  "cardCMC": "CMC: ",
+  "cardRarity": "Raridade",
+  "cardSet": "Coleção",
+  "cardFormat": "Formato"
 }
