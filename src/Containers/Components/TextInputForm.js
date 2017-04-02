@@ -25,6 +25,7 @@ export default class TextInputForm extends React.Component {
           autoCorrect={false}
           autoCapitalize='characters'
           underlineColorAndroid='transparent'
+          returnKeyType='next'
         />
       </View>
     )

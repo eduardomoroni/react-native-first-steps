@@ -11,7 +11,7 @@ const sampleQueryObject = {
 
 describe.only('Realm Service', () => {
   beforeAll(() => {
-    changeRealm({ path: 'database/INTEGRATION_TEST.realm', schemas })
+    changeRealm({ path: 'database/INTEGRATION_TEST.realm', schemas: schemas })
     deleteAll()
     importMTGJSON(AER)
   })
