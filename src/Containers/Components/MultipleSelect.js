@@ -1,5 +1,3 @@
-// https://github.com/tableflip/react-native-select-multiple
-// https://facebook.github.io/react/docs/forms.html#controlled-components
 import React, { Component, PropTypes } from 'react'
 import { View, ListView, Text, TouchableOpacity, Image } from 'react-native'
 import styles from '../../Styles/MultipleSelectStyle'
@@ -11,38 +9,31 @@ const itemType = PropTypes.oneOfType(
   PropTypes.shape({ label: PropTypes.string, value: PropTypes.any })
 )
 
-// A customiseable ListView that allows you to select multiple rows
+let dataSource = new ListView.DataSource({
+  rowHasChanged: (r1, r2) => r1.selected !== r2.selected
+})
+
+// https://github.com/tableflip/react-native-select-multiple
 export default class SelectMultiple extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(itemType).isRequired,
-    selectedItems: PropTypes.arrayOf(itemType),
-    onSelectionsChange: PropTypes.func.isRequired
-  }
-
-  static defaultProps = {
-    selectedItems: []
+    selectedItems: PropTypes.arrayOf(itemType)
   }
 
   constructor (props) {
     super(props)
     const rows = this.getRowData(props)
-
-    const dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1.value !== r2.value || r1.selected !== r2.selected
-    }).cloneWithRows(rows)
-
-    this.state = { dataSource }
+    dataSource = dataSource.cloneWithRows(rows)
   }
 
   componentWillReceiveProps (nextProps) {
     const rows = this.getRowData(nextProps)
-    const dataSource = this.state.dataSource.cloneWithRows(rows)
-    this.setState({ dataSource })
+    dataSource = dataSource.cloneWithRows(rows)
   }
 
-  getRowData ({ items, selectedItems }) {
+  getRowData ({ items, input: { value } }) {
+    let selectedItems = (value || []).map(this.toLabelValueObject)
     items = items.map(this.toLabelValueObject)
-    selectedItems = (selectedItems || []).map(this.toLabelValueObject)
 
     items.forEach((item) => {
       item.selected = selectedItems.some((i) => i.value === item.value)
@@ -52,21 +43,24 @@ export default class SelectMultiple extends Component {
   }
 
   onRowPress (row) {
+    const { value, onChange } = this.props.input
     row = Object.assign({}, row)
 
-    let { selectedItems } = this.props
-
-    selectedItems = (selectedItems || []).map(this.toLabelValueObject)
+    let selectedItems = (value || []).map(this.toLabelValueObject)
 
     const index = selectedItems.findIndex((selectedItem) => selectedItem.value === row.value)
 
-    if (index > -1) {
+    if (index >= 0) {
       selectedItems = selectedItems.filter((selectedItem) => selectedItem.value !== row.value)
     } else {
       selectedItems = selectedItems.concat(row)
     }
 
-    this.props.onSelectionsChange(selectedItems, row)
+    onChange(selectedItems.map(this.toArray))
+  }
+
+  toArray (obj) {
+    return obj.value
   }
 
   toLabelValueObject (obj) {
@@ -78,10 +72,13 @@ export default class SelectMultiple extends Component {
   }
 
   render () {
-    const { dataSource } = this.state
     const { style } = this.props
-    const { renderItemRow } = this
-    return <ListView style={style} dataSource={dataSource} renderRow={renderItemRow} />
+    return (
+      <ListView
+        style={style}
+        dataSource={dataSource}
+        renderRow={this.renderItemRow} />
+    )
   }
 
   renderItemRow = (row) => {

@@ -60,7 +60,7 @@ let CardSearchForm = (props: CardSearchFormProps) => {
           <Field name='cardToughness' component={NumericInputForm} />,
           <Field name='cardCMC' component={NumericInputForm} />
         )}
-        <Field name='cardRarity' component={MultipleSelect} items={['a', 'b', 'c']} selectedItems={['b']} onSelectionsChange={(value) => { console.log(value) }} />
+        <Field name='cardRarity' component={MultipleSelect} items={['a', 'b', 'c']} />
       </View>
       <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(submit)} >
         <SubmitButtonForm onPress={handleSubmit(submit)} />
