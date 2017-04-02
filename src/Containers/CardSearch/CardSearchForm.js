@@ -40,12 +40,31 @@ let CardSearchForm = (props: CardSearchFormProps) => {
     cardType,
     cardSubType,
     visibleModal,
+    cardSets,
     showModal
   } = props
 
   const submit = values => {
     Keyboard.dismiss()
     searchCards(values)
+  }
+
+  const renderModal = () => {
+    let modalContent = {}
+    if (visibleModal === 'cardRarity') {
+      modalContent = <Field name='cardRarity' component={MultipleSelect} items={['commom', 'uncommon', 'rare', 'mythic']} />
+    } else if (visibleModal === 'cardSet') {
+      modalContent = <Field name='cardSet' component={MultipleSelect} items={cardSets} />
+    } else if (visibleModal === 'cardFormat') {
+      modalContent = <Field name='cardFormat' component={MultipleSelect} items={['block', 'commander', 'extended', 'legacy', 'modern', 'standard', 'vintage']} />
+    } else {
+      return <View />
+    }
+    return (
+      <Modal isVisible>
+        {modalContent}
+      </Modal>
+    )
   }
 
   return (
@@ -68,15 +87,14 @@ let CardSearchForm = (props: CardSearchFormProps) => {
           <ModalToggle label='cardSet' onPress={showModal} />,
           <ModalToggle label='cardFormat' onPress={showModal} />,
         )}
-        <Modal isVisible={visibleModal === 'cardRarity'}>
-          <Field name='cardRarity' component={MultipleSelect} items={['a', 'b', 'c']} />
-        </Modal>
-        <Modal isVisible={visibleModal === 'cardSet'}>
-          <Field name='cardSet' component={MultipleSelect} items={['a', 'b', 'c']} />
-        </Modal>
-        <Modal isVisible={visibleModal === 'cardFormat'}>
-          <Field name='cardFormat' component={MultipleSelect} items={['a', 'b', 'c']} />
-        </Modal>
+        {renderModal()}
+        {/* Secundary Options */}
+        <Field name='cardColorsIdentity' component={ManaIconsBar} />
+        <Field name='cardFlavorText' component={TextInputForm} />
+        { renderTwoFieldInRow(
+          <Field name='cardArtist' component={TextInputForm} />,
+          <Field name='cardCollectionNumber' component={TextInputForm} keyboardType={'numeric'} maxLength={3} />
+        )}
       </View>
       <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(submit)} >
         <SubmitButtonForm onPress={handleSubmit(submit)} />
@@ -122,6 +140,7 @@ Field.propTypes = {
 const mapStateToProps = (state) => {
   const cardTypes = inheritanceToArray(realm.objects('Type').snapshot())
   const cardSubtypes = inheritanceToArray(realm.objects('SubType').snapshot())
+  const printings = inheritanceToArray(realm.objects('Printing').snapshot())
 
   cardTypes.unshift('')
   cardSubtypes.unshift('')
@@ -131,6 +150,7 @@ const mapStateToProps = (state) => {
     cardSubType: selector(state, 'cardSubType'),
     cardSubTypes: cardSubtypes,
     cardTypes: cardTypes,
+    cardSets: printings,
     visibleModal: state.cardSearch.visibleModal
   }
 }

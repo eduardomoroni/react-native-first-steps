@@ -25,5 +25,10 @@
   "cardCMC": "CMC: ",
   "cardRarity": "Raridade",
   "cardSet": "Coleção",
-  "cardFormat": "Formato"
+  "cardFormat": "Formato",
+  "cardFlavorText": "Texto Ilustrativo",
+  "cardColorsIdentity": "Identidade de Cor",
+  "cardColors": "Cor",
+  "cardCollectionNumber": "Numero da coleção",
+  "cardArtist": "Artista"
 }

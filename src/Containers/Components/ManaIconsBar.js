@@ -13,7 +13,7 @@ import {
 
 class ManaIconsBar extends Component {
   render () {
-    const { onChange, value } = this.props.input
+    const { onChange, value, name } = this.props.input
     const selectedColors = value // redux-form value prop seems odd, just an alias
 
     const toggleColor = (color) => { onChange(_.xor(selectedColors, [color])) }
@@ -31,7 +31,7 @@ class ManaIconsBar extends Component {
     return (
       <View style={Styles.container}>
         <Text style={Styles.text}>
-          {I18n.t('color')}
+          {I18n.t(name)}
         </Text>
         { ValidColors.map(renderManaSymbol) }
       </View>

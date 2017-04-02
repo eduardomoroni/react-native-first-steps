@@ -12,6 +12,7 @@ import styles from '../../Styles/FormStyle'
 export default class TextInputForm extends React.Component {
   render () {
     const { onChange, name } = this.props.input
+    const { keyboardType, maxLength } = this.props
 
     return (
       <View style={styles.container}>
@@ -26,6 +27,8 @@ export default class TextInputForm extends React.Component {
           autoCapitalize='characters'
           underlineColorAndroid='transparent'
           returnKeyType='next'
+          keyboardType={keyboardType}
+          maxLength={maxLength}
         />
       </View>
     )

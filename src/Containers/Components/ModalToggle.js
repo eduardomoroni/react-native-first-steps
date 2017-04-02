@@ -5,6 +5,8 @@ import { Text, TouchableOpacity } from 'react-native'
 import I18n from 'react-native-i18n'
 import styles from '../../Styles/FormStyle'
 
+// When the same toggle is pressed twice it's not showing modal
+// this happens because the showModal action is dispatched with current shoModalValue
 export default class ModalToggle extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,

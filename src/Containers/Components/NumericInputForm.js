@@ -54,8 +54,8 @@ export default class NumericInputForm extends React.Component {
           onChangeText={changeNumber}
           underlineColorAndroid='transparent'
           keyboardType={'numeric'}
-          returnKeyType='next'
           maxLength={2}
+          returnKeyType='next'
         />
       </View>
     )
