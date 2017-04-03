@@ -11,8 +11,6 @@ const convertionMap = {
   supertypes: 'superType'
 }
 
-
-
 export const jsonToRealmCard = (jsonCard: Object) => {
   let realmObject = _.cloneDeep(jsonCard)
 

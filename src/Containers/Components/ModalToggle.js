@@ -14,10 +14,15 @@ export default class ModalToggle extends Component {
   }
 
   render () {
-    const { label, onPress } = this.props
+    const { label, onPress, selected } = this.props
+    console.log(selected)
+    let bg = {backgroundColor: 'transparent'}
+    if (selected !== undefined && selected.length > 0) {
+      bg = {backgroundColor: 'cornsilk'}
+    }
 
     return (
-      <TouchableOpacity style={[styles.container, styles._centered]} onPress={() => onPress(label)} >
+      <TouchableOpacity style={[styles.container, styles._centered, bg]} onPress={() => onPress(label)} >
         <Text style={styles.text}>
           {I18n.t(label)}
         </Text>

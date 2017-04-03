@@ -20,15 +20,7 @@ import {
   Keyboard
 } from 'react-native'
 
-const selector = formValueSelector('CardSearchForm')
-
 class CardSearchForm extends React.Component {
-  formSubmit (formValues) {
-    Keyboard.dismiss()
-    console.log(formValues)
-    this.props.searchCards(formValues)
-  }
-
   renderThreeFieldInRow (fieldOne, fieldTwo, fieldThree) {
     return (
       <View style={Styles.multipleFieldsPerLine}>
@@ -60,14 +52,14 @@ class CardSearchForm extends React.Component {
 
   renderModal () {
     let modalContent = {}
-    let { visibleModal, cardSets } = this.props
+    let { visibleModal, cardSets, cardFormats } = this.props
 
     if (visibleModal === 'cardRarity') {
-      modalContent = <Field name='cardRarity' component={MultipleSelect} items={['commom', 'uncommon', 'rare', 'mythic']} />
+      modalContent = <Field name='cardRarity' component={MultipleSelect} items={['Common', 'Uncommon', 'Rare', 'Mythic Rare']} />
     } else if (visibleModal === 'cardSet') {
       modalContent = <Field name='cardSet' component={MultipleSelect} items={cardSets} />
     } else if (visibleModal === 'cardFormat') {
-      modalContent = <Field name='cardFormat' component={MultipleSelect} items={['block', 'commander', 'extended', 'legacy', 'modern', 'standard', 'vintage']} />
+      modalContent = <Field name='cardFormat' component={MultipleSelect} items={cardFormats} />
     } else {
       return <View />
     }
@@ -85,8 +77,17 @@ class CardSearchForm extends React.Component {
       cardSubTypes,
       cardType,
       cardSubType,
-      showModal
+      showModal,
+      searchCards,
+      cardRarity,
+      cardSet,
+      cardFormat
     } = this.props
+
+    const formSubmit = (formValues) => {
+      Keyboard.dismiss()
+      searchCards(formValues)
+    }
 
     const numericOperators = ['', '<', '<=', '=', '>=', '=']
 
@@ -112,15 +113,15 @@ class CardSearchForm extends React.Component {
             <Field name='cardCollectionNumber' component={TextInputForm} keyboardType={'numeric'} maxLength={3} />
         )}
           { this.renderThreeFieldInRow(
-            <ModalToggle label='cardRarity' onPress={showModal} />,
-            <ModalToggle label='cardSet' onPress={showModal} />,
-            <ModalToggle label='cardFormat' onPress={showModal} />,
+            <ModalToggle label='cardRarity' onPress={showModal} selected={cardRarity} />,
+            <ModalToggle label='cardSet' onPress={showModal} selected={cardSet} />,
+            <ModalToggle label='cardFormat' onPress={showModal} selected={cardFormat} />,
         )}
           <Field name='cardColorsIdentity' component={ManaIconsBar} />
           {this.renderModal()}
         </View>
-        <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(this.formSubmit)} >
-          <SubmitButtonForm onPress={handleSubmit(this.formSubmit)} />
+        <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(formSubmit)} >
+          <SubmitButtonForm onPress={handleSubmit(formSubmit)} />
         </TouchableOpacity>
       </View>
     )
@@ -133,9 +134,12 @@ Field.propTypes = {
 }
 
 const mapStateToProps = (state) => {
+  const selector = formValueSelector('CardSearchForm')
+
   const cardTypes = inheritanceToArray(realm.objects('Type').snapshot())
   const cardSubtypes = inheritanceToArray(realm.objects('SubType').snapshot())
   const printings = inheritanceToArray(realm.objects('Printing').snapshot())
+  const formats = inheritanceToArray(realm.objects('Legality').snapshot())
 
   cardTypes.unshift('')
   cardSubtypes.unshift('')
@@ -146,6 +150,10 @@ const mapStateToProps = (state) => {
     cardSubTypes: cardSubtypes,
     cardTypes: cardTypes,
     cardSets: printings,
+    cardFormats: formats,
+    cardRarity: selector(state, 'cardRarity'),
+    cardSet: selector(state, 'cardSet'),
+    cardFormat: selector(state, 'cardFormat'),
     visibleModal: state.cardSearch.visibleModal
   }
 }

@@ -1,15 +1,8 @@
 import _ from 'lodash'
 export {
-  simpleParamQuery,
-  simpleParamQueryArgs,
-  composedParamQueryArgs,
-  composedParamQuery,
   convertCardFormToRealmQueries,
   arrayToQuery
 }
-
-const simpleParams = ['cardName', 'cardType', 'cardSubType', 'cardText']
-const composedParams = ['cardColors', 'cardPrintings']
 
 const mapFormToRealm = {
   cardName: 'name CONTAINS[c]',
@@ -21,12 +14,12 @@ const mapFormToRealm = {
   cardArtist: 'artist CONTAINS[c]',
   cardFlavorText: 'flavor CONTAINS[c]',
   cardCollectionNumber: 'number =',
-  cardRarity: 'rarity =', // multiple values
+  cardRarity: 'rarity =',
   cardColorsIdentity: 'colorIdentity.colorIdentity =',
   cardToughness: 'toughness',
   cardPower: 'power',
-  cardCMC: 'cmc'
-  // cardFormat: 'NOT_IMPLEMENTED_YET',
+  cardCMC: 'cmc',
+  cardFormat: 'legalities.format ='
 }
 
 function convertCardFormToRealmQueries (cardForm) {
@@ -48,40 +41,4 @@ function arrayToQuery (array, selector, operator) {
   return array.reduce((acc, current) => {
     return acc ? `${acc} ${operator} ${selector} "${current}"` : `${selector} "${current}"`
   }, '')
-}
-
-
-function simpleParamQueryArgs (cardSearchForm) {
-  const formAsArray = Object.values(_.pick(cardSearchForm, simpleParams))
-  return _.flattenDeep(formAsArray)
-}
-
-function simpleParamQuery (cardSearchForm) {
-  return Object.keys(_.pick(cardSearchForm, simpleParams))
-    .map((key) => mapFormToRealm[key])
-    .reduce(addParamToQuery, '')
-}
-
-function composedParamQueryArgs (cardSearchForm) {
-  const formAsArray = Object.values(_.pick(cardSearchForm, composedParams))
-  return _.flattenDeep(formAsArray)
-}
-
-function composedParamQuery (cardSearchForm) {
-  const composed = _.pick(cardSearchForm, composedParams)
-  let query = ''
-  let index = 0
-
-  _.forEach(composed, (value, key) => { // forEach order not assured
-    value.forEach((arrayElem) => {
-      query = addParamToQuery(query, mapFormToRealm[key], index++)
-    })
-  })
-
-  return query
-}
-
-function addParamToQuery (query, field, currentIndex) {
-  const prefix = query ? `${query} AND` : ''
-  return `${prefix} ${field} $${currentIndex}`
 }

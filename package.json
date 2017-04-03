@@ -62,7 +62,8 @@
       "expect",
       "jest",
       "describe",
-      "beforeAll"
+      "beforeAll",
+      "afterAll"
     ],
     "ignore": [
       "flow/"

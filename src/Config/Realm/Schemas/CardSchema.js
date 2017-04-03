@@ -27,6 +27,7 @@ export const CardSchema = {
     'printings': {type: 'list', objectType: 'Printing'},
     'foreignNames': {type: 'list', objectType: 'ForeignName'},
     'rulings': {type: 'list', objectType: 'Ruling'},
-    'superTypes': {type: 'list', objectType: 'SuperType'}
+    'superTypes': {type: 'list', objectType: 'SuperType'},
+    'legalities': {type: 'list', objectType: 'Legality'}
   }
 }

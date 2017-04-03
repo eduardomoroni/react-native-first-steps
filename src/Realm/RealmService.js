@@ -3,9 +3,9 @@ import _ from 'lodash'
 import { realm as defaultRealm } from '../Config/Realm'
 import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from './Conversion/Placeholder'
-import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery, convertCardFormToRealmQueries } from './Conversion/CardForm'
+import { convertCardFormToRealmQueries } from './Conversion/CardForm'
 
-export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll, newFindCards }
+export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll }
 
 let realm = defaultRealm
 
@@ -18,8 +18,7 @@ function sortCards (cards, sorting) {
   return cards.sorted(field, reversed)
 }
 
-// CHANGE THIS NAME
-function newFindCards (form) {
+function findCardsFromForm (form) {
   const realmQueries = convertCardFormToRealmQueries(form)
   let results = realm.objects('Card')
 
@@ -30,28 +29,6 @@ function newFindCards (form) {
   })
 
   return results
-}
-
-function findCardsFromForm (form) {
-  const query = simpleParamQuery(form)
-  const queryArgs = simpleParamQueryArgs(form)
-  const simpleParamsResults = findCards(query, queryArgs)
-
-  const composedQuery = composedParamQuery(form)
-  const composedQueryArgs = composedParamQueryArgs(form)
-  if (composedQuery) {
-    return filterResults(simpleParamsResults, composedQuery, composedQueryArgs)
-  } else {
-    return simpleParamsResults
-  }
-}
-
-function filterResults (results, query, queryArgs) {
-  return results.filtered(query, ...queryArgs)
-}
-
-function findCards (query, queryArgs) {
-  return realm.objects('Card').filtered(query, ...queryArgs)
 }
 
 function deleteAll () {
@@ -67,7 +44,7 @@ function importMTGJSON (mtgJson) {
     try {
       upsertCard(cardAsRealmObject)
     } catch (e) {
-      console.log('Failed to insert ', card.name, e)
+      console.error('Failed to insert ', card.name, e)
     }
   })
 }

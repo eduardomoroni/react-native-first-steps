@@ -22,7 +22,6 @@ export default class NumericInputForm extends Component {
     const { onChange, name } = this.props.input
     let { value } = this.props.input
     value = value || {number: 0, operator: ''}
-    console.log(value)
     const renderPickerItem = (value, key) => {
       return <Picker.Item label={value} value={value} key={value} />
     }

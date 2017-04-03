@@ -1,4 +1,4 @@
-import { findCardsFromForm, importMTGJSON, deleteAll, changeRealm, newFindCards } from '../../../src/Realm/RealmService'
+import { findCardsFromForm, importMTGJSON, deleteAll, changeRealm } from '../../../src/Realm/RealmService'
 import { schemas } from '../../../src/Config/Realm'
 import AER from '../../../src/Assets/Cards/AER-X.json'
 
@@ -21,27 +21,31 @@ const ornithopterForm = {
   cardArtist: 'Kollros',
   cardFlavorText: 'wonder',
   cardCollectionNumber: '167',
-  cardType: 'Artifact', // Is this a array of values?
+  cardType: 'Artifact',
   cardSubType: 'Thopter',
   cardText: 'Flying',
   cardName: 'Ornithopter',
   cardToughness: { number: 2, operator: '>=' },
   cardPower: { number: 0, operator: '=' },
   cardCMC: { number: 2, operator: '<' },
-  cardFormat: [ 'Legacy', 'Commander' ], // Legalities
+  cardFormat: [ 'Legacy', 'Commander' ], // TODO: TEST THIS
   cardSet: [ 'ATQ', 'MRD' ],
   cardRarity: [ 'Uncommon' ]
 }
 
 describe('Realm Service', () => {
   beforeAll(() => {
-    // changeRealm({ path: 'INTEGRATION_TEST.realm', schemas: schemas })
-    // deleteAll()
+    changeRealm({ schema: schemas, path: 'database/INTEGRATION_TEST.realm' })
+    deleteAll()
     importMTGJSON(AER)
   })
 
+  afterAll(() => {
+    deleteAll()
+  })
+
   it('Should filter realm results based on ALL form fields', () => {
-    expect(newFindCards(ornithopterForm)[0].name).toEqual('Ornithopter')
-    expect(newFindCards(negateForm)[0].name).toEqual('Negate')
+    expect(findCardsFromForm(ornithopterForm)[0].name).toEqual('Ornithopter')
+    expect(findCardsFromForm(negateForm)[0].name).toEqual('Negate')
   })
 })
