@@ -1,10 +1,11 @@
 import Realm from 'realm'
+import _ from 'lodash'
 import { realm as defaultRealm } from '../Config/Realm'
 import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from './Conversion/Placeholder'
-import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery } from './Conversion/CardForm'
+import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery, convertCardFormToRealmQueries } from './Conversion/CardForm'
 
-export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll }
+export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll, newFindCards }
 
 let realm = defaultRealm
 
@@ -15,6 +16,20 @@ function changeRealm (realmConfig) {
 function sortCards (cards, sorting) {
   const { field, reversed } = sorting.sortBy
   return cards.sorted(field, reversed)
+}
+
+// CHANGE THIS NAME
+function newFindCards (form) {
+  const realmQueries = convertCardFormToRealmQueries(form)
+  let results = realm.objects('Card')
+
+  _.each(realmQueries, (query) => {
+    if (query !== undefined) {
+      results = results.filtered(query)
+    }
+  })
+
+  return results
 }
 
 function findCardsFromForm (form) {
@@ -52,7 +67,7 @@ function importMTGJSON (mtgJson) {
     try {
       upsertCard(cardAsRealmObject)
     } catch (e) {
-      console.log('Failed to insert ', card.name)
+      console.log('Failed to insert ', card.name, e)
     }
   })
 }
