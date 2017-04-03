@@ -20,37 +20,48 @@ import {
   Keyboard
 } from 'react-native'
 
-type CardSearchFormProps = {
-  cardTypes: any,
-  cardSubTypes: any,
-  cardType: string,
-  cardSubType: string,
-  searchCards: () => void,
-  handleSubmit: any
-}
-
 const selector = formValueSelector('CardSearchForm')
 
-let CardSearchForm = (props: CardSearchFormProps) => {
-  const {
-    handleSubmit,
-    cardTypes,
-    cardSubTypes,
-    searchCards,
-    cardType,
-    cardSubType,
-    visibleModal,
-    cardSets,
-    showModal
-  } = props
-
-  const submit = values => {
+class CardSearchForm extends React.Component {
+  formSubmit (formValues) {
     Keyboard.dismiss()
-    searchCards(values)
+    console.log(formValues)
+    this.props.searchCards(formValues)
   }
 
-  const renderModal = () => {
+  renderThreeFieldInRow (fieldOne, fieldTwo, fieldThree) {
+    return (
+      <View style={Styles.multipleFieldsPerLine}>
+        <View style={Styles.leftField}>
+          {fieldOne}
+        </View>
+        <View style={Styles.middleField}>
+          {fieldTwo}
+        </View>
+        <View style={Styles.rightField}>
+          {fieldThree}
+        </View>
+      </View>
+    )
+  }
+
+  renderTwoFieldInRow (leftField, rightField) {
+    return (
+      <View style={Styles.multipleFieldsPerLine}>
+        <View style={Styles.leftField}>
+          {leftField}
+        </View>
+        <View style={Styles.rightField}>
+          {rightField}
+        </View>
+      </View>
+    )
+  }
+
+  renderModal () {
     let modalContent = {}
+    let { visibleModal, cardSets } = this.props
+
     if (visibleModal === 'cardRarity') {
       modalContent = <Field name='cardRarity' component={MultipleSelect} items={['commom', 'uncommon', 'rare', 'mythic']} />
     } else if (visibleModal === 'cardSet') {
@@ -61,75 +72,59 @@ let CardSearchForm = (props: CardSearchFormProps) => {
       return <View />
     }
     return (
-      <Modal isVisible>
+      <Modal isVisible onModalHide={() => this.props.showModal('')} >
         {modalContent}
       </Modal>
     )
   }
 
-  return (
-    <View style={Styles.container}>
-      <View style={Styles.formContainer}>
-        <Field name='cardName' component={TextInputForm} />
-        { renderTwoFieldInRow(
-          <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />,
-          <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
-        )}
-        <Field name='cardText' component={TextInputForm} />
-        <Field name='cardColors' component={ManaIconsBar} />
-        { renderThreeFieldInRow(
-          <Field name='cardPower' component={NumericInputForm} />,
-          <Field name='cardToughness' component={NumericInputForm} />,
-          <Field name='cardCMC' component={NumericInputForm} />
-        )}
-        { renderThreeFieldInRow(
-          <ModalToggle label='cardRarity' onPress={showModal} />,
-          <ModalToggle label='cardSet' onPress={showModal} />,
-          <ModalToggle label='cardFormat' onPress={showModal} />,
-        )}
-        {renderModal()}
-        {/* Secundary Options */}
-        <Field name='cardColorsIdentity' component={ManaIconsBar} />
-        <Field name='cardFlavorText' component={TextInputForm} />
-        { renderTwoFieldInRow(
-          <Field name='cardArtist' component={TextInputForm} />,
-          <Field name='cardCollectionNumber' component={TextInputForm} keyboardType={'numeric'} maxLength={3} />
-        )}
-      </View>
-      <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(submit)} >
-        <SubmitButtonForm onPress={handleSubmit(submit)} />
-      </TouchableOpacity>
-    </View>
-  )
-}
+  render () {
+    const {
+      handleSubmit,
+      cardTypes,
+      cardSubTypes,
+      cardType,
+      cardSubType,
+      showModal
+    } = this.props
 
-const renderTwoFieldInRow = (leftField, rightField) => {
-  return (
-    <View style={Styles.multipleFieldsPerLine}>
-      <View style={Styles.leftField}>
-        {leftField}
-      </View>
-      <View style={Styles.rightField}>
-        {rightField}
-      </View>
-    </View>
-  )
-}
+    const numericOperators = ['', '<', '<=', '=', '>=', '=']
 
-const renderThreeFieldInRow = (fieldOne, fieldTwo, fieldThree) => {
-  return (
-    <View style={Styles.multipleFieldsPerLine}>
-      <View style={Styles.leftField}>
-        {fieldOne}
+    return (
+      <View style={Styles.container}>
+        <View style={Styles.formContainer}>
+          <Field name='cardName' component={TextInputForm} />
+          <Field name='cardText' component={TextInputForm} />
+          { this.renderTwoFieldInRow(
+            <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />,
+            <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
+        )}
+          { this.renderThreeFieldInRow(
+            <Field name='cardPower' component={NumericInputForm} dropdownItems={numericOperators} />,
+            <Field name='cardToughness' component={NumericInputForm} dropdownItems={numericOperators} />,
+            <Field name='cardCMC' component={NumericInputForm} dropdownItems={numericOperators} />
+        )}
+          <Field name='cardColors' component={ManaIconsBar} />
+          {/* Secundary Options */}
+          <Field name='cardFlavorText' component={TextInputForm} />
+          { this.renderTwoFieldInRow(
+            <Field name='cardArtist' component={TextInputForm} />,
+            <Field name='cardCollectionNumber' component={TextInputForm} keyboardType={'numeric'} maxLength={3} />
+        )}
+          { this.renderThreeFieldInRow(
+            <ModalToggle label='cardRarity' onPress={showModal} />,
+            <ModalToggle label='cardSet' onPress={showModal} />,
+            <ModalToggle label='cardFormat' onPress={showModal} />,
+        )}
+          <Field name='cardColorsIdentity' component={ManaIconsBar} />
+          {this.renderModal()}
+        </View>
+        <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(this.formSubmit)} >
+          <SubmitButtonForm onPress={handleSubmit(this.formSubmit)} />
+        </TouchableOpacity>
       </View>
-      <View style={Styles.middleField}>
-        {fieldTwo}
-      </View>
-      <View style={Styles.rightField}>
-        {fieldThree}
-      </View>
-    </View>
-  )
+    )
+  }
 }
 
 Field.propTypes = {
@@ -162,5 +157,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-CardSearchForm = reduxForm({form: 'CardSearchForm'})(CardSearchForm)
-export default connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)
+const cardSearchFormDecorated = reduxForm({form: 'CardSearchForm'})(CardSearchForm)
+export default connect(mapStateToProps, mapDispatchToProps)(cardSearchFormDecorated)
