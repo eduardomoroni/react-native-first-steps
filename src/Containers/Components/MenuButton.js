@@ -9,7 +9,7 @@ type DrawerButtonProps = {
   onPress: () => void
 }
 
-const DrawerButton = (props: DrawerButtonProps) => (
+export const DrawerButton = (props: DrawerButtonProps) => (
   <TouchableOpacity onPress={props.onPress}>
     <Text style={styles.text}>{props.text}</Text>
   </TouchableOpacity>
@@ -22,5 +22,3 @@ const styles = StyleSheet.create({
     marginVertical: Metrics.baseMargin
   }
 })
-
-export default DrawerButton

@@ -1,13 +1,11 @@
 /* @flow */
 
 import React, { Component, PropTypes } from 'react'
-import { Text, TouchableOpacity } from 'react-native'
-import I18n from 'react-native-i18n'
+import { TouchableOpacity } from 'react-native'
+import { InputLabel } from './'
 import styles from '../../Styles/FormStyle'
 
-// When the same toggle is pressed twice it's not showing modal
-// this happens because the showModal action is dispatched with current shoModalValue
-export default class ModalToggle extends Component {
+export class ModalToggle extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired
@@ -23,9 +21,7 @@ export default class ModalToggle extends Component {
 
     return (
       <TouchableOpacity style={[styles.container, styles._centered, bg]} onPress={() => onPress(label)} >
-        <Text style={styles.text}>
-          {I18n.t(label)}
-        </Text>
+        <InputLabel label={label} />
       </TouchableOpacity>
     )
   }

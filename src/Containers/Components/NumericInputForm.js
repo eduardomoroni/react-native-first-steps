@@ -4,15 +4,15 @@ import React, { Component, PropTypes } from 'react'
 import {
   TextInput,
   Text,
-  View,
-  Picker
+  View
 } from 'react-native'
+import { InputPicker } from './'
 import I18n from 'react-native-i18n'
 import styles from '../../Styles/FormStyle'
 
 // TODO: This field has issues on changing Operator dropdown
 // Take a look into selectedValue drop on Picker component
-export default class NumericInputForm extends Component {
+export class NumericInputForm extends Component {
   static propTypes = {
     dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired
   }
@@ -22,9 +22,6 @@ export default class NumericInputForm extends Component {
     const { onChange, name } = this.props.input
     let { value } = this.props.input
     value = value || {number: 0, operator: ''}
-    const renderPickerItem = (value, key) => {
-      return <Picker.Item label={value} value={value} key={value} />
-    }
 
     const changeNumber = (newValue) => {
       const newInput = {
@@ -44,15 +41,14 @@ export default class NumericInputForm extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.text} onPress={() => { this.refs.TextInput.focus() }}>
+        <Text style={styles.text} >
           {`${I18n.t(name)} ${value.operator}`}
         </Text>
-        <Picker
-          style={styles.dropdown}
+        <InputPicker
           selectedValue={value.operator}
-          onValueChange={changeOperator}>
-          { dropdownItems.map(renderPickerItem) }
-        </Picker>
+          onValueChange={changeOperator}
+          dropdownItems={dropdownItems}
+        />
         <TextInput
           ref='TextInput'
           style={styles.input}

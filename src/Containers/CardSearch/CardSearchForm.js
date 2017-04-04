@@ -5,14 +5,16 @@ import { realm } from '../../Config/Realm'
 import { inheritanceToArray } from '../../Realm/Conversion/JsonCard'
 import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
-import TextInputForm from '../Components/TextInputForm'
-import ModalToggle from '../Components/ModalToggle'
-import NumericInputForm from '../Components/NumericInputForm'
 import DropdownInputForm from '../Components/DropdownInputForm'
-import SubmitButtonForm from '../Components/SubmitButtonForm'
-import ManaIconsBar from '../Components/ManaIconsBar'
-import MultipleSelect from '../Components/MultiSelect'
-import Modal from '../Components/Modal'
+import {
+  Modal,
+  MultipleSelect,
+  ManaIconsBar,
+  SubmitButtonForm,
+  NumericInputForm,
+  ModalToggle,
+  TextInputForm
+} from '../Components'
 
 import {
   View,

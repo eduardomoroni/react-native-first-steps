@@ -14,7 +14,7 @@ let dataSource = new ListView.DataSource({
 })
 
 // https://github.com/tableflip/react-native-select-multiple
-export default class SelectMultiple extends Component {
+export class SelectMultiple extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(itemType).isRequired,
     selectedItems: PropTypes.arrayOf(itemType)

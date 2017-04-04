@@ -1,24 +1,18 @@
 /* @flow */
 
 import React from 'react'
-import {
-  TextInput,
-  Text,
-  View
-} from 'react-native'
-import I18n from 'react-native-i18n'
+import { TextInput, View } from 'react-native'
 import styles from '../../Styles/FormStyle'
+import { InputLabel } from './'
 
-export default class TextInputForm extends React.Component {
+export class TextInputForm extends React.Component {
   render () {
     const { onChange, name } = this.props.input
     const { keyboardType, maxLength } = this.props
 
     return (
       <View style={styles.container}>
-        <Text style={styles.text} onPress={() => { this.refs.TextInput.focus() }}>
-          {I18n.t(name)}
-        </Text>
+        <InputLabel label={name} onPress={() => { this.refs.TextInput.focus() }} />
         <TextInput
           ref='TextInput'
           style={styles.input}

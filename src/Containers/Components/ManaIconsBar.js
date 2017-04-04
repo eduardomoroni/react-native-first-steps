@@ -2,16 +2,12 @@
 
 import React, { Component } from 'react'
 import Styles from '../../Styles/FormStyle'
-import ManaSymbol, { ValidColors } from './ManaSymbol'
-import I18n from 'react-native-i18n'
+import { ManaSymbol, ValidColors } from './ManaSymbol'
+import { InputLabel } from './'
 import _ from 'lodash'
-import {
-  View,
-  Text,
-  TouchableOpacity
-} from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 
-class ManaIconsBar extends Component {
+export class ManaIconsBar extends Component {
   render () {
     const { onChange, value, name } = this.props.input
     const selectedColors = value // redux-form value prop seems odd, just an alias
@@ -30,13 +26,9 @@ class ManaIconsBar extends Component {
 
     return (
       <View style={Styles.container}>
-        <Text style={Styles.text}>
-          {I18n.t(name)}
-        </Text>
+        <InputLabel label={name} />
         { ValidColors.map(renderManaSymbol) }
       </View>
     )
   }
 }
-
-export default ManaIconsBar

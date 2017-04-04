@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import styles from '../../Styles/FormStyle'
 
-export default class SubmitButtonForm extends Component {
+export class SubmitButtonForm extends Component {
   render () {
     const { onPress } = this.props
 

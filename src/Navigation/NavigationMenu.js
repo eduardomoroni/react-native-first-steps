@@ -5,7 +5,7 @@ import { ScrollView, Image, BackAndroid } from 'react-native'
 import { connect } from 'react-redux'
 import { Images } from '../Styles/Themes'
 import { userLoggout } from '../Redux/Actions'
-import DrawerButton from '../Containers/Components/MenuButton'
+import { DrawerButton } from '../Containers/Components'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
 

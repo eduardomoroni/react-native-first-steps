@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ListView, View } from 'react-native'
 import { connect } from 'react-redux'
 import styles from '../../Styles/ListCardStyles'
-import Card from '../Components/Card'
+import Card from './Card'
 
 type ListCardsProps = {
   cards: any
