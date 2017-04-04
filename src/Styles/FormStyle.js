@@ -18,6 +18,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+  modalToggle: {
+    marginBottom: Metrics.smallMargin,
+    height: Metrics.inputHeight,
+    borderColor: Colors.windowTint,
+    borderRadius: 3,
+    borderWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   input: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -50,9 +60,5 @@ export default StyleSheet.create({
     width: 30,
     height: 30,
     marginHorizontal: Metrics.smallMargin
-  },
-  _centered: {
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 })

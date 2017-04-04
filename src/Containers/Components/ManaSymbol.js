@@ -1,15 +1,15 @@
 /* @flow */
 
-import React, { PureComponent } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import Mana from '../../Assets/Mana'
-import { Image, StyleSheet } from 'react-native'
+import { Image } from 'react-native'
 
 export const ValidColors = ['black', 'blue', 'green', 'red', 'white']
 
 export class ManaSymbol extends PureComponent {
   static propTypes = {
-    style: React.PropTypes.instanceOf(StyleSheet),
-    color: React.PropTypes.oneOf(ValidColors)
+    style: PropTypes.arrayOf(PropTypes.object),
+    color: PropTypes.oneOf(ValidColors).isRequired
   }
 
   render () {

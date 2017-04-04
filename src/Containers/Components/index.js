@@ -1,3 +1,4 @@
+export * from './DropdownInputForm'
 export * from './InputLabel'
 export * from './InputPicker'
 export * from './ManaIconsBar'

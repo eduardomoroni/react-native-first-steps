@@ -38,13 +38,23 @@
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "codeclimate-test-reporter": "^0.4.1",
+    "enzyme": "^2.8.0",
     "flow-bin": "^0.40.0",
     "husky": "^0.13.1",
     "jest": "^19.0.2",
+    "jest-enzyme": "^3.0.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
     "snazzy": "^6.0.0",
     "standard": "^9.0.1"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "unmockedModulePathPatterns": [
+      "react",
+      "enzyme",
+      "jest-enzyme"
+    ],
     "preset": "react-native",
     "testMatch": [
       "**/__tests__/**/*Test.js?(x)"
@@ -66,7 +76,7 @@
       "afterAll"
     ],
     "ignore": [
-      "flow/"
+      "flow-typed/"
     ]
   },
   "rnpm": {

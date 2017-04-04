@@ -4,17 +4,14 @@ import styles from '../../Styles/MultipleSelectStyle'
 import checkbox from '../../Assets/Images/icon-checkbox.png'
 import checkboxChecked from '../../Assets/Images/icon-checkbox-checked.png'
 
-const itemType = PropTypes.oneOfType(
-  PropTypes.string,
-  PropTypes.shape({ label: PropTypes.string, value: PropTypes.any })
-)
+const itemType = PropTypes.string
 
 let dataSource = new ListView.DataSource({
   rowHasChanged: (r1, r2) => r1.selected !== r2.selected
 })
 
 // https://github.com/tableflip/react-native-select-multiple
-export class SelectMultiple extends Component {
+export class MultiSelect extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(itemType).isRequired,
     selectedItems: PropTypes.arrayOf(itemType)

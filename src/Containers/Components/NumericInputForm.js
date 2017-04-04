@@ -17,27 +17,33 @@ export class NumericInputForm extends Component {
     dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired
   }
 
+  changeNumber = (newValue: string) => {
+    const { onChange, value } = this.props.input
+
+    const newInput = {
+      number: parseInt(newValue),
+      operator: value.operator
+    }
+
+    onChange(newInput)
+  }
+
+  changeOperator = (newValue: string, index: string) => {
+    const { onChange, value } = this.props.input
+
+    const newInput = {
+      number: value.number,
+      operator: newValue
+    }
+
+    onChange(newInput)
+  }
+
   render () {
     const { dropdownItems } = this.props
-    const { onChange, name } = this.props.input
+    const { name } = this.props.input
     let { value } = this.props.input
     value = value || {number: 0, operator: ''}
-
-    const changeNumber = (newValue) => {
-      const newInput = {
-        number: parseInt(newValue),
-        operator: value.operator
-      }
-      onChange(newInput)
-    }
-
-    const changeOperator = (newValue, index) => {
-      const newInput = {
-        number: value.number,
-        operator: newValue
-      }
-      onChange(newInput)
-    }
 
     return (
       <View style={styles.container}>
@@ -46,13 +52,13 @@ export class NumericInputForm extends Component {
         </Text>
         <InputPicker
           selectedValue={value.operator}
-          onValueChange={changeOperator}
+          onValueChange={this.changeOperator}
           dropdownItems={dropdownItems}
         />
         <TextInput
           ref='TextInput'
           style={styles.input}
-          onChangeText={changeNumber}
+          onChangeText={this.changeNumber}
           underlineColorAndroid='transparent'
           keyboardType={'numeric'}
           maxLength={2}

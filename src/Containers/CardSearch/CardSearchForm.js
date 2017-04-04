@@ -1,26 +1,23 @@
+/* @flow */
+
 import React from 'react'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { realm } from '../../Config/Realm'
-import { inheritanceToArray } from '../../Realm/Conversion/JsonCard'
+import { View, Keyboard } from 'react-native'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
-import DropdownInputForm from '../Components/DropdownInputForm'
+import { valuesOf } from '../../Realm/RealmService'
+
 import {
+  DropdownInputForm,
   Modal,
-  MultipleSelect,
+  MultiSelect,
   ManaIconsBar,
   SubmitButtonForm,
   NumericInputForm,
   ModalToggle,
   TextInputForm
 } from '../Components'
-
-import {
-  View,
-  TouchableOpacity,
-  Keyboard
-} from 'react-native'
 
 class CardSearchForm extends React.Component {
   renderThreeFieldInRow (fieldOne, fieldTwo, fieldThree) {
@@ -57,11 +54,11 @@ class CardSearchForm extends React.Component {
     let { visibleModal, cardSets, cardFormats } = this.props
 
     if (visibleModal === 'cardRarity') {
-      modalContent = <Field name='cardRarity' component={MultipleSelect} items={['Common', 'Uncommon', 'Rare', 'Mythic Rare']} />
+      modalContent = <Field name='cardRarity' component={MultiSelect} items={['Common', 'Uncommon', 'Rare', 'Mythic Rare']} />
     } else if (visibleModal === 'cardSet') {
-      modalContent = <Field name='cardSet' component={MultipleSelect} items={cardSets} />
+      modalContent = <Field name='cardSet' component={MultiSelect} items={cardSets} />
     } else if (visibleModal === 'cardFormat') {
-      modalContent = <Field name='cardFormat' component={MultipleSelect} items={cardFormats} />
+      modalContent = <Field name='cardFormat' component={MultiSelect} items={cardFormats} />
     } else {
       return <View />
     }
@@ -88,6 +85,7 @@ class CardSearchForm extends React.Component {
 
     const formSubmit = (formValues) => {
       Keyboard.dismiss()
+      console.log('Form sent: ', formValues)
       searchCards(formValues)
     }
 
@@ -122,9 +120,9 @@ class CardSearchForm extends React.Component {
           <Field name='cardColorsIdentity' component={ManaIconsBar} />
           {this.renderModal()}
         </View>
-        <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(formSubmit)} >
+        <View style={Styles.containerFooter}>
           <SubmitButtonForm onPress={handleSubmit(formSubmit)} />
-        </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -138,10 +136,10 @@ Field.propTypes = {
 const mapStateToProps = (state) => {
   const selector = formValueSelector('CardSearchForm')
 
-  const cardTypes = inheritanceToArray(realm.objects('Type').snapshot())
-  const cardSubtypes = inheritanceToArray(realm.objects('SubType').snapshot())
-  const printings = inheritanceToArray(realm.objects('Printing').snapshot())
-  const formats = inheritanceToArray(realm.objects('Legality').snapshot())
+  const cardTypes = valuesOf('Type')
+  const cardSubtypes = valuesOf('SubType')
+  const printings = valuesOf('Printing')
+  const formats = valuesOf('Legality')
 
   cardTypes.unshift('')
   cardSubtypes.unshift('')

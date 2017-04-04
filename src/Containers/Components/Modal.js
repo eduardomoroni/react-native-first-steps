@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import { Dimensions, Modal, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { Dimensions, Modal as ReactNativeModal, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { View } from 'react-native-animatable'
 
 // https://github.com/react-native-community/react-native-modal
-export class ReactNativeModal extends Component {
+export class Modal extends Component {
   static propTypes = {
     animationIn: PropTypes.string,
     animationInTiming: PropTypes.number,
@@ -120,7 +120,7 @@ export class ReactNativeModal extends Component {
     const viewStyle = [styles.backdrop, { backgroundColor: backdropColor, width: deviceWidth, height: deviceHeight }]
     const modalContentStyle = [{ margin: deviceWidth * 0.08 }, styles.content]
     return (
-      <Modal
+      <ReactNativeModal
         transparent
         animationType={'none'}
         visible={this.state.isVisible}
@@ -136,7 +136,7 @@ export class ReactNativeModal extends Component {
           {children}
           {this._renderCloseButton('Fechar')}
         </View>
-      </Modal>
+      </ReactNativeModal>
     )
   }
 }
@@ -165,5 +165,3 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.1)'
   }
 })
-
-export default ReactNativeModal

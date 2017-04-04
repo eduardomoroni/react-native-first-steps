@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NumericInputForm /> Should render NumericInputForm Component 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "borderColor": "rgba(0, 0, 0, 0.4)",
+      "borderRadius": 3,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "height": 40,
+      "justifyContent": "space-between",
+      "marginBottom": 5,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "black",
+        "flex": -1,
+        "fontFamily": "MTGX",
+        "fontSize": 14,
+        "justifyContent": "flex-start",
+        "marginLeft": 5,
+      }
+    }
+  >
+    I18n.t(label) &gt;
+  </Text>
+  <InputPicker
+    dropdownItems={
+      Array [
+        "a",
+        "b",
+        "c",
+      ]
+    }
+    onValueChange={[Function]}
+    selectedValue=">"
+  />
+  <TextInput
+    keyboardType="numeric"
+    maxLength={2}
+    onChangeText={[Function]}
+    returnKeyType="next"
+    style={
+      Object {
+        "color": "grey",
+        "flex": 1,
+        "fontFamily": "MTGX",
+        "fontSize": 14,
+        "justifyContent": "flex-end",
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

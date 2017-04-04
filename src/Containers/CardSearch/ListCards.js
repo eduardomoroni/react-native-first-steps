@@ -1,3 +1,5 @@
+/* @flow */
+
 import React, { Component } from 'react'
 import { ListView, View } from 'react-native'
 import { connect } from 'react-redux'

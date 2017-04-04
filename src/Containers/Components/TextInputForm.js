@@ -1,11 +1,25 @@
 /* @flow */
 
-import React from 'react'
+import React, { PureComponent, PropTypes} from 'react'
 import { TextInput, View } from 'react-native'
 import styles from '../../Styles/FormStyle'
 import { InputLabel } from './'
 
-export class TextInputForm extends React.Component {
+export class TextInputForm extends PureComponent {
+  static propTypes = {
+    keyboardType: TextInput.propTypes.keyboardType,
+    maxLength: TextInput.propTypes.maxLength,
+    input: React.PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      onChange: PropTypes.func.isRequired
+    })
+  }
+
+  static defaultProps = {
+    keyboardType: 'default',
+    maxLength: 100
+  }
+
   render () {
     const { onChange, name } = this.props.input
     const { keyboardType, maxLength } = this.props

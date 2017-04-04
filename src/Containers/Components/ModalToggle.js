@@ -1,27 +1,28 @@
 /* @flow */
 
-import React, { Component, PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { InputLabel } from './'
 import styles from '../../Styles/FormStyle'
 
-export class ModalToggle extends Component {
+export class ModalToggle extends PureComponent {
   static propTypes = {
     label: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired
   }
 
+  haveSomeValueSelected () {
+    const { selected } = this.props
+    return selected !== undefined && selected.length > 0
+  }
+
   render () {
-    const { label, onPress, selected } = this.props
-    console.log(selected)
-    let bg = {backgroundColor: 'transparent'}
-    if (selected !== undefined && selected.length > 0) {
-      bg = {backgroundColor: 'cornsilk'}
-    }
+    const { label, onPress } = this.props
+    let background = this.haveSomeValueSelected() ? {backgroundColor: 'cornsilk'} : {}
 
     return (
-      <TouchableOpacity style={[styles.container, styles._centered, bg]} onPress={() => onPress(label)} >
-        <InputLabel label={label} />
+      <TouchableOpacity style={[styles.modalToggle, background]} onPress={() => onPress(label)} >
+        <InputLabel label={label} onPress={() => onPress(label)} />
       </TouchableOpacity>
     )
   }
