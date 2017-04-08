@@ -8,17 +8,10 @@ import _ from 'lodash'
 import { View, TouchableOpacity } from 'react-native'
 
 export class ManaIconsBar extends PureComponent {
-  static propTypes = {
-    input: PropTypes.shape({
-      onChange: PropTypes.func.isRequired,
-      value: PropTypes.arrayOf(PropTypes.string).isRequired,
-      name: PropTypes.string.isRequired
-    })
-  }
-
   renderManaSymbol = (color: string) => {
     const { onChange, value } = this.props.input
     const selectedColors = value
+    console.log('MANAICONVALUE', value)
     const isSelected = selectedColors.includes(color)
     const toggleColor = (color) => { onChange(_.xor(selectedColors, [color])) }
 
@@ -37,4 +30,12 @@ export class ManaIconsBar extends PureComponent {
       </View>
     )
   }
+}
+
+ManaIconsBar.propTypes = {
+  input: PropTypes.shape({
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired
+  })
 }

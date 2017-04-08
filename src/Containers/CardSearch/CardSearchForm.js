@@ -7,7 +7,6 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
 import { valuesOf } from '../../Realm/RealmService'
-
 import {
   DropdownInputForm,
   Modal,
@@ -19,7 +18,7 @@ import {
   TextInputForm
 } from '../Components'
 
-class CardSearchForm extends Component {
+export class CardSearchForm extends Component {
   renderThreeFieldInRow (fieldOne, fieldTwo, fieldThree) {
     return (
       <View style={Styles.multipleFieldsPerLine}>

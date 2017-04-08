@@ -5,16 +5,7 @@ import { View } from 'react-native'
 import { InputLabel, InputPicker } from './'
 import styles from '../../Styles/FormStyle'
 
-export default class DropdownInputForm extends Component {
-  static propTypes = {
-    dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired,
-    selectedValue: PropTypes.string,
-    input: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      onChange: PropTypes.func.isRequired
-    })
-  }
-
+export class DropdownInputForm extends Component {
   render () {
     const { input, dropdownItems, selectedValue } = this.props
     const { onChange, name } = input
@@ -31,3 +22,14 @@ export default class DropdownInputForm extends Component {
     )
   }
 }
+
+DropdownInputForm.propTypes = {
+  dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedValue: PropTypes.string,
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+  })
+}
+
+export default DropdownInputForm

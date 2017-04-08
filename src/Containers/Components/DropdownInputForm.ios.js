@@ -6,7 +6,7 @@ import { InputLabel } from './'
 import styles from '../../Styles/FormStyle'
 
 // WIP
-export default class DropdownInputForm extends Component {
+export class DropdownInputForm extends Component {
   render () {
     const { onChange, name } = this.props.input
 
@@ -23,3 +23,5 @@ export default class DropdownInputForm extends Component {
     )
   }
 }
+
+export default DropdownInputForm
