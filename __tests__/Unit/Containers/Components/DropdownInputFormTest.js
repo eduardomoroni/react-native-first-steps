@@ -2,8 +2,7 @@
 
 import 'react-native'
 import React from 'react'
-import ReactTestUtils from 'react-addons-test-utils'
-import renderer from 'react-test-renderer'
+import { shallow } from 'enzyme'
 // $FlowFixMe
 import AndroidDropDown from '../../../../src/Containers/Components/DropdownInputForm.android'
 import iOSDropDown from '../../../../src/Containers/Components/DropdownInputForm.ios'
@@ -18,13 +17,12 @@ const props = {
 }
 
 it('Should render DropdownInputForm android Component', () => {
-  const renderer = ReactTestUtils.createRenderer()
-  const tree = renderer.render(<AndroidDropDown {...props} />)
-  const children = tree.props.children
-  expect(tree).toMatchSnapshot()
+  const wrapper = shallow(<AndroidDropDown {...props} />)
+  const children = wrapper.props().children
   expect(children[0].props.label).toEqual(props.input.name)
   expect(children[1].props.selectedValue).toEqual(props.selectedValue)
   expect(children[1].props.dropdownItems).toEqual(props.dropdownItems)
+  expect(wrapper.getNode()).toMatchSnapshot()
 })
 
 it('Should render DropdownInputForm ios Component', () => {
@@ -33,9 +31,7 @@ it('Should render DropdownInputForm ios Component', () => {
     onChange: () => null
   }
 
-  const tree = renderer.create(
-    <iOSDropDown {...props} />
-  ).toJSON()
-  expect(tree).toMatchSnapshot()
-  expect(tree.props.onChange).toEqual(props.onChange)
+  const wrapper = shallow(<iOSDropDown {...props} />)
+  expect(wrapper).toMatchSnapshot()
+  expect(wrapper.props().onChange).toEqual(props.onChange)
 })

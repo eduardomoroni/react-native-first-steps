@@ -2,7 +2,6 @@
 
 import { TextInput } from 'react-native'
 import React from 'react'
-// import ReactTestUtils from 'react-addons-test-utils'
 import { NumericInputForm, InputPicker } from '../../../../src/Containers/Components'
 import { shallow } from 'enzyme'
 

@@ -1,6 +1,6 @@
 /* @flow */
 
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Keyboard } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
@@ -19,7 +19,7 @@ import {
   TextInputForm
 } from '../Components'
 
-class CardSearchForm extends React.Component {
+class CardSearchForm extends Component {
   renderThreeFieldInRow (fieldOne, fieldTwo, fieldThree) {
     return (
       <View style={Styles.multipleFieldsPerLine}>

@@ -2,11 +2,10 @@
 
 import 'react-native'
 import React from 'react'
-import ReactTestUtils from 'react-addons-test-utils'
+import { shallow } from 'enzyme'
 import { TextInputForm } from '../../../../src/Containers/Components'
 
 it('Should render TextInputForm Component', () => {
-  const renderer = ReactTestUtils.createRenderer()
   const props = {
     keyboardType: 'default',
     maxLength: 5,
@@ -16,6 +15,6 @@ it('Should render TextInputForm Component', () => {
     }
   }
 
-  const tree = renderer.render(<TextInputForm {...props} />)
+  const tree = shallow(<TextInputForm {...props} />)
   expect(tree).toMatchSnapshot()
 })

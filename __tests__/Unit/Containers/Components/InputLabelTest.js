@@ -2,12 +2,10 @@
 
 import 'react-native'
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { shallow } from 'enzyme'
 import { InputLabel } from '../../../../src/Containers/Components'
 
 it('Should render InputLabel Component', () => {
-  const tree = renderer.create(
-    <InputLabel label='label' />
-  ).toJSON()
+  const tree = shallow(<InputLabel label='label' />)
   expect(tree).toMatchSnapshot()
 })

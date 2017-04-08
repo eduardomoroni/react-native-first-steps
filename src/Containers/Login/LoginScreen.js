@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import React, { Component } from 'react'
 import {
   View,
   ScrollView,
@@ -23,7 +23,7 @@ type LoginScreenProps = {
   attemptLogin: () => void
 }
 
-class LoginScreen extends React.Component {
+class LoginScreen extends Component {
   props: LoginScreenProps
 
   state: {

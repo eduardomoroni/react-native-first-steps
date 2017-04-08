@@ -2,7 +2,7 @@
 
 import 'react-native'
 import React from 'react'
-import ReactTestUtils from 'react-addons-test-utils'
+import { shallow } from 'enzyme'
 import { ManaIconsBar } from '../../../../src/Containers/Components'
 
 const props = {
@@ -15,7 +15,6 @@ const props = {
 
 // TODO: This test is raising a warn
 it('Should render TextInputForm Component', () => {
-  const renderer = ReactTestUtils.createRenderer()
-  const tree = renderer.render(<ManaIconsBar {...props} />)
-  expect(tree).toMatchSnapshot()
+  const tree = shallow(<ManaIconsBar {...props} />)
+  expect(tree.getNode()).toMatchSnapshot()
 })

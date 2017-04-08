@@ -2,7 +2,7 @@
 
 import 'react-native'
 import React from 'react'
-import ReactTestUtils from 'react-addons-test-utils'
+import { shallow } from 'enzyme'
 import { ManaSymbol, ValidColors } from '../../../../src/Containers/Components/ManaSymbol'
 
 const props = {
@@ -11,7 +11,6 @@ const props = {
 }
 
 it('Should render TextInputForm Component', () => {
-  const renderer = ReactTestUtils.createRenderer()
-  const tree = renderer.render(<ManaSymbol {...props} />)
+  const tree = shallow(<ManaSymbol {...props} />)
   expect(tree).toMatchSnapshot()
 })

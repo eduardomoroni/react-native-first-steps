@@ -2,7 +2,7 @@
 
 import 'react-native'
 import React from 'react'
-import ReactTestUtils from 'react-addons-test-utils'
+import { shallow } from 'enzyme'
 import { SubmitButtonForm } from '../../../../src/Containers/Components'
 
 const props = {
@@ -10,8 +10,7 @@ const props = {
 }
 
 it('Should render SubmitButtonForm Component', () => {
-  const renderer = ReactTestUtils.createRenderer()
-  const tree = renderer.render(<SubmitButtonForm {...props} />)
-  expect(tree).toMatchSnapshot()
-  expect(tree.props.onPress).toEqual(props.onPress)
+  const wrapper = shallow(<SubmitButtonForm {...props} />)
+  expect(wrapper.getNode()).toMatchSnapshot()
+  expect(wrapper.props().onPress).toEqual(props.onPress)
 })
