@@ -1959,9 +1959,9 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
-firebase@^3.6.10:
-  version "3.6.10"
-  resolved firebase-3.6.10.tgz#1efc0b31ab510eacab353eb11a84869196372ae5
+firebase@^3.7.5:
+  version "3.7.5"
+  resolved firebase-3.7.5.tgz#54190ddf6956662a43123ef060734acbd9663985
   dependencies:
     dom-storage "2.0.2"
     faye-websocket "0.9.3"
