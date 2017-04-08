@@ -1,4 +1,5 @@
 **/*{.,-}min.js
-!src/
-!__tests__
-*
+android/
+flow-typed/
+node_modules/
+ios/
