@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { ScrollView, Image, BackAndroid } from 'react-native'
 import { connect } from 'react-redux'
 import { Images } from '../Styles/Themes'
@@ -67,12 +67,12 @@ class NavigationMenu extends Component {
 }
 
 NavigationMenu.contextTypes = {
-  drawer: React.PropTypes.object
+  drawer: PropTypes.object
 }
 
 NavigationMenu.propTypes = {
-  user: React.PropTypes.object,
-  onLogout: React.PropTypes.func
+  user: PropTypes.object,
+  onLogout: PropTypes.func
 }
 
 const mapStateToProps = (state) => {

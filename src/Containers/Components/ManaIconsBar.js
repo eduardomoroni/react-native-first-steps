@@ -11,7 +11,6 @@ export class ManaIconsBar extends PureComponent {
   renderManaSymbol = (color: string) => {
     const { onChange, value } = this.props.input
     const selectedColors = value
-    console.log('MANAICONVALUE', value)
     const isSelected = selectedColors.includes(color)
     const toggleColor = (color) => { onChange(_.xor(selectedColors, [color])) }
 

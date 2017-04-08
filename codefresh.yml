@@ -24,4 +24,5 @@ steps:
     commands:
       - npm run lint-check
       - npm run flow-check
-      - npm run update-coverage
+      # - npm run update-coverage
+      - npm run test-ci

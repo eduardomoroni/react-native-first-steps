@@ -13,10 +13,6 @@ import styles from '../../Styles/FormStyle'
 // TODO: This field has issues on changing Operator dropdown
 // Take a look into selectedValue drop on Picker component
 export class NumericInputForm extends Component {
-  static propTypes = {
-    dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired
-  }
-
   changeNumber = (newValue: string) => {
     const { onChange, value } = this.props.input
 
@@ -67,4 +63,8 @@ export class NumericInputForm extends Component {
       </View>
     )
   }
+}
+
+NumericInputForm.propTypes = {
+  dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired
 }

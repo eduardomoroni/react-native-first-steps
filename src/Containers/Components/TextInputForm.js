@@ -6,20 +6,6 @@ import styles from '../../Styles/FormStyle'
 import { InputLabel } from './'
 
 export class TextInputForm extends PureComponent {
-  static propTypes = {
-    keyboardType: TextInput.propTypes.keyboardType,
-    maxLength: TextInput.propTypes.maxLength,
-    input: React.PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      onChange: PropTypes.func.isRequired
-    })
-  }
-
-  static defaultProps = {
-    keyboardType: 'default',
-    maxLength: 100
-  }
-
   render () {
     const { onChange, name } = this.props.input
     const { keyboardType, maxLength } = this.props
@@ -42,3 +28,17 @@ export class TextInputForm extends PureComponent {
     )
   }
 }
+
+TextInputForm.propTypes = {
+  keyboardType: TextInput.propTypes.keyboardType,
+  maxLength: TextInput.propTypes.maxLength,
+  input: React.PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+  })
+}
+
+// TextInputForm.defaultProps = {
+//   keyboardType: 'default',
+//   maxLength: 100
+// }

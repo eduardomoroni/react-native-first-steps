@@ -4,15 +4,6 @@ import I18n from 'react-native-i18n'
 import { Text } from 'react-native'
 
 export class InputLabel extends PureComponent {
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    onPress: PropTypes.func
-  }
-
-  static defaultProps = {
-    onPress: () => null
-  }
-
   render () {
     const { label, onPress } = this.props
     return (
@@ -21,4 +12,13 @@ export class InputLabel extends PureComponent {
       </Text>
     )
   }
+}
+
+InputLabel.propTypes = {
+  label: PropTypes.string.isRequired,
+  onPress: PropTypes.func
+}
+
+InputLabel.defaultProps = {
+  onPress: () => null
 }

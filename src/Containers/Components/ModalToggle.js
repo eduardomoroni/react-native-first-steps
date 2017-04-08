@@ -6,11 +6,6 @@ import { InputLabel } from './'
 import styles from '../../Styles/FormStyle'
 
 export class ModalToggle extends PureComponent {
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired
-  }
-
   haveSomeValueSelected () {
     const { selected } = this.props
     return selected !== undefined && selected.length > 0
@@ -26,4 +21,9 @@ export class ModalToggle extends PureComponent {
       </TouchableOpacity>
     )
   }
+}
+
+ModalToggle.propTypes = {
+  label: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired
 }

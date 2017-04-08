@@ -12,11 +12,6 @@ let dataSource = new ListView.DataSource({
 
 // https://github.com/tableflip/react-native-select-multiple
 export class MultiSelect extends Component {
-  static propTypes = {
-    items: PropTypes.arrayOf(itemType).isRequired,
-    selectedItems: PropTypes.arrayOf(itemType)
-  }
-
   constructor (props) {
     super(props)
     const rows = this.getRowData(props)
@@ -88,4 +83,9 @@ export class MultiSelect extends Component {
       </TouchableWithoutFeedback>
     )
   }
+}
+
+MultiSelect.propTypes = {
+  items: PropTypes.arrayOf(itemType).isRequired,
+  selectedItems: PropTypes.arrayOf(itemType)
 }
