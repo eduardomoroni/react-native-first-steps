@@ -8,7 +8,8 @@ import {
   ColorIdentitySchema,
   ForeignNameSchema,
   PrintingSchema,
-  RulingSchema
+  RulingSchema,
+  LegalitySchema
 } from './Schemas'
 
 export const schemas = [
@@ -20,8 +21,9 @@ export const schemas = [
   ColorIdentitySchema,
   ForeignNameSchema,
   PrintingSchema,
-  RulingSchema
+  RulingSchema,
+  LegalitySchema
 ]
 
-const defaultConfig = { schema: schemas, path: 'MTG-BD.realm' }
+const defaultConfig = { schema: schemas, path: 'MTG-BD-TRES.realm' }
 export const realm = new Realm(defaultConfig)

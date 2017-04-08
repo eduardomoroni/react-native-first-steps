@@ -1,42 +1,41 @@
 /* @flow */
 
-import React, { Component } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import Styles from '../../Styles/FormStyle'
-import ManaSymbol, { ValidColors } from './ManaSymbol'
-import I18n from 'react-native-i18n'
+import { ManaSymbol, ValidColors } from './ManaSymbol'
+import { InputLabel } from './'
 import _ from 'lodash'
-import {
-  View,
-  Text,
-  TouchableOpacity
-} from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 
-class ManaIconsBar extends Component {
-  render () {
+export class ManaIconsBar extends PureComponent {
+  renderManaSymbol = (color: string) => {
     const { onChange, value } = this.props.input
-    const selectedColors = value // redux-form value prop seems odd, just an alias
-
+    const selectedColors = value
+    console.log('MANAICONVALUE', value)
+    const isSelected = selectedColors.includes(color)
     const toggleColor = (color) => { onChange(_.xor(selectedColors, [color])) }
 
-    const renderManaSymbol = (color) => {
-      const isSelected = selectedColors.includes(color)
+    return (
+      <TouchableOpacity key={color} onPressOut={() => toggleColor(color)} >
+        <ManaSymbol color={color} style={[Styles.manaIcon, {opacity: isSelected ? 1 : 0.25}]} />
+      </TouchableOpacity>
+    )
+  }
 
-      return (
-        <TouchableOpacity key={color} onPressOut={() => toggleColor(color)} >
-          <ManaSymbol color={color} style={[Styles.manaIcon, {opacity: isSelected ? 1 : 0.25}]} />
-        </TouchableOpacity>
-      )
-    }
-
+  render () {
     return (
       <View style={Styles.container}>
-        <Text style={Styles.text}>
-          {I18n.t('color')}
-        </Text>
-        { ValidColors.map(renderManaSymbol) }
+        <InputLabel label={this.props.input.name} />
+        { ValidColors.map(this.renderManaSymbol) }
       </View>
     )
   }
 }
 
-export default ManaIconsBar
+ManaIconsBar.propTypes = {
+  input: PropTypes.shape({
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired
+  })
+}

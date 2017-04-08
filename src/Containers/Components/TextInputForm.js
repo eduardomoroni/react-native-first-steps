@@ -1,23 +1,32 @@
 /* @flow */
 
-import React from 'react'
-import {
-  TextInput,
-  Text,
-  View
-} from 'react-native'
-import I18n from 'react-native-i18n'
+import React, { PureComponent, PropTypes} from 'react'
+import { TextInput, View } from 'react-native'
 import styles from '../../Styles/FormStyle'
+import { InputLabel } from './'
 
-export default class TextInputForm extends React.Component {
+export class TextInputForm extends PureComponent {
+  static propTypes = {
+    keyboardType: TextInput.propTypes.keyboardType,
+    maxLength: TextInput.propTypes.maxLength,
+    input: React.PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      onChange: PropTypes.func.isRequired
+    })
+  }
+
+  static defaultProps = {
+    keyboardType: 'default',
+    maxLength: 100
+  }
+
   render () {
     const { onChange, name } = this.props.input
+    const { keyboardType, maxLength } = this.props
 
     return (
       <View style={styles.container}>
-        <Text style={styles.text} onPress={() => { this.refs.TextInput.focus() }}>
-          {I18n.t(name)}
-        </Text>
+        <InputLabel label={name} onPress={() => { this.refs.TextInput.focus() }} />
         <TextInput
           ref='TextInput'
           style={styles.input}
@@ -25,6 +34,9 @@ export default class TextInputForm extends React.Component {
           autoCorrect={false}
           autoCapitalize='characters'
           underlineColorAndroid='transparent'
+          returnKeyType='next'
+          keyboardType={keyboardType}
+          maxLength={maxLength}
         />
       </View>
     )

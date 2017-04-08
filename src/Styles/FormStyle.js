@@ -18,6 +18,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+  modalToggle: {
+    marginBottom: Metrics.smallMargin,
+    height: Metrics.inputHeight,
+    borderColor: Colors.windowTint,
+    borderRadius: 3,
+    borderWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   input: {
     flex: 1,
     justifyContent: 'flex-end',

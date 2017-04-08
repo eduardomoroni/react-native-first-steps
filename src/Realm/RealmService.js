@@ -1,10 +1,12 @@
 import Realm from 'realm'
+import _ from 'lodash'
 import { realm as defaultRealm } from '../Config/Realm'
 import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from './Conversion/Placeholder'
-import { simpleParamQuery, simpleParamQueryArgs, composedParamQueryArgs, composedParamQuery } from './Conversion/CardForm'
+import { convertCardFormToRealmQueries } from './Conversion/CardForm'
+import { inheritanceToArray } from './Conversion/JsonCard'
 
-export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll }
+export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll, valuesOf }
 
 let realm = defaultRealm
 
@@ -18,25 +20,20 @@ function sortCards (cards, sorting) {
 }
 
 function findCardsFromForm (form) {
-  const query = simpleParamQuery(form)
-  const queryArgs = simpleParamQueryArgs(form)
-  const simpleParamsResults = findCards(query, queryArgs)
+  const realmQueries = convertCardFormToRealmQueries(form)
+  let results = realm.objects('Card')
 
-  const composedQuery = composedParamQuery(form)
-  const composedQueryArgs = composedParamQueryArgs(form)
-  if (composedQuery) {
-    return filterResults(simpleParamsResults, composedQuery, composedQueryArgs)
-  } else {
-    return simpleParamsResults
-  }
+  _.each(realmQueries, (query) => {
+    if (query !== undefined && query.length > 0) {
+      results = results.filtered(query)
+    }
+  })
+
+  return results
 }
 
-function filterResults (results, query, queryArgs) {
-  return results.filtered(query, ...queryArgs)
-}
-
-function findCards (query, queryArgs) {
-  return realm.objects('Card').filtered(query, ...queryArgs)
+function valuesOf (realmClass: string) {
+  return inheritanceToArray(realm.objects(realmClass).snapshot())
 }
 
 function deleteAll () {
@@ -52,7 +49,7 @@ function importMTGJSON (mtgJson) {
     try {
       upsertCard(cardAsRealmObject)
     } catch (e) {
-      console.log('Failed to insert ', card.name)
+      console.error(`Failed to insert ${card.name}:`, e)
     }
   })
 }

@@ -17,8 +17,8 @@ export const CardSchema = {
     'text': {type: 'string', optional: true},
     'originalText': {type: 'string', optional: true},
     'originalType': {type: 'string', optional: true},
-    'power': {type: 'string', optional: true},
-    'toughness': {type: 'string', optional: true},
+    'power': {type: 'int', optional: true},
+    'toughness': {type: 'int', optional: true},
     'flavor': {type: 'string', optional: true},
     'types': {type: 'list', objectType: 'Type'},
     'subtypes': {type: 'list', objectType: 'SubType'},
@@ -27,6 +27,7 @@ export const CardSchema = {
     'printings': {type: 'list', objectType: 'Printing'},
     'foreignNames': {type: 'list', objectType: 'ForeignName'},
     'rulings': {type: 'list', objectType: 'Ruling'},
-    'superTypes': {type: 'list', objectType: 'SuperType'}
+    'superTypes': {type: 'list', objectType: 'SuperType'},
+    'legalities': {type: 'list', objectType: 'Legality'}
   }
 }

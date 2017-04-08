@@ -1,76 +1,130 @@
-import React from 'react'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
+/* @flow */
+
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { realm } from '../../Config/Realm'
-import { inheritanceToArray } from '../../Realm/Conversion/JsonCard'
-import { searchForCards } from '../../Redux/Actions'
+import { View, Keyboard } from 'react-native'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
+import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
-import TextInputForm from '../Components/TextInputForm'
-import DropdownInputForm from '../Components/DropdownInputForm'
-import SubmitButtonForm from '../Components/SubmitButtonForm'
-import ManaIconsBar from '../Components/ManaIconsBar'
+import { valuesOf } from '../../Realm/RealmService'
 import {
-  View,
-  TouchableOpacity,
-  Keyboard
-} from 'react-native'
+  DropdownInputForm,
+  Modal,
+  MultiSelect,
+  ManaIconsBar,
+  SubmitButtonForm,
+  NumericInputForm,
+  ModalToggle,
+  TextInputForm
+} from '../Components'
 
-type CardSearchFormProps = {
-  cardTypes: any,
-  cardSubTypes: any,
-  cardType: string,
-  cardSubType: string,
-  searchCards: () => void,
-  handleSubmit: any
-}
-
-const selector = formValueSelector('CardSearchForm')
-
-let CardSearchForm = (props: CardSearchFormProps) => {
-  const {
-    handleSubmit,
-    cardTypes,
-    cardSubTypes,
-    searchCards,
-    cardType,
-    cardSubType
-  } = props
-
-  const submit = values => {
-    Keyboard.dismiss()
-    console.log('FORM', values)
-    searchCards(values)
+export class CardSearchForm extends Component {
+  renderThreeFieldInRow (fieldOne, fieldTwo, fieldThree) {
+    return (
+      <View style={Styles.multipleFieldsPerLine}>
+        <View style={Styles.leftField}>
+          {fieldOne}
+        </View>
+        <View style={Styles.middleField}>
+          {fieldTwo}
+        </View>
+        <View style={Styles.rightField}>
+          {fieldThree}
+        </View>
+      </View>
+    )
   }
 
-  return (
-    <View style={Styles.container}>
-      <View style={Styles.formContainer}>
-        <Field name='cardName' component={TextInputForm} />
-        { renderTwoFieldInRow(
-          <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />,
-          <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
-        )}
-        <Field name='cardText' component={TextInputForm} />
-        <Field name='cardColors' component={ManaIconsBar} />
+  renderTwoFieldInRow (leftField, rightField) {
+    return (
+      <View style={Styles.multipleFieldsPerLine}>
+        <View style={Styles.leftField}>
+          {leftField}
+        </View>
+        <View style={Styles.rightField}>
+          {rightField}
+        </View>
       </View>
-      <TouchableOpacity style={Styles.containerFooter} onPress={handleSubmit(submit)} >
-        <SubmitButtonForm onPress={handleSubmit(submit)} />
-      </TouchableOpacity>
-    </View>
-  )
-}
+    )
+  }
 
-const renderTwoFieldInRow = (leftField, rightField) => {
-  return (
-    <View style={Styles.twoFieldsPerLine}>
-      <View style={Styles.leftField}>
-        {leftField}
+  renderModal () {
+    let modalContent = {}
+    let { visibleModal, cardSets, cardFormats } = this.props
+
+    if (visibleModal === 'cardRarity') {
+      modalContent = <Field name='cardRarity' component={MultiSelect} items={['Common', 'Uncommon', 'Rare', 'Mythic Rare']} />
+    } else if (visibleModal === 'cardSet') {
+      modalContent = <Field name='cardSet' component={MultiSelect} items={cardSets} />
+    } else if (visibleModal === 'cardFormat') {
+      modalContent = <Field name='cardFormat' component={MultiSelect} items={cardFormats} />
+    } else {
+      return <View />
+    }
+    return (
+      <Modal isVisible onModalHide={() => this.props.showModal('')} >
+        {modalContent}
+      </Modal>
+    )
+  }
+
+  render () {
+    const {
+      handleSubmit,
+      cardTypes,
+      cardSubTypes,
+      cardType,
+      cardSubType,
+      showModal,
+      searchCards,
+      cardRarity,
+      cardSet,
+      cardFormat
+    } = this.props
+
+    const formSubmit = (formValues) => {
+      Keyboard.dismiss()
+      console.log('Form sent: ', formValues)
+      searchCards(formValues)
+    }
+
+    const numericOperators = ['', '<', '<=', '=', '>=', '=']
+
+    return (
+      <View style={Styles.container}>
+        <View style={Styles.formContainer}>
+          <Field name='cardName' component={TextInputForm} />
+          <Field name='cardText' component={TextInputForm} />
+          { this.renderTwoFieldInRow(
+            <Field name='cardType' component={DropdownInputForm} dropdownItems={cardTypes} selectedValue={cardType} />,
+            <Field name='cardSubType' component={DropdownInputForm} dropdownItems={cardSubTypes} selectedValue={cardSubType} />
+        )}
+          { this.renderThreeFieldInRow(
+            <Field name='cardPower' component={NumericInputForm} dropdownItems={numericOperators} />,
+            <Field name='cardToughness' component={NumericInputForm} dropdownItems={numericOperators} />,
+            <Field name='cardCMC' component={NumericInputForm} dropdownItems={numericOperators} />
+        )}
+          <Field name='cardColors' component={ManaIconsBar} />
+          {/* Secundary Options */}
+          <Field name='cardFlavorText' component={TextInputForm} />
+          { this.renderTwoFieldInRow(
+            <Field name='cardArtist' component={TextInputForm} />,
+            <Field name='cardCollectionNumber' component={TextInputForm} keyboardType={'numeric'} maxLength={3} />
+        )}
+          { this.renderThreeFieldInRow(
+            <ModalToggle label='cardRarity' onPress={showModal} selected={cardRarity} />,
+            <ModalToggle label='cardSet' onPress={showModal} selected={cardSet} />,
+            <ModalToggle label='cardFormat' onPress={showModal} selected={cardFormat} />,
+        )}
+          <Field name='cardColorsIdentity' component={ManaIconsBar} />
+          {this.renderModal()}
+        </View>
+        <View style={Styles.containerFooter}>
+          <SubmitButtonForm onPress={handleSubmit(formSubmit)} />
+        </View>
       </View>
-      <View style={Styles.rightField}>
-        {rightField}
-      </View>
-    </View>
-  )
+    )
+  }
 }
 
 Field.propTypes = {
@@ -79,29 +133,36 @@ Field.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  const cardColor = selector(state, 'cardColor') || []
-  const cardTypes = inheritanceToArray(realm.objects('Type').snapshot())
-  const cardSubtypes = inheritanceToArray(realm.objects('SubType').snapshot())
+  const selector = formValueSelector('CardSearchForm')
+
+  const cardTypes = valuesOf('Type')
+  const cardSubtypes = valuesOf('SubType')
+  const printings = valuesOf('Printing')
+  const formats = valuesOf('Legality')
 
   cardTypes.unshift('')
   cardSubtypes.unshift('')
 
   return {
-    cardTypes: cardTypes,
-    cardSubTypes: cardSubtypes,
-    cardName: selector(state, 'cardName'),
     cardType: selector(state, 'cardType'),
     cardSubType: selector(state, 'cardSubType'),
-    cardText: selector(state, 'cardText'),
-    cardColor: cardColor
+    cardSubTypes: cardSubtypes,
+    cardTypes: cardTypes,
+    cardSets: printings,
+    cardFormats: formats,
+    cardRarity: selector(state, 'cardRarity'),
+    cardSet: selector(state, 'cardSet'),
+    cardFormat: selector(state, 'cardFormat'),
+    visibleModal: state.cardSearch.visibleModal
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm))
+    searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm)),
+    showModal: (modal) => dispatch(showFormModal(modal))
   }
 }
 
-CardSearchForm = reduxForm({form: 'CardSearchForm'})(CardSearchForm)
-export default connect(mapStateToProps, mapDispatchToProps)(CardSearchForm)
+const cardSearchFormDecorated = reduxForm({form: 'CardSearchForm'})(CardSearchForm)
+export default connect(mapStateToProps, mapDispatchToProps)(cardSearchFormDecorated)

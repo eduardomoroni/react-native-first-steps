@@ -12,7 +12,6 @@
   "color": "Cor:",
   "settings": "Definições",
   "card_search": "Procurar Carta",
-  "search": "Procurar",
   "cancel": "Cancelar",
   "welcome": "Bem Vindo",
   "signIn": "Entrar",
@@ -20,5 +19,16 @@
   "logout": "Sair",
   "email": "Email",
   "password": "Senha",
-  "login_for_title": "Entrar"
+  "login_for_title": "Entrar",
+  "cardToughness": "Res: ",
+  "cardPower": "Poder: ",
+  "cardCMC": "CMC: ",
+  "cardRarity": "Raridade",
+  "cardSet": "Coleção",
+  "cardFormat": "Formato",
+  "cardFlavorText": "Texto Ilustrativo",
+  "cardColorsIdentity": "Identidade de Cor",
+  "cardColors": "Cor",
+  "cardCollectionNumber": "Numero da coleção",
+  "cardArtist": "Artista"
 }

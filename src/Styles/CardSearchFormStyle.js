@@ -15,18 +15,23 @@ export default StyleSheet.create({
     right: 0,
     bottom: 0
   },
-  twoFieldsPerLine: {
+  multipleFieldsPerLine: {
     flexDirection: 'row',
     alignItems: 'center'
   },
   leftField: {
     flex: 1,
     justifyContent: 'flex-start',
-    marginRight: Metrics.smallMargin / 2
+    marginRight: Metrics.smallMargin / 3
   },
   rightField: {
     flex: 1,
     justifyContent: 'flex-end',
-    marginLeft: Metrics.smallMargin / 2
+    marginLeft: Metrics.smallMargin / 3
+  },
+  middleField: {
+    flex: 1,
+    justifyContent: 'center',
+    marginLeft: Metrics.smallMargin / 3
   }
 })

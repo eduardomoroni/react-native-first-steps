@@ -1,24 +1,16 @@
 /* @flow */
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import I18n from 'react-native-i18n'
-import {
-  View,
-  Text,
-  TouchableOpacity
-} from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import styles from '../../Styles/FormStyle'
 
-export default class SubmitButtonForm extends Component {
+export class SubmitButtonForm extends PureComponent {
   render () {
-    const { onPress } = this.props
-
     return (
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={onPress} >
-          <Text style={styles.buttonText}>{I18n.t('search')}</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.buttonContainer} onPress={this.props.onPress} >
+        <Text style={styles.buttonText}>{I18n.t('search')}</Text>
+      </TouchableOpacity>
     )
   }
 }

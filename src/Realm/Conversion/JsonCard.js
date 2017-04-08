@@ -19,10 +19,17 @@ export const jsonToRealmCard = (jsonCard: Object) => {
       realmObject[key] = _.map(jsonCard[key], fieldValue => {
         return {[convertionMap[key]]: fieldValue}
       })
+    } else if (shouldBeAndInt(key)) {
+      realmObject[key] = parseInt(value) // TODO: Test this
     }
   })
 
   return realmObject
+}
+
+const shouldBeAndInt = (key) => {
+  const intProperties = ['cmc', 'multiverseid', 'power', 'toughness']
+  return intProperties.includes(key)
 }
 
 const isArrayOfString = (key) => {
