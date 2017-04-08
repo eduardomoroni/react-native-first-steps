@@ -1,5 +1,5 @@
 **/*{.,-}min.js
 android/
-flow-typed/
+flow-typed/**/*.js
 node_modules/
 ios/
