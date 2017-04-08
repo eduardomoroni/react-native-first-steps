@@ -5,15 +5,16 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { CardSearchForm } from '../../../../src/Containers/CardSearch/CardSearchForm'
 import {
-  DropdownInputForm,
-  Modal,
-  MultiSelect,
-  ManaIconsBar,
-  SubmitButtonForm,
-  NumericInputForm,
-  ModalToggle,
-  TextInputForm
+  // DropdownInputForm,
+  // Modal,
+  // MultiSelect,
+  // ManaIconsBar,
+  // NumericInputForm,
+  // ModalToggle,
+  // TextInputForm,
+  SubmitButtonForm
 } from '../../../../src/Containers/Components'
+// TODO: TEST THIS
 const props = {
   handleSubmit: jest.fn((callback) => callback()),
   searchCards: jest.fn(),

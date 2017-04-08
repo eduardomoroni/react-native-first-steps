@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View, Keyboard } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
@@ -128,8 +129,8 @@ export class CardSearchForm extends Component {
 }
 
 Field.propTypes = {
-  dropdownItems: React.PropTypes.arrayOf(React.PropTypes.object),
-  selectedValue: React.PropTypes.string
+  dropdownItems: PropTypes.arrayOf(PropTypes.object),
+  selectedValue: PropTypes.string
 }
 
 const mapStateToProps = (state) => {

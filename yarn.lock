@@ -3374,13 +3374,13 @@ mime-db@~1.23.0:
   version "1.23.0"
   resolved mime-db-1.23.0.tgz#a31b4070adaea27d732ea333740a64d0ec9a6659
 
-mime-types@2.1.11, mime-types@~2.1.7:
+mime-types@2.1.11, mime-types@~2.1.7, mime-types@~2.1.9:
   version "2.1.11"
   resolved mime-types-2.1.11.tgz#c259c471bda808a85d6cd193b430a5fae4473b3c
   dependencies:
     mime-db "~1.23.0"
 
-mime-types@^2.1.11, mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.15, mime-types@~2.1.6, mime-types@~2.1.9:
+mime-types@^2.1.11, mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.15, mime-types@~2.1.6:
   version "2.1.15"
   resolved mime-types-2.1.15.tgz#a4ebf5064094569237b8cf70046776d09fc92aed
   dependencies:
@@ -3524,13 +3524,9 @@ node-pre-gyp@^0.6.30:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-uuid@1.4.7:
+node-uuid@1.4.7, node-uuid@~1.4.7:
   version "1.4.7"
   resolved node-uuid-1.4.7.tgz#6da5a17668c4b3dd59623bda11cf7fa4c1f60a6f
-
-node-uuid@~1.4.7:
-  version "1.4.8"
-  resolved node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907
 
 nopt@^4.0.1:
   version "4.0.1"
@@ -3872,7 +3868,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.2, prop-types@~15.5.0:
+prop-types@^15.5.2, prop-types@^15.5.4, prop-types@~15.5.0:
   version "15.5.4"
   resolved prop-types-15.5.4.tgz#2ed3692716a5060f8cc020946d8238e7419d92c0
   dependencies:

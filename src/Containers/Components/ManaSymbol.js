@@ -1,6 +1,7 @@
 /* @flow */
 
-import React, { PureComponent, PropTypes } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import Mana from '../../Assets/Mana'
 import { Image } from 'react-native'
 
@@ -13,6 +14,6 @@ export class ManaSymbol extends PureComponent {
 }
 
 ManaSymbol.propTypes = {
-  style: PropTypes.arrayOf(PropTypes.object),
+  style: PropTypes.arrayOf(PropTypes.any), // IDK why styles are imported as number
   color: PropTypes.oneOf(ValidColors).isRequired
 }

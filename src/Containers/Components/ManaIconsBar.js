@@ -1,6 +1,7 @@
 /* @flow */
 
-import React, { PureComponent, PropTypes } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import Styles from '../../Styles/FormStyle'
 import { ManaSymbol, ValidColors } from './ManaSymbol'
 import { InputLabel } from './'
@@ -34,7 +35,7 @@ export class ManaIconsBar extends PureComponent {
 ManaIconsBar.propTypes = {
   input: PropTypes.shape({
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.arrayOf(PropTypes.string).isRequired,
+    value: PropTypes.oneOfType(PropTypes.arrayOf(PropTypes.string), PropTypes.string).isRequired,
     name: PropTypes.string.isRequired
   })
 }

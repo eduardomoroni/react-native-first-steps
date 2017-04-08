@@ -1,6 +1,7 @@
 /* @flow */
 
-import React, { PureComponent, PropTypes} from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { TextInput, View } from 'react-native'
 import styles from '../../Styles/FormStyle'
 import { InputLabel } from './'

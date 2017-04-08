@@ -1,4 +1,5 @@
-import React, { PureComponent, PropTypes } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import styles from '../../Styles/FormStyle'
 import I18n from 'react-native-i18n'
 import { Text } from 'react-native'

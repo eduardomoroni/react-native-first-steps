@@ -1,6 +1,7 @@
 // @flow
 
-import React, { PropTypes, Component } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Drawer from 'react-native-drawer'
 import { Keyboard } from 'react-native'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
