@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CardSearchForm /> Should render CardSearchForm Component 1`] = `
+Array [
+  "TextInputForm",
+  "TextInputForm",
+  "DropdownInputForm",
+  "DropdownInputForm",
+  "NumericInputForm",
+  "NumericInputForm",
+  "NumericInputForm",
+  "ManaIconsBar",
+  "TextInputForm",
+  "TextInputForm",
+  "TextInputForm",
+  "ManaIconsBar",
+]
+`;
+
+exports[`<CardSearchForm /> Should render CardSearchForm Component 2`] = `
 <View
   style={
     Object {
@@ -222,10 +239,10 @@ exports[`<CardSearchForm /> Should render CardSearchForm Component 1`] = `
       >
         <ModalToggle
           label="cardRarity"
-          onPress=""
+          onPress={[Function]}
           selected={
             Array [
-              "commom",
+              "Commom",
             ]
           }
         />
@@ -241,7 +258,7 @@ exports[`<CardSearchForm /> Should render CardSearchForm Component 1`] = `
       >
         <ModalToggle
           label="cardSet"
-          onPress=""
+          onPress={[Function]}
           selected={
             Array [
               "AER",
@@ -260,7 +277,7 @@ exports[`<CardSearchForm /> Should render CardSearchForm Component 1`] = `
       >
         <ModalToggle
           label="cardFormat"
-          onPress=""
+          onPress={[Function]}
           selected={
             Array [
               "Standard",

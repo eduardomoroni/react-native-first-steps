@@ -51,10 +51,10 @@ export class CardSearchForm extends Component {
 
   renderModal () {
     let modalContent = {}
-    let { visibleModal, cardSets, cardFormats } = this.props
+    let { visibleModal, cardSets, cardFormats, cardRarities } = this.props
 
     if (visibleModal === 'cardRarity') {
-      modalContent = <Field name='cardRarity' component={MultiSelect} items={['Common', 'Uncommon', 'Rare', 'Mythic Rare']} />
+      modalContent = <Field name='cardRarity' component={MultiSelect} items={cardRarities} />
     } else if (visibleModal === 'cardSet') {
       modalContent = <Field name='cardSet' component={MultiSelect} items={cardSets} />
     } else if (visibleModal === 'cardFormat') {
@@ -136,6 +136,7 @@ Field.propTypes = {
 const mapStateToProps = (state) => {
   const selector = formValueSelector('CardSearchForm')
 
+  const cardRarities = ['Common', 'Uncommon', 'Rare', 'Mythic Rare']
   const cardTypes = valuesOf('Type')
   const cardSubtypes = valuesOf('SubType')
   const printings = valuesOf('Printing')
@@ -154,7 +155,8 @@ const mapStateToProps = (state) => {
     cardRarity: selector(state, 'cardRarity'),
     cardSet: selector(state, 'cardSet'),
     cardFormat: selector(state, 'cardFormat'),
-    visibleModal: state.cardSearch.visibleModal
+    visibleModal: state.cardSearch.visibleModal,
+    cardRarities: cardRarities
   }
 }
 
