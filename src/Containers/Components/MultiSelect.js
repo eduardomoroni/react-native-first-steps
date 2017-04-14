@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, ListView, Text, TouchableWithoutFeedback, Image } from 'react-native'
 import styles from '../../Styles/MultipleSelectStyle'
 import checkbox from '../../Assets/Images/icon-checkbox.png'
@@ -12,11 +13,6 @@ let dataSource = new ListView.DataSource({
 
 // https://github.com/tableflip/react-native-select-multiple
 export class MultiSelect extends Component {
-  static propTypes = {
-    items: PropTypes.arrayOf(itemType).isRequired,
-    selectedItems: PropTypes.arrayOf(itemType)
-  }
-
   constructor (props) {
     super(props)
     const rows = this.getRowData(props)
@@ -88,4 +84,9 @@ export class MultiSelect extends Component {
       </TouchableWithoutFeedback>
     )
   }
+}
+
+MultiSelect.propTypes = {
+  items: PropTypes.arrayOf(itemType).isRequired,
+  selectedItems: PropTypes.arrayOf(itemType)
 }

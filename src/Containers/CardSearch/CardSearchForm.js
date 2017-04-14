@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View, Keyboard } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
@@ -50,10 +51,10 @@ export class CardSearchForm extends Component {
 
   renderModal () {
     let modalContent = {}
-    let { visibleModal, cardSets, cardFormats } = this.props
+    let { visibleModal, cardSets, cardFormats, cardRarities } = this.props
 
     if (visibleModal === 'cardRarity') {
-      modalContent = <Field name='cardRarity' component={MultiSelect} items={['Common', 'Uncommon', 'Rare', 'Mythic Rare']} />
+      modalContent = <Field name='cardRarity' component={MultiSelect} items={cardRarities} />
     } else if (visibleModal === 'cardSet') {
       modalContent = <Field name='cardSet' component={MultiSelect} items={cardSets} />
     } else if (visibleModal === 'cardFormat') {
@@ -128,13 +129,14 @@ export class CardSearchForm extends Component {
 }
 
 Field.propTypes = {
-  dropdownItems: React.PropTypes.arrayOf(React.PropTypes.object),
-  selectedValue: React.PropTypes.string
+  dropdownItems: PropTypes.arrayOf(PropTypes.object),
+  selectedValue: PropTypes.string
 }
 
 const mapStateToProps = (state) => {
   const selector = formValueSelector('CardSearchForm')
 
+  const cardRarities = ['Common', 'Uncommon', 'Rare', 'Mythic Rare']
   const cardTypes = valuesOf('Type')
   const cardSubtypes = valuesOf('SubType')
   const printings = valuesOf('Printing')
@@ -153,7 +155,8 @@ const mapStateToProps = (state) => {
     cardRarity: selector(state, 'cardRarity'),
     cardSet: selector(state, 'cardSet'),
     cardFormat: selector(state, 'cardFormat'),
-    visibleModal: state.cardSearch.visibleModal
+    visibleModal: state.cardSearch.visibleModal,
+    cardRarities: cardRarities
   }
 }
 

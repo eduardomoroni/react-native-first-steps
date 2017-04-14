@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, BackAndroid, Switch, Text, Picker } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
@@ -81,19 +82,19 @@ class ListCardFilterMenu extends Component {
 }
 
 ListCardFilterMenu.contextTypes = {
-  drawer: React.PropTypes.object
+  drawer: PropTypes.object
 }
 
 ListCardFilterMenu.propTypes = {
-  showCardText: React.PropTypes.bool,
-  sortBy: React.PropTypes.string,
-  sortReverseOrder: React.PropTypes.bool,
-  toggleCardText: React.PropTypes.func,
-  sortCards: React.PropTypes.func
+  showCardText: PropTypes.bool,
+  sortBy: PropTypes.string,
+  sortReverseOrder: PropTypes.bool,
+  toggleCardText: PropTypes.func,
+  sortCards: PropTypes.func
 }
 
 Field.propTypes = {
-  isEnabled: React.PropTypes.bool
+  isEnabled: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {

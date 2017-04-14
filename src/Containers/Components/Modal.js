@@ -1,41 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Dimensions, Modal as ReactNativeModal, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { View } from 'react-native-animatable'
 
 // https://github.com/react-native-community/react-native-modal
 export class Modal extends Component {
-  static propTypes = {
-    animationIn: PropTypes.string,
-    animationInTiming: PropTypes.number,
-    animationOut: PropTypes.string,
-    animationOutTiming: PropTypes.number,
-    backdropColor: PropTypes.string,
-    backdropOpacity: PropTypes.number,
-    backdropTransitionInTiming: PropTypes.number,
-    backdropTransitionOutTiming: PropTypes.number,
-    children: PropTypes.node.isRequired,
-    isVisible: PropTypes.bool.isRequired,
-    onModalShow: PropTypes.func,
-    onModalHide: PropTypes.func,
-    hideOnBack: PropTypes.bool,
-    style: PropTypes.any
-  };
-
-  static defaultProps = {
-    animationIn: 'slideInUp',
-    animationInTiming: 300,
-    animationOut: 'slideOutDown',
-    animationOutTiming: 300,
-    backdropColor: 'black',
-    backdropOpacity: 0.70,
-    backdropTransitionInTiming: 300,
-    backdropTransitionOutTiming: 300,
-    onModalShow: () => null,
-    onModalHide: () => null,
-    isVisible: false,
-    hideOnBack: true
-  };
-
   state = {
     isVisible: false,
     deviceWidth: Dimensions.get('window').width,
@@ -165,3 +134,35 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.1)'
   }
 })
+
+Modal.propTypes = {
+  animationIn: PropTypes.string,
+  animationInTiming: PropTypes.number,
+  animationOut: PropTypes.string,
+  animationOutTiming: PropTypes.number,
+  backdropColor: PropTypes.string,
+  backdropOpacity: PropTypes.number,
+  backdropTransitionInTiming: PropTypes.number,
+  backdropTransitionOutTiming: PropTypes.number,
+  children: PropTypes.node.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  onModalShow: PropTypes.func,
+  onModalHide: PropTypes.func,
+  hideOnBack: PropTypes.bool,
+  style: PropTypes.any
+}
+
+Modal.defaultProps = {
+  animationIn: 'slideInUp',
+  animationInTiming: 300,
+  animationOut: 'slideOutDown',
+  animationOutTiming: 300,
+  backdropColor: 'black',
+  backdropOpacity: 0.70,
+  backdropTransitionInTiming: 300,
+  backdropTransitionOutTiming: 300,
+  onModalShow: () => null,
+  onModalHide: () => null,
+  isVisible: false,
+  hideOnBack: true
+}

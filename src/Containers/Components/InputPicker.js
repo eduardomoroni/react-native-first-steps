@@ -1,18 +1,9 @@
-import React, { PureComponent, PropTypes } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import styles from '../../Styles/FormStyle'
 import { Picker } from 'react-native'
 
 export class InputPicker extends PureComponent {
-  static propTypes = {
-    selectedValue: PropTypes.string.isRequired,
-    onValueChange: PropTypes.func.isRequired,
-    dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired
-  }
-
-  static defaultProps = {
-    selectedValue: ''
-  }
-
   renderPickerItem = (value, key) => {
     return <Picker.Item label={value} value={value} key={key} />
   }
@@ -29,4 +20,14 @@ export class InputPicker extends PureComponent {
       </Picker>
     )
   }
+}
+
+InputPicker.propTypes = {
+  selectedValue: PropTypes.string.isRequired,
+  onValueChange: PropTypes.func.isRequired,
+  dropdownItems: PropTypes.arrayOf(PropTypes.string).isRequired
+}
+
+InputPicker.defaultProps = {
+  selectedValue: ''
 }
