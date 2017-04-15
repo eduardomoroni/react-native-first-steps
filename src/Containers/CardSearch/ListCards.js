@@ -4,14 +4,19 @@ import React, { Component } from 'react'
 import { ListView, View } from 'react-native'
 import { connect } from 'react-redux'
 import styles from '../../Styles/ListCardStyles'
-import Card from './Card'
+// import Card from './Card'
+import { CardImage } from '../Components'
 
 type ListCardsProps = {
   cards: any
 }
 
-const renderRow = (card) => {
-  return <Card card={{...card}} />
+const renderRow = (rowData, sectionID, rowID) => {
+  return (
+    <View style={styles.row} >
+      <CardImage card={{...rowData}} key={rowID} />
+    </View>
+  )
 }
 
 let dataSource = {}
@@ -33,13 +38,13 @@ class ListCards extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <ListView
-          dataSource={dataSource}
-          renderRow={renderRow}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-        />
-      </View>
+      <ListView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+        dataSource={dataSource}
+        renderRow={renderRow}
+        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+      />
     )
   }
 }

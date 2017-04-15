@@ -25,18 +25,24 @@ export class CardImage extends PureComponent {
     this.state = { loading: true }
   }
 
+  renderSpinner (isLoading: boolean) {
+    return isLoading ? <ActivityIndicator style={styles.spinner} size='large' /> : <View />
+  }
+
   render () {
     const { multiverseid } = this.props.card
+    console.log(multiverseid)
     const IMG_URL = `http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=${multiverseid}&type=card`
 
     return (
       <View style={styles.container}>
-        <ActivityIndicator size='large' style={this.state.loading ? styles.spinner : styles.hidden} />
+        {this.renderSpinner(this.state.loading)}
         <Image
-          style={this.state.loading ? styles.hidden : styles.image}
+          resizeMode='contain'
+          resizeMethod='scale'
+          style={styles.image}
           source={{uri: IMG_URL}}
-          onLoad={(e) => this.setState({loading: false})}
-          onLoadStart={(e) => this.setState({loading: true})}
+          onLoad={() => this.setState({loading: false})}
           onError={() => console.error('Error while loading card image')} />
       </View>
     )
@@ -53,9 +59,5 @@ const styles = StyleSheet.create({
   spinner: {
     flex: 1,
     justifyContent: 'center'
-  },
-  hidden: {
-    width: 0,
-    height: 0
   }
 })
