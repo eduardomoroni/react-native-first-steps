@@ -1,22 +1,21 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import { ListView, View } from 'react-native'
+import { ListView, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { Actions as NavigationActions } from 'react-native-router-flux'
+import { formValueSelector } from 'redux-form'
 import styles from '../../Styles/ListCardStyles'
-// import Card from './Card'
+import Card from './Card'
 import { CardImage } from '../Components'
 
 type ListCardsProps = {
-  cards: any
+  cards: any,
+  showCardsAs: any // TODO: This is a enum
 }
 
-const renderRow = (rowData, sectionID, rowID) => {
-  return (
-    <View style={styles.row} >
-      <CardImage card={{...rowData}} key={rowID} />
-    </View>
-  )
+const showDetails = (card) => {
+  NavigationActions.cardDetails({card: card, title: card.name})
 }
 
 let dataSource = {}
@@ -36,13 +35,37 @@ class ListCards extends Component {
     }
   }
 
+  renderRow = (rowData, sectionID, rowID) => {
+    const { showCardsAs } = this.props
+    let containerStyle = {}
+    let cardComponent = <Card card={{...rowData}} key={rowID} />
+
+    if (showCardsAs === 'image') {
+      containerStyle = styles.card
+      cardComponent = <CardImage card={{...rowData}} key={rowID} />
+    }
+
+    return (
+      <TouchableOpacity onPress={() => showDetails(rowData)} style={containerStyle} >
+        {cardComponent}
+      </TouchableOpacity>
+    )
+  }
+
   render () {
+    const { showCardsAs } = this.props
+    let containerStyle = {}
+
+    if (showCardsAs === 'image') {
+      containerStyle = styles.contentContainer
+    }
+
     return (
       <ListView
         style={styles.container}
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={containerStyle}
+        renderRow={this.renderRow}
         dataSource={dataSource}
-        renderRow={renderRow}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
       />
     )
@@ -51,8 +74,11 @@ class ListCards extends Component {
 
 const mapStateToProps = (state) => {
   const { cards } = state.cardSearch
+  const selector = formValueSelector('CardSearchFilter')
+
   return {
-    cards: cards
+    cards,
+    showCardsAs: selector(state, 'showCardsAs')
   }
 }
 

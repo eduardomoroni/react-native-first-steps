@@ -10,7 +10,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
-  row: {
+  card: {
     marginHorizontal: Metrics.smallMargin,
     width: Metrics.screenWidth / 2 - Metrics.smallMargin * 2,
     // TODO: Try to get dynamically Height proportion

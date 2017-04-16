@@ -2,44 +2,14 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, BackAndroid, Switch, Text, Picker } from 'react-native'
+import { View, BackAndroid } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { toggleShowCardText, sortCards as sortCardsActionCreator } from '../../Redux/Actions'
-import I18n from 'react-native-i18n'
-
-const renderSwitch = (fieldProps) => {
-  const { input, isEnabled } = fieldProps
-  const { onChange, name } = input
-
-  return (
-    <View style={styles.rowStyle}>
-      <Text>{I18n.t(name)}</Text>
-      <Switch style={styles.switchStyle} value={isEnabled} onValueChange={onChange} />
-    </View>
-  )
-}
-
-const renderSortInput = (fieldProps) => {
-  const { onChange, name, value } = fieldProps.input
-
-  const sortValues = ['cmc', 'multiverseid', 'name', 'number', 'rarity', 'type', 'power', 'toughness']
-
-  const renderPickerItem = (value, key) => {
-    return <Picker.Item label={value} value={value} key={key} />
-  }
-
-  return (
-    <View style={styles.rowStyle}>
-      <Text>{I18n.t(name)}</Text>
-      <Picker
-        selectedValue={value.field}
-        onValueChange={onChange}>
-        { sortValues.map(renderPickerItem) }
-      </Picker>
-    </View>
-  )
-}
+import { toggleShowCardText, sortCards as sortCardsActionCreator, changeDisplayCards } from '../../Redux/Actions'
+import {
+  DropdownInputForm,
+  SwitchInputForm
+} from '../Components'
 
 class ListCardFilterMenu extends Component {
   componentDidMount () {
@@ -52,6 +22,7 @@ class ListCardFilterMenu extends Component {
     })
   }
 
+  // FIXME: Why Am I doing this?
   componentWillReceiveProps (nextProps) {
     const {
       showCardText,
@@ -64,18 +35,23 @@ class ListCardFilterMenu extends Component {
     if (this.props.showCardText !== showCardText) {
       toggleCardText({showCardText: showCardText})
     }
+
     if (this.props.sortBy !== sortBy || this.props.sortReverseOrder !== sortReverseOrder) {
       sortCards({field: sortBy, reversed: sortReverseOrder})
     }
   }
 
   render () {
-    const { showCardText, sortReverseOrder } = this.props
+    const { showCardText, sortReverseOrder, showCardsAs, sortBy } = this.props
+    const showCardsValues = ['list', 'image']
+    const sortValues = ['cmc', 'multiverseid', 'name', 'number', 'rarity', 'type', 'power', 'toughness']
+
     return (
       <View style={styles.container}>
-        <Field name='showCardText' component={renderSwitch} isEnabled={showCardText} />
-        <Field name='sortReverseOrder' component={renderSwitch} isEnabled={sortReverseOrder} />
-        <Field name='sortBy' component={renderSortInput} />
+        <Field name='showCardsAs' component={DropdownInputForm} dropdownItems={showCardsValues} selectedValue={showCardsAs} />
+        <Field name='showCardText' component={SwitchInputForm} isEnabled={showCardText} />
+        <Field name='sortReverseOrder' component={SwitchInputForm} isEnabled={sortReverseOrder} />
+        <Field name='sortBy' component={DropdownInputForm} dropdownItems={sortValues} selectedValue={sortBy} />
       </View>
     )
   }
@@ -107,6 +83,7 @@ const mapStateToProps = (state) => {
       sortReverseOrder: state.cardSearch.sortBy.reversed
     },
     showCardText: selector(state, 'showCardText'),
+    showCardsAs: selector(state, 'showCardsAs'),
     sortBy: selector(state, 'sortBy'),
     sortReverseOrder: selector(state, 'sortReverseOrder')
   }
@@ -115,7 +92,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleCardText: (filter) => dispatch(toggleShowCardText(filter)),
-    sortCards: (sortParams) => dispatch(sortCardsActionCreator(sortParams))
+    sortCards: (sortParams) => dispatch(sortCardsActionCreator(sortParams)),
+    changeDisplayCards: (showAs) => dispatch(changeDisplayCards(showAs))
   }
 }
 
@@ -132,5 +110,5 @@ const styles = {
   }
 }
 
-const ListCardFilterDecorated = reduxForm({form: 'CardSearchFilter'}, mapStateToProps)(ListCardFilterMenu)
+const ListCardFilterDecorated = reduxForm({form: 'CardSearchFilter', destroyOnUnmount: false}, mapStateToProps)(ListCardFilterMenu)
 export default connect(mapStateToProps, mapDispatchToProps)(ListCardFilterDecorated)

@@ -4,12 +4,10 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import {
   View,
-  Text,
-  TouchableOpacity
+  Text
 } from 'react-native'
 import styles from '../../Styles/CardStyle'
 import { placeholdersToSymbols } from '../../Realm/Conversion/Placeholder'
-import { Actions as NavigationActions } from 'react-native-router-flux'
 
 type CardProps = {
   card: any,
@@ -31,19 +29,13 @@ class Card extends PureComponent {
     } = card
 
     return (
-      <TouchableOpacity onPress={() => showDetails(card)} >
-        <View style={styles.container}>
-          {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}
-          {renderCardTypeAndEdition(type, 'AER')}
-          {renderTextAndPower(text, power, toughness, showCardText)}
-        </View>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}
+        {renderCardTypeAndEdition(type, 'AER')}
+        {renderTextAndPower(text, power, toughness, showCardText)}
+      </View>
     )
   }
-}
-
-const showDetails = (card) => {
-  NavigationActions.cardDetails({card: card, title: card.name})
 }
 
 const renderCardNameAndMana = (leftText, rightText) => {
