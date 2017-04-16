@@ -1,4 +1,4 @@
-import { SHOW_CARDS, TOGGLE_SHOW_CARD_TEXT, SORT_CARDS, SHOW_FORM_MODAL } from '../Types'
+import { SHOW_CARDS, SORT_CARDS, SHOW_FORM_MODAL } from '../Types'
 
 export const INITIAL_STATE = {
   cards: {},
@@ -14,8 +14,6 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, visibleModal: payload }
     case SHOW_CARDS:
       return { ...state, cards: payload }
-    case TOGGLE_SHOW_CARD_TEXT:
-      return { ...state, showCardText: payload.showCardText }
     case SORT_CARDS:
       return { ...state, sortBy: payload.sortBy }
     default:

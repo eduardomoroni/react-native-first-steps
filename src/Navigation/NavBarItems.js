@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.transparent,
     color: navButtonColor,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: Metrics.smallMargin
   }
 })
 

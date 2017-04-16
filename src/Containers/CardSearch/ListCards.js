@@ -35,35 +35,25 @@ class ListCards extends Component {
     }
   }
 
+  showCardImages () {
+    return this.props.showCardsAs === 'image'
+  }
+
   renderRow = (rowData, sectionID, rowID) => {
-    const { showCardsAs } = this.props
-    let containerStyle = {}
-    let cardComponent = <Card card={{...rowData}} key={rowID} />
-
-    if (showCardsAs === 'image') {
-      containerStyle = styles.card
-      cardComponent = <CardImage card={{...rowData}} key={rowID} />
-    }
-
     return (
-      <TouchableOpacity onPress={() => showDetails(rowData)} style={containerStyle} >
-        {cardComponent}
+      <TouchableOpacity
+        onPress={() => showDetails(rowData)}
+        style={this.showCardImages() ? styles.card : {}} >
+        {this.showCardImages() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} />}
       </TouchableOpacity>
     )
   }
 
   render () {
-    const { showCardsAs } = this.props
-    let containerStyle = {}
-
-    if (showCardsAs === 'image') {
-      containerStyle = styles.contentContainer
-    }
-
     return (
       <ListView
         style={styles.container}
-        contentContainerStyle={containerStyle}
+        contentContainerStyle={this.showCardImages() ? styles.contentContainer : {}}
         renderRow={this.renderRow}
         dataSource={dataSource}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import NavBarItems from './NavBarItems'
 import Menu from '../Containers/CardSearch/ListCardFilterMenu'
+import { formValueSelector } from 'redux-form'
 import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
 import { Metrics } from '../Styles/Themes'
 
@@ -18,6 +19,7 @@ const openSettingsDrawer = () => {
 
 class CustomNavBar extends React.Component {
   render () {
+    const { showCardsAs } = this.props
     return (
       <View style={[customBarStyle.container, builtInBarStyle.navigationBarStyle]}>
         <View style={[customBarStyle.leftButton, customBarStyle.buttons]}>
@@ -25,7 +27,8 @@ class CustomNavBar extends React.Component {
         </View>
         {this.renderMiddle()}
         <View style={[customBarStyle.rightButton, customBarStyle.buttons]}>
-          {this.renderRightButton()}
+          {this.renderRightButton(showCardsAs === 'image' ? 'th-list' : 'th-large', openSettingsDrawer)}
+          {this.renderRightButton('sliders', openSettingsDrawer)}
         </View>
       </View>
     )
@@ -45,15 +48,18 @@ class CustomNavBar extends React.Component {
     )
   }
 
-  renderRightButton () {
+  renderRightButton (buttonType, callBack) {
     return (
-      NavBarItems.navButton({name: 'sliders', size: Metrics.icons.small + 5}, openSettingsDrawer)
+      NavBarItems.navButton({name: buttonType, size: Metrics.icons.small + 5}, callBack)
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  const selector = formValueSelector('CardSearchFilter')
+
   return {
+    showCardsAs: selector(state, 'showCardsAs')
   }
 }
 

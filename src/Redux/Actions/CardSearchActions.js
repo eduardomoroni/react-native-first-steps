@@ -1,7 +1,6 @@
 import {
   SEARCH_FOR_CARDS,
   SHOW_CARDS,
-  TOGGLE_SHOW_CARD_TEXT,
   SORT_CARDS,
   SHOW_FORM_MODAL
 } from '../Types'
@@ -17,13 +16,6 @@ export const showFormModal = (modal: string) => {
   return {
     type: SHOW_FORM_MODAL,
     payload: modal
-  }
-}
-
-export const toggleShowCardText = toggle => {
-  return {
-    type: TOGGLE_SHOW_CARD_TEXT,
-    payload: toggle
   }
 }
 

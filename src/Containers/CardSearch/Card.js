@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { formValueSelector } from 'redux-form'
 import {
   View,
   Text
@@ -78,8 +79,10 @@ const renderTextAndPower = (text, power, toughness, showCardText) => {
 }
 
 const mapStateToProps = (state) => {
+  const selector = formValueSelector('CardSearchFilter')
+
   return {
-    showCardText: state.cardSearch.showCardText
+    showCardText: selector(state, 'showCardText')
   }
 }
 
