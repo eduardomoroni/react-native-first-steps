@@ -2,12 +2,10 @@
 
 import React from 'react'
 import I18n from 'react-native-i18n'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { TouchableOpacity, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import { Metrics } from '../Styles/Themes/'
-import styles from '../Styles/Navigation/NavBarItemsStyle'
 import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
+import { NavButton } from './NavButton'
 
 type ButtonPropsType = {
   name: string,
@@ -15,13 +13,10 @@ type ButtonPropsType = {
   style: any
 }
 
-// TODO: TEST THIS!
 // TODO: REFACTOR TYPES
-export const navButton = (buttonProps: any, callback: Function, key: any) => {
+export const navButton = (buttonProps: ButtonPropsType, callback: Function, key: any) => {
   return (
-    <TouchableOpacity onPress={callback} key={key} >
-      <Icon {...defaultButtonProps} {...buttonProps} />
-    </TouchableOpacity>
+    <NavButton iconProps={{...buttonProps}} callback={callback} key={key} />
   )
 }
 
@@ -53,10 +48,4 @@ export const navButtonBar = (buttons: any) => {
 
 export const navBackButton = () => {
   return navButton({name: 'angle-left'}, NavigationActions.pop)
-}
-
-const defaultButtonProps: ButtonPropsType = {
-  name: 'heart',
-  size: Metrics.icons.medium,
-  style: styles.button
 }

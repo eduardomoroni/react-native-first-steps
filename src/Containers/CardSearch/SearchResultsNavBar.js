@@ -6,7 +6,7 @@ import { switchDisplayMode as switchDisplayModeAction } from '../../Redux/Action
 import Menu from '../CardSearch/ListCardFilterMenu'
 import CustomNavBar from '../../Navigation/CustomNavBar'
 
-class SearchResultsNavBar extends Component {
+export class SearchResultsNavBar extends Component {
   render () {
     const { showCardsAs, switchDisplayMode } = this.props
 

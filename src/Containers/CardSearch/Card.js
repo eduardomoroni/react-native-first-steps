@@ -3,19 +3,23 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { formValueSelector } from 'redux-form'
-import {
-  View,
-  Text
-} from 'react-native'
+import { View, Text } from 'react-native'
 import styles from '../../Styles/CardStyle'
 import { placeholdersToSymbols } from '../../Realm/Conversion/Placeholder'
 
+// TODO: Use prop-types
 type CardProps = {
   card: any,
   showCardText: boolean
 }
 
-class Card extends PureComponent {
+export const getLastPrinting = (printings: any) => {
+  const keys = Object.keys(printings)
+  const lastPrinting = printings[keys[keys.length - 1]]
+  return lastPrinting.printing
+}
+
+export class Card extends PureComponent {
   props: CardProps
 
   render () {
@@ -26,13 +30,13 @@ class Card extends PureComponent {
       manaCost,
       type,
       power,
-      toughness
+      toughness,
+      printings
     } = card
-
     return (
       <View style={styles.container}>
         {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}
-        {renderCardTypeAndEdition(type, 'AER')}
+        {renderCardTypeAndEdition(type, getLastPrinting(printings))}
         {renderTextAndPower(text, power, toughness, showCardText)}
       </View>
     )
@@ -43,10 +47,10 @@ const renderCardNameAndMana = (leftText, rightText) => {
   return (
     <View style={styles.lineContainer}>
       <View style={styles.leftWord}>
-        <Text style={styles.cardNameText}>{leftText}</Text>
+        <Text key='cardName' style={styles.cardNameText}>{leftText}</Text>
       </View>
       <View style={styles.rightWord}>
-        <Text style={styles.mana}>{rightText}</Text>
+        <Text key='cardManaCost' style={styles.mana}>{rightText}</Text>
       </View>
     </View>
   )
@@ -56,10 +60,10 @@ const renderCardTypeAndEdition = (leftText, rightText) => {
   return (
     <View style={styles.lineContainer}>
       <View style={styles.leftWord}>
-        <Text style={styles.cardTypeText}>{leftText}</Text>
+        <Text key='cardType' style={styles.cardTypeText}>{leftText}</Text>
       </View>
       <View style={styles.rightWord}>
-        <Text>{rightText}</Text>
+        <Text key='cardEdition'>{rightText}</Text>
       </View>
     </View>
   )
@@ -69,10 +73,10 @@ const renderTextAndPower = (text, power, toughness, showCardText) => {
   return (
     <View style={styles.cardTextContainer}>
       <View style={styles.cardText}>
-        <Text style={styles.text}>{showCardText ? text : ''}</Text>
+        <Text key='cardText' style={styles.text}>{showCardText ? text : ''}</Text>
       </View>
       <View style={styles.cardPower}>
-        <Text style={styles.cardPowerToughness}>{power || toughness ? `${power}/${toughness}` : ''}</Text>
+        <Text key='cardPowerAndToughness' style={styles.cardPowerToughness}>{power || toughness ? `${power}/${toughness}` : ''}</Text>
       </View>
     </View>
   )

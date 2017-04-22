@@ -8,7 +8,7 @@
     "android": "react-native run-android && react-native log-android",
     "test": "jest --verbose --no-cache",
     "test-ci": "jest __testes__/Unit/**/*Test.js --forceExit",
-    "test-watch": "jest --watch --onlyChanged --noStackTrace",
+    "test-watch": "jest --watch --onlyChanged",
     "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
     "lint-fixcode": "standard --fix --verbose | snazzy",
@@ -43,7 +43,7 @@
     "enzyme": "2.8.0",
     "flow-bin": "0.40.0",
     "husky": "0.13.1",
-    "jest": "19.0.2",
+    "jest": "^19.0.2",
     "jest-enzyme": "3.0.0",
     "snazzy": "6.0.0",
     "standard": "9.0.1"

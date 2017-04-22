@@ -25,8 +25,8 @@ class ListCards extends Component {
 
   constructor (props) {
     super(props)
-    // dataSource = ds.cloneWithRows(props.cards)
-    dataSource = ds.cloneWithRows(props.cardsTest)
+    dataSource = ds.cloneWithRows(props.cards)
+    // dataSource = ds.cloneWithRows(props.cardsTest)
   }
 
   componentWillReceiveProps (nextProps) {

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
 
-class CustomNavBar extends React.Component {
+export class CustomNavBar extends React.Component {
   render () {
     const { leftRender, middleRender, rightRender } = this.props
 

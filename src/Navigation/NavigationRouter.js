@@ -29,7 +29,7 @@ const NavigationRouter = () => {
       <Scene key='drawer' component={Drawer} {...menuDrawerProps} >
         <Scene key='drawerChildrenWrapper' {...builtInBarStyle} >
           <Scene key='cardDetails' component={CardDetails} />
-          <Scene initial key='testScreen' component={testScreen} title='Test Screen' navBar={SearchResultsNavBar} />
+          <Scene key='testScreen' component={testScreen} title='Test Screen' navBar={SearchResultsNavBar} />
           <Scene key='cardSearchForm' component={CardSearchForm} title={I18n.t('card_search_form_title')} />
           <Scene key='mainScreen' component={MainScreen} title={I18n.t('welcome')} />
           <Scene key='settings' component={Settings} title={I18n.t('settings')} />

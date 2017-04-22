@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavButton /> Should Render NavButton 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  focusedOpacity={0.7}
+  onPress={[Function]}
+>
+  <Icon
+    name="search-plus"
+    size={30}
+    style={Object {}}
+  />
+</TouchableOpacity>
+`;
