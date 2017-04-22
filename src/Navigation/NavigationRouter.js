@@ -15,7 +15,7 @@ import { findCardsFromForm } from '../Realm/RealmService'
 import { builtInBarStyle } from '../Styles/NavBarStyle'
 
 const testForm = {
-  cardArtist: 'zack'
+  cardArtist: 'a'
 }
 
 const testScreen = () => {

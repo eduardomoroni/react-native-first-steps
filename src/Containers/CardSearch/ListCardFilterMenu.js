@@ -5,12 +5,14 @@ import PropTypes from 'prop-types'
 import { View, BackAndroid } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
-import { sortCards as sortCardsActionCreator } from '../../Redux/Actions'
+import { sortCards as sortCardsActionCreator, switchDisplayMode as switchDisplayModeActionCreator } from '../../Redux/Actions'
 import {
   DropdownInputForm,
   SwitchInputForm
 } from '../Components'
 
+// TODO: Maybe this component is doing this in a dumb way
+// Meus componentes não sabem ao certo pra onde olhar no estado, redux-form / cardSearchReducer
 class ListCardFilterMenu extends Component {
   componentDidMount () {
     BackAndroid.addEventListener('hardwareBackPress', () => {
@@ -26,11 +28,18 @@ class ListCardFilterMenu extends Component {
     const {
       sortBy,
       sortCards,
-      sortReverseOrder
-    } = nextProps
+      sortReverseOrder,
+      showCardsAs,
+      switchDisplayMode
+    } = this.props
 
-    if (this.props.sortBy !== sortBy || this.props.sortReverseOrder !== sortReverseOrder) {
-      sortCards({field: sortBy, reversed: sortReverseOrder})
+    if (sortBy !== nextProps.sortBy || sortReverseOrder !== nextProps.sortReverseOrder) {
+      sortCards({field: nextProps.sortBy, reversed: nextProps.sortReverseOrder})
+    }
+
+    // TODO: This is dumb?
+    if (showCardsAs !== nextProps.showCardsAs) {
+      switchDisplayMode()
     }
   }
 
@@ -65,11 +74,13 @@ ListCardFilterMenu.propTypes = {
 const mapStateToProps = (state) => {
   const selector = formValueSelector('CardSearchFilter')
 
+// TODO: I need to sync this with my reducer
   return {
     initialValues: {
       showCardText: true,
       sortBy: state.cardSearch.sortBy.field,
-      sortReverseOrder: state.cardSearch.sortBy.reversed
+      sortReverseOrder: state.cardSearch.sortBy.reversed,
+      showCardsAs: state.cardSearch.showCardsAs
     },
     showCardText: selector(state, 'showCardText'),
     showCardsAs: selector(state, 'showCardsAs'),
@@ -80,7 +91,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sortCards: (sortParams) => dispatch(sortCardsActionCreator(sortParams))
+    sortCards: (sortParams) => dispatch(sortCardsActionCreator(sortParams)),
+    switchDisplayMode: () => dispatch(switchDisplayModeActionCreator())
   }
 }
 

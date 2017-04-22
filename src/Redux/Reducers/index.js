@@ -5,7 +5,7 @@ import UserReducer from './UserReducer'
 import CardSearchReducer from './CardSearchReducer'
 
 export default combineReducers({
-  form: formReducer, // This one should remain as form:
+  form: formReducer,
   auth: AuthReducer,
   user: UserReducer,
   cardSearch: CardSearchReducer

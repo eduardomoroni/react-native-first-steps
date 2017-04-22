@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import { ListView, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import { formValueSelector } from 'redux-form'
 import styles from '../../Styles/ListCardStyles'
 import Card from './Card'
 import { CardImage } from '../Components'
@@ -36,7 +35,7 @@ class ListCards extends Component {
     }
   }
 
-  showCardImages () {
+  isDisplayingAsImage () {
     return this.props.showCardsAs === 'image'
   }
 
@@ -44,8 +43,8 @@ class ListCards extends Component {
     return (
       <TouchableOpacity
         onPress={() => showDetails(rowData)}
-        style={this.showCardImages() ? styles.card : {}} >
-        {this.showCardImages() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} />}
+        style={this.isDisplayingAsImage() ? styles.card : {}} >
+        {this.isDisplayingAsImage() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} />}
       </TouchableOpacity>
     )
   }
@@ -53,8 +52,9 @@ class ListCards extends Component {
   render () {
     return (
       <ListView
+        key={this.props.showCardsAs}
         style={styles.container}
-        contentContainerStyle={this.showCardImages() ? styles.contentContainer : {}}
+        contentContainerStyle={this.isDisplayingAsImage() ? styles.contentContainer : {}}
         renderRow={this.renderRow}
         dataSource={dataSource}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -64,12 +64,11 @@ class ListCards extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { cards } = state.cardSearch
-  const selector = formValueSelector('CardSearchFilter')
+  const { cards, showCardsAs } = state.cardSearch
 
   return {
     cards,
-    showCardsAs: selector(state, 'showCardsAs')
+    showCardsAs
   }
 }
 

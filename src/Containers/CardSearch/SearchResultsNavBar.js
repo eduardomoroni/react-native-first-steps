@@ -1,38 +1,29 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Actions as NavigationActions } from 'react-native-router-flux'
-import { backButton, navTitle, navButtonBar } from '../../Navigation/NavBarItems'
 import { formValueSelector } from 'redux-form'
+import { connect } from 'react-redux'
+import { navBackButton, navTitle, navButtonBar, openDrawer } from '../../Navigation/NavBarItems'
+import { switchDisplayMode as switchDisplayModeAction } from '../../Redux/Actions'
 import Menu from '../CardSearch/ListCardFilterMenu'
 import CustomNavBar from '../../Navigation/CustomNavBar'
 
-const openSettingsDrawer = () => {
-  NavigationActions.refresh({
-    key: 'drawer',
-    content: <Menu />,
-    open: true,
-    side: 'left'
-  })
-}
-
 class SearchResultsNavBar extends Component {
   render () {
-    const { showCardsAs } = this.props
+    const { showCardsAs, switchDisplayMode } = this.props
 
     const settingsButton = {
       buttonProps: {name: 'sliders'},
-      callback: openSettingsDrawer
+      callback: () => openDrawer(<Menu />)
     }
 
     const displayModeButton = {
       buttonProps: {name: showCardsAs === 'image' ? 'th-list' : 'th-large'},
-      callback: openSettingsDrawer
+      callback: () => switchDisplayMode()
     }
 
     return (
       <CustomNavBar
-        leftRender={backButton()}
-        middleRender={navTitle('Busca Simples')}
+        leftRender={navBackButton()}
+        middleRender={navTitle('searching_cards')}
         rightRender={navButtonBar([displayModeButton, settingsButton])} />
     )
   }
@@ -40,10 +31,15 @@ class SearchResultsNavBar extends Component {
 
 const mapStateToProps = (state) => {
   const selector = formValueSelector('CardSearchFilter')
-
   return {
     showCardsAs: selector(state, 'showCardsAs')
   }
 }
 
-export default connect(mapStateToProps)(SearchResultsNavBar)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    switchDisplayMode: () => dispatch(switchDisplayModeAction())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsNavBar)
