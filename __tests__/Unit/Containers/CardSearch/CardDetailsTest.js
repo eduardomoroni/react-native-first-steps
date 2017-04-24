@@ -1,11 +1,11 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { CardDetails } from '../../../../src/Containers/CardSearch/CardDetails'
+import CardDetails from '../../../../src/Containers/CardSearch/CardDetails'
 
 const props = {
   card: {
-    TDB: 'To de defined'
+    TDB: 'To be implemented'
   }
 }
 

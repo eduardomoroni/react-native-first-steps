@@ -1,15 +1,17 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Component } from '../../../../src/Containers/CardSearch/Component'
+import { ListCardFilterMenu } from '../../../../src/Containers/CardSearch/ListCardFilterMenu'
 
+// TODO: Test this!
+// NEED TO REFACTOR WHOLE CLASS
 const props = {
-
+  TDB: 'TODO'
 }
 
-describe('<Component />', () => {
-  it('Should Render Component', () => {
-    const tree = shallow(<Component {...props} />)
-    expect(tree).toMatchSnapshot()
+describe('<ListCardFilterMenu />', () => {
+  it('Should Render ListCardFilterMenu', () => {
+    const wrapper = shallow(<ListCardFilterMenu {...props} />)
+    expect(wrapper).toMatchSnapshot()
   })
 })

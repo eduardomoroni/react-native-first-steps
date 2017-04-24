@@ -35,4 +35,3 @@ describe('<NavButton />', () => {
     expect(props.callback).toHaveBeenCalledWith()
   })
 })
-

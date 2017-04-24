@@ -13,7 +13,7 @@ import {
 
 // TODO: Maybe this component is doing this in a dumb way
 // Meus componentes não sabem ao certo pra onde olhar no estado, redux-form / cardSearchReducer
-class ListCardFilterMenu extends Component {
+export class ListCardFilterMenu extends Component {
   componentDidMount () {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       if (this.context.drawer.props.open) {
@@ -24,7 +24,8 @@ class ListCardFilterMenu extends Component {
     })
   }
 
-  componentWillReceiveProps (nextProps) {
+  // TODO: Use react types
+  componentWillReceiveProps (nextProps: any) {
     const {
       sortBy,
       sortCards,

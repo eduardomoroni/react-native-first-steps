@@ -21,4 +21,3 @@ describe('<CustomNavBar />', () => {
     expect(wrapper).toMatchSnapshot()
   })
 })
-

@@ -58,5 +58,3 @@ describe('NavBarItems Tests', () => {
     expect(NavigationActions.pop).toHaveBeenCalled()
   })
 })
-
-

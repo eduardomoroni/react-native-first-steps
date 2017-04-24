@@ -1,5 +1,3 @@
-/* @flow */
-
 import React from 'react'
 import I18n from 'react-native-i18n'
 import { Text, View } from 'react-native'
@@ -13,6 +11,7 @@ type ButtonPropsType = {
   style: any
 }
 
+// TODO: Enable Flow
 // TODO: REFACTOR TYPES
 export const navButton = (buttonProps: ButtonPropsType, callback: Function, key: any) => {
   return (

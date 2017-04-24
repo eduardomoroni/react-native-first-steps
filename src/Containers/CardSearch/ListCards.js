@@ -1,11 +1,10 @@
-/* @flow */
-
 import React, { Component } from 'react'
 import { ListView, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import { formValueSelector } from 'redux-form'
 import styles from '../../Styles/ListCardStyles'
-import Card from './Card'
+import { Card } from './Card'
 import { CardImage } from '../Components'
 
 type ListCardsProps = {
@@ -13,6 +12,7 @@ type ListCardsProps = {
   showCardsAs: any // TODO: This is a enum
 }
 
+// TODO: Refactor Types, enable flow
 const showDetails = (card) => {
   NavigationActions.cardDetails({card: card, title: card.name})
 }
@@ -20,16 +20,15 @@ const showDetails = (card) => {
 let dataSource = {}
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
 
-class ListCards extends Component {
+export class ListCards extends Component {
   props: ListCardsProps
 
-  constructor (props) {
+  constructor (props: ListCardsProps) {
     super(props)
     dataSource = ds.cloneWithRows(props.cards)
-    // dataSource = ds.cloneWithRows(props.cardsTest)
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: ListCardsProps) {
     if (this.props.cards !== nextProps.cards) {
       dataSource = ds.cloneWithRows(nextProps.cards)
     }
@@ -39,12 +38,12 @@ class ListCards extends Component {
     return this.props.showCardsAs === 'image'
   }
 
-  renderRow = (rowData, sectionID, rowID) => {
+  renderRow = (rowData: any, sectionID: number, rowID: number) => {
     return (
       <TouchableOpacity
         onPress={() => showDetails(rowData)}
         style={this.isDisplayingAsImage() ? styles.card : {}} >
-        {this.isDisplayingAsImage() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} />}
+        {this.isDisplayingAsImage() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} showCardText={this.props.showCardText} />}
       </TouchableOpacity>
     )
   }
@@ -65,10 +64,12 @@ class ListCards extends Component {
 
 const mapStateToProps = (state) => {
   const { cards, showCardsAs } = state.cardSearch
+  const selector = formValueSelector('CardSearchFilter')
 
   return {
     cards,
-    showCardsAs
+    showCardsAs,
+    showCardText: selector(state, 'showCardText')
   }
 }
 

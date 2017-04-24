@@ -16,11 +16,4 @@ describe('<SearchResultsNavBar />', () => {
     const wrapper = shallow(<SearchResultsNavBar {...props} />)
     expect(wrapper).toMatchSnapshot()
   })
-
-  xit('Should show distincts icon for display modes', () => {
-    // TODO:
-    // const wrapper = shallow(<SearchResultsNavBar showCardsAs='list' />)
-    // const wrapper2 = shallow(<SearchResultsNavBar showCardsAs='image' />)
-  })
 })
-

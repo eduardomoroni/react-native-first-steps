@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardDetails /> Should Render CardDetails 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingTop": 64,
+    }
+  }
+>
+  <CardImage
+    card={
+      Object {
+        "TDB": "To be implemented",
+      }
+    }
+  />
+</View>
+`;

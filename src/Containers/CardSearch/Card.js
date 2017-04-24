@@ -1,12 +1,11 @@
 /* @flow */
 
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
-import { formValueSelector } from 'redux-form'
 import { View, Text } from 'react-native'
 import styles from '../../Styles/CardStyle'
 import { placeholdersToSymbols } from '../../Realm/Conversion/Placeholder'
 
+// TODO: Make this component a dumb component
 // TODO: Use prop-types
 type CardProps = {
   card: any,
@@ -81,13 +80,3 @@ const renderTextAndPower = (text, power, toughness, showCardText) => {
     </View>
   )
 }
-
-const mapStateToProps = (state) => {
-  const selector = formValueSelector('CardSearchFilter')
-
-  return {
-    showCardText: selector(state, 'showCardText')
-  }
-}
-
-export default connect(mapStateToProps)(Card)

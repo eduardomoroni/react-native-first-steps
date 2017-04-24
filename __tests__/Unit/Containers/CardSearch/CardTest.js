@@ -52,6 +52,9 @@ describe('<Card />', () => {
   it('should hide card text', () => {
     const wrapper = shallow(<Card {...props} showCardText={false} />)
     expect(findRenderedTextFromKey(wrapper, 'cardText')).toEqual('')
+
+    wrapper.setProps({...props, showCardText: true})
+    expect(findRenderedTextFromKey(wrapper, 'cardText')).toEqual(props.card.text)
   })
 
   it('should show only the lastest printing as cardEdition', () => {
@@ -64,5 +67,3 @@ describe('<Card />', () => {
     expect(getLastPrinting(realmRepresentation)).toEqual('AER')
   })
 })
-
-
