@@ -39,19 +39,25 @@ export class ListCards extends Component {
   }
 
   renderRow = (rowData: any, sectionID: number, rowID: number) => {
+    const { showCardText } = this.props
+
     return (
       <TouchableOpacity
         onPress={() => showDetails(rowData)}
         style={this.isDisplayingAsImage() ? styles.card : {}} >
-        {this.isDisplayingAsImage() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} showCardText={this.props.showCardText} />}
+        {this.isDisplayingAsImage() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} showCardText={showCardText} />}
       </TouchableOpacity>
     )
   }
 
   render () {
+    const {
+      showCardsAs,
+      showCardText
+    } = this.props
     return (
       <ListView
-        key={this.props.showCardsAs}
+        key={showCardsAs + showCardText}
         style={styles.container}
         contentContainerStyle={this.isDisplayingAsImage() ? styles.contentContainer : {}}
         renderRow={this.renderRow}

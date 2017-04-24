@@ -24,7 +24,6 @@ export class ListCardFilterMenu extends Component {
     })
   }
 
-  // TODO: Use react types
   componentWillReceiveProps (nextProps: any) {
     const {
       sortBy,

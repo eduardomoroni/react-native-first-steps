@@ -1,11 +1,10 @@
 /* @flow */
 
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import styles from '../../Styles/CardStyle'
 import { placeholdersToSymbols } from '../../Realm/Conversion/Placeholder'
 
-// TODO: Make this component a dumb component
 // TODO: Use prop-types
 type CardProps = {
   card: any,
@@ -18,7 +17,7 @@ export const getLastPrinting = (printings: any) => {
   return lastPrinting.printing
 }
 
-export class Card extends PureComponent {
+export class Card extends Component {
   props: CardProps
 
   render () {
@@ -32,6 +31,7 @@ export class Card extends PureComponent {
       toughness,
       printings
     } = card
+
     return (
       <View style={styles.container}>
         {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}
