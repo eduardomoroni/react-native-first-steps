@@ -24,7 +24,7 @@ export const showFormModal = (modal: string) => {
 export const toggleShowCardText = toggle => {
   return {
     type: TOGGLE_SHOW_CARD_TEXT,
-    payload: toggle
+    payload: { showCardText: toggle }
   }
 }
 
@@ -42,8 +42,9 @@ export const showCards = (cards) => {
   }
 }
 
-export const switchDisplayMode = () => {
+export const switchDisplayMode = (displayMode) => {
   return {
-    type: SWITCH_DISPLAY_MODE
+    type: SWITCH_DISPLAY_MODE,
+    payload: { showCardsAs: displayMode }
   }
 }

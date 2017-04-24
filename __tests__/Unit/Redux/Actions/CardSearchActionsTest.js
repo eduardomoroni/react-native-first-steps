@@ -16,7 +16,7 @@ describe('Card Search Action Creators', () => {
 
   it('Action for toggle show card text', () => {
     const expectedAction = {type: TOGGLE_SHOW_CARD_TEXT, payload: {showCardText: false}}
-    expect(toggleShowCardText({showCardText: false})).toEqual(expectedAction)
+    expect(toggleShowCardText(false)).toEqual(expectedAction)
   })
 
   it('Action for sort card', () => {
@@ -25,7 +25,7 @@ describe('Card Search Action Creators', () => {
   })
 
   it('Action for change card results display mode', () => {
-    const expectedAction = {type: SWITCH_DISPLAY_MODE}
-    expect(switchDisplayMode()).toEqual(expectedAction)
+    const expectedAction = {type: SWITCH_DISPLAY_MODE, payload: {showCardsAs: 'list'}}
+    expect(switchDisplayMode('list')).toEqual(expectedAction)
   })
 })

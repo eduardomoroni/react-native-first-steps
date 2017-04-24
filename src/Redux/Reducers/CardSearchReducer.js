@@ -20,8 +20,7 @@ export default (state = INITIAL_STATE, action) => {
     case TOGGLE_SHOW_CARD_TEXT:
       return { ...state, showCardText: payload.showCardText }
     case SWITCH_DISPLAY_MODE:
-      console.log('CHANGING DISPLAY MODE', state.showCardsAs === 'image' ? 'list' : 'image')
-      return { ...state, showCardsAs: state.showCardsAs === 'image' ? 'list' : 'image' }
+      return { ...state, showCardsAs: payload.showCardsAs }
     default:
       return state
   }

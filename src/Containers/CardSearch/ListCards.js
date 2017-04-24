@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { ListView, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import { formValueSelector } from 'redux-form'
 import styles from '../../Styles/ListCardStyles'
 import { Card } from './Card'
 import { CardImage } from '../Components'
@@ -69,13 +68,12 @@ export class ListCards extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { cards, showCardsAs } = state.cardSearch
-  const selector = formValueSelector('CardSearchFilter')
-
+  const { cards, showCardsAs, showCardText } = state.cardSearch
+  console.log('showCardText', showCardText)
   return {
     cards,
     showCardsAs,
-    showCardText: selector(state, 'showCardText')
+    showCardText
   }
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { navBackButton, navTitle, navButtonBar, openDrawer } from '../../Navigation/NavBarItems'
 import { switchDisplayMode as switchDisplayModeAction } from '../../Redux/Actions'
@@ -17,7 +16,7 @@ export class SearchResultsNavBar extends Component {
 
     const displayModeButton = {
       buttonProps: {name: showCardsAs === 'image' ? 'th-list' : 'th-large'},
-      callback: () => switchDisplayMode()
+      callback: () => switchDisplayMode(showCardsAs === 'image' ? 'list' : 'image')
     }
 
     return (
@@ -30,15 +29,15 @@ export class SearchResultsNavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const selector = formValueSelector('CardSearchFilter')
+  const { showCardsAs } = state.cardSearch
   return {
-    showCardsAs: selector(state, 'showCardsAs')
+    showCardsAs
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    switchDisplayMode: () => dispatch(switchDisplayModeAction())
+    switchDisplayMode: (toggle) => dispatch(switchDisplayModeAction(toggle))
   }
 }
 

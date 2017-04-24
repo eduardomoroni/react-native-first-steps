@@ -27,9 +27,10 @@ describe('CardSearchReducer Tests', () => {
   })
 
   it('Should toggle display mode', () => {
-    const action = { type: SWITCH_DISPLAY_MODE }
-    const firstToggle = CardSearchReducer(INITIAL_STATE, action)
-    const secondToggle = CardSearchReducer(firstToggle, action)
+    const actionImage = { type: SWITCH_DISPLAY_MODE, payload: {showCardsAs: 'image'} }
+    const firstToggle = CardSearchReducer(INITIAL_STATE, actionImage)
+    const actionList = { type: SWITCH_DISPLAY_MODE, payload: {showCardsAs: 'list'} }
+    const secondToggle = CardSearchReducer(INITIAL_STATE, actionList)
 
     expect(firstToggle).toEqual({...INITIAL_STATE, showCardsAs: 'image'})
     expect(secondToggle).toEqual({...INITIAL_STATE, showCardsAs: 'list'})

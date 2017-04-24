@@ -31,7 +31,6 @@ export class CardImage extends PureComponent {
 
   render () {
     const { multiverseid } = this.props.card
-    console.log(multiverseid)
     const IMG_URL = `http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=${multiverseid}&type=card`
 
     return (
