@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchResultsNavBar /> Should Render SearchResultsNavBar 1`] = `
+<CustomNavBar
+  leftRender={
+    <NavButton
+      callback={[Function]}
+      iconProps={
+        Object {
+          "name": "angle-left",
+        }
+      }
+    />
+  }
+  middleRender={
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "white",
+          "fontFamily": "beleren",
+          "fontSize": 18,
+        }
+      }
+    >
+      I18n.t(searching_cards)
+    </Text>
+  }
+  rightRender={
+    <View
+      style={
+        Array [
+          Object {
+            "justifyContent": "flex-end",
+          },
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <NavButton
+        callback={[Function]}
+        iconProps={
+          Object {
+            "name": "th-large",
+          }
+        }
+      />
+      <NavButton
+        callback={[Function]}
+        iconProps={
+          Object {
+            "name": "sliders",
+          }
+        }
+      />
+    </View>
+  }
+/>
+`;

@@ -7,6 +7,7 @@
  - Buscas recentes
  - Realm one side sync
  - Card search completamente funcional
+ - Mapear Todas Dispatchs de Screen em unit tests
 
 ## CI
 [![iOS Build](https://dashboard.buddybuild.com/api/statusImage?appID=58b368b4b2b449010064a7f2&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58b368b4b2b449010064a7f2/build/latest?branch=master)

@@ -129,7 +129,7 @@ export class CardSearchForm extends Component {
 }
 
 Field.propTypes = {
-  dropdownItems: PropTypes.arrayOf(PropTypes.object),
+  dropdownItems: PropTypes.arrayOf(PropTypes.string),
   selectedValue: PropTypes.string
 }
 

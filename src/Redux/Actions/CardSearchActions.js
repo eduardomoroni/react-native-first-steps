@@ -1,9 +1,10 @@
 import {
   SEARCH_FOR_CARDS,
   SHOW_CARDS,
-  TOGGLE_SHOW_CARD_TEXT,
   SORT_CARDS,
-  SHOW_FORM_MODAL
+  SHOW_FORM_MODAL,
+  SWITCH_DISPLAY_MODE,
+  TOGGLE_SHOW_CARD_TEXT
 } from '../Types'
 
 export const searchForCards = (cardSearchForm) => {
@@ -23,7 +24,7 @@ export const showFormModal = (modal: string) => {
 export const toggleShowCardText = toggle => {
   return {
     type: TOGGLE_SHOW_CARD_TEXT,
-    payload: toggle
+    payload: { showCardText: toggle }
   }
 }
 
@@ -38,5 +39,12 @@ export const showCards = (cards) => {
   return {
     type: SHOW_CARDS,
     payload: cards
+  }
+}
+
+export const switchDisplayMode = (displayMode) => {
+  return {
+    type: SWITCH_DISPLAY_MODE,
+    payload: { showCardsAs: displayMode }
   }
 }

@@ -30,5 +30,7 @@
   "cardColorsIdentity": "Identidade de Cor",
   "cardColors": "Cor",
   "cardCollectionNumber": "Numero da coleção",
-  "cardArtist": "Artista"
+  "cardArtist": "Artista",
+  "showCardsAs": "Mostrar cartas como:",
+  "searching_cards": "Procurar Carta"
 }

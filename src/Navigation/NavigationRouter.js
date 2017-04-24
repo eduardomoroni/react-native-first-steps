@@ -9,13 +9,18 @@ import Drawer, { menuDrawerProps } from './NavigationDrawer'
 import CardSearchForm from '../Containers/CardSearch/CardSearchForm'
 import ListCards from '../Containers/CardSearch/ListCards'
 import CardDetails from '../Containers/CardSearch/CardDetails'
-import CustomNavBar from './CustomNavBar'
+import SearchResultsNavBar from '../Containers/CardSearch/SearchResultsNavBar'
 import I18n from 'react-native-i18n'
-import { findCards } from '../Realm/RealmService'
+import { findCardsFromForm } from '../Realm/RealmService'
 import { builtInBarStyle } from '../Styles/NavBarStyle'
 
+const testForm = {
+  cardArtist: 'b'
+}
+
 const testScreen = () => {
-  return <ListCards cardsTest={findCards('name CONTAINS[c] $0', 'a').slice(0, 15)} />
+  const cards = findCardsFromForm(testForm)
+  return <ListCards cardsTest={cards} test={'aaaaa'} />
 }
 
 const NavigationRouter = () => {
@@ -23,12 +28,12 @@ const NavigationRouter = () => {
     <Router>
       <Scene key='drawer' component={Drawer} {...menuDrawerProps} >
         <Scene key='drawerChildrenWrapper' {...builtInBarStyle} >
-          <Scene key='cardDetails' component={CardDetails} />
-          <Scene key='testScreen' component={testScreen} title='Test Screen' navBar={CustomNavBar} />
           <Scene initial key='cardSearchForm' component={CardSearchForm} title={I18n.t('card_search_form_title')} />
+          <Scene key='cardDetails' component={CardDetails} />
+          <Scene key='testScreen' component={testScreen} title='Test Screen' navBar={SearchResultsNavBar} />
           <Scene key='mainScreen' component={MainScreen} title={I18n.t('welcome')} />
           <Scene key='settings' component={Settings} title={I18n.t('settings')} />
-          <Scene key='listCards' component={ListCards} title={I18n.t('list_cards_title')} navBar={CustomNavBar} />
+          <Scene key='listCards' component={ListCards} title={I18n.t('list_cards_title')} navBar={SearchResultsNavBar} />
           <Scene key='loginScreen' component={LoginScreen} title={I18n.t('login_for_title')} hideNavBar />
         </Scene>
       </Scene>

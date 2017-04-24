@@ -1,0 +1,276 @@
+{
+    "0": {
+        "artist": "Zack Stella",
+        "id": "66106dba089787a1d0d5fe1b80091e7eebe29e55",
+        "name": "Negate",
+        "number": "40",
+        "rarity": "Common",
+        "type": "Instant",
+        "cmc": 2,
+        "multiverseid": 423707,
+        "imagename": "negate",
+        "layout": "normal",
+        "manaCost": "{1}{U}",
+        "text": "Counter target noncreature spell.",
+        "originalText": "Counter target noncreature spell.",
+        "originalType": "Instant",
+        "power": null,
+        "toughness": null,
+        "flavor": "It is fascinating to see how the people of this plane replicate magical techniques without a natural gift.",
+        "types": {
+            "0": {
+                "type": "Instant"
+            }
+        },
+        "subtypes": {},
+        "colors": {
+            "0": {
+                "color": "Blue"
+            }
+        },
+        "colorIdentity": {
+            "0": {
+                "colorIdentity": "U"
+            }
+        },
+        "printings": {
+            "0": {
+                "printing": "pMPR"
+            },
+            "1": {
+                "printing": "MOR"
+            },
+            "2": {
+                "printing": "M10"
+            },
+            "3": {
+                "printing": "DPA"
+            },
+            "4": {
+                "printing": "M11"
+            },
+            "5": {
+                "printing": "M12"
+            },
+            "6": {
+                "printing": "M13"
+            },
+            "7": {
+                "printing": "M14"
+            },
+            "8": {
+                "printing": "M15"
+            },
+            "9": {
+                "printing": "DTK"
+            },
+            "10": {
+                "printing": "ORI"
+            },
+            "11": {
+                "printing": "OGW"
+            },
+            "12": {
+                "printing": "CN2"
+            },
+            "13": {
+                "printing": "AER"
+            }
+        },
+        "foreignNames": {
+            "0": {
+                "language": "Chinese Simplified",
+                "name": "失效",
+                "multiverseid": 423891
+            },
+            "1": {
+                "language": "Chinese Traditional",
+                "name": "失效",
+                "multiverseid": 424075
+            },
+            "2": {
+                "language": "French",
+                "name": "Négation",
+                "multiverseid": 424443
+            },
+            "3": {
+                "language": "German",
+                "name": "Negieren",
+                "multiverseid": 424259
+            },
+            "4": {
+                "language": "Italian",
+                "name": "Negare",
+                "multiverseid": 424627
+            },
+            "5": {
+                "language": "Japanese",
+                "name": "否認",
+                "multiverseid": 424811
+            },
+            "6": {
+                "language": "Korean",
+                "name": "부인",
+                "multiverseid": 424995
+            },
+            "7": {
+                "language": "Portuguese (Brazil)",
+                "name": "Negar",
+                "multiverseid": 425179
+            },
+            "8": {
+                "language": "Russian",
+                "name": "Отвергнуть",
+                "multiverseid": 425363
+            },
+            "9": {
+                "language": "Spanish",
+                "name": "Negar",
+                "multiverseid": 425547
+            }
+        },
+        "rulings": {
+            "0": {
+                "date": "2009-10-01",
+                "text": "A creature spell is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
+            }
+        },
+        "superTypes": {},
+        "legalities": {
+            "0": {
+                "format": "Battle for Zendikar Block",
+                "legality": "Legal"
+            },
+            "1": {
+                "format": "Commander",
+                "legality": "Legal"
+            },
+            "2": {
+                "format": "Khans of Tarkir Block",
+                "legality": "Legal"
+            },
+            "3": {
+                "format": "Legacy",
+                "legality": "Legal"
+            },
+            "4": {
+                "format": "Lorwyn-Shadowmoor Block",
+                "legality": "Legal"
+            },
+            "5": {
+                "format": "Modern",
+                "legality": "Legal"
+            },
+            "6": {
+                "format": "Standard",
+                "legality": "Legal"
+            },
+            "7": {
+                "format": "Vintage",
+                "legality": "Legal"
+            }
+        }
+    },
+    "1": {
+        "artist": "Jakub Kasper",
+        "id": "3886f500667c6506f8b835843bc39a10a0d8f2ec",
+        "name": "Audacious Infiltrator",
+        "number": "7",
+        "rarity": "Common",
+        "type": "Creature — Dwarf Rogue",
+        "cmc": 2,
+        "multiverseid": 423674,
+        "imagename": "audacious infiltrator",
+        "layout": "normal",
+        "manaCost": "{1}{W}",
+        "text": "Audacious Infiltrator can\"t be blocked by artifact creatures.",
+        "originalText": "Audacious Infiltrator can\"t be blocked by artifact creatures.",
+        "originalType": "Creature — Dwarf Rogue",
+        "power": 3,
+        "toughness": 1,
+        "flavor": "This little critter can turn all of you to scrap in under thirty seconds! Come on, who wants to be the first to go? Try and stop me!",
+        "types": {
+            "0": {
+                "type": "Creature"
+            }
+        },
+        "subtypes": {
+            "0": {
+                "subType": "Dwarf"
+            },
+            "1": {
+                "subType": "Rogue"
+            }
+        },
+        "colors": {
+            "0": {
+                "color": "White"
+            }
+        },
+        "colorIdentity": {
+            "0": {
+                "colorIdentity": "W"
+            }
+        },
+        "printings": {
+            "0": {
+                "printing": "AER"
+            }
+        },
+        "foreignNames": {
+            "0": {
+                "language": "Chinese Simplified",
+                "name": "大胆渗透者",
+                "multiverseid": 423858
+            },
+            "1": {
+                "language": "Chinese Traditional",
+                "name": "大膽滲透者",
+                "multiverseid": 424042
+            },
+            "2": {
+                "language": "French",
+                "name": "Infiltrateur audacieux",
+                "multiverseid": 424410
+            },
+            "3": {
+                "language": "German",
+                "name": "Dreister Eindringling",
+                "multiverseid": 424226
+            },
+            "4": {
+                "language": "Italian",
+                "name": "Infiltrato Audace",
+                "multiverseid": 424594
+            },
+            "5": {
+                "language": "Japanese",
+                "name": "大胆な潜入者",
+                "multiverseid": 424778
+            },
+            "6": {
+                "language": "Korean",
+                "name": "무모한 침투자",
+                "multiverseid": 424962
+            },
+            "7": {
+                "language": "Portuguese (Brazil)",
+                "name": "Infiltrador Audacioso",
+                "multiverseid": 425146
+            },
+            "8": {
+                "language": "Russian",
+                "name": "Дерзкий Лазутчик",
+                "multiverseid": 425330
+            },
+            "9": {
+                "language": "Spanish",
+                "name": "Infiltrador audaz",
+                "multiverseid": 425514
+            }
+        },
+        "rulings": {},
+        "superTypes": {},
+        "legalities": {}
+    }
+}
