@@ -1,25 +1,19 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 import styles from '../../Styles/CardStyle'
 import { placeholdersToSymbols } from '../../Realm/Conversion/Placeholder'
+import { cardType, printingsType } from '../../Types/CardType'
 
-// TODO: Use prop-types
-type CardProps = {
-  card: any,
-  showCardText: boolean
-}
-
-export const getLastPrinting = (printings: any) => {
+export const getLastPrinting = (printings: printingsType) => {
   const keys = Object.keys(printings)
   const lastPrinting = printings[keys[keys.length - 1]]
   return lastPrinting.printing
 }
 
 export class Card extends Component {
-  props: CardProps
-
   render () {
     const { card, showCardText } = this.props
     const {
@@ -79,4 +73,9 @@ const renderTextAndPower = (text, power, toughness, showCardText) => {
       </View>
     </View>
   )
+}
+
+Card.propTypes = {
+  showCardText: PropTypes.bool,
+  card: cardType
 }

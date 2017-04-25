@@ -4,14 +4,9 @@ import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Metrics } from '../../Styles/Themes'
 import { CardImage } from '../Components'
-
-type CardDetailsProps = {
-  card: any
-}
+import { cardType } from '../../Types/CardType'
 
 export default class CardDetails extends Component {
-  props: CardDetailsProps
-
   render () {
     return (
       <View style={styles.container}>
@@ -27,3 +22,7 @@ const styles = StyleSheet.create({
     paddingTop: Metrics.navBarHeight
   }
 })
+
+CardDetails.propTypes = {
+  card: cardType
+}

@@ -1,18 +1,16 @@
+/* @flow */
+
 import React, { Component } from 'react'
 import { ListView, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from '../../Styles/ListCardStyles'
 import { Card } from './Card'
 import { CardImage } from '../Components'
+import { cardType } from '../../Types/CardType'
 
-type ListCardsProps = {
-  cards: any,
-  showCardsAs: any // TODO: This is a enum
-}
-
-// TODO: Refactor Types, enable flow
-const showDetails = (card) => {
+const showDetails = (card: cardType) => {
   NavigationActions.cardDetails({card: card, title: card.name})
 }
 
@@ -20,14 +18,12 @@ let dataSource = {}
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
 
 export class ListCards extends Component {
-  props: ListCardsProps
-
-  constructor (props: ListCardsProps) {
+  constructor (props: any) {
     super(props)
     dataSource = ds.cloneWithRows(props.cards)
   }
 
-  componentWillReceiveProps (nextProps: ListCardsProps) {
+  componentWillReceiveProps (nextProps: any) {
     if (this.props.cards !== nextProps.cards) {
       dataSource = ds.cloneWithRows(nextProps.cards)
     }
@@ -37,7 +33,7 @@ export class ListCards extends Component {
     return this.props.showCardsAs === 'image'
   }
 
-  renderRow = (rowData: any, sectionID: number, rowID: number) => {
+  renderRow = (rowData: cardType, sectionID: number, rowID: number) => {
     const { showCardText } = this.props
 
     return (
@@ -75,6 +71,11 @@ const mapStateToProps = (state) => {
     showCardsAs,
     showCardText
   }
+}
+
+ListCards.propTypes = {
+  cards: PropTypes.objectOf(cardType),
+  showCardsAs: PropTypes.oneOf(['list', 'image'])
 }
 
 export default connect(mapStateToProps)(ListCards)
