@@ -9,18 +9,19 @@ import Drawer, { menuDrawerProps } from './NavigationDrawer'
 import CardSearchForm from '../Containers/CardSearch/CardSearchForm'
 import ListCards from '../Containers/CardSearch/ListCards'
 import CardDetails from '../Containers/CardSearch/CardDetails'
+import CardSwiper from '../Containers/CardSearch/CardSwiper'
 import SearchResultsNavBar from '../Containers/CardSearch/SearchResultsNavBar'
 import I18n from 'react-native-i18n'
 import { findCardsFromForm } from '../Realm/RealmService'
 import { builtInBarStyle } from '../Styles/NavBarStyle'
 
 const testForm = {
-  cardArtist: 'h'
+
 }
 
 const testScreen = () => {
   const cards = findCardsFromForm(testForm)
-  return <CardDetails card={cards[0]} />
+  return <CardSwiper cards={cards} />
 }
 
 const NavigationRouter = () => {
