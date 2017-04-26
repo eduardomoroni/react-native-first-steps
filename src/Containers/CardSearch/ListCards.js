@@ -50,6 +50,7 @@ export class ListCards extends Component {
       showCardsAs,
       showCardText
     } = this.props
+
     return (
       <ListView
         key={showCardsAs + showCardText}

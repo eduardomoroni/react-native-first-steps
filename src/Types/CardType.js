@@ -9,10 +9,12 @@ const superTypesType = PropTypes.shape({
   superType: PropTypes.string.isRequired
 })
 
-const rulingsType = PropTypes.shape({
-  date: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
-})
+export const rulingsType = PropTypes.objectOf(
+  PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  })
+)
 
 const foreignNameType = PropTypes.shape({
   language: PropTypes.string.isRequired,
@@ -64,7 +66,7 @@ export const cardType = PropTypes.shape({
   colorIdentity: PropTypes.objectOf(colorIdentityType),
   printings: PropTypes.objectOf(printingsType),
   foreignNames: PropTypes.objectOf(foreignNameType),
-  rulings: PropTypes.objectOf(rulingsType),
+  rulings: rulingsType,
   superTypes: PropTypes.objectOf(superTypesType),
   legalities: PropTypes.objectOf(legalitiesType)
 })

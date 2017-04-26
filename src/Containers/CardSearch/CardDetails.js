@@ -1,68 +1,73 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { Metrics } from '../../Styles/Themes'
+import { Text, View, ScrollView } from 'react-native'
+import { styles } from '../../Styles/CardSearch/CardDetailsStyle'
 import { CardImage } from '../Components'
-import { cardType } from '../../Types/CardType'
-import Swiper from 'react-native-swiper'
+import { cardType, rulingsType } from '../../Types/CardType'
+import { rulingsTextAsArray } from '../../Realm/Conversion/RealmRepresentation'
+import I18n from 'react-native-i18n'
 
 export default class CardDetails extends Component {
-  render () {
-    /*return (
-      <View style={styles.container}>
-
-      </View>
-    )*/
+  renderText (value: string, key: number) {
     return (
-      <Swiper style={styles.container} showsButtons>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
+      <Text key={key} >{`
+        - ${value}`
+      }</Text>
+    )
+  }
+
+  renderRulings (rulings: rulingsType) {
+    const rulesText = rulingsTextAsArray(rulings)
+
+    return (
+      <View style={styles.rowContainer}>
+        <Text style={styles.rowText}>
+          <Text style={styles.rowName}>{`${I18n.t('rulings')}: `}</Text>
+          { rulesText.map(this.renderText) }
+        </Text>
+      </View>
+    )
+  }
+
+  renderRow (rowName: string, rowText: string) {
+    if (rowText === null) {
+      return null
+    }
+
+    return (
+      <View style={styles.rowContainer}>
+        <Text style={styles.rowText}>
+          <Text style={styles.rowName}>{`${I18n.t(rowName)}: `}</Text>
+          {rowText}
+        </Text>
+      </View>
+    )
+  }
+
+  render () {
+    const { card } = this.props
+    return (
+      <ScrollView style={styles.container}>
+        <View style={styles.card}>
+          <CardImage card={card} />
         </View>
-        <View style={styles.container}>
-          <CardImage card={this.props.card} />
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-      </Swiper>
+        {this.renderRow('name', card.name)}
+        {this.renderRow('type', card.type)}
+        {this.renderRow('P/T', `${card.power}/${card.toughness}`)}
+        {this.renderRow('manaCost', `${card.manaCost} (${card.cmc})`)}
+        {this.renderRow('rarity', card.rarity)}
+        {this.renderRow('text', card.text)}
+        {this.renderRow('flavor', card.flavor)}
+        {this.renderRulings(card.rulings)}
+        {this.renderRow('sets', 'Estou com preguiça')}
+        {this.renderRow('legality', 'Farei depois')}
+        {this.renderRow('foreignNames', 'Um dia')}
+        <View style={styles.card} />
+      </ScrollView>
     )
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Metrics.navBarHeight
-  },
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  }
-})
 
 CardDetails.propTypes = {
   card: cardType

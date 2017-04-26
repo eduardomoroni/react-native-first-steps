@@ -7,9 +7,10 @@ import {
   Image,
   ActivityIndicator
 } from 'react-native'
+import { cardType } from '../../Types/CardType'
 
 type CardImageProps = {
-  card: any
+  card: cardType
 }
 
 type CardImageState = {
