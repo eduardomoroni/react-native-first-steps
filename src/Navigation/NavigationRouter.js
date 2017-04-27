@@ -16,12 +16,12 @@ import { findCardsFromForm } from '../Realm/RealmService'
 import { builtInBarStyle } from '../Styles/NavBarStyle'
 
 const testForm = {
-
+  cardName: 'aet'
 }
 
 const testScreen = () => {
   const cards = findCardsFromForm(testForm)
-  return <CardSwiper cards={cards} />
+  return <CardSwiper cards={cards} card={cards[1]} />
 }
 
 const NavigationRouter = () => {
@@ -31,7 +31,8 @@ const NavigationRouter = () => {
         <Scene key='drawerChildrenWrapper' {...builtInBarStyle} >
           <Scene key='cardSearchForm' component={CardSearchForm} title={I18n.t('card_search_form_title')} />
           <Scene key='cardDetails' component={CardDetails} />
-          <Scene initial key='testScreen' component={testScreen} title='Test Screen' navBar={SearchResultsNavBar} />
+          <Scene key='cardSwiper' component={CardSwiper} />
+          <Scene initial key='testScreen' component={testScreen} title='Test Screen' />
           <Scene key='mainScreen' component={MainScreen} title={I18n.t('welcome')} />
           <Scene key='settings' component={Settings} title={I18n.t('settings')} />
           <Scene key='listCards' component={ListCards} title={I18n.t('list_cards_title')} navBar={SearchResultsNavBar} />

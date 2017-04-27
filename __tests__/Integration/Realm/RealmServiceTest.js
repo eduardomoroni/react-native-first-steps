@@ -1,4 +1,4 @@
-import { findCardsFromForm, importMTGJSON, deleteAll, changeRealm } from '../../../src/Realm/RealmService'
+import { findCardsFromForm, importMTGJSON, deleteAll, changeRealm, getIndex } from '../../../src/Realm/RealmService'
 import { schemas } from '../../../src/Config/Realm'
 import AER from '../../../src/Assets/Cards/AER-X.json'
 
@@ -28,7 +28,7 @@ const ornithopterForm = {
   cardToughness: { number: 2, operator: '>=' },
   cardPower: { number: 0, operator: '=' },
   cardCMC: { number: 2, operator: '<' },
-  cardFormat: [ 'Legacy', 'Commander' ], // TODO: TEST THIS
+  cardFormat: [ 'Legacy', 'Commander' ],
   cardSet: [ 'ATQ', 'MRD' ],
   cardRarity: [ 'Uncommon' ]
 }
@@ -47,5 +47,13 @@ describe('Realm Service', () => {
   it('Should filter realm results based on ALL form fields', () => {
     expect(findCardsFromForm(ornithopterForm)[0].name).toEqual('Ornithopter')
     expect(findCardsFromForm(negateForm)[0].name).toEqual('Negate')
+  })
+
+  it('Should return card index in the current realm', () => {
+    const results = findCardsFromForm({cardName: 'aether'})
+    expect(getIndex(results, results[0])).toEqual(0)
+    expect(getIndex(results, results[7])).toEqual(7)
+    expect(getIndex(results, results[13])).toEqual(13)
+    expect(getIndex(results, {id: 'NOT_EXIST_ON_COLLECTION'})).toEqual(-1)
   })
 })

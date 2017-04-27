@@ -47,7 +47,6 @@ export default class CardDetails extends Component {
 
   render () {
     const { card } = this.props
-    console.log('Rendered!', card.name)
 
     return (
       <ScrollView style={styles.container}>

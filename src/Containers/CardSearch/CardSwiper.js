@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet } from 'react-native'
 import CardDetails from './CardDetails'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 import { cardType } from '../../Types/CardType'
+import { getIndex } from '../../Realm/RealmService'
 import Swiper from 'react-native-swiper'
 
 class CardSwiper extends Component {
@@ -12,15 +13,30 @@ class CardSwiper extends Component {
     )
   }
 
+  updateScreenTitle (e, state) {
+    const { total, index } = state
+    const getCardName = (index) => this.children[index].props.card.name
+    NavigationActions.refresh({title: `${getCardName(index)} ${index}/${total}`})
+  }
+
   render () {
-    const { cards } = this.props
+    const { cards, card } = this.props
+    let { index } = this.props
+
+    if (card !== null) {
+      index = getIndex(cards, card)
+    }
+
     return (
       <Swiper
-        style={styles.wrapper}
+        ref={(component) => { this.swiper = component }}
+        onMomentumScrollEnd={this.updateScreenTitle}
+        style={{ flex: 1 }}
         loadMinimal
-        loadMinimalSize={1}
+        loadMinimalSize={2}
         loop={false}
         showsPagination={false}
+        index={index}
         >
         {cards.map(this.renderCardDetails)}
       </Swiper>
@@ -29,13 +45,14 @@ class CardSwiper extends Component {
 }
 
 CardSwiper.propTypes = {
-  cards: PropTypes.objectOf(cardType)
+  cards: PropTypes.objectOf(cardType),
+  card: cardType,
+  index: PropTypes.number
 }
 
-var styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  }
-})
+CardSwiper.defaultProps = {
+  index: 0,
+  card: null
+}
 
 export default CardSwiper
