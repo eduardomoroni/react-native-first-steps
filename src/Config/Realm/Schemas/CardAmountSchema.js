@@ -1,9 +1,8 @@
 export const CardAmountSchema = {
   name: 'CardAmount',
-  primaryKey: 'id',
   properties: {
-    id: 'int',
-    card: 'Card',
-    amount: {type: 'int', default: 1}
+    multiverseid: {type: 'int', indexed: true},
+    amount: {type: 'int', default: 1},
+    card: 'Card'
   }
 }

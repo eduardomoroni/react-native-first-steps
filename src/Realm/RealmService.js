@@ -18,7 +18,11 @@ export {
   findAll,
   create,
   objectForPrimaryKey,
-  getRealm
+  getRealm,
+  findBy,
+  write,
+  deleteCollectionByKey,
+  remove
 }
 
 let realm = changeRealm(defaultConfig)
@@ -26,6 +30,10 @@ type objectType = string
 
 function changeRealm (realmConfig) {
   realm = new Realm(realmConfig)
+}
+
+function write (callback) {
+  realm.write(callback)
 }
 
 // TODO: Remove
@@ -37,10 +45,18 @@ function findAll (collection: string) {
   return realm.objects(collection)
 }
 
+function findBy (collection: string, query: string) {
+  return realm.objects(collection).filtered(query)
+}
+
 function create (type: objectType, properties: any, update: boolean = true) {
+  let inserted = null
+
   realm.write(() => {
-    realm.create(type, properties, update)
+    inserted = realm.create(type, properties, update)
   })
+
+  return inserted
 }
 
 function objectForPrimaryKey (type: objectType, key: number | string) {
@@ -74,6 +90,18 @@ function valuesOf (realmClass: string) {
 function deleteAll () {
   realm.write(() => {
     realm.deleteAll()
+  })
+}
+
+function deleteCollectionByKey (collection, primaryKey) {
+  realm.write(() => {
+    realm.delete(objectForPrimaryKey(collection, primaryKey))
+  })
+}
+
+function remove (realmObject) {
+  write(() => {
+    realm.delete(realmObject)
   })
 }
 
