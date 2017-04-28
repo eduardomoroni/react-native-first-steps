@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import CardDetails from '../../../../src/Containers/CardSearch/CardDetails'
 import RealmResult from '../../../Assets/Stubs/RealmResult.json'
 
+
 const props = {
   card: RealmResult[0]
 }

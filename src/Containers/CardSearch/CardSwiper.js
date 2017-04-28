@@ -6,7 +6,7 @@ import { cardType } from '../../Types/CardType'
 import { getIndex } from '../../Realm/RealmService'
 import Swiper from 'react-native-swiper'
 
-class CardSwiper extends Component {
+export class CardSwiper extends Component {
   renderCardDetails (card, key) {
     return (
       <CardDetails card={card} key={key} />
