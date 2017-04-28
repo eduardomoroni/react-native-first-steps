@@ -14,9 +14,9 @@ class CardSwiper extends Component {
   }
 
   updateScreenTitle (e, state) {
-    const { total, index } = state
+    const { index } = state
     const getCardName = (index) => this.children[index].props.card.name
-    NavigationActions.refresh({title: `${getCardName(index)} ${index}/${total}`})
+    NavigationActions.refresh({title: `${getCardName(index)}`})
   }
 
   render () {

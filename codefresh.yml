@@ -21,8 +21,10 @@ steps:
     environment:
       - NODE_ENV=development
       - CODECLIMATE_REPO_TOKEN=9a8d999dfebca03e28a1c2263cf3b2572f59f894a35a96cb379f01616e47b3e1
+      - CODECOV_TOKEN=419b56f0-fec3-4e70-9831-56253bb84412
     commands:
       - npm run lint-check
       - npm run flow-check
       # - npm run update-coverage
       - npm run test-ci
+      - npm run update-coverage
