@@ -10,12 +10,16 @@ engines:
         - javascript
   eslint:
     enabled: true
+    channel: "eslint-3"
+    checks:
+      complexity:
+        enabled: true
   fixme:
     enabled: true
 ratings:
   paths:
-  - "**.js"
-  - "**.jsx"
+    - "**.js"
+    - "**.jsx"
 exclude_paths:
-  - "/__tests__/*"
   - "/node_modules/*"
+  - "flow-typed/*"
