@@ -32,5 +32,16 @@
   "cardCollectionNumber": "Numero da coleção",
   "cardArtist": "Artista",
   "showCardsAs": "Mostrar cartas como:",
-  "searching_cards": "Procurar Carta"
+  "searching_cards": "Procurar Carta",
+  "name": "Nome",
+  "type": "Tipo",
+  "manaCost": "Custo de Mana",
+  "P/T": "F/R",
+  "rarity": "Raridade",
+  "text": "Texto",
+  "flavor": "Texto Ilustrativo",
+  "rulings": "Regras",
+  "legality": "Legalidade",
+  "sets": "Coleções",
+  "foreignNames": "Nome em outros países"
 }

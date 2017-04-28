@@ -1,7 +1,8 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import { ListView, View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, ListView } from 'react-native'
+// import { ListView } from 'realm/react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -10,8 +11,8 @@ import { Card } from './Card'
 import { CardImage } from '../Components'
 import { cardType } from '../../Types/CardType'
 
-const showDetails = (card: cardType) => {
-  NavigationActions.cardDetails({card: card, title: card.name})
+const showDetails = (card: cardType, cards) => {
+  NavigationActions.cardSwiper({cards: cards, card: card, title: card.name})
 }
 
 let dataSource = {}
@@ -34,11 +35,11 @@ export class ListCards extends Component {
   }
 
   renderRow = (rowData: cardType, sectionID: number, rowID: number) => {
-    const { showCardText } = this.props
+    const { showCardText, cards } = this.props
 
     return (
       <TouchableOpacity
-        onPress={() => showDetails(rowData)}
+        onPress={() => showDetails(rowData, cards)}
         style={this.isDisplayingAsImage() ? styles.card : {}} >
         {this.isDisplayingAsImage() ? <CardImage card={{...rowData}} key={rowID} /> : <Card card={{...rowData}} key={rowID} showCardText={showCardText} />}
       </TouchableOpacity>
@@ -50,6 +51,7 @@ export class ListCards extends Component {
       showCardsAs,
       showCardText
     } = this.props
+
     return (
       <ListView
         key={showCardsAs + showCardText}

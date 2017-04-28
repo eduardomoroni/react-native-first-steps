@@ -5,8 +5,17 @@ import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from './Conversion/Placeholder'
 import { convertCardFormToRealmQueries } from './Conversion/CardForm'
 import { inheritanceToArray } from './Conversion/JsonCard'
+import { cardType } from '../Types/CardType'
 
-export { findCardsFromForm, sortCards, importMTGJSON, changeRealm, deleteAll, valuesOf }
+export {
+  findCardsFromForm,
+  sortCards,
+  importMTGJSON,
+  changeRealm,
+  deleteAll,
+  valuesOf,
+  getIndex
+}
 
 let realm = defaultRealm
 
@@ -58,4 +67,8 @@ function upsertCard (card) {
   realm.write(() => {
     realm.create('Card', card, true)
   })
+}
+
+function getIndex (results: any, card: cardType) {
+  return results.findIndex((obj) => obj.id === card.id)
 }

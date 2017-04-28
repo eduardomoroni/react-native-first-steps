@@ -1,29 +1,15 @@
 ---
 engines:
   duplication:
-    enabled: false
+    enabled: true
+    checks:
+      Similar Code:
+        enabled: false
     config:
       languages:
         - javascript
   eslint:
     enabled: true
-    checks:
-      global-require:
-        enabled: false
-      complexity:
-        enabled: true
-      standard/object-curly-even-spacing:
-        enabled: false
-      standard/array-bracket-even-spacing:
-        enabled: false
-      standard/computed-property-even-spacing:
-        enabled: false
-      promise/param-names:
-        enabled: false
-      standard/array-bracket-even-spacing:
-        enabled: false
-      standard/computed-property-even-spacing:
-          enabled: false
   fixme:
     enabled: true
 ratings:
