@@ -1,6 +1,6 @@
 import Realm from 'realm'
 import _ from 'lodash'
-import { realm as defaultRealm } from '../Config/Realm'
+import { defaultConfig } from '../Config/Realm'
 import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from './Conversion/Placeholder'
 import { convertCardFormToRealmQueries } from './Conversion/CardForm'
@@ -14,14 +14,40 @@ export {
   changeRealm,
   deleteAll,
   valuesOf,
-  getIndex
+  getIndex,
+  findAll,
+  create,
+  objectForPrimaryKey,
+  getRealm
 }
 
-let realm = defaultRealm
+let realm = changeRealm(defaultConfig)
+type objectType = string
 
 function changeRealm (realmConfig) {
   realm = new Realm(realmConfig)
 }
+
+// TODO: Remove
+function getRealm () {
+  return realm
+}
+
+function findAll (collection: string) {
+  return realm.objects(collection)
+}
+
+function create (type: objectType, properties: any, update: boolean = true) {
+  realm.write(() => {
+    realm.create(type, properties, update)
+  })
+}
+
+function objectForPrimaryKey (type: objectType, key: number | string) {
+  return realm.objectForPrimaryKey(type, key)
+}
+
+// REFACTOR BELOW
 
 function sortCards (cards, sorting) {
   const { field, reversed } = sorting.sortBy
