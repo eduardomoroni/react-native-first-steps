@@ -69,19 +69,11 @@
     ]
   },
   "standard": {
+    "plugins": ["flowtype"],
+    "env": ["jest"],
     "parser": "babel-eslint",
-    "globals": [
-      "it",
-      "__DEV__",
-      "expect",
-      "jest",
-      "describe",
-      "beforeAll",
-      "afterAll"
-    ],
-    "ignore": [
-      "flow-typed/"
-    ]
+    "globals": ["__DEV__"],
+    "ignore": ["flow-typed/"]
   },
   "rnpm": {
     "assets": [
