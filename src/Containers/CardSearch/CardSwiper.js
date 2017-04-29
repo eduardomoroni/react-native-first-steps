@@ -5,6 +5,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import { cardType } from '../../Types/CardType'
 import { findCardIndex } from '../../Services/CardService'
 import Swiper from 'react-native-swiper'
+import { Icon } from 'react-native-elements'
 
 export class CardSwiper extends Component {
   renderCardDetails (card, key) {
@@ -38,6 +39,13 @@ export class CardSwiper extends Component {
         showsPagination={false}
         index={index}
         >
+        <Icon
+          raised
+          name='heartbeat'
+          type='font-awesome'
+          color='#f50'
+          onPress={() => console.log('hello')}
+        />
         {cards.map(this.renderCardDetails)}
       </Swiper>
     )

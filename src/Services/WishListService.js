@@ -10,26 +10,26 @@ const createWishList = (userId: string) => {
   RealmService.create('WishList', wishList, false)
 }
 
-const insertCardAmount = (cardAmount: any) => {
-  return RealmService.create('CardAmount', cardAmount, false)
+const insertCardList = (cardList: any) => {
+  return RealmService.create('CardList', cardList, false)
 }
 
-const updateCardAmount = (cardAmount: any, list: any) => {
-  const realmRepresentation = list.filtered('multiverseid = $0', cardAmount.multiverseid)[0] // Ideally use find
+const updateCardList = (cardList: any, list: any) => {
+  const realmRepresentation = list.filtered('multiverseid = $0', cardList.multiverseid)[0] // Ideally use find
 
-  if (cardAmount.amount <= 0) {
+  if (cardList.amount <= 0) {
     return RealmService.remove(realmRepresentation)
   }
 
   if (list.length === 0) {
-    const insertedAmount = insertCardAmount(cardAmount)
+    const insertedAmount = insertCardList(cardList)
 
     RealmService.write(() => {
       list.push(insertedAmount)
     })
   } else {
     RealmService.write(() => {
-      realmRepresentation.amount = cardAmount.amount
+      realmRepresentation.amount = cardList.amount
     })
   }
 }
@@ -38,14 +38,14 @@ const deleteWishList = (userId: string) => {
   RealmService.deleteCollectionByKey('WishList', userId)
 }
 
-const findCardAmountByMultiverseid = (multiverseid: number) => {
-  return RealmService.findBy('CardAmount', `multiverseid = ${multiverseid}`)
+const findCardListByMultiverseid = (multiverseid: number) => {
+  return RealmService.findBy('CardList', `multiverseid = ${multiverseid}`)
 }
 
 export default {
   createWishList,
-  updateCardAmount,
-  insertCardAmount,
-  findCardAmountByMultiverseid,
+  updateCardList,
+  insertCardList,
+  findCardListByMultiverseid,
   deleteWishList
 }
