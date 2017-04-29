@@ -12,7 +12,7 @@ import CardDetails from '../Containers/CardSearch/CardDetails'
 import CardSwiper from '../Containers/CardSearch/CardSwiper'
 import SearchResultsNavBar from '../Containers/CardSearch/SearchResultsNavBar'
 import I18n from 'react-native-i18n'
-import { findCardsFromForm } from '../Realm/RealmService'
+import { findCardsFromForm } from '../Services/CardService'
 import { builtInBarStyle } from '../Styles/NavBarStyle'
 
 const testForm = {

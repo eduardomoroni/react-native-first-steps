@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import CardDetails from './CardDetails'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import { cardType } from '../../Types/CardType'
-import { getIndex } from '../../Realm/RealmService'
+import { findCardIndex } from '../../Services/CardService'
 import Swiper from 'react-native-swiper'
 
 export class CardSwiper extends Component {
@@ -24,7 +24,7 @@ export class CardSwiper extends Component {
     let { index } = this.props
 
     if (card !== null) {
-      index = getIndex(cards, card)
+      index = findCardIndex(cards, card)
     }
 
     return (

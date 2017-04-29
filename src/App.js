@@ -3,13 +3,13 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import NavigationRouter from './Navigation/NavigationRouter'
-import setupMtgxConfigs, { createMtgxStore } from './Config'
+import { createMtgxStore, initialConfig } from './Config'
 
 const store = createMtgxStore()
 
 class App extends Component {
   componentWillMount () {
-    setupMtgxConfigs()
+    initialConfig()
   }
 
   render () {
