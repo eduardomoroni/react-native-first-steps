@@ -5,8 +5,8 @@ import { schemas } from '../../../src/Config/Realm'
 import AER from '../../../src/Assets/Cards/AER-X.json'
 
 describe('WishList Service', () => {
+  let userID = '8ed88edb-12d1-4f0f-b42b-f59ca3a2f21f'
   let card
-  let userID
   let wishList
   let cardAmount
 
@@ -15,10 +15,12 @@ describe('WishList Service', () => {
     deleteAll()
     importMTGJSON(AER)
     card = CardService.findCardByID('66106dba089787a1d0d5fe1b80091e7eebe29e55')
-    userID = '8ed88edb-12d1-4f0f-b42b-f59ca3a2f21f'
   })
 
   afterAll(() => {
+    card = null
+    wishList = null
+    cardAmount = null
     deleteAll()
   })
 
@@ -65,7 +67,9 @@ describe('WishList Service', () => {
 
     cardAmount.amount = 3
     WishListService.updateCardAmount(cardAmount, wantedList)
-    // TODO: Chai assertion deepEqual
+
+    // TODO: Figureout a way to test RealmObject to Object
+    // expect(wantedList[0]).toEqual(cardAmount)
     expect(wantedList[0].multiverseid).toEqual(cardAmount.multiverseid)
     expect(wantedList[0].amount).toEqual(cardAmount.amount)
 

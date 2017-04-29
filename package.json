@@ -6,8 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios && react-native log-ios",
     "android": "react-native run-android && react-native log-android",
-    "test": "jest --verbose --no-cache",
-    "test-ci": "jest __testes__/Unit/**/*Test.js --forceExit --coverage",
+    "test": "jest --verbose",
+    "test-ci": "jest __tests__/Unit/**/*Test.js --forceExit --coverage",
     "test-watch": "jest --watch --onlyChanged",
     "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
@@ -42,9 +42,10 @@
   },
   "devDependencies": {
     "babel-eslint": "7.1.1",
-    "codecov": "2.1.0",
     "codeclimate-test-reporter": "0.4.1",
+    "codecov": "2.1.0",
     "enzyme": "2.8.0",
+    "eslint-plugin-flowtype": "^2.32.1",
     "flow-bin": "0.40.0",
     "husky": "0.13.1",
     "jest": "^19.0.2",
@@ -69,11 +70,19 @@
     ]
   },
   "standard": {
-    "plugins": ["flowtype"],
-    "env": ["jest"],
+    "plugins": [
+      "flowtype"
+    ],
+    "env": [
+      "jest"
+    ],
     "parser": "babel-eslint",
-    "globals": ["__DEV__"],
-    "ignore": ["flow-typed/"]
+    "globals": [
+      "__DEV__"
+    ],
+    "ignore": [
+      "flow-typed/"
+    ]
   },
   "rnpm": {
     "assets": [

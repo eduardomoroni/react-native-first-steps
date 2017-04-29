@@ -5,7 +5,6 @@ import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
 import { placeholdersToSymbols } from './Conversion/Placeholder'
 import { convertCardFormToRealmQueries } from './Conversion/CardForm'
 import { inheritanceToArray } from './Conversion/JsonCard'
-import { cardType } from '../Types/CardType'
 
 export {
   findCardsFromForm,
@@ -14,11 +13,10 @@ export {
   changeRealm,
   deleteAll,
   valuesOf,
-  getIndex,
+  findIndex,
   findAll,
   create,
   objectForPrimaryKey,
-  getRealm,
   findBy,
   write,
   deleteCollectionByKey,
@@ -34,11 +32,6 @@ function changeRealm (realmConfig) {
 
 function write (callback) {
   realm.write(callback)
-}
-
-// TODO: Remove
-function getRealm () {
-  return realm
 }
 
 function findAll (collection: string) {
@@ -63,26 +56,6 @@ function objectForPrimaryKey (type: objectType, key: number | string) {
   return realm.objectForPrimaryKey(type, key)
 }
 
-// REFACTOR BELOW
-
-function sortCards (cards, sorting) {
-  const { field, reversed } = sorting.sortBy
-  return cards.sorted(field, reversed)
-}
-
-function findCardsFromForm (form) {
-  const realmQueries = convertCardFormToRealmQueries(form)
-  let results = realm.objects('Card')
-
-  _.each(realmQueries, (query) => {
-    if (query !== undefined && query.length > 0) {
-      results = results.filtered(query)
-    }
-  })
-
-  return results
-}
-
 function valuesOf (realmClass: string) {
   return inheritanceToArray(realm.objects(realmClass).snapshot())
 }
@@ -105,6 +78,29 @@ function remove (realmObject) {
   })
 }
 
+// REFACTOR BELOW
+function findIndex (results: any, callback: any) {
+  return results.findIndex(callback)
+}
+
+function sortCards (cards, sorting) {
+  const { field, reversed } = sorting.sortBy
+  return cards.sorted(field, reversed)
+}
+
+function findCardsFromForm (form) {
+  const realmQueries = convertCardFormToRealmQueries(form)
+  let results = realm.objects('Card')
+
+  _.each(realmQueries, (query) => {
+    if (query !== undefined && query.length > 0) {
+      results = results.filtered(query)
+    }
+  })
+
+  return results
+}
+
 function importMTGJSON (mtgJson) {
   mtgJson.cards.forEach((card) => {
     card.text = placeholdersToSymbols(card.text)
@@ -121,8 +117,4 @@ function upsertCard (card) {
   realm.write(() => {
     realm.create('Card', card, true)
   })
-}
-
-function getIndex (results: any, card: cardType) {
-  return results.findIndex((obj) => obj.id === card.id)
 }
