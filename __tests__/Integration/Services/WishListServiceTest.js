@@ -1,8 +1,7 @@
-import { deleteAll, changeRealm, objectForPrimaryKey, importMTGJSON } from '../../../src/Realm/RealmService'
+import { objectForPrimaryKey } from '../../../src/Realm/RealmService'
 import WishListService from '../../../src/Services/WishListService'
-import CardService from '../../../src/Services/CardService'
-import { schemas } from '../../../src/Config/Realm'
-import AER from '../../../src/Assets/Cards/AER-X.json'
+import * as CardService from '../../../src/Services/CardService'
+import { initializeDatabase, cleanDatabase } from '../Config/RealmConfig'
 
 describe('WishList Service', () => {
   let userID = '8ed88edb-12d1-4f0f-b42b-f59ca3a2f21f'
@@ -11,9 +10,7 @@ describe('WishList Service', () => {
   let cardAmount
 
   beforeAll(() => {
-    changeRealm({ schema: schemas, path: 'database/INTEGRATION_TEST.realm' })
-    deleteAll()
-    importMTGJSON(AER)
+    initializeDatabase('WishList')
     card = CardService.findCardByID('66106dba089787a1d0d5fe1b80091e7eebe29e55')
   })
 
@@ -21,7 +18,7 @@ describe('WishList Service', () => {
     card = null
     wishList = null
     cardAmount = null
-    deleteAll()
+    cleanDatabase()
   })
 
   beforeEach(() => {

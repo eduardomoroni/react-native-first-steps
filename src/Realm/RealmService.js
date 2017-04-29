@@ -1,15 +1,7 @@
 import Realm from 'realm'
-import _ from 'lodash'
-import { defaultConfig } from '../Config/Realm'
-import { jsonToRealmCard } from '../Realm/Conversion/JsonCard'
-import { placeholdersToSymbols } from './Conversion/Placeholder'
-import { convertCardFormToRealmQueries } from './Conversion/CardForm'
-import { inheritanceToArray } from './Conversion/JsonCard'
+import { inheritanceToArray } from '../Realm/Conversion'
 
 export {
-  findCardsFromForm,
-  sortCards,
-  importMTGJSON,
   changeRealm,
   deleteAll,
   valuesOf,
@@ -20,11 +12,11 @@ export {
   findBy,
   write,
   deleteCollectionByKey,
-  remove
+  remove,
+  closeRealm
 }
 
-let realm = changeRealm(defaultConfig)
-type objectType = string
+let realm
 
 function changeRealm (realmConfig) {
   realm = new Realm(realmConfig)
@@ -42,7 +34,7 @@ function findBy (collection: string, query: string) {
   return realm.objects(collection).filtered(query)
 }
 
-function create (type: objectType, properties: any, update: boolean = true) {
+function create (type: any, properties: any, update: boolean = true) {
   let inserted = null
 
   realm.write(() => {
@@ -52,7 +44,11 @@ function create (type: objectType, properties: any, update: boolean = true) {
   return inserted
 }
 
-function objectForPrimaryKey (type: objectType, key: number | string) {
+function closeRealm () {
+  realm.close()
+}
+
+function objectForPrimaryKey (type: any, key: number | string) {
   return realm.objectForPrimaryKey(type, key)
 }
 
@@ -78,43 +74,6 @@ function remove (realmObject) {
   })
 }
 
-// REFACTOR BELOW
 function findIndex (results: any, callback: any) {
   return results.findIndex(callback)
-}
-
-function sortCards (cards, sorting) {
-  const { field, reversed } = sorting.sortBy
-  return cards.sorted(field, reversed)
-}
-
-function findCardsFromForm (form) {
-  const realmQueries = convertCardFormToRealmQueries(form)
-  let results = realm.objects('Card')
-
-  _.each(realmQueries, (query) => {
-    if (query !== undefined && query.length > 0) {
-      results = results.filtered(query)
-    }
-  })
-
-  return results
-}
-
-function importMTGJSON (mtgJson) {
-  mtgJson.cards.forEach((card) => {
-    card.text = placeholdersToSymbols(card.text)
-    const cardAsRealmObject = jsonToRealmCard(card)
-    try {
-      upsertCard(cardAsRealmObject)
-    } catch (e) {
-      console.error(`Failed to insert ${card.name}:`, e)
-    }
-  })
-}
-
-function upsertCard (card) {
-  realm.write(() => {
-    realm.create('Card', card, true)
-  })
 }

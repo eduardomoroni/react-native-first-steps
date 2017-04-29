@@ -1,18 +1,15 @@
-import { deleteAll, changeRealm, findCardsFromForm, importMTGJSON } from '../../../src/Realm/RealmService'
-import CardService from '../../../src/Services/CardService'
-import { schemas } from '../../../src/Config/Realm'
-import AER from '../../../src/Assets/Cards/AER-X.json'
+import * as CardService from '../../../src/Services/CardService'
 import { negateForm, ornithopterForm } from '../../Assets/Stubs'
+import { initializeDatabase, cleanDatabase } from '../Config/RealmConfig'
 
-changeRealm({ schema: schemas, path: 'database/INTEGRATION_TEST.realm' })
-
+const { findCardsFromForm } = CardService
 describe('Card Service', () => {
   afterAll(() => {
-    deleteAll()
+    cleanDatabase()
   })
 
   it('Should import cards in JSON Format', () => {
-    importMTGJSON(AER)
+    initializeDatabase('CardService')
     const cardsCollection = CardService.findAllCards()
     expect(cardsCollection).toHaveLength(194)
   })

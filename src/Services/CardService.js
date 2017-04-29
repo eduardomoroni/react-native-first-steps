@@ -44,15 +44,16 @@ const findCardsFromForm = (form) => {
 const importMTGJSON = (mtgJson) => {
   mtgJson.cards.forEach((card) => {
     card.text = placeholdersToSymbols(card.text)
+    const cardAsRealmObject = jsonToRealmCard(card)
     try {
-      upsertCard(jsonToRealmCard(card))
+      upsertCard(cardAsRealmObject)
     } catch (e) {
       console.error(`Failed to insert ${card.name}:`, e)
     }
   })
 }
 
-export default {
+export {
   findCardByID,
   sortCards,
   findCardsFromForm,
