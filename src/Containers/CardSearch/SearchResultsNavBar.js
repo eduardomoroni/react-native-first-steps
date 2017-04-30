@@ -6,6 +6,7 @@ import { navBackButton, navTitle, navButtonBar, openDrawer } from '../../Navigat
 import { switchDisplayMode as switchDisplayModeAction } from '../../Redux/Actions'
 import Menu from '../CardSearch/ListCardFilterMenu'
 import CustomNavBar from '../../Navigation/CustomNavBar'
+import type { Dispatch } from 'redux'
 
 export class SearchResultsNavBar extends Component {
   render () {
@@ -37,7 +38,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     switchDisplayMode: (toggle) => dispatch(switchDisplayModeAction(toggle))
   }

@@ -8,6 +8,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
 import { valuesOf } from '../../Realm/RealmService'
+import type { Dispatch } from 'redux'
 import {
   DropdownInputForm,
   Modal,
@@ -160,7 +161,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm)),
     showModal: (modal) => dispatch(showFormModal(modal))

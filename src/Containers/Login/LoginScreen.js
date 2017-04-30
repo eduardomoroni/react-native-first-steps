@@ -16,6 +16,7 @@ import { loginUser } from '../../Redux/Actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
 import { Spinner } from '../Components'
+import type { Dispatch } from 'redux'
 
 type LoginScreenProps = {
   error: string,
@@ -163,7 +164,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     attemptLogin: (credentials) => dispatch(loginUser(credentials))
   }

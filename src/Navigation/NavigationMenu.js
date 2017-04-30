@@ -9,6 +9,7 @@ import { userLoggout } from '../Redux/Actions'
 import { DrawerButton } from '../Containers/Components'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
+import type { Dispatch } from 'redux'
 
 class NavigationMenu extends Component {
   componentDidMount () {
@@ -84,7 +85,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     onLogout: () => dispatch(userLoggout())
   }
