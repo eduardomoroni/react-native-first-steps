@@ -1,4 +1,4 @@
-// flow-typed signature: d37ad7e61e6f9f0d51baf10c5a16d5f1
+// flow-typed signature: 6c3c26c47e58fb5d0d7839c755ce8da3
 // flow-typed version: <<STUB>>/redux-saga_v0.14.3/flow_v0.40.0
 
 /**
@@ -27,6 +27,10 @@ declare module 'redux-saga/dist/redux-saga' {
 }
 
 declare module 'redux-saga/dist/redux-saga.min' {
+  declare module.exports: any;
+}
+
+declare module 'redux-saga/effects' {
   declare module.exports: any;
 }
 
@@ -174,6 +178,10 @@ declare module 'redux-saga/src/utils' {
   declare module.exports: any;
 }
 
+declare module 'redux-saga/utils' {
+  declare module.exports: any;
+}
+
 declare module 'redux-saga/webpack.config.base' {
   declare module.exports: any;
 }
@@ -192,6 +200,9 @@ declare module 'redux-saga/dist/redux-saga.js' {
 }
 declare module 'redux-saga/dist/redux-saga.min.js' {
   declare module.exports: $Exports<'redux-saga/dist/redux-saga.min'>;
+}
+declare module 'redux-saga/effects.js' {
+  declare module.exports: $Exports<'redux-saga/effects'>;
 }
 declare module 'redux-saga/es/effects.js' {
   declare module.exports: $Exports<'redux-saga/es/effects'>;
@@ -300,6 +311,9 @@ declare module 'redux-saga/src/internal/utils.js' {
 }
 declare module 'redux-saga/src/utils.js' {
   declare module.exports: $Exports<'redux-saga/src/utils'>;
+}
+declare module 'redux-saga/utils.js' {
+  declare module.exports: $Exports<'redux-saga/utils'>;
 }
 declare module 'redux-saga/webpack.config.base.js' {
   declare module.exports: $Exports<'redux-saga/webpack.config.base'>;

@@ -14,6 +14,6 @@ export class ManaSymbol extends PureComponent {
 }
 
 ManaSymbol.propTypes = {
-  style: PropTypes.arrayOf(PropTypes.any), // IDK why styles are imported as number
+  style: PropTypes.any,
   color: PropTypes.oneOf(ValidColors).isRequired
 }

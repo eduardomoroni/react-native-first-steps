@@ -6,6 +6,7 @@ import { shallow } from 'enzyme'
 // $FlowFixMe
 import AndroidDropDown from '../../../../src/Containers/Components/DropdownInputForm.android'
 import iOSDropDown from '../../../../src/Containers/Components/DropdownInputForm.ios'
+import { InputLabel, InputPicker } from '../../../../src/Containers/Components'
 
 const props = {
   dropdownItems: ['a', 'b', 'c'],
@@ -16,22 +17,22 @@ const props = {
   }
 }
 
-it('Should render DropdownInputForm android Component', () => {
-  const wrapper = shallow(<AndroidDropDown {...props} />)
-  const children = wrapper.props().children
-  expect(children[0].props.label).toEqual(props.input.name)
-  expect(children[1].props.selectedValue).toEqual(props.selectedValue)
-  expect(children[1].props.dropdownItems).toEqual(props.dropdownItems)
-  expect(wrapper.getNode()).toMatchSnapshot()
-})
+describe('<DropdownInputForm />', () => {
+  it('Should render android Component', () => {
+    const wrapper = shallow(<AndroidDropDown {...props} />)
+    const pickerProps = wrapper.find(InputPicker).props()
 
-it('Should render DropdownInputForm ios Component', () => {
-  const props = {
-    name: 'label',
-    onChange: () => null
-  }
+    expect(wrapper.find(InputLabel).prop('label')).toEqual(props.input.name)
+    expect(pickerProps.selectedValue).toEqual(props.selectedValue)
+    expect(pickerProps.dropdownItems).toEqual(props.dropdownItems)
+    expect(wrapper).toMatchSnapshot()
+  })
 
-  const wrapper = shallow(<iOSDropDown {...props} />)
-  expect(wrapper).toMatchSnapshot()
-  expect(wrapper.props().onChange).toEqual(props.onChange)
+  it('Should render ios Component', () => {
+    const props = { name: 'label', onChange: () => null }
+
+    const wrapper = shallow(<iOSDropDown {...props} />)
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.props().onChange).toEqual(props.onChange)
+  })
 })

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import CardDetails from './CardDetails'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import { cardType } from '../../Types/CardType'
 import { findCardIndex } from '../../Services/CardService'
 import Swiper from 'react-native-swiper'
-import { Icon } from 'react-native-elements'
+import { FloatingActionButton } from '../Components'
 
 export class CardSwiper extends Component {
   renderCardDetails (card, key) {
@@ -29,25 +30,21 @@ export class CardSwiper extends Component {
     }
 
     return (
-      <Swiper
-        ref={(component) => { this.swiper = component }}
-        onMomentumScrollEnd={this.updateScreenTitle}
-        style={{ flex: 1 }}
-        loadMinimal
-        loadMinimalSize={2}
-        loop={false}
-        showsPagination={false}
-        index={index}
-        >
-        <Icon
-          raised
-          name='heartbeat'
-          type='font-awesome'
-          color='#f50'
-          onPress={() => console.log('hello')}
-        />
-        {cards.map(this.renderCardDetails)}
-      </Swiper>
+      <View>
+        <Swiper
+          ref={(component) => { this.swiper = component }}
+          onMomentumScrollEnd={this.updateScreenTitle}
+          style={{ flex: 1 }}
+          loadMinimal
+          loadMinimalSize={2}
+          loop={false}
+          showsPagination={false}
+          index={index}
+          >
+          {cards.map(this.renderCardDetails)}
+        </Swiper>
+        <FloatingActionButton />
+      </View>
     )
   }
 }

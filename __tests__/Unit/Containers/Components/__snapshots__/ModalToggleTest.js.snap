@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render ModalToggle Component properly 1`] = `
+exports[`<ModalToggle /> Snapshot 1`] = `
 <TouchableOpacity
   activeOpacity={0.2}
   focusedOpacity={0.7}
