@@ -15,22 +15,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
 import { Spinner } from '../Components'
 import type { Dispatch } from 'redux'
-const { LoginManager } = require('react-native-fbsdk');
-
-const readPermissions = ['user_friends', 'email']
-const logInFacebook = () => LoginManager.logInWithReadPermissions(readPermissions).then(
-  function(result) {
-    if (result.isCancelled) {
-      alert('Login cancelled');
-    } else {
-      alert('Login success with permissions: '
-        +result.grantedPermissions.toString());
-    }
-  },
-  function(error) {
-    alert('Login fail with error: ' + error);
-  }
-)
+import { facebookLogin } from '../../Services/FacebookService'
 
 type LoginScreenProps = {
   error: string,
@@ -97,12 +82,12 @@ export class LoginScreen extends Component {
 
     return (
       <View style={[Styles.loginRow]}>
-        <TouchableOpacity style={Styles.loginButtonWrapper} onPress={this.handlePressLogin}>
+        <TouchableOpacity style={Styles.loginButtonWrapper} onPress={facebookLogin}>
           <View style={Styles.loginButton}>
             <Text style={Styles.loginText}>{I18n.t('signIn')}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={Styles.loginButtonWrapper} onPress={logInFacebook}>
+        <TouchableOpacity style={Styles.loginButtonWrapper} onPress={() => NavigationActions.pop()}>
           <View style={Styles.loginButton}>
             <Text style={Styles.loginText}>{I18n.t('cancel')}</Text>
           </View>
