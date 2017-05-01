@@ -9,9 +9,10 @@ const props = {
   name: 'label'
 }
 
-// TODO: Muita preguiça de testar isso agora, procrastinando
-it.skip('Should render MultiSelect Component', () => {
-  const tree = shallow(<MultiSelect {...props} />)
-  expect(tree).toMatchSnapshot()
-  expect(true).toBeFalsy()
+describe('<MultiSelect />', () => {
+  // TODO: Muita preguiça de testar isso agora, procrastinando
+  it.skip('Snapshot', () => {
+    const wrapper = shallow(<MultiSelect {...props} />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

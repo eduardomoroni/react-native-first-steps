@@ -68,3 +68,6 @@ database/
 # VS CODE
 .vscode
 jsconfig.json
+
+# IDK
+.management/

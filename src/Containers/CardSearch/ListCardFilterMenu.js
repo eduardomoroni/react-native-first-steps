@@ -14,6 +14,7 @@ import {
   DropdownInputForm,
   SwitchInputForm
 } from '../Components'
+import type { Dispatch } from 'redux'
 
 // TODO: Maybe this component is doing this in a dumb way
 // Meus componentes não sabem ao certo pra onde olhar no estado, redux-form / cardSearchReducer
@@ -98,7 +99,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     sortCards: (sortParams) => dispatch(sortCardsActionCreator(sortParams)),
     switchDisplayMode: (displayMode) => dispatch(switchDisplayModeActionCreator(displayMode)),

@@ -1,7 +1,7 @@
 ---
 engines:
   duplication:
-    enabled: true
+    enabled: false
     checks:
       Similar Code:
         enabled: false
@@ -10,12 +10,16 @@ engines:
         - javascript
   eslint:
     enabled: true
+    channel: "eslint-3"
+    checks:
+      complexity:
+        enabled: true
   fixme:
-    enabled: true
+    enabled: false
 ratings:
   paths:
-  - "**.js"
-  - "**.jsx"
+    - "**.js"
+    - "**.jsx"
 exclude_paths:
-  - "/__tests__/*"
   - "/node_modules/*"
+  - "flow-typed/*"

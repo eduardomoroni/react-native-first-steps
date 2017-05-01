@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render TextInputForm Component 1`] = `
+exports[`<Modal /> Snapshot 1`] = `
 <Component
   animationIn="slideInUp"
   animationInTiming={300}
@@ -13,11 +13,11 @@ exports[`Should render TextInputForm Component 1`] = `
   hardwareAccelerated={false}
   hideOnBack={true}
   isVisible={false}
-  name="label"
   onModalHide={[Function]}
   onModalShow={[Function]}
   onRequestClose={[Function]}
   transparent={true}
+  value="test"
   visible={false}
 >
   <withAnimatable(View)
@@ -56,7 +56,6 @@ exports[`Should render TextInputForm Component 1`] = `
     hideOnBack={true}
     isVisible={false}
     iterationCount={1}
-    name="label"
     onAnimationBegin={[Function]}
     onAnimationEnd={[Function]}
     onModalHide={[Function]}
@@ -73,6 +72,7 @@ exports[`Should render TextInputForm Component 1`] = `
       ]
     }
     useNativeDriver={false}
+    value="test"
   >
     <TouchableOpacity
       activeOpacity={0.2}

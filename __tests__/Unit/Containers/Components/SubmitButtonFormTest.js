@@ -6,11 +6,18 @@ import { shallow } from 'enzyme'
 import { SubmitButtonForm } from '../../../../src/Containers/Components'
 
 const props = {
-  onPress: () => 'ABABAB'
+  onPress: jest.fn()
 }
 
-it('Should render SubmitButtonForm Component', () => {
+describe('<SubmitButtonForm />', () => {
   const wrapper = shallow(<SubmitButtonForm {...props} />)
-  expect(wrapper.getNode()).toMatchSnapshot()
-  expect(wrapper.props().onPress).toEqual(props.onPress)
+
+  it('Snapshot', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('Should trigger callback onPress', () => {
+    wrapper.simulate('press')
+    expect(props.onPress).toHaveBeenCalled()
+  })
 })

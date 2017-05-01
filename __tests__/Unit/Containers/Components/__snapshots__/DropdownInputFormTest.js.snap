@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render DropdownInputForm android Component 1`] = `
+exports[`<DropdownInputForm /> Should render android Component 1`] = `
 <View
   style={
     Object {
@@ -33,7 +33,7 @@ exports[`Should render DropdownInputForm android Component 1`] = `
 </View>
 `;
 
-exports[`Should render DropdownInputForm ios Component 1`] = `
+exports[`<DropdownInputForm /> Should render ios Component 1`] = `
 <iOSDropDown
   name="label"
   onChange={[Function]}

@@ -40,7 +40,7 @@ export class Modal extends Component {
   _open = () => {
     this.backdropRef.transitionTo(
       { opacity: this.props.backdropOpacity },
-      this.props.backdropTransitionInTiming,
+      this.props.backdropTransitionInTiming
     )
     this.contentRef[this.props.animationIn](this.props.animationInTiming).then(() => {
       this.props.onModalShow()

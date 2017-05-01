@@ -8,6 +8,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { searchForCards, showFormModal } from '../../Redux/Actions'
 import Styles from '../../Styles/CardSearchFormStyle'
 import { valuesOf } from '../../Realm/RealmService'
+import type { Dispatch } from 'redux'
 import {
   DropdownInputForm,
   Modal,
@@ -115,7 +116,7 @@ export class CardSearchForm extends Component {
           { this.renderThreeFieldInRow(
             <ModalToggle label='cardRarity' onPress={showModal} selected={cardRarity} />,
             <ModalToggle label='cardSet' onPress={showModal} selected={cardSet} />,
-            <ModalToggle label='cardFormat' onPress={showModal} selected={cardFormat} />,
+            <ModalToggle label='cardFormat' onPress={showModal} selected={cardFormat} />
         )}
           <Field name='cardColorsIdentity' component={ManaIconsBar} />
           {this.renderModal()}
@@ -160,7 +161,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     searchCards: (cardSearchForm) => dispatch(searchForCards(cardSearchForm)),
     showModal: (modal) => dispatch(showFormModal(modal))

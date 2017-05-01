@@ -14,10 +14,9 @@ const props = {
   }
 }
 
-// TODO: Testar o caso do input.value ser undefined
-
 describe('<NumericInputForm />', () => {
   it('Should render NumericInputForm Component', () => {
+    const { onChange } = props.input
     const wrapper = shallow(<NumericInputForm {...props} />)
     const textInputProps = wrapper.find(TextInput).props()
     const inputPickerProps = wrapper.find(InputPicker).props()
@@ -25,17 +24,16 @@ describe('<NumericInputForm />', () => {
     expect(inputPickerProps.selectedValue).toEqual(props.input.value.operator)
 
     inputPickerProps.onValueChange('b')
-    expect(props.input.onChange).toBeCalledWith({number: 1, operator: 'b'})
+    expect(onChange).toBeCalledWith({number: 1, operator: 'b'})
 
     textInputProps.onChangeText('10')
-    expect(props.input.onChange).lastCalledWith({number: 10, operator: '>'})
+    expect(onChange).lastCalledWith({number: 10, operator: '>'})
 
-    expect(wrapper.getNode()).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot()
   })
 
   it('Should initialize picker case input.value is undefined', () => {
     const wrapper = shallow(<NumericInputForm {...props} input={{value: undefined}} />)
-    const inputPickerProps = wrapper.find(InputPicker).props()
-    expect(inputPickerProps.selectedValue).toEqual('')
+    expect(wrapper.find(InputPicker).prop('selectedValue')).toEqual('')
   })
 })

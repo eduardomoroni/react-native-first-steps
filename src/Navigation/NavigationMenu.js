@@ -9,6 +9,7 @@ import { userLoggout } from '../Redux/Actions'
 import { DrawerButton } from '../Containers/Components'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
+import type { Dispatch } from 'redux'
 
 class NavigationMenu extends Component {
   componentDidMount () {
@@ -27,20 +28,7 @@ class NavigationMenu extends Component {
 
   handlePress = (route: string) => {
     this.toggleDrawer()
-    switch (route) {
-      case 'settings':
-        NavigationActions.settings()
-        break
-      case 'cardSearch':
-        NavigationActions.cardSearch()
-        break
-      case 'loginScreen':
-        NavigationActions.loginScreen()
-        break
-      case 'cardSearchForm':
-        NavigationActions.cardSearchForm()
-        break
-    }
+    NavigationActions[route]()
   }
 
   renderLoginOrLogout = () => {
@@ -59,8 +47,9 @@ class NavigationMenu extends Component {
     return (
       <ScrollView style={styles.container}>
         <Image source={Images.logo} style={styles.logo} />
-        <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
         <DrawerButton text={I18n.t('cardSearch')} onPress={() => this.handlePress('cardSearchForm')} />
+        <DrawerButton text={I18n.t('wishList')} onPress={() => this.handlePress('wishList')} />
+        <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
         {this.renderLoginOrLogout()}
       </ScrollView>
     )
@@ -84,7 +73,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>) => {
   return {
     onLogout: () => dispatch(userLoggout())
   }

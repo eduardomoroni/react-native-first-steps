@@ -10,7 +10,9 @@ const props = {
   style: {backgroundColor: 'blue'}
 }
 
-it('Should render TextInputForm Component', () => {
-  const tree = shallow(<ManaSymbol {...props} />)
-  expect(tree).toMatchSnapshot()
+describe('<ManaSymbol />', () => {
+  it('Snapshot', () => {
+    const wrapper = shallow(<ManaSymbol {...props} />)
+    expect(wrapper).toMatchSnapshot()
+  })
 })

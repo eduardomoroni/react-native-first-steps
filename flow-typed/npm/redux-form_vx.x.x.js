@@ -1,4 +1,4 @@
-// flow-typed signature: 0f6b072246d0dadcdebb2ffecdf990bf
+// flow-typed signature: 4ca774c40355dac406cbb3465f79d4c5
 // flow-typed version: <<STUB>>/redux-form_v6.5.0/flow_v0.40.0
 
 /**
@@ -174,10 +174,6 @@ declare module 'redux-form/es/__tests__/reducer.clearSubmit.spec' {
   declare module.exports: any;
 }
 
-declare module 'redux-form/es/__tests__/reducer.clearSubmitErrors.spec' {
-  declare module.exports: any;
-}
-
 declare module 'redux-form/es/__tests__/reducer.destroy.spec' {
   declare module.exports: any;
 }
@@ -314,6 +310,26 @@ declare module 'redux-form/es/deleteInWithCleanUp' {
   declare module.exports: any;
 }
 
+declare module 'redux-form/es/events/__tests__/createOnBlur.spec' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/__tests__/createOnChange.spec' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/__tests__/createOnDragStart.spec' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/__tests__/createOnDrop.spec' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/__tests__/createOnFocus.spec' {
+  declare module.exports: any;
+}
+
 declare module 'redux-form/es/events/__tests__/getValue.spec' {
   declare module.exports: any;
 }
@@ -331,6 +347,26 @@ declare module 'redux-form/es/events/__tests__/silenceEvent.spec' {
 }
 
 declare module 'redux-form/es/events/__tests__/silenceEvents.spec' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/createOnBlur' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/createOnChange' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/createOnDragStart' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/createOnDrop' {
+  declare module.exports: any;
+}
+
+declare module 'redux-form/es/events/createOnFocus' {
   declare module.exports: any;
 }
 
@@ -446,10 +482,6 @@ declare module 'redux-form/es/selectors/__tests__/getFormSyncErrors.spec' {
   declare module.exports: any;
 }
 
-declare module 'redux-form/es/selectors/__tests__/getFormSyncWarnings.spec' {
-  declare module.exports: any;
-}
-
 declare module 'redux-form/es/selectors/__tests__/getFormValues.spec' {
   declare module.exports: any;
 }
@@ -499,10 +531,6 @@ declare module 'redux-form/es/selectors/getFormSubmitErrors' {
 }
 
 declare module 'redux-form/es/selectors/getFormSyncErrors' {
-  declare module.exports: any;
-}
-
-declare module 'redux-form/es/selectors/getFormSyncWarnings' {
   declare module.exports: any;
 }
 
@@ -826,10 +854,6 @@ declare module 'redux-form/lib/__tests__/reducer.clearSubmit.spec' {
   declare module.exports: any;
 }
 
-declare module 'redux-form/lib/__tests__/reducer.clearSubmitErrors.spec' {
-  declare module.exports: any;
-}
-
 declare module 'redux-form/lib/__tests__/reducer.destroy.spec' {
   declare module.exports: any;
 }
@@ -1098,10 +1122,6 @@ declare module 'redux-form/lib/selectors/__tests__/getFormSyncErrors.spec' {
   declare module.exports: any;
 }
 
-declare module 'redux-form/lib/selectors/__tests__/getFormSyncWarnings.spec' {
-  declare module.exports: any;
-}
-
 declare module 'redux-form/lib/selectors/__tests__/getFormValues.spec' {
   declare module.exports: any;
 }
@@ -1151,10 +1171,6 @@ declare module 'redux-form/lib/selectors/getFormSubmitErrors' {
 }
 
 declare module 'redux-form/lib/selectors/getFormSyncErrors' {
-  declare module.exports: any;
-}
-
-declare module 'redux-form/lib/selectors/getFormSyncWarnings' {
   declare module.exports: any;
 }
 
@@ -1445,9 +1461,6 @@ declare module 'redux-form/es/__tests__/reducer.clearAsyncError.spec.js' {
 declare module 'redux-form/es/__tests__/reducer.clearSubmit.spec.js' {
   declare module.exports: $Exports<'redux-form/es/__tests__/reducer.clearSubmit.spec'>;
 }
-declare module 'redux-form/es/__tests__/reducer.clearSubmitErrors.spec.js' {
-  declare module.exports: $Exports<'redux-form/es/__tests__/reducer.clearSubmitErrors.spec'>;
-}
 declare module 'redux-form/es/__tests__/reducer.destroy.spec.js' {
   declare module.exports: $Exports<'redux-form/es/__tests__/reducer.destroy.spec'>;
 }
@@ -1550,6 +1563,21 @@ declare module 'redux-form/es/defaultShouldValidate.js' {
 declare module 'redux-form/es/deleteInWithCleanUp.js' {
   declare module.exports: $Exports<'redux-form/es/deleteInWithCleanUp'>;
 }
+declare module 'redux-form/es/events/__tests__/createOnBlur.spec.js' {
+  declare module.exports: $Exports<'redux-form/es/events/__tests__/createOnBlur.spec'>;
+}
+declare module 'redux-form/es/events/__tests__/createOnChange.spec.js' {
+  declare module.exports: $Exports<'redux-form/es/events/__tests__/createOnChange.spec'>;
+}
+declare module 'redux-form/es/events/__tests__/createOnDragStart.spec.js' {
+  declare module.exports: $Exports<'redux-form/es/events/__tests__/createOnDragStart.spec'>;
+}
+declare module 'redux-form/es/events/__tests__/createOnDrop.spec.js' {
+  declare module.exports: $Exports<'redux-form/es/events/__tests__/createOnDrop.spec'>;
+}
+declare module 'redux-form/es/events/__tests__/createOnFocus.spec.js' {
+  declare module.exports: $Exports<'redux-form/es/events/__tests__/createOnFocus.spec'>;
+}
 declare module 'redux-form/es/events/__tests__/getValue.spec.js' {
   declare module.exports: $Exports<'redux-form/es/events/__tests__/getValue.spec'>;
 }
@@ -1564,6 +1592,21 @@ declare module 'redux-form/es/events/__tests__/silenceEvent.spec.js' {
 }
 declare module 'redux-form/es/events/__tests__/silenceEvents.spec.js' {
   declare module.exports: $Exports<'redux-form/es/events/__tests__/silenceEvents.spec'>;
+}
+declare module 'redux-form/es/events/createOnBlur.js' {
+  declare module.exports: $Exports<'redux-form/es/events/createOnBlur'>;
+}
+declare module 'redux-form/es/events/createOnChange.js' {
+  declare module.exports: $Exports<'redux-form/es/events/createOnChange'>;
+}
+declare module 'redux-form/es/events/createOnDragStart.js' {
+  declare module.exports: $Exports<'redux-form/es/events/createOnDragStart'>;
+}
+declare module 'redux-form/es/events/createOnDrop.js' {
+  declare module.exports: $Exports<'redux-form/es/events/createOnDrop'>;
+}
+declare module 'redux-form/es/events/createOnFocus.js' {
+  declare module.exports: $Exports<'redux-form/es/events/createOnFocus'>;
 }
 declare module 'redux-form/es/events/getValue.js' {
   declare module.exports: $Exports<'redux-form/es/events/getValue'>;
@@ -1649,9 +1692,6 @@ declare module 'redux-form/es/selectors/__tests__/getFormSubmitErrors.spec.js' {
 declare module 'redux-form/es/selectors/__tests__/getFormSyncErrors.spec.js' {
   declare module.exports: $Exports<'redux-form/es/selectors/__tests__/getFormSyncErrors.spec'>;
 }
-declare module 'redux-form/es/selectors/__tests__/getFormSyncWarnings.spec.js' {
-  declare module.exports: $Exports<'redux-form/es/selectors/__tests__/getFormSyncWarnings.spec'>;
-}
 declare module 'redux-form/es/selectors/__tests__/getFormValues.spec.js' {
   declare module.exports: $Exports<'redux-form/es/selectors/__tests__/getFormValues.spec'>;
 }
@@ -1690,9 +1730,6 @@ declare module 'redux-form/es/selectors/getFormSubmitErrors.js' {
 }
 declare module 'redux-form/es/selectors/getFormSyncErrors.js' {
   declare module.exports: $Exports<'redux-form/es/selectors/getFormSyncErrors'>;
-}
-declare module 'redux-form/es/selectors/getFormSyncWarnings.js' {
-  declare module.exports: $Exports<'redux-form/es/selectors/getFormSyncWarnings'>;
 }
 declare module 'redux-form/es/selectors/getFormValues.js' {
   declare module.exports: $Exports<'redux-form/es/selectors/getFormValues'>;
@@ -1934,9 +1971,6 @@ declare module 'redux-form/lib/__tests__/reducer.clearAsyncError.spec.js' {
 declare module 'redux-form/lib/__tests__/reducer.clearSubmit.spec.js' {
   declare module.exports: $Exports<'redux-form/lib/__tests__/reducer.clearSubmit.spec'>;
 }
-declare module 'redux-form/lib/__tests__/reducer.clearSubmitErrors.spec.js' {
-  declare module.exports: $Exports<'redux-form/lib/__tests__/reducer.clearSubmitErrors.spec'>;
-}
 declare module 'redux-form/lib/__tests__/reducer.destroy.spec.js' {
   declare module.exports: $Exports<'redux-form/lib/__tests__/reducer.destroy.spec'>;
 }
@@ -2138,9 +2172,6 @@ declare module 'redux-form/lib/selectors/__tests__/getFormSubmitErrors.spec.js' 
 declare module 'redux-form/lib/selectors/__tests__/getFormSyncErrors.spec.js' {
   declare module.exports: $Exports<'redux-form/lib/selectors/__tests__/getFormSyncErrors.spec'>;
 }
-declare module 'redux-form/lib/selectors/__tests__/getFormSyncWarnings.spec.js' {
-  declare module.exports: $Exports<'redux-form/lib/selectors/__tests__/getFormSyncWarnings.spec'>;
-}
 declare module 'redux-form/lib/selectors/__tests__/getFormValues.spec.js' {
   declare module.exports: $Exports<'redux-form/lib/selectors/__tests__/getFormValues.spec'>;
 }
@@ -2179,9 +2210,6 @@ declare module 'redux-form/lib/selectors/getFormSubmitErrors.js' {
 }
 declare module 'redux-form/lib/selectors/getFormSyncErrors.js' {
   declare module.exports: $Exports<'redux-form/lib/selectors/getFormSyncErrors'>;
-}
-declare module 'redux-form/lib/selectors/getFormSyncWarnings.js' {
-  declare module.exports: $Exports<'redux-form/lib/selectors/getFormSyncWarnings'>;
 }
 declare module 'redux-form/lib/selectors/getFormValues.js' {
   declare module.exports: $Exports<'redux-form/lib/selectors/getFormValues'>;

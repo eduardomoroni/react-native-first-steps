@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Settings /> Snapshot 1`] = `
+<ScrollViewMock
+  keyboardShouldPersistTaps="always"
+  style={
+    Object {
+      "backgroundColor": "#ebedf1",
+    }
+  }
+>
+  <List>
+    <ListViewMock
+      dataSource={
+        ListViewDataSource {
+          "items": 5,
+        }
+      }
+      renderRow={[Function]}
+      renderScrollComponent={[Function]}
+    />
+  </List>
+  <List>
+    <ListItem
+      avatar={1}
+      chevronColor="#bdc6cf"
+      hideChevron={false}
+      rightIcon={
+        Object {
+          "name": "chevron-right",
+        }
+      }
+      roundAvatar={true}
+      subtitle={
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "paddingLeft": 10,
+              "paddingTop": 5,
+            }
+          }
+        >
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 19.21,
+                "width": 100,
+              }
+            }
+          />
+          <TextElement
+            style={
+              Object {
+                "color": "grey",
+                "paddingLeft": 10,
+              }
+            }
+          >
+            5 months ago
+          </TextElement>
+        </View>
+      }
+      switchButton={false}
+      textInputEditable={true}
+      title="Limited supply! Its like digital gold!"
+      underlayColor="white"
+    />
+  </List>
+</ScrollViewMock>
+`;

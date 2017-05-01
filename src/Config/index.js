@@ -1,10 +1,13 @@
 import './I18n/I18n'
 import initFirebase from './Firebase/Firebase'
 import AER from '../Assets/Cards/AER-X.json'
-import { importMTGJSON, deleteAll } from '../Realm/RealmService'
+import { defaultConfig } from './Realm'
+import { deleteAll, changeRealm } from '../Realm/RealmService'
+import { importMTGJSON } from '../Services/CardService'
 export * from './Store/CreateStore'
 
-export default () => {
+export const initialConfig = () => {
+  changeRealm(defaultConfig)
   deleteAll()
   importMTGJSON(AER)
   initFirebase()

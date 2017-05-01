@@ -6,10 +6,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios && react-native log-ios",
     "android": "react-native run-android && react-native log-android",
-    "test": "jest --verbose --no-cache",
-    "test-ci": "jest __testes__/Unit/**/*Test.js --forceExit --coverage",
+    "test": "jest",
+    "test-ci": "jest --forceExit --coverage",
     "test-watch": "jest --watch --onlyChanged",
-    "test-coverage": "jest --coverage --forceExit",
     "lint-check": "standard --verbose | snazzy",
     "lint-fixcode": "standard --fix --verbose | snazzy",
     "flow-check": "flow --show-all-errors",
@@ -20,37 +19,39 @@
     "prepush": "jest --bail --forceExit --silent"
   },
   "dependencies": {
-    "firebase": "3.7.5",
+    "firebase": "^3.9.0",
     "lodash": "4.17.4",
     "prop-types": "^15.5.8",
     "react": "15.4.2",
-    "react-addons-test-utils": "15.5.0",
-    "react-dom": "15.4.2",
+    "react-dom": "^15.5.4",
     "react-native": "0.41.2",
-    "react-native-animatable": "1.1.0",
+    "react-native-action-button": "^2.6.9",
+    "react-native-animatable": "^1.1.1",
     "react-native-drawer": "2.3.0",
     "react-native-elements": "^0.11.2",
     "react-native-i18n": "1.0.0",
     "react-native-router-flux": "3.37.0",
     "react-native-swiper": "^1.5.4",
-    "react-native-vector-icons": "4.0.0",
+    "react-native-vector-icons": "^4.0.1",
     "react-redux": "5.0.2",
     "realm": "1.0.2",
     "redux": "3.6.0",
     "redux-form": "6.5.0",
-    "redux-saga": "0.14.3"
+    "redux-saga": "^0.15.0"
   },
   "devDependencies": {
-    "babel-eslint": "7.1.1",
-    "codecov": "2.1.0",
+    "babel-eslint": "^7.2.3",
     "codeclimate-test-reporter": "0.4.1",
-    "enzyme": "2.8.0",
+    "codecov": "2.1.0",
+    "enzyme": "^2.8.2",
+    "eslint-plugin-flowtype": "^2.32.1",
     "flow-bin": "0.40.0",
-    "husky": "0.13.1",
+    "husky": "^0.13.3",
     "jest": "^19.0.2",
-    "jest-enzyme": "3.0.0",
-    "snazzy": "6.0.0",
-    "standard": "9.0.1"
+    "jest-enzyme": "^3.0.1",
+    "react-addons-test-utils": "^15.5.1",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
@@ -69,11 +70,17 @@
     ]
   },
   "standard": {
-    "plugins": ["flowtype"],
-    "env": ["jest"],
+    "plugins": [],
+    "env": [
+      "jest"
+    ],
     "parser": "babel-eslint",
-    "globals": ["__DEV__"],
-    "ignore": ["flow-typed/"]
+    "globals": [
+      "__DEV__"
+    ],
+    "ignore": [
+      "flow-typed/"
+    ]
   },
   "rnpm": {
     "assets": [
