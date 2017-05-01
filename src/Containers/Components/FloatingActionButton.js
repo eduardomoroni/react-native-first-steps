@@ -32,7 +32,11 @@ const ItemType = {
 }
 
 FloatingActionButton.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(ItemType))
+  items: PropTypes.arrayOf(PropTypes.shape(ItemType)).isRequired
+}
+
+FloatingActionButton.defaultProps = {
+  items: []
 }
 
 const styles = StyleSheet.create({

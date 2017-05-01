@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react'
 import {
   View,
@@ -24,7 +22,7 @@ type LoginScreenProps = {
   attemptLogin: () => void
 }
 
-class LoginScreen extends Component {
+export class LoginScreen extends Component {
   props: LoginScreenProps
 
   state: {

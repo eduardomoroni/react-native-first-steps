@@ -28,20 +28,7 @@ class NavigationMenu extends Component {
 
   handlePress = (route: string) => {
     this.toggleDrawer()
-    switch (route) {
-      case 'settings':
-        NavigationActions.settings()
-        break
-      case 'cardSearch':
-        NavigationActions.cardSearch()
-        break
-      case 'loginScreen':
-        NavigationActions.loginScreen()
-        break
-      case 'cardSearchForm':
-        NavigationActions.cardSearchForm()
-        break
-    }
+    NavigationActions[route]()
   }
 
   renderLoginOrLogout = () => {
@@ -60,8 +47,9 @@ class NavigationMenu extends Component {
     return (
       <ScrollView style={styles.container}>
         <Image source={Images.logo} style={styles.logo} />
-        <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
         <DrawerButton text={I18n.t('cardSearch')} onPress={() => this.handlePress('cardSearchForm')} />
+        <DrawerButton text={I18n.t('wishList')} onPress={() => this.handlePress('wishList')} />
+        <DrawerButton text={I18n.t('settings')} onPress={() => this.handlePress('settings')} />
         {this.renderLoginOrLogout()}
       </ScrollView>
     )

@@ -30,7 +30,7 @@ const list1 = [
   }
 ]
 
-class Settings extends Component {
+export class Settings extends Component {
   constructor () {
     super()
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})

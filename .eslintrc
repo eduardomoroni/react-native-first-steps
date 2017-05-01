@@ -3,8 +3,6 @@
   "parser": "babel-eslint",
   "plugins": [
     "standard",
-    "eslint-config-standard",
-    "eslint-config-standard-react",
     "eslint-plugin-flowtype"
   ],
   "env": {

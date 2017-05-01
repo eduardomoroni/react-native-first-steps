@@ -8,6 +8,24 @@ import { findCardIndex } from '../../Services/CardService'
 import Swiper from 'react-native-swiper'
 import { FloatingActionButton } from '../Components'
 
+const fabItems = [
+  { name: 'md-share',
+    buttonColor: '#9b59b6',
+    title: 'Share',
+    onPress: () => null
+  }, {
+    name: 'md-folder-open',
+    buttonColor: '#3498db',
+    title: 'Add to Deck',
+    onPress: () => null
+  }, {
+    name: 'md-swap',
+    buttonColor: '#1abc9c',
+    title: 'Add to TradeList',
+    onPress: () => null
+  }
+]
+
 export class CardSwiper extends Component {
   renderCardDetails (card, key) {
     return (
@@ -43,7 +61,7 @@ export class CardSwiper extends Component {
           >
           {cards.map(this.renderCardDetails)}
         </Swiper>
-        <FloatingActionButton />
+        <FloatingActionButton items={fabItems} />
       </View>
     )
   }

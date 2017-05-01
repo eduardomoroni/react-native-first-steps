@@ -116,7 +116,7 @@ export class CardSearchForm extends Component {
           { this.renderThreeFieldInRow(
             <ModalToggle label='cardRarity' onPress={showModal} selected={cardRarity} />,
             <ModalToggle label='cardSet' onPress={showModal} selected={cardSet} />,
-            <ModalToggle label='cardFormat' onPress={showModal} selected={cardFormat} />,
+            <ModalToggle label='cardFormat' onPress={showModal} selected={cardFormat} />
         )}
           <Field name='cardColorsIdentity' component={ManaIconsBar} />
           {this.renderModal()}

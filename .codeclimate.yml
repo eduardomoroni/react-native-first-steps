@@ -15,7 +15,7 @@ engines:
       complexity:
         enabled: true
   fixme:
-    enabled: true
+    enabled: false
 ratings:
   paths:
     - "**.js"
