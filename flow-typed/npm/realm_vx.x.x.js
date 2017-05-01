@@ -1,4 +1,4 @@
-// flow-typed signature: 08abd7bcd4987fde81d3041cb8e0776d
+// flow-typed signature: b2870a6a8a6c89101783df98571d6dbc
 // flow-typed version: <<STUB>>/realm_v1.0.2/flow_v0.40.0
 
 /**
@@ -102,7 +102,15 @@ declare module 'realm/react-native/listview' {
   declare module.exports: any;
 }
 
-declare module 'realm/scripts/install' {
+declare module 'realm/scripts/download-realm' {
+  declare module.exports: any;
+}
+
+declare module 'realm/scripts/handle-license-check' {
+  declare module.exports: any;
+}
+
+declare module 'realm/scripts/prepublish' {
   declare module.exports: any;
 }
 
@@ -263,8 +271,14 @@ declare module 'realm/react-native/index.js' {
 declare module 'realm/react-native/listview.js' {
   declare module.exports: $Exports<'realm/react-native/listview'>;
 }
-declare module 'realm/scripts/install.js' {
-  declare module.exports: $Exports<'realm/scripts/install'>;
+declare module 'realm/scripts/download-realm.js' {
+  declare module.exports: $Exports<'realm/scripts/download-realm'>;
+}
+declare module 'realm/scripts/handle-license-check.js' {
+  declare module.exports: $Exports<'realm/scripts/handle-license-check'>;
+}
+declare module 'realm/scripts/prepublish.js' {
+  declare module.exports: $Exports<'realm/scripts/prepublish'>;
 }
 declare module 'realm/tests/index.js' {
   declare module.exports: $Exports<'realm/tests/index'>;

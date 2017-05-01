@@ -23,7 +23,8 @@ const testForm = {
 const testScreen = () => {
   const cards = findCardsFromForm(testForm)
   console.log(cards)
-  return <WishList />
+  // return <WishList />
+  return <LoginScreen />
 }
 
 const NavigationRouter = () => {

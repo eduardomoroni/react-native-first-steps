@@ -66,10 +66,10 @@ NavigationMenu.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  const { user } = state.user
+  const { token } = state.auth
 
   return {
-    user: user
+    user: token
   }
 }
 

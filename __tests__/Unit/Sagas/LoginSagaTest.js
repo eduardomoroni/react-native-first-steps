@@ -1,71 +1,37 @@
 import { call, put } from 'redux-saga/effects'
-import {
-  loginUserSaga,
-  callFirebaseSignIn,
-  createFirebaseUser,
-  signupUserSaga,
-  success
-} from '../../../src/Sagas/LoginSaga'
+import { loginUserSaga } from '../../../src/Sagas/LoginSaga'
 import {
   loginUser,
   loginUserSuccess,
-  signupUser,
-  loginUserFailed,
-  userLoggedIn
+  loginUserFailed
 } from '../../../src/Redux/Actions'
+import * as LoginService from '../../../src/Services/LoginService'
 
 const sagaDone = { done: true, value: undefined }
-const credential = { email: 'email', password: 'pass' }
-const loginAction = loginUser(credential)
-const signUpAction = signupUser(credential)
-const expectedUser = { user: 'Fake' }
+const loginAction = loginUser()
+const accessToken = { token: 'fake' }
+const error = 'Login Canceled'
 
-it('Sign in perfect flow', () => {
-  const generator = loginUserSaga(loginAction)
-  const step = (lastYield) => generator.next(lastYield)
+describe('Login Sagas Test', () => {
+  it('Sign in perfect flow', () => {
+    const generator = loginUserSaga(loginAction)
+    const step = (lastYield) => generator.next(lastYield)
 
-  expect(step().value).toEqual(call(callFirebaseSignIn, loginAction.payload))
-  expect(step(expectedUser).value).toEqual(call(success, expectedUser))
-  expect(step()).toEqual(sagaDone)
-})
+    expect(step().value).toEqual(call(LoginService.facebookLogin))
+    expect(step().value).toEqual(call(LoginService.getAccessToken))
+    expect(step(accessToken).value).toEqual(put(loginUserSuccess(accessToken)))
+    expect(step()).toEqual(sagaDone)
+  })
 
-it('Sign in flow should call signup flow on error', () => {
-  const generator = loginUserSaga(loginAction)
+  it('Sign in flow should call signup flow on error', () => {
+    const generator = loginUserSaga(loginAction)
+    const step = (lastYield) => generator.next(lastYield)
 
-  try {
-    expect(generator.next().value).toEqual(call(callFirebaseSignIn, loginAction.payload))
-    expect(generator.throw('Failed to login').value).toEqual(put(signupUser(loginAction.payload)))
-  } finally {
-    expect(generator.next()).toEqual(sagaDone)
-  }
-})
-
-it('Sign Up perfect flow', () => {
-  const generator = signupUserSaga(signUpAction)
-  const step = (lastYield) => generator.next(lastYield)
-
-  expect(step().value).toEqual(call(createFirebaseUser, signUpAction.payload))
-  expect(step(expectedUser).value).toEqual(call(success, expectedUser))
-  expect(step()).toEqual(sagaDone)
-})
-
-it('Sign Up error flow', () => {
-  const generator = signupUserSaga(signUpAction)
-  const error = { message: 'Error Message' }
-
-  try {
-    expect(generator.next().value).toEqual(call(createFirebaseUser, signUpAction.payload))
-    expect(generator.throw(error).value).toEqual(put(loginUserFailed(error.message)))
-  } finally {
-    expect(generator.next()).toEqual(sagaDone)
-  }
-})
-
-it('On Success should Update State', () => {
-  const generator = success(expectedUser)
-  const step = (lastYield) => generator.next(lastYield)
-
-  expect(step().value).toEqual(put(loginUserSuccess()))
-  expect(step().value).toEqual(put(userLoggedIn(expectedUser)))
-  expect(step()).toEqual(sagaDone)
+    try {
+      expect(step().value).toEqual(call(LoginService.facebookLogin))
+      expect(generator.throw(error).value).toEqual(put(loginUserFailed(error)))
+    } finally {
+      expect(generator.next()).toEqual(sagaDone)
+    }
+  })
 })

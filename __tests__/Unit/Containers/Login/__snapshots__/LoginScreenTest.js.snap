@@ -1,223 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoginScreen /> Snapshot 1`] = `
-<ScrollViewMock
-  contentContainerStyle={
-    Object {
-      "justifyContent": "center",
-    }
-  }
-  keyboardShouldPersistTaps="always"
+exports[`<LoginScreen /> Snapshot WIP 1`] = `
+<View
   style={
-    Array [
-      Object {
-        "backgroundColor": "white",
-        "paddingTop": 94,
-      },
-      Object {
-        "height": 1334,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Image
-    source={1}
-    style={
-      Array [
-        Object {
-          "alignSelf": "center",
-          "resizeMode": "contain",
-        },
-        Object {
-          "width": 750,
-        },
-      ]
-    }
-  />
   <View
     style={
       Object {
-        "backgroundColor": "white",
-        "borderRadius": 4,
-        "margin": 10,
+        "flex": 1,
+        "justifyContent": "space-around",
+        "paddingHorizontal": 50,
       }
     }
   >
-    <View
-      style={
-        Object {
-          "paddingHorizontal": 20,
-          "paddingVertical": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+    <View>
+      <RkText
         style={
           Object {
-            "color": "#595959",
+            "fontSize": 42,
+            "textAlign": "center",
           }
         }
       >
-        I18n.t(email)
-      </Text>
-      <TextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        editable={true}
-        keyboardType="default"
-        onChangeText={[Function]}
-        onSubmitEditing={[Function]}
-        placeholder="I18n.t(email)"
-        returnKeyType="next"
-        style={
-          Object {
-            "color": "#2d2d2d",
-            "height": 40,
-          }
-        }
-        underlineColorAndroid="transparent"
-        value=""
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "paddingHorizontal": 20,
-          "paddingVertical": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#595959",
-          }
-        }
-      >
-        I18n.t(password)
-      </Text>
-      <TextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        editable={true}
-        keyboardType="default"
-        onChangeText={[Function]}
-        onSubmitEditing={[Function]}
-        placeholder="I18n.t(password)"
-        returnKeyType="go"
-        secureTextEntry={true}
-        style={
-          Object {
-            "color": "#2d2d2d",
-            "height": 40,
-          }
-        }
-        underlineColorAndroid="transparent"
-        value=""
-      />
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "flexDirection": "row",
-            "paddingBottom": 20,
-            "paddingHorizontal": 20,
-          },
-        ]
-      }
-    >
-      <TouchableOpacity
-        activeOpacity={0.2}
-        focusedOpacity={0.7}
-        onPress={[Function]}
-        style={
-          Object {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#161616",
-              "borderColor": "#595959",
-              "borderWidth": 1,
-              "flex": 1,
-              "padding": 6,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#F7F7F7",
-                "textAlign": "center",
-              }
-            }
-          >
-            I18n.t(signIn)
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.2}
-        focusedOpacity={0.7}
-        onPress={[Function]}
-        style={
-          Object {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#161616",
-              "borderColor": "#595959",
-              "borderWidth": 1,
-              "flex": 1,
-              "padding": 6,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#F7F7F7",
-                "textAlign": "center",
-              }
-            }
-          >
-            I18n.t(cancel)
-          </Text>
-        </View>
-      </TouchableOpacity>
+        SIGN IN
+      </RkText>
     </View>
     <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <RkText
         style={
           Object {
-            "color": "#595959",
+            "fontSize": 32,
+            "textAlign": "center",
           }
         }
+      />
+    </View>
+    <View>
+      <SocialIcon
+        button={true}
+        iconColor="white"
+        iconSize={24}
+        onPress={[Function]}
+        raised={true}
+        title="Sign In With Facebook"
+        type="facebook"
       />
     </View>
   </View>
-</ScrollViewMock>
+</View>
 `;

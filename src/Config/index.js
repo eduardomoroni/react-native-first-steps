@@ -1,4 +1,5 @@
 import './I18n/I18n'
+import KittenUISetup from './KittenUI'
 import initFirebase from './Firebase/Firebase'
 import AER from '../Assets/Cards/AER-X.json'
 import { defaultConfig } from './Realm'
@@ -11,4 +12,5 @@ export const initialConfig = () => {
   deleteAll()
   importMTGJSON(AER)
   initFirebase()
+  KittenUISetup.setup()
 }

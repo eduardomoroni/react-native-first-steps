@@ -6,11 +6,15 @@ import { shallow } from 'enzyme'
 import { LoginScreen } from '../../../../src/Containers/Login/LoginScreen'
 
 const props = {
-  value: 'test'
+  loading: false,
+  token: undefined,
+  error: '',
+  facebookLogin: jest.fn(),
+  facebookLogout: jest.fn()
 }
 
 describe('<LoginScreen />', () => {
-  it('Snapshot', () => {
+  it('Snapshot WIP', () => {
     const wrapper = shallow(<LoginScreen {...props} />)
     expect(wrapper).toMatchSnapshot()
   })
