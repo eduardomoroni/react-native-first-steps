@@ -1,11 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<WishList /> Snapshot 1`] = `
-<View
-  style={
-    Object {
-      "flex": 1,
+<TabNavigator>
+  <TabNavigatorItem
+    onPress={[Function]}
+    renderIcon={[Function]}
+    renderSelectedIcon={[Function]}
+    selected={true}
+    selectedTitleStyle={
+      Object {
+        "marginBottom": 6,
+        "marginTop": -1,
+      }
     }
-  }
-/>
+    title="WANT"
+    titleStyle={
+      Object {
+        "fontSize": 10,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    <Connect(ListCards)
+      cards={Object {}}
+    />
+  </TabNavigatorItem>
+  <TabNavigatorItem
+    onPress={[Function]}
+    renderIcon={[Function]}
+    renderSelectedIcon={[Function]}
+    selected={false}
+    selectedTitleStyle={
+      Object {
+        "marginBottom": 6,
+        "marginTop": -1,
+      }
+    }
+    title={null}
+    titleStyle={
+      Object {
+        "fontSize": 10,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    <Connect(ListCards)
+      cards={Object {}}
+    />
+  </TabNavigatorItem>
+</TabNavigator>
 `;

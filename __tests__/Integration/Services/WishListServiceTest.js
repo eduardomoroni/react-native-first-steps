@@ -22,8 +22,7 @@ describe('WishList Service', () => {
   })
 
   beforeEach(() => {
-    WishListService.createWishList(userID)
-    wishList = objectForPrimaryKey('WishList', userID)
+    wishList = WishListService.createWishList(userID)
     cardList = {
       multiverseid: card.multiverseid,
       card
@@ -32,6 +31,18 @@ describe('WishList Service', () => {
 
   afterEach(() => {
     WishListService.deleteWishList(userID)
+  })
+
+  it('Should Get User WishList or Create if not exists', () => {
+    const newUserID = 'NEW_USER_ID'
+    expect(objectForPrimaryKey('WishList', newUserID)).not.toBeDefined()
+
+    const createdWishList = WishListService.getUserWishList(newUserID)
+    const retrievingWishList = WishListService.getUserWishList(newUserID)
+
+    expect(createdWishList).toBeDefined()
+    expect(createdWishList).toEqual(objectForPrimaryKey('WishList', newUserID))
+    expect(retrievingWishList).toEqual(createdWishList)
   })
 
   it('Should create a new WishList for User', () => {

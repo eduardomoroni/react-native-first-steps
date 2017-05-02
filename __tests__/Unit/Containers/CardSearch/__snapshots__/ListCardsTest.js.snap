@@ -8,6 +8,7 @@ exports[`<ListCards /> Should Render ListCards 1`] = `
       "items": 0,
     }
   }
+  enableEmptySections={true}
   renderRow={[Function]}
   renderScrollComponent={[Function]}
   renderSeparator={[Function]}

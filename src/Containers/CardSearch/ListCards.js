@@ -53,6 +53,7 @@ export class ListCards extends Component {
 
     return (
       <ListView
+        enableEmptySections
         key={showCardsAs + showCardText}
         style={styles.container}
         contentContainerStyle={this.isDisplayingAsImage() ? styles.contentContainer : {}}
@@ -74,7 +75,7 @@ const mapStateToProps = (state) => {
 }
 
 ListCards.propTypes = {
-  cards: PropTypes.objectOf(cardType),
+  cards: PropTypes.objectOf(cardType).isRequired,
   showCardsAs: PropTypes.oneOf(['list', 'image'])
 }
 

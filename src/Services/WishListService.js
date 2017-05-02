@@ -9,7 +9,13 @@ const createWishList = (userId: string) => {
     lastSync: new Date()
   }
 
-  RealmService.create('WishList', wishList, false)
+  return RealmService.create('WishList', wishList, false)
+}
+
+const getUserWishList = (userID: string) => {
+  const userWishList = RealmService.objectForPrimaryKey('WishList', userID)
+  // TODO: RealmService.objectForPrimaryKey is Not Synchronous, should raise a warning
+  return userWishList ? userWishList : createWishList(userID)
 }
 
 const insertCardList = (cardList: any) => {
@@ -49,5 +55,6 @@ export default {
   updateCardList,
   insertCardList,
   findCardListByMultiverseid,
-  deleteWishList
+  deleteWishList,
+  getUserWishList
 }
