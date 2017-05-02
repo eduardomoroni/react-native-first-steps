@@ -5,7 +5,7 @@ export const WishListSchema = {
     id: 'string',
     lastUpdate: 'date',
     lastSync: 'date',
-    want: {type: 'list', objectType: 'CardList'},
-    have: {type: 'list', objectType: 'CardList'}
+    want: {type: 'list', objectType: 'CardAmount'},
+    have: {type: 'list', objectType: 'CardAmount'}
   }
 }

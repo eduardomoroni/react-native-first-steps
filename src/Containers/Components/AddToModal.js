@@ -3,15 +3,16 @@ import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { cardType } from '../../Types/CardType'
 import { Modal } from './'
+import WishListService from '../../Services/WishListService'
 
 import { RkText } from 'react-native-ui-kitten'
 import { Button } from 'react-native-elements'
 
 export class AddToModal extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
-      isVisible: true,
+      isVisible: true
     }
   }
 
@@ -19,8 +20,13 @@ export class AddToModal extends Component {
     this.state.isVisible = !this.state.isVisible
   }
 
+  addCardAmountToList (list, card, amount) {
+    WishListService.updateCardAmount(list, card, amount)
+  }
+
   render () {
     const { card, list } = this.props
+    console.log(list)
     return (
       <Modal isVisible onModalHide={() => this.toggleModal()} >
         <View style={styles.modal}>

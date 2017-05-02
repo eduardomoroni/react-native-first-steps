@@ -31,7 +31,7 @@ describe('<ListCards />', () => {
     expect(imageRow.find(CardImage).exists()).toEqual(true)
     expect(wrapper.prop('contentContainerStyle')).toEqual(styles.contentContainer)
 
-    // renderRow as CardList
+    // renderRow as CardAmount
     wrapper.setProps({ showCardsAs: 'list' })
     const listRow = shallow(wrapper.instance().renderRow(rowData))
     expect(wrapper.instance().isDisplayingAsImage()).toEqual(false)

@@ -1,5 +1,5 @@
-export const CardListSchema = {
-  name: 'CardList',
+export const CardAmountSchema = {
+  name: 'CardAmount',
   properties: {
     multiverseid: {type: 'int', indexed: true},
     amount: {type: 'int', default: 1},

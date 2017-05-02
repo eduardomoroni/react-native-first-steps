@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import type { Dispatch } from 'redux'
@@ -13,10 +13,10 @@ import WishListService from '../../Services/WishListService'
 import * as RealmService from '../../Realm/RealmService'
 
 export class WishList extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
-      selectedTab: 'want',
+      selectedTab: 'want'
     }
   }
 
@@ -27,7 +27,7 @@ export class WishList extends Component {
   render () {
     const testCard = RealmService.objectForPrimaryKey('Card', 'd6901a23503f4953dc3f643b193a7bdb31478fc2')
     const wishList = WishListService.getUserWishList(this.props.userID)
-    const { want, have, id } = wishList
+    const { want, have } = wishList
     const { selectedTab } = this.state
 
     return (
@@ -40,7 +40,7 @@ export class WishList extends Component {
           renderIcon={() => <Icon containerStyle={styles.icon} color={Colors.gray} name='plus-one' size={33} />}
           renderSelectedIcon={() => <Icon color={Colors.lightblue} name='plus-one' size={30} />}
           onPress={() => this.changeTab('want')}>
-          {/*<ListCards cards={want} />*/}
+          {/* <ListCards cards={want} /> */}
           <AddToModal list={want} card={testCard} />
         </Tab>
         <Tab
