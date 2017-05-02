@@ -24,7 +24,7 @@ const testScreen = () => {
   const cards = findCardsFromForm(testForm)
   console.log(cards)
   // return <WishList />
-  return <LoginScreen />
+  return <WishList />
 }
 
 const NavigationRouter = () => {

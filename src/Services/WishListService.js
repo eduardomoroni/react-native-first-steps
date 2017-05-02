@@ -1,5 +1,7 @@
 import * as RealmService from '../Realm/RealmService.js'
 
+// TODO: Create Get WishList(Create if not exists)
+
 const createWishList = (userId: string) => {
   const wishList = {
     id: userId,

@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
   declinedPermissions: [],
   applicationID: '',
   accessTokenSource: '',
-  userID: '',
+  userID: '12341234', // JUST TO TEST POURPOSE
   expirationTime: 0,
   lastRefreshTime: 0
 }

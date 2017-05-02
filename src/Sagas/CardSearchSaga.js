@@ -10,8 +10,7 @@ export function * searchForCardSaga (action) {
     const cards = yield call(findCardsFromForm, action.payload)
 
     if (cards.length) {
-      yield put(showCards(cards))
-      yield call(NavigationActions['listCards'])
+      yield call(NavigationActions['listCards'], {cards: cards})
     } else { // Throwing exception inside a try-catch?
       throw new NoMatchingException()
     }

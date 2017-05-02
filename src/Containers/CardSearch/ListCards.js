@@ -36,7 +36,6 @@ export class ListCards extends Component {
 
   renderRow = (rowData: cardType, sectionID: number, rowID: number) => {
     const { showCardText, cards } = this.props
-
     return (
       <TouchableOpacity
         onPress={() => showDetails(rowData, cards)}
@@ -66,10 +65,9 @@ export class ListCards extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { cards, showCardsAs, showCardText } = state.cardSearch
+  const { showCardsAs, showCardText } = state.cardSearch
   console.log('showCardText', showCardText)
   return {
-    cards,
     showCardsAs,
     showCardText
   }
