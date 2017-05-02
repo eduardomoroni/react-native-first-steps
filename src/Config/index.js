@@ -12,5 +12,5 @@ export const initialConfig = () => {
   deleteAll()
   importMTGJSON(AER)
   initFirebase()
-  KittenUISetup.setup()
+  KittenUISetup.setTheme('material')
 }

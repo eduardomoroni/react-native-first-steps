@@ -269,10 +269,10 @@ RkConfig.setStyle('backgroundImage', {
   alignItems: 'stretch'
 })
 
-RkConfig.theme = RkConfig.themes.classic
+RkConfig.theme = RkConfig.themes.blur
 
 export default {
-  setup: function () {
-    RkConfig.theme = RkConfig.themes.classic
+  setTheme: function (theme) {
+    RkConfig.theme = RkConfig.themes[theme]
   }
 }

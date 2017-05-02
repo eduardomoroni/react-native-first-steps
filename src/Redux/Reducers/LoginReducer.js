@@ -1,5 +1,4 @@
 import {
-  USER_LOGGED_IN,
   LOGIN_USER_FAIL,
   LOGIN_USER,
   LOGOUT_USER
@@ -7,8 +6,7 @@ import {
 
 export const INITIAL_STATE = {
   loading: false,
-  error: '',
-  token: undefined
+  error: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -17,8 +15,6 @@ export default (state = INITIAL_STATE, action) => {
       return { ...INITIAL_STATE, loading: true }
     case LOGIN_USER_FAIL:
       return { ...INITIAL_STATE, error: action.payload }
-    case USER_LOGGED_IN:
-      return { ...INITIAL_STATE, token: action.payload }
     case LOGOUT_USER:
       return { ...INITIAL_STATE }
     default:

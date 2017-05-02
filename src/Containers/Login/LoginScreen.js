@@ -25,7 +25,7 @@ export class LoginScreen extends Component {
   }
 
   isLoggedIn () {
-    return !!this.props.token
+    return !!this.props.token.accessToken
   }
 
   render () {
@@ -33,7 +33,6 @@ export class LoginScreen extends Component {
       token,
       error
     } = this.props
-
     return (
       <View style={{flex: 1}}>
         <View style={styles.container}>
@@ -44,7 +43,7 @@ export class LoginScreen extends Component {
           </View>
           <View>
             <RkText style={styles.error}>
-              {token ? token.userID : error}
+              {this.isLoggedIn() ? token.userID : error.message}
             </RkText>
           </View>
           {this.renderFacebookButton()}
@@ -71,7 +70,8 @@ let styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => {
-  const { loading, token, error } = state.auth
+  const { loading, error } = state.auth
+  const token = state.user
   return { loading, token, error }
 }
 
