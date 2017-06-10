@@ -1,11 +1,12 @@
 import Firebase from 'firebase'
+import SECRETS from '../Secrets/Firebase.json'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBfkEhUvDMHM6Hc_6r7ZExsFzdM74MoU4o',
-  authDomain: 'react-native-playground-1bf22.firebaseapp.com',
-  databaseURL: 'https://react-native-playground-1bf22.firebaseio.com',
-  storageBucket: 'react-native-playground-1bf22.appspot.com',
-  messagingSenderId: '1074542852729'
+  apiKey: SECRETS.apiKey,
+  authDomain: SECRETS.authDomain,
+  databaseURL: SECRETS.databaseURL,
+  storageBucket: SECRETS.storageBucket,
+  messagingSenderId: SECRETS.messagingSenderId
 }
 
 export default () => {

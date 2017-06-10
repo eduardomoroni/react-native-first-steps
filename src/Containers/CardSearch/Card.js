@@ -25,7 +25,7 @@ export class Card extends Component {
       toughness,
       printings
     } = card
-
+    console.log(card)
     return (
       <View style={styles.container}>
         {renderCardNameAndMana(name, placeholdersToSymbols(manaCost))}

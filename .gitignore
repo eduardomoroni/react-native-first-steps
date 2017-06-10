@@ -1,3 +1,6 @@
+# Secrets
+src/Config/Secrets/
+
 # OSX
 #
 .DS_Store

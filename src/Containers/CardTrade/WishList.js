@@ -6,7 +6,7 @@ import type { Dispatch } from 'redux'
 import { Metrics, Colors } from '../../Styles/Themes'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 import ListCards from '../CardSearch/ListCards'
-import { AddToModal } from '../Components'
+import AddToModal from '../CardSearch/AddToModal'
 import WishListService from '../../Services/WishListService'
 
 // TODO: REMOVE, JUST FOR TESTS
@@ -27,7 +27,7 @@ export class WishList extends Component {
   render () {
     const testCard = RealmService.objectForPrimaryKey('Card', 'd6901a23503f4953dc3f643b193a7bdb31478fc2')
     const wishList = WishListService.getUserWishList(this.props.userID)
-    const { want, have } = wishList
+    const { have } = wishList
     const { selectedTab } = this.state
 
     return (
@@ -41,7 +41,7 @@ export class WishList extends Component {
           renderSelectedIcon={() => <Icon color={Colors.lightblue} name='plus-one' size={30} />}
           onPress={() => this.changeTab('want')}>
           {/* <ListCards cards={want} /> */}
-          <AddToModal list={want} card={testCard} />
+          <AddToModal wishList={wishList} card={testCard} />
         </Tab>
         <Tab
           titleStyle={styles.tabTitle}
