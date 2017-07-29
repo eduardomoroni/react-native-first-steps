@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Settings /> Snapshot 1`] = `
+exports[`<settings /> Snapshot 1`] = `
 <ScrollViewMock
   keyboardShouldPersistTaps="always"
   style={

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import React, { PureComponent } from 'react'
 import I18n from 'react-native-i18n'

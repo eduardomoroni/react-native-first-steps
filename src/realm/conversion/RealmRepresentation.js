@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import { rulingsType } from '../../types/CardType'
 import _ from 'lodash'
 

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 // TODO: TEST THIS
 
 import React, { PureComponent } from 'react'
