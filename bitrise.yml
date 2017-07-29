@@ -1,0 +1,64 @@
+---
+format_version: '3'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+trigger_map:
+- push_branch: "*"
+  workflow: Install
+- pull_request_source_branch: "*"
+  workflow: Install
+workflows:
+  Install:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.5.1: {}
+    - install-react-native:
+        is_always_run: true
+    - npm:
+        title: npm install
+        inputs:
+        - command: install
+    after_run:
+    - Test
+    - Bundle
+  Bundle:
+    steps:
+    - deploy-to-bitrise-io: {}
+    after_run: []
+  Test:
+    steps:
+    - npm:
+        title: npm run test-ci
+        inputs:
+        - command: run test-ci
+        is_always_run: true
+    - npm:
+        title: npm run lint-check
+        inputs:
+        - command: run lint-check
+        is_always_run: true
+    - npm:
+        title: npm run flow-check
+        inputs:
+        - command: run flow-check
+        is_always_run: true
+    - npm:
+        title: npm run update-coverage
+        inputs:
+        - command: run update-coverage
+        is_always_run: true
+app:
+  envs:
+  - opts:
+      is_expand: false
+    GRADLE_BUILD_FILE_PATH: android/build.gradle
+  - opts:
+      is_expand: false
+    GRADLEW_PATH: android/gradlew
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: ios/mtgx.xcodeproj
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: mtgx
