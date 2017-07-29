@@ -4,65 +4,50 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: react-native
 trigger_map:
 - push_branch: "*"
-  workflow: primary
+  workflow: Install
 - pull_request_source_branch: "*"
-  workflow: primary
+  workflow: Install
 workflows:
-  deploy:
-    steps:
-    - activate-ssh-key@3.1.1:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@3.5.1: {}
-    - script@1.1.4:
-        title: Do anything with Script step
-    - install-react-native@0.9.1: {}
-    - npm@0.9.0:
-        inputs:
-        - command: install
-    - install-missing-android-tools@1.0.3: {}
-    - gradle-runner@1.7.3:
-        inputs:
-        - gradle_file: "$GRADLE_BUILD_FILE_PATH"
-        - gradle_task: assembleRelease
-        - gradlew_path: "$GRADLEW_PATH"
-    - certificate-and-profile-installer@1.8.7: {}
-    - xcode-archive@2.1.0:
-        inputs:
-        - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
-        - configuration: Release
-    - deploy-to-bitrise-io@1.3.6: {}
-  primary:
+  Install:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@3.5.1: {}
     - install-react-native:
+        is_always_run: true
     - npm:
+        title: npm install
         inputs:
         - command: install
+    after_run:
+    - Test
+    - Bundle
+  Bundle:
+    steps:
+    - deploy-to-bitrise-io: {}
+    after_run: []
+  Test:
+    steps:
     - npm:
-        inputs:
-        - command: run lint-check
-        is_always_run: true
-    - npm:
-        inputs:
-        - command: run flow-check
-        is_always_run: true
-    - npm:
+        title: npm run test-ci
         inputs:
         - command: run test-ci
         is_always_run: true
     - npm:
+        title: npm run lint-check
+        inputs:
+        - command: run lint-check
+        is_always_run: true
+    - npm:
+        title: npm run flow-check
+        inputs:
+        - command: run flow-check
+        is_always_run: true
+    - npm:
+        title: npm run update-coverage
         inputs:
         - command: run update-coverage
-    - react-native-bundle:
-        inputs:
-          - platform: ios
-    - react-native-bundle:
-        inputs:
-        - platform: android
-    - deploy-to-bitrise-io: {}
+        is_always_run: true
 app:
   envs:
   - opts:
