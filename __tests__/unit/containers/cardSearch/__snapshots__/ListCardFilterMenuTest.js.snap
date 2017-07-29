@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListCardFilterMenu /> Should Render ListCardFilterMenu 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "padding": 20,
+    }
+  }
+>
+  <Field
+    component={[Function]}
+    dropdownItems={
+      Array [
+        "list",
+        "image",
+      ]
+    }
+    name="showCardsAs"
+  />
+  <Field
+    component={[Function]}
+    name="showCardText"
+  />
+  <Field
+    component={[Function]}
+    name="sortReverseOrder"
+  />
+  <Field
+    component={[Function]}
+    dropdownItems={
+      Array [
+        "cmc",
+        "multiverseid",
+        "name",
+        "number",
+        "rarity",
+        "type",
+        "power",
+        "toughness",
+      ]
+    }
+    name="sortBy"
+  />
+</View>
+`;

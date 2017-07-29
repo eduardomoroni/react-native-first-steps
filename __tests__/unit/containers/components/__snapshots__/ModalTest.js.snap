@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> Snapshot 1`] = `
+<Component
+  animationIn="slideInUp"
+  animationInTiming={300}
+  animationOut="slideOutDown"
+  animationOutTiming={300}
+  animationType="none"
+  backdropOpacity={0.7}
+  backdropTransitionInTiming={300}
+  backdropTransitionOutTiming={300}
+  hardwareAccelerated={false}
+  hideOnBack={true}
+  isVisible={false}
+  onModalHide={[Function]}
+  onModalShow={[Function]}
+  onRequestClose={[Function]}
+  transparent={true}
+  value="test"
+  visible={false}
+>
+  <withAnimatable(View)
+    iterationCount={1}
+    onAnimationBegin={[Function]}
+    onAnimationEnd={[Function]}
+    onLayout={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "backgroundColor": "black",
+          "height": 1334,
+          "width": 750,
+        },
+      ]
+    }
+    useNativeDriver={false}
+  />
+  <withAnimatable(View)
+    animationIn="slideInUp"
+    animationInTiming={300}
+    animationOut="slideOutDown"
+    animationOutTiming={300}
+    backdropOpacity={0.7}
+    backdropTransitionInTiming={300}
+    backdropTransitionOutTiming={300}
+    hideOnBack={true}
+    isVisible={false}
+    iterationCount={1}
+    onAnimationBegin={[Function]}
+    onAnimationEnd={[Function]}
+    onModalHide={[Function]}
+    onModalShow={[Function]}
+    style={
+      Array [
+        Object {
+          "margin": 60,
+        },
+        Object {
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+        },
+      ]
+    }
+    useNativeDriver={false}
+    value="test"
+  >
+    <TouchableOpacity
+      activeOpacity={0.2}
+      focusedOpacity={0.7}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "lightblue",
+          "borderBottomLeftRadius": 4,
+          "borderBottomRightRadius": 4,
+          "borderColor": "rgba(0, 0, 0, 0.1)",
+          "justifyContent": "center",
+          "padding": 12,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Fechar
+      </Text>
+    </TouchableOpacity>
+  </withAnimatable(View)>
+</Component>
+`;

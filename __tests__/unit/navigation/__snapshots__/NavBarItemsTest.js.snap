@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBarItems Tests should render multiples navButtons on right 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "justifyContent": "flex-end",
+      },
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+      },
+    ]
+  }
+>
+  <NavButton
+    callback={[Function]}
+    iconProps={
+      Object {
+        "name": "sliders",
+      }
+    }
+  />
+  <NavButton
+    callback={[Function]}
+    iconProps={
+      Object {
+        "name": "close",
+      }
+    }
+  />
+</View>
+`;
+
+exports[`NavBarItems Tests should render navBackButton 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  focusedOpacity={0.7}
+  onPress={[Function]}
+>
+  <Icon
+    name="angle-left"
+    size={30}
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0)",
+        "color": "white",
+        "justifyContent": "center",
+        "marginLeft": 5,
+      }
+    }
+  />
+</TouchableOpacity>
+`;
+
+exports[`NavBarItems Tests should render navTitle 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Object {
+      "color": "white",
+      "fontFamily": "beleren",
+      "fontSize": 18,
+    }
+  }
+>
+  I18n.t(TITLE)
+</Text>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DropdownInputForm /> Should render android Component 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "borderColor": "rgba(0, 0, 0, 0.4)",
+      "borderRadius": 3,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "height": 40,
+      "justifyContent": "space-between",
+      "marginBottom": 5,
+    }
+  }
+>
+  <InputLabel
+    label="label"
+    onPress={[Function]}
+  />
+  <InputPicker
+    dropdownItems={
+      Array [
+        "a",
+        "b",
+        "c",
+      ]
+    }
+    onValueChange={[Function]}
+    selectedValue="b"
+  />
+</View>
+`;
+
+exports[`<DropdownInputForm /> Should render ios Component 1`] = `
+<iOSDropDown
+  name="label"
+  onChange={[Function]}
+/>
+`;
