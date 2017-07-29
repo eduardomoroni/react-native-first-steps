@@ -1,5 +1,5 @@
 import Realm from 'realm'
-import { inheritanceToArray } from '../Realm/Conversion'
+import { inheritanceToArray } from './/conversion'
 
 export {
   changeRealm,

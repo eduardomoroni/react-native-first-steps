@@ -1,4 +1,4 @@
-import { Metrics, Colors, Fonts } from '../Styles/Themes'
+import { Metrics, Colors, Fonts } from './/themes'
 import { StyleSheet } from 'react-native'
 
 const fontPattern = {

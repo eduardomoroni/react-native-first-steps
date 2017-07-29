@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native'
-import { Colors, Fonts, Metrics } from './Themes/'
+import { Colors, Fonts, Metrics } from './themes/'
 export const navButtonColor = Colors.snow
 
 export const builtInBarStyle = StyleSheet.create({

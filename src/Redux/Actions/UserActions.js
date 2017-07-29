@@ -1,7 +1,7 @@
 import {
   USER_LOGGED_OUT,
   USER_LOGGED_IN
-} from '../Types'
+} from '../types'
 
 export const userLoggout = () => {
   return { type: USER_LOGGED_OUT }

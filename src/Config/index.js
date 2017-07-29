@@ -1,10 +1,10 @@
-import './I18n/I18n'
-import initFirebase from './Firebase/Firebase'
-import AER from '../Assets/Cards/AER-X.json'
-import { defaultConfig } from './Realm'
-import { deleteAll, changeRealm } from '../Realm/RealmService'
-import { importMTGJSON } from '../Services/CardService'
-export * from './Store/CreateStore'
+import './i18n/I18n'
+import initFirebase from './firebase/Firebase'
+import AER from '../assets/cards/AER-X.json'
+import { defaultConfig } from './realm'
+import { deleteAll, changeRealm } from '../realm/RealmService'
+import { importMTGJSON } from '../services/CardService'
+export * from './store/CreateStore'
 
 export const initialConfig = () => {
   changeRealm(defaultConfig)

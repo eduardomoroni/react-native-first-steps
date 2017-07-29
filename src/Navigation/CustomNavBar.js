@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
+import { builtInBarStyle, customBarStyle } from '../styles/NavBarStyle'
 
 export class CustomNavBar extends React.Component {
   render () {

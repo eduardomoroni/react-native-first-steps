@@ -5,7 +5,7 @@ import {
   loginUserSuccess,
   userLoggedIn,
   signupUser
-} from '../Redux/Actions'
+} from '../redux/actions'
 
 export function * loginUserSaga (action) {
   try {

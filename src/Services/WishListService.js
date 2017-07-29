@@ -1,4 +1,4 @@
-import * as RealmService from '../Realm/RealmService.js'
+import * as RealmService from '../realm/RealmService.js'
 
 const createWishList = (userId: string) => {
   const wishList = {

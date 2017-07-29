@@ -7,7 +7,7 @@ import { Keyboard } from 'react-native'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import Menu from './NavigationMenu'
 import { connect } from 'react-redux'
-import { drawerStyle } from '../Styles/NavBarStyle'
+import { drawerStyle } from '../styles/NavBarStyle'
 
 export const menuDrawerProps = {
   key: 'drawer',

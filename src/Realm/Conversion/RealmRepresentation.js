@@ -1,5 +1,5 @@
 /* @flow */
-import { rulingsType } from '../../Types/CardType'
+import { rulingsType } from '../../types/CardType'
 import _ from 'lodash'
 
 export const rulingsTextAsArray = (rulings: rulingsType) => {

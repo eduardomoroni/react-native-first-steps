@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import reducers from '../../Redux/Reducers'
-import sagas from '../../Sagas'
+import reducers from '../../redux/reducers'
+import sagas from '../../sagas'
 
 export function createMtgxStore () {
   const middleware = []

@@ -5,7 +5,7 @@ import {
   SHOW_FORM_MODAL,
   SWITCH_DISPLAY_MODE,
   TOGGLE_SHOW_CARD_TEXT
-} from '../Types'
+} from '../types'
 
 export const searchForCards = (cardSearchForm) => {
   return {

@@ -6,7 +6,7 @@ import {
   SIGN_UP_USER,
   SEARCH_FOR_CARDS,
   SORT_CARDS
-} from '../Redux/Types'
+} from '../redux/types'
 
 export default function * root () {
   yield [

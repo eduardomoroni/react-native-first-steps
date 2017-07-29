@@ -2,7 +2,7 @@ import React from 'react'
 import I18n from 'react-native-i18n'
 import { Text, View } from 'react-native'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import { builtInBarStyle, customBarStyle } from '../Styles/NavBarStyle'
+import { builtInBarStyle, customBarStyle } from '../styles/NavBarStyle'
 import { NavButton } from './NavButton'
 
 type ButtonPropsType = {

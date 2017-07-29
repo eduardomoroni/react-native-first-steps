@@ -3,7 +3,7 @@ import {
   Metrics,
   Fonts,
   Colors
-} from './Themes'
+} from './themes'
 export default StyleSheet.create({
   container: {
     padding: Metrics.baseMargin,

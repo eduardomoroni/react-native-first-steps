@@ -3,7 +3,7 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER,
   SIGN_UP_USER
-} from '../Types'
+} from '../types'
 
 export const INITIAL_STATE = {
   loading: false,
