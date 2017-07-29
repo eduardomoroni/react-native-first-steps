@@ -10,7 +10,7 @@
     "test-watch": "jest --watch --onlyChanged",
     "test-unit": "jest ./__tests__/unit",
     "test-integration": "jest ./__tests__/integration",
-    "test-ci": "jest --forceExit --coverage",
+    "test-ci": "jest --forceExit",
     "update-snapshot": "jest -u -t snapshot",
     "update-coverage": "npm run codecov-coverage && npm run codeclimate-coverage",
     "generate-coverage": "jest --coverage --silent --noStackTrace",
