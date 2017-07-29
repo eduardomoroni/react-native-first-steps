@@ -1,4 +1,4 @@
-import { objectForPrimaryKey } from '../../../src/services/realm/RealmService'
+import { objectForPrimaryKey } from '../../../src/services/realm'
 import WishListService from '../../../src/services/WishListService'
 import * as CardService from '../../../src/services/CardService'
 import { initializeDatabase, cleanDatabase } from '../config/RealmConfig'

@@ -1,7 +1,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import CardDetails from '../../../../src/containers/cardSearch/CardDetails'
+import CardDetails from '../../../../src/modules/cardSearch/containers/CardDetails'
 import RealmResult from '../../../assets/Stubs/RealmResult.json'
 
 const props = {

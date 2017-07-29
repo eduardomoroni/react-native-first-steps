@@ -1,8 +1,8 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Card, getLastPrinting } from '../../../../src/containers/cardSearch/Card'
-import * as Convertion from '../../../../src/services/realm/conversion/Placeholder'
+import { Card, getLastPrinting } from '../../../../src/modules/cardSearch/containers/Card'
+import * as Conversion from '../../../../src/services/realm/conversion/Placeholder'
 
 const props = {
   showCardText: true,
@@ -35,18 +35,18 @@ describe('<Card />', () => {
     toughness,
     printings
   } = props.card
-  Convertion.placeholdersToSymbols = jest.fn(text => `placeholdersToSymbols(${text})`)
+  Conversion.placeholdersToSymbols = jest.fn(text => `placeholdersToSymbols(${text})`)
 
   it('should render Card component', () => {
     const wrapper = shallow(<Card {...props} />)
     expect(wrapper).toMatchSnapshot()
     expect(findRenderedTextFromKey(wrapper, 'cardName')).toEqual(name)
-    expect(findRenderedTextFromKey(wrapper, 'cardManaCost')).toEqual(Convertion.placeholdersToSymbols(manaCost))
+    expect(findRenderedTextFromKey(wrapper, 'cardManaCost')).toEqual(Conversion.placeholdersToSymbols(manaCost))
     expect(findRenderedTextFromKey(wrapper, 'cardType')).toEqual(type)
     expect(findRenderedTextFromKey(wrapper, 'cardEdition')).toEqual(getLastPrinting(printings))
     expect(findRenderedTextFromKey(wrapper, 'cardText')).toEqual(text)
     expect(findRenderedTextFromKey(wrapper, 'cardPowerAndToughness')).toEqual(`${power}/${toughness}`)
-    expect(Convertion.placeholdersToSymbols).toHaveBeenCalledWith(props.card.manaCost)
+    expect(Conversion.placeholdersToSymbols).toHaveBeenCalledWith(props.card.manaCost)
   })
 
   it('should hide card text', () => {

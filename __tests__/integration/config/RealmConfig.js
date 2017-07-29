@@ -2,10 +2,10 @@
 //        processos usem o realm ao mesmo tempo.
 // TODO: Procurar uma maneira melhor de lidar com isto
 
-import { schemas } from '../../../src/configuration/realm'
+import { schemas } from '../../../src/app/configuration/realm'
 import seed from '../../../src/assets/cards/AER-X.json'
 import * as CardService from '../../../src/services/CardService'
-import { changeRealm, deleteAll, closeRealm } from '../../../src/services/realm/RealmService'
+import { changeRealm, deleteAll, closeRealm } from '../../../src/services/realm'
 
 let processUsingRealm: number = 0
 const nobodyIsUsingRealm = () => processUsingRealm === 0

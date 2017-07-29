@@ -1,6 +1,6 @@
 import { put, call, select } from 'redux-saga/effects'
 import { findCardsFromForm, sortCards } from '../../services/CardService'
-import { showCards } from '../actions/Index'
+import { showCards } from '../actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 export const cardsSelector = state => state.cardSearch.cards

@@ -4,7 +4,7 @@ import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
 import ActionButton from 'react-native-action-button'
-import { FloatingActionButton } from '../../../../src/containers/components'
+import { FloatingActionButton } from '../../../../src/modules/shared/components'
 
 const mockFunc = jest.fn()
 const props = {

@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Settings } from '../../../../src/containers/settings/Settings'
+import { Settings } from '../../../../src/modules/settings/containers/Settings'
 
 const props = {
   value: 'test'

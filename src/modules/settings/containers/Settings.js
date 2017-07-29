@@ -63,11 +63,11 @@ export class Settings extends Component {
             title='Limited supply! Its like digital gold!'
             subtitle={
               <View style={styles.subtitleView}>
-                <Image source={require('../../assets/images/rating.png')} style={styles.ratingImage} />
+                <Image source={require('../../../assets/images/rating.png')} style={styles.ratingImage} />
                 <Text style={styles.ratingText}>5 months ago</Text>
               </View>
             }
-            avatar={require('../../assets/images/avatar1.jpg')}
+            avatar={require('../../../assets/images/avatar1.jpg')}
           />
         </List>
       </ScrollView>

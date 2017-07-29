@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View, Keyboard } from 'react-native'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
-import { searchForCards, showFormModal } from '../../redux/actions'
-import Styles from '../../modules/theme/CardSearchFormStyle'
-import { valuesOf } from '../../realm/RealmService'
+import { searchForCards, showFormModal } from '../../../redux/actions'
+import Styles from '../../theme/CardSearchFormStyle'
+import { valuesOf } from '../../../services/realm'
 import type { Dispatch } from 'redux'
 import {
   DropdownInputForm,

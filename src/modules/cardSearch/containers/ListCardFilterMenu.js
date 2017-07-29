@@ -9,7 +9,7 @@ import {
   sortCards as sortCardsActionCreator,
   switchDisplayMode as switchDisplayModeActionCreator,
   toggleShowCardText as showCardTextActionCreator
-} from '../../redux/actions'
+} from '../../../redux/actions'
 import {
   DropdownInputForm,
   SwitchInputForm

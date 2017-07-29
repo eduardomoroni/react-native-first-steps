@@ -2,10 +2,10 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { navBackButton, navTitle, navButtonBar, openDrawer } from '../../modules/navigation/NavBarItems'
-import { switchDisplayMode as switchDisplayModeAction } from '../../redux/actions'
+import { navBackButton, navTitle, navButtonBar, openDrawer } from '../../navigation/NavBarItems'
+import { switchDisplayMode as switchDisplayModeAction } from '../../../redux/actions'
 import Menu from './ListCardFilterMenu'
-import CustomNavBar from '../../modules/navigation/CustomNavBar'
+import CustomNavBar from '../../navigation/CustomNavBar'
 import type { Dispatch } from 'redux'
 
 export class SearchResultsNavBar extends Component {

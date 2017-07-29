@@ -7,7 +7,7 @@ import {
   Image,
   ActivityIndicator
 } from 'react-native'
-import { cardType } from '../../types/CardType'
+import { cardType } from '../../../types/CardType'
 
 type CardImageProps = {
   card: cardType

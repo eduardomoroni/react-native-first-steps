@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, ListView, Text, TouchableWithoutFeedback, Image } from 'react-native'
 import styles from '../../theme/MultipleSelectStyle'
-import checkbox from '../../assets/images/icon-checkbox.png'
-import checkboxChecked from '../../assets/images/icon-checkbox-checked.png'
+import checkbox from '../../../assets/images/icon-checkbox.png'
+import checkboxChecked from '../../../assets/images/icon-checkbox-checked.png'
 
 const itemType = PropTypes.string
 

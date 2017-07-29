@@ -2,10 +2,10 @@
 
 import React, { Component } from 'react'
 import { Text, View, ScrollView } from 'react-native'
-import { styles } from '../../modules/theme/cardSearch/CardDetailsStyle'
+import { styles } from '../../theme/cardSearch/CardDetailsStyle'
 import { CardImage } from '../../shared/components/index'
-import { cardType, rulingsType } from '../../modules/types/CardType'
-import { rulingsTextAsArray } from '../../realm/conversion/RealmRepresentation'
+import { cardType, rulingsType } from '../../../types/CardType'
+import { rulingsTextAsArray } from '../../../services/realm/conversion/RealmRepresentation'
 import I18n from 'react-native-i18n'
 
 export default class CardDetails extends Component {

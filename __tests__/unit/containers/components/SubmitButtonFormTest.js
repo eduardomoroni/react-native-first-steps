@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { SubmitButtonForm } from '../../../../src/containers/components'
+import { SubmitButtonForm } from '../../../../src/modules/shared/components'
 
 const props = {
   onPress: jest.fn()

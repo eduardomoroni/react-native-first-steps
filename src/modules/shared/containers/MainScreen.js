@@ -5,7 +5,7 @@ import {
   View,
   StyleSheet
 } from 'react-native'
-import { Colors } from '../modules/theme/themes'
+import { Colors } from '../../theme/themes'
 
 export default class MainScreen extends Component {
   render () {

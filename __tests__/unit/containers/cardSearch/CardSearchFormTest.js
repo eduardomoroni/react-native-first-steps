@@ -4,7 +4,7 @@ import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Field } from 'redux-form'
-import { CardSearchForm } from '../../../../src/containers/cardSearch/CardSearchForm'
+import { CardSearchForm } from '../../../../src/modules/cardSearch/containers/CardSearchForm'
 import {
   DropdownInputForm,
   Modal,
@@ -14,7 +14,7 @@ import {
   ModalToggle,
   TextInputForm,
   SubmitButtonForm
-} from '../../../../src/containers/components'
+} from '../../../../src/modules/shared/components'
 
 const props = {
   showModal: jest.fn(),

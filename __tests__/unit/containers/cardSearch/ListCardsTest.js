@@ -1,9 +1,9 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { ListCards } from '../../../../src/containers/cardSearch/ListCards'
-import { Card } from '../../../../src/containers/cardSearch/Card'
-import { CardImage } from '../../../../src/containers/components'
+import { ListCards } from '../../../../src/modules/cardSearch/containers/ListCards'
+import { Card } from '../../../../src/modules/cardSearch/containers/Card'
+import { CardImage } from '../../../../src/modules/shared/components'
 import RealmResult from '../../../assets/Stubs/RealmResult.json'
 import styles from '../../../../src/modules/theme/ListCardStyles'
 

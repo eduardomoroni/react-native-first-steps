@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Metrics } from '../theme/themes/Index'
+import { Metrics } from '../theme/themes'
 import styles from '../theme/navigation/NavBarItemsStyle'
 
 export class NavButton extends Component {

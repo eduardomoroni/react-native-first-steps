@@ -4,9 +4,9 @@ import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
 // $FlowFixMe
-import AndroidDropDown from '../../../../src/containers/components/DropdownInputForm.android'
-import iOSDropDown from '../../../../src/containers/components/DropdownInputForm.ios'
-import { InputLabel, InputPicker } from '../../../../src/containers/components'
+import AndroidDropDown from '../../../../src/modules/shared/components/DropdownInputForm.android'
+import iOSDropDown from '../../../../src/modules/shared/components/DropdownInputForm.ios'
+import { InputLabel, InputPicker } from '../../../../src/modules/shared/components'
 
 const props = {
   dropdownItems: ['a', 'b', 'c'],

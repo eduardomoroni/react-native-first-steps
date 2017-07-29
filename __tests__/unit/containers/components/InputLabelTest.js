@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { InputLabel } from '../../../../src/containers/components'
+import { InputLabel } from '../../../../src/modules/shared/components'
 
 const props = {
   label: 'label',

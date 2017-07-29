@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import { cardType } from '../modules/types'
-import * as RealmService from './realm/RealmService.js'
+import { cardType } from '../types'
+import * as RealmService from './realm/'
 import {
   jsonToRealmCard,
   placeholdersToSymbols,

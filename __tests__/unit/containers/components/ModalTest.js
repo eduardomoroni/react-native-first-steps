@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Modal } from '../../../../src/containers/components'
+import { Modal } from '../../../../src/modules/shared/components'
 
 const props = {
   value: 'test'

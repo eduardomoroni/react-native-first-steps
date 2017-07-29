@@ -4,12 +4,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ScrollView, Image, BackAndroid } from 'react-native'
 import { connect } from 'react-redux'
-import { Images } from '../theme/themes/Index'
-import { userLoggout } from '../../redux/actions/Index'
-import { DrawerButton } from '../../containers/components/index'
+import { Images } from '../theme/themes'
+import { userLoggout } from '../../redux/actions'
+import { DrawerButton } from '../shared/components'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
-import type { Dispatch } from '../../redux'
+import type { Dispatch } from 'redux'
 
 class NavigationMenu extends Component {
   componentDidMount () {

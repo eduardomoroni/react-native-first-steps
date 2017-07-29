@@ -3,9 +3,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
-import styles from '../../modules/theme/CardStyle'
-import { placeholdersToSymbols } from '../../realm/conversion/Placeholder'
-import { cardType, printingsType } from '../../modules/types/CardType'
+import styles from '../../theme/CardStyle'
+import { placeholdersToSymbols } from '../../../services/realm/conversion/Placeholder' // TODO: Provavelmente isso ta errado
+import { cardType, printingsType } from '../../../types/CardType'
 
 export const getLastPrinting = (printings: printingsType) => {
   const keys = Object.keys(printings)

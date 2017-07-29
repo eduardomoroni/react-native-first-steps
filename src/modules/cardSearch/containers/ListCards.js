@@ -6,10 +6,10 @@ import { View, TouchableOpacity, ListView } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import styles from '../../modules/theme/ListCardStyles'
+import styles from '../../theme/ListCardStyles'
 import { Card } from './Card'
 import { CardImage } from '../../shared/components/index'
-import { cardType } from '../../modules/types/CardType'
+import { cardType } from '../../../types/CardType'
 
 const showDetails = (card: cardType, cards) => {
   NavigationActions.cardSwiper({cards: cards, card: card, title: card.name})

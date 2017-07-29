@@ -5,7 +5,7 @@ import {
   loginUserSuccess,
   userLoggedIn,
   signupUser
-} from '../actions/Index'
+} from '../actions'
 
 export function * loginUserSaga (action) {
   try {
