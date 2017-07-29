@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardSearchForm /> Should render CardSearchForm Component 1`] = `
+Array [
+  "TextInputForm",
+  "TextInputForm",
+  "DropdownInputForm",
+  "DropdownInputForm",
+  "NumericInputForm",
+  "NumericInputForm",
+  "NumericInputForm",
+  "ManaIconsBar",
+  "TextInputForm",
+  "TextInputForm",
+  "TextInputForm",
+  "ManaIconsBar",
+]
+`;
+
+exports[`<CardSearchForm /> Should render CardSearchForm Component 2`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 10,
+        "paddingTop": 69,
+      }
+    }
+  >
+    <Field
+      component={[Function]}
+      name="cardName"
+    />
+    <Field
+      component={[Function]}
+      name="cardText"
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-start",
+            "marginRight": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          dropdownItems={
+            Array [
+              "um",
+              "dois",
+            ]
+          }
+          name="cardType"
+          selectedValue="um"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-end",
+            "marginLeft": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          dropdownItems={
+            Array [
+              "tres",
+              "quatro",
+            ]
+          }
+          name="cardSubType"
+          selectedValue="quatro"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-start",
+            "marginRight": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          dropdownItems={
+            Array [
+              "",
+              "<",
+              "<=",
+              "=",
+              ">=",
+              "=",
+            ]
+          }
+          name="cardPower"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "center",
+            "marginLeft": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          dropdownItems={
+            Array [
+              "",
+              "<",
+              "<=",
+              "=",
+              ">=",
+              "=",
+            ]
+          }
+          name="cardToughness"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-end",
+            "marginLeft": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          dropdownItems={
+            Array [
+              "",
+              "<",
+              "<=",
+              "=",
+              ">=",
+              "=",
+            ]
+          }
+          name="cardCMC"
+        />
+      </View>
+    </View>
+    <Field
+      component={[Function]}
+      name="cardColors"
+    />
+    <Field
+      component={[Function]}
+      name="cardFlavorText"
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-start",
+            "marginRight": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          name="cardArtist"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-end",
+            "marginLeft": 1.6666666666666667,
+          }
+        }
+      >
+        <Field
+          component={[Function]}
+          keyboardType="numeric"
+          maxLength={3}
+          name="cardCollectionNumber"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-start",
+            "marginRight": 1.6666666666666667,
+          }
+        }
+      >
+        <ModalToggle
+          label="cardRarity"
+          onPress={[Function]}
+          selected={
+            Array [
+              "Commom",
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "center",
+            "marginLeft": 1.6666666666666667,
+          }
+        }
+      >
+        <ModalToggle
+          label="cardSet"
+          onPress={[Function]}
+          selected={
+            Array [
+              "AER",
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "flex-end",
+            "marginLeft": 1.6666666666666667,
+          }
+        }
+      >
+        <ModalToggle
+          label="cardFormat"
+          onPress={[Function]}
+          selected={
+            Array [
+              "Standard",
+            ]
+          }
+        />
+      </View>
+    </View>
+    <Field
+      component={[Function]}
+      name="cardColorsIdentity"
+    />
+    <View />
+  </View>
+  <View
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  >
+    <SubmitButtonForm
+      onPress={undefined}
+    />
+  </View>
+</View>
+`;

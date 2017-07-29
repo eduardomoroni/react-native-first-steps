@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputLabel /> Snapshot, default onPress callback 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  onPress={[Function]}
+  style={
+    Object {
+      "color": "black",
+      "flex": -1,
+      "fontFamily": "MTGX",
+      "fontSize": 14,
+      "justifyContent": "flex-start",
+      "marginLeft": 5,
+    }
+  }
+>
+  I18n.t(label)
+</Text>
+`;

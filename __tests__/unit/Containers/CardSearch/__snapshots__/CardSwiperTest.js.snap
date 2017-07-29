@@ -1,0 +1,342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardSwiper /> Should Render CardSwiper with card as initial slide 1`] = `
+<View>
+  <_class
+    automaticallyAdjustContentInsets={false}
+    autoplay={false}
+    autoplayDirection={true}
+    autoplayTimeout={2.5}
+    bounces={false}
+    horizontal={true}
+    index={1}
+    loadMinimal={true}
+    loadMinimalSize={2}
+    loop={false}
+    onMomentumScrollEnd={[Function]}
+    pagingEnabled={true}
+    removeClippedSubviews={true}
+    scrollsToTop={false}
+    showsButtons={false}
+    showsHorizontalScrollIndicator={false}
+    showsPagination={false}
+    showsVerticalScrollIndicator={false}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <CardDetails
+      card={
+        Object {
+          "artist": "Zack Stella",
+          "cmc": 2,
+          "colorIdentity": Object {
+            "0": Object {
+              "colorIdentity": "U",
+            },
+          },
+          "colors": Object {
+            "0": Object {
+              "color": "Blue",
+            },
+          },
+          "flavor": "It is fascinating to see how the people of this plane replicate magical techniques without a natural gift.",
+          "foreignNames": Object {
+            "0": Object {
+              "language": "Chinese Simplified",
+              "multiverseid": 423891,
+              "name": "失效",
+            },
+            "1": Object {
+              "language": "Chinese Traditional",
+              "multiverseid": 424075,
+              "name": "失效",
+            },
+            "2": Object {
+              "language": "French",
+              "multiverseid": 424443,
+              "name": "Négation",
+            },
+            "3": Object {
+              "language": "German",
+              "multiverseid": 424259,
+              "name": "Negieren",
+            },
+            "4": Object {
+              "language": "Italian",
+              "multiverseid": 424627,
+              "name": "Negare",
+            },
+            "5": Object {
+              "language": "Japanese",
+              "multiverseid": 424811,
+              "name": "否認",
+            },
+            "6": Object {
+              "language": "Korean",
+              "multiverseid": 424995,
+              "name": "부인",
+            },
+            "7": Object {
+              "language": "Portuguese (Brazil)",
+              "multiverseid": 425179,
+              "name": "Negar",
+            },
+            "8": Object {
+              "language": "Russian",
+              "multiverseid": 425363,
+              "name": "Отвергнуть",
+            },
+            "9": Object {
+              "language": "Spanish",
+              "multiverseid": 425547,
+              "name": "Negar",
+            },
+          },
+          "id": "66106dba089787a1d0d5fe1b80091e7eebe29e55",
+          "imagename": "negate",
+          "layout": "normal",
+          "legalities": Object {
+            "0": Object {
+              "format": "Battle for Zendikar Block",
+              "legality": "Legal",
+            },
+            "1": Object {
+              "format": "Commander",
+              "legality": "Legal",
+            },
+            "2": Object {
+              "format": "Khans of Tarkir Block",
+              "legality": "Legal",
+            },
+            "3": Object {
+              "format": "Legacy",
+              "legality": "Legal",
+            },
+            "4": Object {
+              "format": "Lorwyn-Shadowmoor Block",
+              "legality": "Legal",
+            },
+            "5": Object {
+              "format": "Modern",
+              "legality": "Legal",
+            },
+            "6": Object {
+              "format": "Standard",
+              "legality": "Legal",
+            },
+            "7": Object {
+              "format": "Vintage",
+              "legality": "Legal",
+            },
+          },
+          "manaCost": "{1}{U}",
+          "multiverseid": 423707,
+          "name": "Negate",
+          "number": "40",
+          "originalText": "Counter target noncreature spell.",
+          "originalType": "Instant",
+          "power": null,
+          "printings": Object {
+            "0": Object {
+              "printing": "pMPR",
+            },
+            "1": Object {
+              "printing": "MOR",
+            },
+            "10": Object {
+              "printing": "ORI",
+            },
+            "11": Object {
+              "printing": "OGW",
+            },
+            "12": Object {
+              "printing": "CN2",
+            },
+            "13": Object {
+              "printing": "AER",
+            },
+            "2": Object {
+              "printing": "M10",
+            },
+            "3": Object {
+              "printing": "DPA",
+            },
+            "4": Object {
+              "printing": "M11",
+            },
+            "5": Object {
+              "printing": "M12",
+            },
+            "6": Object {
+              "printing": "M13",
+            },
+            "7": Object {
+              "printing": "M14",
+            },
+            "8": Object {
+              "printing": "M15",
+            },
+            "9": Object {
+              "printing": "DTK",
+            },
+          },
+          "rarity": "Common",
+          "rulings": Object {
+            "0": Object {
+              "date": "2009-10-01",
+              "text": "A creature spell is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells.",
+            },
+            "1": Object {
+              "date": "2009-10-01",
+              "text": "Testing.",
+            },
+          },
+          "subtypes": Object {},
+          "superTypes": Object {},
+          "text": "Counter target noncreature spell.",
+          "toughness": null,
+          "type": "Instant",
+          "types": Object {
+            "0": Object {
+              "type": "Instant",
+            },
+          },
+        }
+      }
+    />
+    <CardDetails
+      card={
+        Object {
+          "artist": "Jakub Kasper",
+          "cmc": 2,
+          "colorIdentity": Object {
+            "0": Object {
+              "colorIdentity": "W",
+            },
+          },
+          "colors": Object {
+            "0": Object {
+              "color": "White",
+            },
+          },
+          "flavor": "This little critter can turn all of you to scrap in under thirty seconds! Come on, who wants to be the first to go? Try and stop me!",
+          "foreignNames": Object {
+            "0": Object {
+              "language": "Chinese Simplified",
+              "multiverseid": 423858,
+              "name": "大胆渗透者",
+            },
+            "1": Object {
+              "language": "Chinese Traditional",
+              "multiverseid": 424042,
+              "name": "大膽滲透者",
+            },
+            "2": Object {
+              "language": "French",
+              "multiverseid": 424410,
+              "name": "Infiltrateur audacieux",
+            },
+            "3": Object {
+              "language": "German",
+              "multiverseid": 424226,
+              "name": "Dreister Eindringling",
+            },
+            "4": Object {
+              "language": "Italian",
+              "multiverseid": 424594,
+              "name": "Infiltrato Audace",
+            },
+            "5": Object {
+              "language": "Japanese",
+              "multiverseid": 424778,
+              "name": "大胆な潜入者",
+            },
+            "6": Object {
+              "language": "Korean",
+              "multiverseid": 424962,
+              "name": "무모한 침투자",
+            },
+            "7": Object {
+              "language": "Portuguese (Brazil)",
+              "multiverseid": 425146,
+              "name": "Infiltrador Audacioso",
+            },
+            "8": Object {
+              "language": "Russian",
+              "multiverseid": 425330,
+              "name": "Дерзкий Лазутчик",
+            },
+            "9": Object {
+              "language": "Spanish",
+              "multiverseid": 425514,
+              "name": "Infiltrador audaz",
+            },
+          },
+          "id": "3886f500667c6506f8b835843bc39a10a0d8f2ec",
+          "imagename": "audacious infiltrator",
+          "layout": "normal",
+          "legalities": Object {},
+          "manaCost": "{1}{W}",
+          "multiverseid": 423674,
+          "name": "Audacious Infiltrator",
+          "number": "7",
+          "originalText": "Audacious Infiltrator can\\"t be blocked by artifact creatures.",
+          "originalType": "Creature — Dwarf Rogue",
+          "power": 3,
+          "printings": Object {
+            "0": Object {
+              "printing": "AER",
+            },
+          },
+          "rarity": "Common",
+          "rulings": Object {},
+          "subtypes": Object {
+            "0": Object {
+              "subType": "Dwarf",
+            },
+            "1": Object {
+              "subType": "Rogue",
+            },
+          },
+          "superTypes": Object {},
+          "text": "Audacious Infiltrator can\\"t be blocked by artifact creatures.",
+          "toughness": 1,
+          "type": "Creature — Dwarf Rogue",
+          "types": Object {
+            "0": Object {
+              "type": "Creature",
+            },
+          },
+        }
+      }
+    />
+  </_class>
+  <FloatingActionButton
+    items={
+      Array [
+        Object {
+          "buttonColor": "#9b59b6",
+          "name": "md-share",
+          "onPress": [Function],
+          "title": "Share",
+        },
+        Object {
+          "buttonColor": "#3498db",
+          "name": "md-folder-open",
+          "onPress": [Function],
+          "title": "Add to Deck",
+        },
+        Object {
+          "buttonColor": "#1abc9c",
+          "name": "md-swap",
+          "onPress": [Function],
+          "title": "Add to TradeList",
+        },
+      ]
+    }
+  />
+</View>
+`;

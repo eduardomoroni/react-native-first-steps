@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListCards /> Should Render ListCards 1`] = `
+<ListViewMock
+  contentContainerStyle={Object {}}
+  dataSource={
+    ListViewDataSource {
+      "items": 0,
+    }
+  }
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+  renderSeparator={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "paddingTop": 64,
+    }
+  }
+/>
+`;
