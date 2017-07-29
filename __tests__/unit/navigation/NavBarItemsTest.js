@@ -1,8 +1,8 @@
 import ReactNative from 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import * as NavItems from '../../../src/navigation/NavBarItems'
-import { NavButton } from '../../../src/navigation/NavButton'
+import * as NavItems from '../../../src/modules/navigation/NavBarItems'
+import { NavButton } from '../../../src/modules/navigation/NavButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 const props = {

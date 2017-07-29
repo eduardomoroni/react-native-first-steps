@@ -5,7 +5,7 @@ import {
   createFirebaseUser,
   signupUserSaga,
   success
-} from '../../../src/sagas/LoginSaga'
+} from '../../../src/redux/sagas/LoginSaga'
 import {
   loginUser,
   loginUserSuccess,

@@ -1,6 +1,6 @@
 import { call, put, select } from 'redux-saga/effects'
 import { findCardsFromForm, sortCards } from '../../../src/services/CardService'
-import { searchForCardSaga, sortCardSaga, cardsSelector } from '../../../src/sagas/CardSearchSaga'
+import { searchForCardSaga, sortCardSaga, cardsSelector } from '../../../src/redux/sagas/CardSearchSaga'
 import { showCards, searchForCards, sortCards as sortAction } from '../../../src/redux/actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 

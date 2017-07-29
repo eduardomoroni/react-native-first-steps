@@ -1,4 +1,6 @@
-import { AppRegistry } from 'react-native'
-import App from './src/App'
+// @flow
 
-AppRegistry.registerComponent('mtgx', () => App)
+import { AppRegistry } from 'react-native'
+import MTGX from './src/app'
+
+AppRegistry.registerComponent('mtgx', () => MTGX)

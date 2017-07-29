@@ -2,7 +2,7 @@ import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Card, getLastPrinting } from '../../../../src/containers/cardSearch/Card'
-import * as Convertion from '../../../../src/realm/conversion/Placeholder'
+import * as Convertion from '../../../../src/services/realm/conversion/Placeholder'
 
 const props = {
   showCardText: true,

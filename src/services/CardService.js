@@ -1,11 +1,11 @@
 import _ from 'lodash'
-import { cardType } from '../types'
-import * as RealmService from '../realm/RealmService.js'
+import { cardType } from '../modules/types'
+import * as RealmService from './realm/RealmService.js'
 import {
   jsonToRealmCard,
   placeholdersToSymbols,
   convertCardFormToRealmQueries
-} from '../realm/conversion'
+} from './realm/conversion'
 
 const upsertCard = (card) => {
   RealmService.create('Card', card, true)

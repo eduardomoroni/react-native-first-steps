@@ -1,6 +1,6 @@
 import AerialModification from '../../../assets/Stubs/AerialModification.json'
 import PlanarBridge from '../../../assets/Stubs/PlanarBridge.json'
-import { jsonToRealmCard, inheritanceToArray } from '../../../../src/realm/conversion/JsonCard'
+import { jsonToRealmCard, inheritanceToArray } from '../../../../src/services/realm/conversion/JsonCard'
 import { AerialModificationStub, PlanarBridgeStub } from '../../../assets/Stubs/CardStubs'
 
 describe('Json to realm Representation', () => {

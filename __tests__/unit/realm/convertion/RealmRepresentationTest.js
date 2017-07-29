@@ -1,4 +1,4 @@
-import { rulingsTextAsArray } from '../../../../src/realm/conversion/RealmRepresentation'
+import { rulingsTextAsArray } from '../../../../src/services/realm/conversion/RealmRepresentation'
 import RealmResult from '../../../assets/Stubs/RealmResult.json'
 
 describe('RealmRepresentation', () => {

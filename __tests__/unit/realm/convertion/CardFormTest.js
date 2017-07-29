@@ -1,7 +1,7 @@
 import {
   convertCardFormToRealmQueries,
   arrayToQuery
-} from '../../../../src/realm/conversion/CardForm'
+} from '../../../../src/services/realm/conversion/CardForm'
 
 const fullForm = {
   cardArtist: 'arta',

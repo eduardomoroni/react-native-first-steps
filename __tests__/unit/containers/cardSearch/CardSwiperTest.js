@@ -5,7 +5,7 @@ import { CardSwiper } from '../../../../src/containers/cardSearch/CardSwiper'
 import Swiper from 'react-native-swiper'
 import _ from 'lodash'
 import RealmResult from '../../../assets/Stubs/RealmResult.json'
-import * as RealmService from '../../../../src/realm/RealmService'
+import * as RealmService from '../../../../src/services/realm/RealmService'
 
 const cardIndex = 1
 const props = {

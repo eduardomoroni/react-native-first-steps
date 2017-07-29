@@ -1,10 +1,10 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { NavButton } from '../../../src/navigation/NavButton'
+import { NavButton } from '../../../src/modules/navigation/NavButton'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Metrics } from '../../../src/styles/themes/'
-import styles from '../../../src/styles/navigation/NavBarItemsStyle'
+import { Metrics } from '../../../src/modules/theme/themes/'
+import styles from '../../../src/modules/theme/navigation/NavBarItemsStyle'
 
 const props = {
   iconProps: {

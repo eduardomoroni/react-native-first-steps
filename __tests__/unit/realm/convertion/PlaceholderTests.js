@@ -1,4 +1,4 @@
-import { placeholdersToSymbols } from '../../../../src/realm/conversion/Placeholder'
+import { placeholdersToSymbols } from '../../../../src/services/realm/conversion/Placeholder'
 
 it('Should convert manaCost to mana Symbol', () => {
   const testString = '{10}{W}{G}'

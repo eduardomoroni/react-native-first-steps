@@ -5,7 +5,7 @@ import { ListCards } from '../../../../src/containers/cardSearch/ListCards'
 import { Card } from '../../../../src/containers/cardSearch/Card'
 import { CardImage } from '../../../../src/containers/components'
 import RealmResult from '../../../assets/Stubs/RealmResult.json'
-import styles from '../../../../src/styles/ListCardStyles'
+import styles from '../../../../src/modules/theme/ListCardStyles'
 
 const props = {
   showCardsAs: 'list',
