@@ -1,13 +1,11 @@
-# React Native Playground
+# React Native Lab
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 [![Code Climate](https://lima.codeclimate.com/github/eduardomoroni/mtgx/badges/gpa.svg)](https://lima.codeclimate.com/github/eduardomoroni/mtgx)
 [![Test Coverage](https://lima.codeclimate.com/github/eduardomoroni/mtgx/badges/coverage.svg)](https://lima.codeclimate.com/github/eduardomoroni/mtgx/coverage)
 
-##ROAD MAP
- - Buscas recentes
- - Realm one side sync
- - Card search completamente funcional
- - Mapear Todas Dispatchs de Screen em unit tests
+##Projeto
+Esse repositório contem a minha primeira empreitada em projeto com react native, muitos aprendizados importantes de como eu devo fazer as coisas e como eu não devo fazer. Infelizmente fiz mais coisas que não deveria do que as que eu deveria, e acabou que continuar a ideia tornou-se inviavel.
+Manterei o repositório para fins de consulta, e em um futuro breve poderei comparar. É provavel que os CIs comecem a quebrar e nem tentarei arrumar.
 
 ## CI
 [![iOS Build](https://dashboard.buddybuild.com/api/statusImage?appID=58b368b4b2b449010064a7f2&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58b368b4b2b449010064a7f2/build/latest?branch=master)
