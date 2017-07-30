@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { ModalToggle } from '../../../../src/Containers/Components'
+import { ModalToggle } from '../../../../src/modules/shared/components'
 
 const props = {
   label: 'Label',

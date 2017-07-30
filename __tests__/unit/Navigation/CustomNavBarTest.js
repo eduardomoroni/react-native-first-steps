@@ -1,7 +1,7 @@
 import { Text } from 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { CustomNavBar } from '../../../src/Navigation/CustomNavBar'
+import { CustomNavBar } from '../../../src/modules/navigation/CustomNavBar'
 
 const placeholderComponent = (text) => {
   return (

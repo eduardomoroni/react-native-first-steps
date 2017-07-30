@@ -5,14 +5,14 @@ import {
   createFirebaseUser,
   signupUserSaga,
   success
-} from '../../../src/Sagas/LoginSaga'
+} from '../../../src/redux/sagas/LoginSaga'
 import {
   loginUser,
   loginUserSuccess,
   signupUser,
   loginUserFailed,
   userLoggedIn
-} from '../../../src/Redux/Actions'
+} from '../../../src/redux/actions'
 
 const sagaDone = { done: true, value: undefined }
 const credential = { email: 'email', password: 'pass' }

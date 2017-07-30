@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { WishList } from '../../../../src/Containers/CardTrade/WishList'
+import { WishList } from '../../../../src/modules/cardTrade/containers/WishList'
 
 const props = {
   value: 'test'

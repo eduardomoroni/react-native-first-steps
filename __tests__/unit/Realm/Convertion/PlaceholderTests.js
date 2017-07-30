@@ -1,6 +1,6 @@
-import { placeholdersToSymbols } from '../../../../src/Realm/Conversion/Placeholder'
+import { placeholdersToSymbols } from '../../../../src/services/realm/conversion/Placeholder'
 
-it('Should convert manaCost to Mana Symbol', () => {
+it('Should convert manaCost to mana Symbol', () => {
   const testString = '{10}{W}{G}'
   const expectedString = `${unicodeChar('e60f')}${unicodeChar('e600')}${unicodeChar('e604')}`
 

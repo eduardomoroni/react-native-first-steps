@@ -3,7 +3,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TextInputForm } from '../../../../src/Containers/Components'
+import { TextInputForm } from '../../../../src/modules/shared/components'
 
 const props = {
   keyboardType: 'default',

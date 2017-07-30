@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
-import { findCardsFromForm, sortCards } from '../../../src/Services/CardService'
-import { searchForCardSaga, sortCardSaga, cardsSelector } from '../../../src/Sagas/CardSearchSaga'
-import { showCards, searchForCards, sortCards as sortAction } from '../../../src/Redux/Actions'
+import { findCardsFromForm, sortCards } from '../../../src/services/CardService'
+import { searchForCardSaga, sortCardSaga, cardsSelector } from '../../../src/redux/sagas/CardSearchSaga'
+import { showCards, searchForCards, sortCards as sortAction } from '../../../src/redux/actions'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 jest.mock('react-native-router-flux', () => {
@@ -17,7 +17,7 @@ const cardSearchFormExample = {
 }
 const searchForCardsAction = searchForCards(cardSearchFormExample)
 
-it('CardSearch Happy Path', () => {
+it('cardSearch Happy Path', () => {
   const cardsMock = ['a', 'b'] // Actually the cards is a RealmObject, but it has length prop
   const generator = searchForCardSaga(searchForCardsAction)
   const step = (lastYield) => generator.next(lastYield)
@@ -28,7 +28,7 @@ it('CardSearch Happy Path', () => {
   expect(step()).toMatchObject(sagaDone)
 })
 
-it('CardSearch Return empty result', () => {
+it('cardSearch Return empty result', () => {
   const cardsMock = []
   const generator = searchForCardSaga(searchForCardsAction)
   const step = (lastYield) => generator.next(lastYield)

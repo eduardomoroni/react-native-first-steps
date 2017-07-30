@@ -4,7 +4,7 @@ import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
 import ActionButton from 'react-native-action-button'
-import { FloatingActionButton } from '../../../../src/Containers/Components'
+import { FloatingActionButton } from '../../../../src/modules/shared/components'
 
 const mockFunc = jest.fn()
 const props = {
@@ -30,11 +30,11 @@ const props = {
 describe.skip('<FloatingActionButton />', () => {
   const wrapper = shallow(<FloatingActionButton {...props} />)
 
-  it.skip('Should render InputLabel Component', () => {
+  it('Should render InputLabel Component', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  it.skip('Should trigger callback on pressing button', () => {
+  it('Should trigger callback on pressing button', () => {
     const button = wrapper.find(ActionButton.Item).at(0)
     button.simulate('press')
     expect(mockFunc).toHaveBeenCalled()

@@ -1,7 +1,7 @@
 import {
   convertCardFormToRealmQueries,
   arrayToQuery
-} from '../../../../src/Realm/Conversion/CardForm'
+} from '../../../../src/services/realm/conversion/CardForm'
 
 const fullForm = {
   cardArtist: 'arta',
@@ -22,7 +22,7 @@ const fullForm = {
 }
 
 describe('Should map CardSearchForm', () => {
-  it('with all field to valid Realm Query with no queryArgs', () => {
+  it('with all field to valid realm Query with no queryArgs', () => {
     const realmQueries = convertCardFormToRealmQueries(fullForm)
     expect(realmQueries.cardArtist).toEqual(`artist CONTAINS[c] "${fullForm.cardArtist}"`)
     expect(realmQueries.cardFlavorText).toEqual(`flavor CONTAINS[c] "${fullForm.cardFlavorText}"`)

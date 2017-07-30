@@ -2,7 +2,7 @@
 
 import { TextInput } from 'react-native'
 import React from 'react'
-import { NumericInputForm, InputPicker } from '../../../../src/Containers/Components'
+import { NumericInputForm, InputPicker } from '../../../../src/modules/shared/components'
 import { shallow } from 'enzyme'
 
 const props = {

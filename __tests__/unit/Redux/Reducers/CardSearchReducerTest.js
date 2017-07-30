@@ -1,5 +1,5 @@
-import CardSearchReducer, { INITIAL_STATE } from '../../../../src/Redux/Reducers/CardSearchReducer'
-import { showCards, toggleShowCardText, sortCards, switchDisplayMode } from '../../../../src/Redux/Actions/CardSearchActions'
+import CardSearchReducer, { INITIAL_STATE } from '../../../../src/redux/reducers/CardSearchReducer'
+import { showCards, toggleShowCardText, sortCards, switchDisplayMode } from '../../../../src/redux/actions/CardSearchActions'
 
 describe('CardSearchReducer Tests', () => {
   it('Should show cards fetched', () => {

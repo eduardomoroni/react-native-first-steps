@@ -1,11 +1,11 @@
 // FIXME: Jest roda os testes de integração em paralelo, o que faz com que diferentes
-//        processos usem o Realm ao mesmo tempo.
+//        processos usem o realm ao mesmo tempo.
 // TODO: Procurar uma maneira melhor de lidar com isto
 
-import { schemas } from '../../../src/Config/Realm'
-import seed from '../../../src/Assets/Cards/AER-X.json'
-import * as CardService from '../../../src/Services/CardService'
-import { changeRealm, deleteAll, closeRealm } from '../../../src/Realm/RealmService'
+import { schemas } from '../../../src/app/configuration/realm'
+import seed from '../../../src/assets/cards/AER-X.json'
+import * as CardService from '../../../src/services/CardService'
+import { changeRealm, deleteAll, closeRealm } from '../../../src/services/realm'
 
 let processUsingRealm: number = 0
 const nobodyIsUsingRealm = () => processUsingRealm === 0

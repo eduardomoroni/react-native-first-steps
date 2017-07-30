@@ -1,6 +1,6 @@
-import * as CardService from '../../../src/Services/CardService'
-import { negateForm, ornithopterForm } from '../../Assets/Stubs'
-import { initializeDatabase, cleanDatabase } from '../Config/RealmConfig'
+import * as CardService from '../../../src/services/CardService'
+import { negateForm, ornithopterForm } from '../../assets/Stubs'
+import { initializeDatabase, cleanDatabase } from '../config/RealmConfig'
 
 const { findCardsFromForm } = CardService
 describe('Card Service', () => {
