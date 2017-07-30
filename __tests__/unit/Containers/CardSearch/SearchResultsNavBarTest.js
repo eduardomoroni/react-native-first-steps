@@ -1,8 +1,8 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { SearchResultsNavBar } from '../../../../src/Containers/CardSearch/SearchResultsNavBar'
-import * as NavBarItems from '../../../../src/Navigation/NavBarItems'
+import { SearchResultsNavBar } from '../../../../src/modules/cardSearch/containers/SearchResultsNavBar'
+import * as NavBarItems from '../../../../src/modules/navigation/NavBarItems'
 NavBarItems.openDrawer = jest.fn()
 jest.mock('react-native-vector-icons/FontAwesome', () => 'Icon')
 

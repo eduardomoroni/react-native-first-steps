@@ -1,7 +1,7 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { ListCardFilterMenu } from '../../../../src/Containers/CardSearch/ListCardFilterMenu'
+import { ListCardFilterMenu } from '../../../../src/modules/cardSearch/containers/ListCardFilterMenu'
 
 // TODO: Test this!
 // NEED TO REFACTOR WHOLE CLASS

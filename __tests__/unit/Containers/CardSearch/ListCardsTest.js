@@ -1,11 +1,11 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { ListCards } from '../../../../src/Containers/CardSearch/ListCards'
-import { Card } from '../../../../src/Containers/CardSearch/Card'
-import { CardImage } from '../../../../src/Containers/Components'
-import RealmResult from '../../../Assets/Stubs/RealmResult.json'
-import styles from '../../../../src/Styles/ListCardStyles'
+import { ListCards } from '../../../../src/modules/cardSearch/containers/ListCards'
+import { Card } from '../../../../src/modules/cardSearch/containers/Card'
+import { CardImage } from '../../../../src/modules/shared/components'
+import RealmResult from '../../../assets/Stubs/RealmResult.json'
+import styles from '../../../../src/modules/theme/ListCardStyles'
 
 const props = {
   showCardsAs: 'list',
@@ -24,7 +24,7 @@ describe('<ListCards />', () => {
   it('Should have list and image display modes', () => {
     const rowData = {dummy: 'test'}
 
-    // renderRow as Images
+    // renderRow as images
     wrapper.setProps({ showCardsAs: 'image' })
     const imageRow = shallow(wrapper.instance().renderRow(rowData))
     expect(wrapper.instance().isDisplayingAsImage()).toBeTruthy()

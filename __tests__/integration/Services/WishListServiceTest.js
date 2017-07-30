@@ -1,9 +1,9 @@
-import { objectForPrimaryKey } from '../../../src/Realm/RealmService'
-import WishListService from '../../../src/Services/WishListService'
-import * as CardService from '../../../src/Services/CardService'
-import { initializeDatabase, cleanDatabase } from '../Config/RealmConfig'
+import { objectForPrimaryKey } from '../../../src/services/realm'
+import WishListService from '../../../src/services/WishListService'
+import * as CardService from '../../../src/services/CardService'
+import { initializeDatabase, cleanDatabase } from '../config/RealmConfig'
 
-describe('WishList Service', () => {
+describe('wishList Service', () => {
   let userID = '8ed88edb-12d1-4f0f-b42b-f59ca3a2f21f'
   let card
   let wishList
@@ -34,7 +34,7 @@ describe('WishList Service', () => {
     WishListService.deleteWishList(userID)
   })
 
-  it('Should create a new WishList for User', () => {
+  it('Should create a new wishList for User', () => {
     expect(wishList).toBeDefined()
     expect(wishList.lastSync).toEqual(wishList.lastUpdate)
   })

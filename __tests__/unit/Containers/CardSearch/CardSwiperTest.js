@@ -1,11 +1,11 @@
 import 'react-native'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { CardSwiper } from '../../../../src/Containers/CardSearch/CardSwiper'
+import { CardSwiper } from '../../../../src/modules/cardSearch/containers/CardSwiper'
 import Swiper from 'react-native-swiper'
 import _ from 'lodash'
-import RealmResult from '../../../Assets/Stubs/RealmResult.json'
-import * as RealmService from '../../../../src/Realm/RealmService'
+import RealmResult from '../../../assets/Stubs/RealmResult.json'
+import * as RealmService from '../../../../src/services/realm'
 
 const cardIndex = 1
 const props = {

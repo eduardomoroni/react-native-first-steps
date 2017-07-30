@@ -1,5 +1,5 @@
-import { rulingsTextAsArray } from '../../../../src/Realm/Conversion/RealmRepresentation'
-import RealmResult from '../../../Assets/Stubs/RealmResult.json'
+import { rulingsTextAsArray } from '../../../../src/services/realm/conversion/RealmRepresentation'
+import RealmResult from '../../../assets/Stubs/RealmResult.json'
 
 describe('RealmRepresentation', () => {
   it('Should get all card rulings as array of String', () => {

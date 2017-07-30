@@ -1,5 +1,5 @@
-import { searchForCards, showCards, toggleShowCardText, sortCards, switchDisplayMode } from '../../../../src/Redux/Actions/CardSearchActions'
-import { SEARCH_FOR_CARDS, SHOW_CARDS, SORT_CARDS, TOGGLE_SHOW_CARD_TEXT, SWITCH_DISPLAY_MODE } from '../../../../src/Redux/Types'
+import { searchForCards, showCards, toggleShowCardText, sortCards, switchDisplayMode } from '../../../../src/redux/actions/CardSearchActions'
+import { SEARCH_FOR_CARDS, SHOW_CARDS, SORT_CARDS, TOGGLE_SHOW_CARD_TEXT, SWITCH_DISPLAY_MODE } from '../../../../src/redux/types'
 
 const cardForm = {cardName: 'Yu-gi-oh'}
 
